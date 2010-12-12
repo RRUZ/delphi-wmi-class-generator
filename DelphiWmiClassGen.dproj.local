@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.405,=C:\Users\Dexter\Documents\RAD Studio\Projects\Unit11.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.920,=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.171,C:\Users\Dexter\Documents\RAD Studio\Projects\Unit11.pas=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Main.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.249,=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\AsyncCalls.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.979,C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\DelphiSyntax.pas=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.920,=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.224,=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Wmi_Helper.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.171,C:\Users\Dexter\Documents\RAD Studio\Projects\Unit11.dfm=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Main.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.763,=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\ListView_Helper.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.435,C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\Unit1.pas=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\uWmiDelphiCodeCreator.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.080,C:\Users\Dexter\Documents\RAD Studio\Projects\Project16.dproj=C:\Users\Dexter\Documents\RAD Studio\Projects\2010\Delphi WMI Class Generator\DelphiWmiClassGen.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
