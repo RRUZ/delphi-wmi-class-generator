@@ -5,13 +5,14 @@ interface
 uses
  Classes;
 
-function  CreateDelphiClassFromWMI(const NameSpace,WmiClass,Description:String;APropsList,AMethodsList :TStringList) : string;
+function  CreateDelphiClassFromWMI(const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
 function  WmiTypeToDelphiType(const WmiType:string):string;
 
 
 implementation
 
 Uses
+ ActiveX,
  Wmi_Helper,
  DelphiSyntax,
  SysUtils;
@@ -44,11 +45,11 @@ begin
    else
    if WmiType=wbemtypeDatetime then Result:='TDateTime'
    else
-   if WmiType=wbemtypeReference then Result:='IDispatch'//???
+   if WmiType=wbemtypeReference then Result:='Variant'//???   IDispatch
    else
    if WmiType=wbemtypeChar16   then Result:=QuotedStr('')
    else
-   if WmiType=wbemtypeObject   then Result:='Object' //????  variant
+   if WmiType=wbemtypeObject   then Result:='Variant' //????  variant
    else
    Result := 'Unknow'
 end;
@@ -97,7 +98,27 @@ begin
 end;
 
 
-function  CreateDelphiClassFromWMI(const NameSpace,WmiClass,Description:String;APropsList,AMethodsList :TStringList) : string;
+procedure  GetListWmiClassPropertiesDelphiTypes(const NameSpace,WmiClass:String;Const List :TStringList);
+var
+  objWMIService : OLEVariant;
+  colItems      : OLEVariant;
+  colItem       : OLEVariant;
+  oEnum         : IEnumvariant;
+  iValue        : LongWord;
+  Str           : string;
+begin
+  Str:='';
+  List.Clear;
+  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s:%s',[wbemLocalhost,NameSpace,WmiClass]));
+  colItems      := objWMIService.Properties_;
+  oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
+  while oEnum.Next(1, colItem, iValue) = 0 do
+    Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),WmiTypeToDelphiType(CIMTypeStr(colItem.cimtype))]);
+  List.CommaText:=Str;
+end;
+
+
+function  CreateDelphiClassFromWMI(const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
 var
   UsesList       : TStrings;
   InterfaceList  : TStrings;
@@ -116,8 +137,23 @@ var
   i,j            : Integer;
   sValue         : string;
   IsStatic       : Boolean;
+  Description    : string;
 begin
   Result:='';
+
+  if not Assigned(APropsList) then
+  begin
+     APropsList:=TStringList.Create;
+     GetListWmiClassPropertiesDelphiTypes(NameSpace,WmiClass,APropsList);
+  end;
+
+  if not Assigned(AMethodsList) then
+  begin
+     AMethodsList:=TStringList.Create;
+     GetListWmiClassMethods(NameSpace,WmiClass,AMethodsList);
+  end;
+
+
   UsesList      :=TStringList.Create;
   InterfaceList :=TStringList.Create;
   FieldsList    :=TStringList.Create;
@@ -128,6 +164,8 @@ begin
   MethodsImpl   :=TStringList.Create;
   try
 
+
+      Description:=GetWmiClassDescription(NameSpace,WmiClass);
 
       UsesList.Add(format('unit u%s;',[WmiClass]));
       UsesList.Add('');
@@ -381,6 +419,9 @@ begin
           if CompareText(APropsList.ValueFromIndex[i],'Integer')=0 then
             ImplList.Add(Format('       %-35s  :=VarIntegerNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
+          if CompareText(APropsList.ValueFromIndex[i],'Variant')=0 then
+            ImplList.Add(Format('       %-35s  :=GetPropertyValue(%s);',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+          else
             ImplList.Add(Format('       //Unsoported %s : %s ',[APropsList.Names[i],APropsList.ValueFromIndex[i]]));
        end;
       ImplList.Add('    end;');
@@ -410,6 +451,9 @@ begin
     MethodsImpl.Free;
     ImplList.Free;
     HelperFunc.Free;
+
+    FreeAndNil(APropsList);
+    FreeAndNil(AMethodsList);
   end;
 end;
 

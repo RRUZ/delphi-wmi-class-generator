@@ -1,6 +1,7 @@
 program DelphiWmiClassGen;
 
 uses
+  ExceptionLog,
   Forms,
   Main in 'Main.pas' {FrmMain},
   Wmi_Helper in 'Wmi_Helper.pas',

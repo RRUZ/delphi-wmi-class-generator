@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, SynEdit, SynMemo, SynEditHighlighter,
-  SynHighlighterPas, pngimage;
+  SynHighlighterPas, pngimage, ImgList, ToolWin;
 
 type
   TFrmMain = class(TForm)
@@ -16,10 +16,6 @@ type
     StatusBar1: TStatusBar;
     ProgressBarWmi: TProgressBar;
     Panel1: TPanel;
-    CbWmiNameSpaces: TComboBox;
-    cbWmiClasses: TComboBox;
-    Label2: TLabel;
-    Label1: TLabel;
     PageControl1: TPageControl;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
@@ -27,24 +23,30 @@ type
     LvMethods: TListView;
     TabSheet3: TTabSheet;
     MemoClassDescr: TMemo;
-    Image1: TImage;
-    Image2: TImage;
     TabSheet4: TTabSheet;
-    Button1: TButton;
-    Panel2: TPanel;
     SaveDialog1: TSaveDialog;
     SynMemoDelphiCode: TSynMemo;
     SynPasSyn1: TSynPasSyn;
+    LvClasses: TListView;
+    ToolBar1: TToolBar;
+    ToolButtonSave: TToolButton;
+    ToolButtonGenerate: TToolButton;
+    ImageList1: TImageList;
+    CbWmiNameSpaces: TComboBox;
+    ToolButton3: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
       const Rect: TRect);
     procedure CbWmiNameSpacesChange(Sender: TObject);
-    procedure cbWmiClassesChange(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
+    procedure LvClassesChange(Sender: TObject; Item: TListItem;
+      Change: TItemChange);
+    procedure ToolButtonSaveClick(Sender: TObject);
+    procedure ToolButtonGenerateClick(Sender: TObject);
   private
     { Private declarations }
     FMetaDataLoaded : Boolean;
+    FLoading        : Boolean;
     procedure LoadWmiMetaData;
     procedure LoadWmiClasses;
     procedure LoadWmiClassInfo;
@@ -53,6 +55,9 @@ type
     procedure LoadWMIDelphiCode;
     procedure Addlog(const Msg:String);
     procedure SetStatusMsg(const Msg:String);
+    function  GetCurrentClass:string;
+
+    Procedure GenerateWMILibrary;
   public
     { Public declarations }
   end;
@@ -74,21 +79,6 @@ ListView_Helper, uWmiDelphiCodeCreator;
 procedure TFrmMain.Addlog(const Msg: String);
 begin
   MemoLog.Lines.Add(Msg);
-end;
-
-procedure TFrmMain.Button1Click(Sender: TObject);
-begin
- SaveDialog1.InitialDir:=ExtractFilePath(ParamStr(0));
-  if SaveDialog1.Execute then
-    SynMemoDelphiCode.Lines.SaveToFile(SaveDialog1.FileName);
-end;
-
-procedure TFrmMain.cbWmiClassesChange(Sender: TObject);
-begin
-   LoadWmiClassInfo;
-   LoadWmiClassProperties;
-   LoadWmiClassMethods;
-   LoadWMIDelphiCode;
 end;
 
 procedure TFrmMain.CbWmiNameSpacesChange(Sender: TObject);
@@ -115,29 +105,124 @@ begin
    ProgressBarWmi.Perform(PBM_SETMARQUEE, 1, 100);
 end;
 
+procedure TFrmMain.GenerateWMILibrary;
+var
+ i            : integer;
+ c            : integer;
+ FNamespace   : string;
+ FClass       : string;
+ FPath        : string;
+ FCode        : TStringList;
+ FConsoleProj : TStringList;
+ FFileName    : string;
+begin
+  FNamespace:=CbWmiNameSpaces.Text;
+  FPath:= IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+StringReplace(FNamespace,'\','_',[rfReplaceAll]);
+  Addlog(Format('Generating library for namespace %s',[FNamespace]));
+  ForceDirectories(FPath);
+  FCode:=TStringList.Create;
+  FConsoleProj:=TStringList.Create;
+  ProgressBarWmi.Style:=pbstNormal;
+  ProgressBarWmi.Max:=LvClasses.Items.Count;
+  ProgressBarWmi.Visible:=True;
+  try
+
+        FConsoleProj.Add('program TestLib;');
+        FConsoleProj.Add('');
+        FConsoleProj.Add('{$APPTYPE CONSOLE}');
+        FConsoleProj.Add('');
+        FConsoleProj.Add('uses');
+      c:=0;
+      for i := 0 to LvClasses.Items.Count-1 do
+      if LvClasses.Items.Item[i].Checked then
+      begin
+         FClass:=LvClasses.Items.Item[i].Caption;
+         ProgressBarWmi.Position:=i;
+         FFileName:=Format('%s\u%s.pas',[FPath,FClass]);
+         Addlog(Format('Generating unit %s',[ExtractFileName(FFileName)]));
+
+        FConsoleProj.Add('u'+FClass+',');
+        FCode.Text:=CreateDelphiClassFromWMI(
+        FNameSpace,
+        FClass,
+        nil,
+        nil);
+
+
+        DeleteFile(FFileName);
+        FCode.SaveToFile(FFileName);
+        inc(c);
+      end;
+
+
+        FConsoleProj.Add('SysUtils;');
+        FConsoleProj.Add('');
+        FConsoleProj.Add('begin');
+        FConsoleProj.Add(' try');
+        FConsoleProj.Add('');
+        FConsoleProj.Add(' except');
+        FConsoleProj.Add('  on E:Exception do');
+        FConsoleProj.Add('  Writeln(E.Classname, '': '', E.Message);');
+        FConsoleProj.Add(' end;');
+        FConsoleProj.Add('end.');
+
+    FConsoleProj.SaveToFile(FPath+'\TestLib.dpr');
+    CopyFile(
+    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'uWmiDelphiClass.pas'),
+    PChar(FPath+'\uWmiDelphiClass.pas'),
+    False);
+
+    Addlog(Format( 'Done');
+  finally
+    FCode.Free;
+    FConsoleProj.Free;
+    ProgressBarWmi.Style:=pbstMarquee;
+    ProgressBarWmi.Visible:=False;
+  end;
+end;
+
+function TFrmMain.GetCurrentClass: string;
+begin
+     Result:='';
+     if LvClasses.Selected<>nil then
+      Result:=LvClasses.Selected.Caption;
+end;
+
 procedure TFrmMain.LoadWmiClasses;
 var
  IWmiClasses  : IAsyncCall;
  FWmiClasses  : TStringList;
+
+ i            : integer;
+ Item         : TListItem;
 begin
     FWmiClasses :=TStringList.Create;
     FWmiClasses.Sorted:=True;
     ProgressBarWmi.Visible:=True;
+    LvClasses.Items.BeginUpdate;
+    FLoading:=True;
     try
-       cbWmiClasses.Items.BeginUpdate;
-       try
-         cbWmiClasses.Items.Clear;
+       LvClasses.Items.Clear;
          if CbWmiNameSpaces.Text<>'' then
          begin
            Addlog(Format('Loading WMI Classes for namespace %s',[CbWmiNameSpaces.Text]));
           try
+           {
            IWmiClasses := AsyncCall(@GetListWmiClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
            while AsyncMultiSync([IWmiClasses], True, 1) = WAIT_TIMEOUT do
              Application.ProcessMessages;
+           }
+           GetListWmiClasses(CbWmiNameSpaces.Text, FWmiClasses);
 
            Addlog(Format('%d WMI Classes loaded',[FWmiClasses.Count]));
-           cbWmiClasses.Items.AddStrings(FWmiClasses);
+           //cbWmiClasses.Items.AddStrings(FWmiClasses);
 
+           for i := 0 to FWmiClasses.Count-1 do
+           begin
+              Item:=LvClasses.Items.Add();
+              Item.Caption:=FWmiClasses[i];
+              Item.Checked:=True;
+           end;
           except
             on E: EOleSysError do
             if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
@@ -146,18 +231,18 @@ begin
             raise;
           end;
          end;
-       finally
-          cbWmiClasses.Items.EndUpdate;
-       end;
+
     finally
      FWmiClasses.Free;
      ProgressBarWmi.Visible:=False;
+     LvClasses.Items.EndUpdate;
+     FLoading:=False;
     end;
 
-    if cbWmiClasses.Items.Count>0 then
+    if LvClasses.Items.Count>0 then
     begin
-     cbWmiClasses.ItemIndex:=0;
-     cbWmiClassesChange(cbWmiClasses);
+     LvClasses.Selected:=LvClasses.Items[0];
+     LvClassesChange(nil,nil,ctText);
     end;
 
 
@@ -169,7 +254,7 @@ var
  FClass     : string;
 begin
   FNameSpace:=CbWmiNameSpaces.Text;
-  FClass    :=cbWmiClasses.Text;
+  FClass    :=GetCurrentClass;
   MemoClassDescr.Text:=GetWmiClassDescription(FNameSpace,FClass);
 end;
 
@@ -182,7 +267,7 @@ var
  item       : TListItem;
 begin
   FNameSpace:=CbWmiNameSpaces.Text;
-  FClass    :=cbWmiClasses.Text;
+  FClass    :=GetCurrentClass;
 
   LvMethods.Items.BeginUpdate;
   Methods:=TStringList.Create;
@@ -220,7 +305,7 @@ var
  item       : TListItem;
 begin
   FNameSpace:=CbWmiNameSpaces.Text;
-  FClass    :=cbWmiClasses.Text;
+  FClass    :=GetCurrentClass;
 
   LvProperties.Items.BeginUpdate;
   Props:=TStringList.Create;
@@ -259,7 +344,7 @@ var
  i          : integer;
 begin
   FNameSpace:= CbWmiNameSpaces.Text;
-  FClass    := cbWmiClasses.Text;
+  FClass    := GetCurrentClass;
   Props     := TStringList.Create;
   Methods   := TStringList.Create;
   try
@@ -276,12 +361,16 @@ begin
     SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
     FNameSpace,
     FClass,
-    MemoClassDescr.Text,
     Props,
     Methods);
   finally
+  {
+    if Props<>nil then
     Props.Free;
+
+    if Methods<>nil then
     Methods.Free;
+  }
   end;
 end;
 
@@ -319,6 +408,18 @@ begin
     LoadWmiClasses;
 end;
 
+procedure TFrmMain.LvClassesChange(Sender: TObject; Item: TListItem;
+  Change: TItemChange);
+begin
+ if not FLoading then
+ begin
+   LoadWmiClassInfo;
+   LoadWmiClassProperties;
+   LoadWmiClassMethods;
+   LoadWMIDelphiCode;
+ end;
+end;
+
 procedure TFrmMain.SetStatusMsg(const Msg: String);
 begin
    StatusBar1.Panels[0].Text:=Msg;
@@ -334,6 +435,19 @@ begin
       ProgressBarWmi.Width  := Rect.Right  - Rect.Left - 15;
       ProgressBarWmi.Height := Rect.Bottom - Rect.Top;
     end;
+end;
+
+procedure TFrmMain.ToolButtonGenerateClick(Sender: TObject);
+begin
+  if Application.MessageBox('Do you want generate the code for all the WMI classes selected?', 'Confirmation', MB_YESNO + MB_ICONQUESTION) = IDYES then
+   GenerateWMILibrary;
+end;
+
+procedure TFrmMain.ToolButtonSaveClick(Sender: TObject);
+begin
+ SaveDialog1.InitialDir:=ExtractFilePath(ParamStr(0));
+  if SaveDialog1.Execute then
+    SynMemoDelphiCode.Lines.SaveToFile(SaveDialog1.FileName);
 end;
 
 end.
