@@ -10,11 +10,14 @@ type
    private
     procedure DisposeCollection;
    protected
-    FWMiDataLoaded                     : Boolean;
-    FWmiCollectionIndex                : Integer;
-    FWmiCollection                     : TList;
-    function  LoadWmiData(const WmiNamespace,WmiClass:string): boolean;
+    FWmiNameSpace            : string;
+    FWmiClass                : string;
+    FWMiDataLoaded           : Boolean;
+    FWmiCollectionIndex      : Integer;
+    FWmiCollection           : TList;
+    function    LoadWmiData(const WmiNamespace,WmiClass:string): boolean;
     constructor Create(LoadData:boolean;const WmiNamespace,WmiClass:string); overload;
+    function    RunSimpleWmiMethod(const MethodName:string) : integer;
    public
     function  GetPropertyValue(const PropName: string): OleVariant;
     function  GetCollectionCount:Integer;
@@ -23,12 +26,29 @@ type
     Destructor  Destroy; override;
   end;
 
+  TWmiError=class
+  private
+    FOperation: string;
+    FProviderName: string;
+    FParameterInfo: string;
+  public
+    property Operation : string read FOperation;
+    property ParameterInfo : string read FParameterInfo;
+    property ProviderName : string read FProviderName;
+    constructor Create; overload;
+    Destructor  Destroy; override;
+  end;
+
+
   function VarStrNull(const V:OleVariant):string;
+  function VarByteNull(const V:OleVariant):Byte;
   function VarWordNull(const V:OleVariant):Word;
+  function VarIntegerNull(const V:OleVariant):Integer;
   function VarInt64Null(const V:OleVariant):Int64;
   function VarLongNull(const V:OleVariant):Longint;
   function VarBoolNull(const V:OleVariant):Boolean;
   function VarDateTimeNull(const V:OleVariant):TDateTime;
+  function VarDoubleNull(const V:OleVariant):Double;
 
 implementation
 
@@ -45,11 +65,22 @@ type
   end;
 
 Const
+ DefaultDoubleNullValue =0.0;
  DefaultDateTimeNullValue =0;
+ DefaultByteNullValue =0;
  DefaultWordNullValue =0;
+ DefaultIntegerNullValue =0;
  DefaultInt64NullValue=0;
  DefaultLongNullValue =0;
  DefaultBoolNullValue =False;
+
+
+function VarDoubleNull(const V:OleVariant):Double;
+begin
+  Result:=DefaultDoubleNullValue;
+  if not VarIsNull(V) then
+    Result:=V;
+end;
 
 function VarStrNull(const V:OleVariant):string;
 begin
@@ -58,9 +89,24 @@ begin
     Result:=VarToStr(V);
 end;
 
+function VarByteNull(const V:OleVariant):Byte;
+begin
+  Result:=DefaultByteNullValue;
+  if not VarIsNull(V) then
+    Result:=V;
+end;
+
+
 function VarWordNull(const V:OleVariant):Word;
 begin
   Result:=DefaultWordNullValue;
+  if not VarIsNull(V) then
+    Result:=V;
+end;
+
+function VarIntegerNull(const V:OleVariant):Integer;
+begin
+  Result:=DefaultIntegerNullValue;
   if not VarIsNull(V) then
     Result:=V;
 end;
@@ -101,6 +147,8 @@ begin
   FWMiDataLoaded      :=False;
   FWmiCollectionIndex :=-1;
   FWmiCollection:=TList.Create;
+  FWmiNameSpace :=WmiNamespace;
+  FWmiClass     :=WmiClass;
   if LoadData then
   FWMiDataLoaded:=LoadWmiData(WmiNamespace,WmiClass);
 end;
@@ -175,6 +223,52 @@ begin;
   end;
 end;
 
+//executes a WMI method (no static) without in parameters,and with a single return value
+function TWmiClass.RunSimpleWmiMethod(const MethodName: string): integer;
+var
+  objSWbemLocator : OLEVariant;
+  objWMIService   : OLEVariant;
+  objInvoker      : OLEVariant;
+  ReturnValue     : OLEVariant;
+  oEnum           : IEnumvariant;
+  colItem         : OLEVariant;
+  iValue          : LongWord;
+  CurrIndex       : integer;
+begin
+ Result:=-1;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer('localhost',FWmiNamespace, '','');
+  objInvoker      := objWMIService.InstancesOf(FWmiClass);
+  oEnum           := IUnknown(objInvoker._NewEnum) as IEnumVariant;
+  CurrIndex       := 0;
+  while oEnum.Next(1, colItem, iValue) = 0 do
+  begin
+   if CurrIndex=FWmiCollectionIndex then
+   begin
+     ReturnValue:=colItem.ExecMethod(MethodName);//colItem.StopService;
+     Result     :=VarIntegerNull(ReturnValue);
+     Exit;
+   end;
+   Inc(CurrIndex);
+  end;
+end;
+
+{
+var
+  objSWbemLocator : OLEVariant;
+  objWMIService   : OLEVariant;
+  objInvoker      : OLEVariant;
+  objInParams     : OLEVariant;
+  objOutParams    : OLEVariant;
+begin
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer('localhost',FWmiNamespace, '','');
+  objInvoker      := objWMIService.Get(FWmiClass);
+  objInParams     := objInvoker.Methods_.Item(MethodName).InParameters.SpawnInstance_();
+  objOutParams    := objWMIService.ExecMethod(,MethodName);
+  Result          := VarIntegerNull(objOutParams.ReturnValue);
+end;
+}
 procedure TWmiClass.SetCollectionIndex(Index: Integer);
 begin
   AbstractErrorProc;
@@ -193,6 +287,26 @@ begin
   end;
   FWmiCollection.Clear;
   FWmiCollectionIndex :=-1;
+end;
+
+{ TWmiError }
+
+constructor TWmiError.Create;
+var
+  objSWbemError :OleVariant;
+begin
+   inherited Create;
+   CoInitialize(nil);
+   objSWbemError := CreateOleObject('WbemScripting.SWbemLastError');
+   FOperation:=VarStrNull(objSWbemError.Operation);
+   FProviderName:=VarStrNull(objSWbemError.ProviderName);
+   FParameterInfo:=VarStrNull(objSWbemError.ParameterInfo);
+end;
+
+destructor TWmiError.Destroy;
+begin
+  CoUninitialize;
+  inherited;
 end;
 
 end.
