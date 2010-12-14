@@ -1,3 +1,24 @@
+{**************************************************************************************************}
+{                                                                                                  }
+{ Unit Wmi_Helper                                                                                  }
+{ Get Meta info about objects of the WMI  (Windows Management Instrumentation)                     }
+{                                                                                                  }
+{ The contents of this file are subject to the Mozilla Public License Version 1.1 (the "License"); }
+{ you may not use this file except in compliance with the License. You may obtain a copy of the    }
+{ License at http://www.mozilla.org/MPL/                                                           }
+{                                                                                                  }
+{ Software distributed under the License is distributed on an "AS IS" basis, WITHOUT WARRANTY OF   }
+{ ANY KIND, either express or implied. See the License for the specific language governing rights  }
+{ and limitations under the License.                                                               }
+{                                                                                                  }
+{ The Original Code is Wmi_Helper.pas.                                                             }
+{                                                                                                  }
+{ The Initial Developer of the Original Code is Rodrigo Ruz V.                                     }
+{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010 Rodrigo Ruz V.                         }
+{ All Rights Reserved.                                                                             }
+{                                                                                                  }
+{**************************************************************************************************}
+
 unit Wmi_Helper;
 
 interface
@@ -188,17 +209,20 @@ function  GetDefaultValueWmiType(const WmiType:string):string;
 
 function  GetWMIObject(const objectName: string): IDispatch;
 function  GetWmiVersion:string;
-procedure GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings);  cdecl;
+procedure GetListWMINameSpaces(const List :TStrings);  cdecl; overload;
+procedure GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings);  cdecl; overload;
 procedure GetListWmiClasses(const NameSpace:String;Const List :TStrings); cdecl;
-procedure GetListWmiDynamicClasses(const NameSpace:String;Const List :TStrings);
-procedure GetListWmiClassesWithMethods(const NameSpace:String;Const List :TStrings);
-procedure GetListWmiClassProperties(const NameSpace,WmiClass:String;Const List :TStrings);
-procedure GetListWmiClassPropertiesTypes(const NameSpace,WmiClass:String;Const List :TStringList);
-procedure GetListWmiClassPropertiesValues(const NameSpace,WQL:String;Const List :TList);
-procedure GetListWmiClassMethods(const NameSpace,WmiClass:String;Const List :TStrings);
+procedure GetListWmiDynamicAndStaticClasses(const NameSpace:String;const List :TStrings); cdecl;
+procedure GetListWmiDynamicClasses(const NameSpace:String;const List :TStrings);
+procedure GetListWmiStaticClasses(const NameSpace:String;const List :TStrings);
+procedure GetListWmiClassesWithMethods(const NameSpace:String;const List :TStrings);
+procedure GetListWmiClassProperties(const NameSpace,WmiClass:String;const List :TStrings);
+procedure GetListWmiClassPropertiesTypes(const NameSpace,WmiClass:String;const List :TStringList);
+procedure GetListWmiClassPropertiesValues(const NameSpace,WQL:String;const List :TList);
+procedure GetListWmiClassMethods(const NameSpace,WmiClass:String;const List :TStrings);
 procedure GetListWmiEvents(const NameSpace:String;const List :TStrings);
-procedure GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
-procedure GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
+procedure GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;const List :TStringList);
+procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;const List :TStringList);
 
 function  GetWmiClassMOF(const NameSpace,  WmiClass:String):string;
 function  GetWmiClassXML(const NameSpace,WmiClass:String;FormatXml:boolean=True):string;
@@ -333,17 +357,6 @@ begin
 end;
 
 
-
-function  GetWmiVersion:string;
-var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\root\cimv2',[wbemLocalhost]));
-  colItems      := objWMIService.Get('Win32_WMISetting=@');
-  Result:=VarStrNull(colItems.BuildVersion);
-end;
-
 function GetWMIObject(const objectName: string): IDispatch;
 var
   chEaten: Integer;
@@ -355,25 +368,79 @@ begin
   OleCheck(Moniker.BindToObject(BindCtx, nil, IDispatch, Result));
 end;
 
+function  GetWmiVersion:string;
+var
+  objSWbemLocator : OleVariant;
+  objWMIService   : OleVariant;
+  colItems        : OleVariant;
+begin
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, 'root\cimv2', '', '');
+  colItems      := objWMIService.Get('Win32_WMISetting=@');
+  Result:=VarStrNull(colItems.BuildVersion);
+
+  objSWbemLocator:=Unassigned;
+  objWMIService  :=Unassigned;
+  colItems       :=Unassigned;
+end;
+
+procedure  GetListWMINameSpaces(const List :TStrings);
+begin
+  GetListWMINameSpaces('root', List);
+end;
+
+
 procedure  GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings);//recursive function
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator : OleVariant;
+  objWMIService   : OleVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
+  sValue          : string;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,RootNameSpace]));
-  colItems      := objWMIService.InstancesOf('__NAMESPACE');
-  oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, RootNameSpace, '', '');
+  colItems        := objWMIService.InstancesOf('__NAMESPACE');
+  oEnum           := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
   begin
-    List.Add(RootNameSpace+'\'+colItem.Name);
-    GetListWMINameSpaces(RootNameSpace+'\'+colItem.Name,List);
+    sValue:=VarStrNull(colItem.Name);
+    colItem:=Unassigned;
+    List.Add(RootNameSpace+'\'+sValue);
+    GetListWMINameSpaces(RootNameSpace+'\'+sValue,List);
   end;
 end;
 
 procedure  GetListWmiClasses(const NameSpace:String;Const List :TStrings);
+var
+  objSWbemLocator : OleVariant;
+  objWMIService   : OleVariant;
+  colItems        : OleVariant;
+  colItem         : OleVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
+begin
+  List.Clear;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.SubclassesOf();
+  oEnum           := IUnknown(colItems._NewEnum) as IEnumVariant;
+  while oEnum.Next(1, colItem, iValue) = 0 do
+  begin
+    List.Add(colItem.Path_.Class);
+    colItem        :=Unassigned;
+  end;
+
+  objSWbemLocator:=Unassigned;
+  objWMIService  :=Unassigned;
+  colItem        :=Unassigned;
+  colItems       :=Unassigned;
+end;
+
+{
+procedure  GetListWmiClasses(const NameSpace:String;const List :TStrings);
 var
   objWMIService : OLEVariant;
   colItems      : OLEVariant;
@@ -383,14 +450,16 @@ var
 begin
   List.Clear;
   objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colItems      := objWMIService.SubclassesOf();
+  colItems      := objWMIService.ExecQuery('select * from meta_class');
   oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
     List.Add(colItem.Path_.Class);
 end;
+}
 
-procedure  GetListWmiDynamicClasses(const NameSpace:String;const List :TStrings);
+procedure  GetListWmiDynamicAndStaticClasses(const NameSpace:String;const List :TStrings);
 var
+  objSWbemLocator   : OLEVariant;
   objWMIService     : OLEVariant;
   colClasses        : OLEVariant;
   objClass          : OLEVariant;
@@ -399,17 +468,101 @@ var
   oEnumQualif       : IEnumvariant;
   iValue            : LongWord;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colClasses    := objWMIService.SubclassesOf();
   oEnum         := IUnknown(colClasses._NewEnum) as IEnumVariant;
   while oEnum.Next(1, objClass, iValue) = 0 do
   begin
       oEnumQualif :=  IUnknown(objClass.Qualifiers_._NewEnum) as IEnumVariant;
        while oEnumQualif.Next(1, objClassQualifier, iValue) = 0 do
-          if  LowerCase(objClassQualifier.Name) = 'dynamic' Then
-               List.Add(objClass.Path_.Class);
+        begin
+          if (CompareText(objClassQualifier.Name,'dynamic')=0) or (CompareText(objClassQualifier.Name,'static')=0) Then
+          begin
+            List.Add(objClass.Path_.Class);
+            break;
+          end;
+          objClassQualifier:=Unassigned;
+        end;
+      objClass:=Unassigned;
   end;
+
+  objSWbemLocator   :=Unassigned;
+  objWMIService     :=Unassigned;
+  colClasses        :=Unassigned;
+  objClass          :=Unassigned;
+  objClassQualifier :=Unassigned;
 end;
+
+procedure  GetListWmiDynamicClasses(const NameSpace:String;const List :TStrings);
+var
+  objSWbemLocator   : OLEVariant;
+  objWMIService     : OLEVariant;
+  colClasses        : OLEVariant;
+  objClass          : OLEVariant;
+  objClassQualifier : OLEVariant;
+  oEnum             : IEnumvariant;
+  oEnumQualif       : IEnumvariant;
+  iValue            : LongWord;
+begin
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colClasses      := objWMIService.SubclassesOf();
+  oEnum           := IUnknown(colClasses._NewEnum) as IEnumVariant;
+  while oEnum.Next(1, objClass, iValue) = 0 do
+  begin
+    oEnumQualif :=  IUnknown(objClass.Qualifiers_._NewEnum) as IEnumVariant;
+     while oEnumQualif.Next(1, objClassQualifier, iValue) = 0 do
+      begin
+        if  CompareText(objClassQualifier.Name,'dynamic')=0 Then
+          List.Add(objClass.Path_.Class);
+        objClassQualifier:=Unassigned;
+      end;
+    objClass:=Unassigned;
+  end;
+
+  objSWbemLocator   :=Unassigned;
+  objWMIService     :=Unassigned;
+  colClasses        :=Unassigned;
+  objClass          :=Unassigned;
+  objClassQualifier :=Unassigned;
+end;
+
+
+procedure  GetListWmiStaticClasses(const NameSpace:String;const List :TStrings);
+var
+  objSWbemLocator   : OLEVariant;
+  objWMIService     : OLEVariant;
+  colClasses        : OLEVariant;
+  objClass          : OLEVariant;
+  objClassQualifier : OLEVariant;
+  oEnum             : IEnumvariant;
+  oEnumQualif       : IEnumvariant;
+  iValue            : LongWord;
+begin
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colClasses      := objWMIService.SubclassesOf();
+  oEnum           := IUnknown(colClasses._NewEnum) as IEnumVariant;
+  while oEnum.Next(1, objClass, iValue) = 0 do
+  begin
+      oEnumQualif :=  IUnknown(objClass.Qualifiers_._NewEnum) as IEnumVariant;
+       while oEnumQualif.Next(1, objClassQualifier, iValue) = 0 do
+        begin
+          if  CompareText(objClassQualifier.Name,'static')=0 Then
+               List.Add(objClass.Path_.Class);
+          objClassQualifier:=Unassigned;
+        end;
+      objClass:=Unassigned;
+  end;
+
+  objSWbemLocator   :=Unassigned;
+  objWMIService     :=Unassigned;
+  colClasses        :=Unassigned;
+  objClass          :=Unassigned;
+  objClassQualifier :=Unassigned;
+end;
+
 
 {
 procedure  GetListWmiClassesWithMethods(const NameSpace:String;Const List :TStrings);
@@ -432,6 +585,7 @@ end;
 //only dynamic classes with methods
 procedure  GetListWmiClassesWithMethods(const NameSpace:String;Const List :TStrings);
 var
+  objSWbemLocator   : OLEVariant;
   objWMIService     : OLEVariant;
   colClasses        : OLEVariant;
   objClass          : OLEVariant;
@@ -441,55 +595,76 @@ var
   iValue            : LongWord;
 begin
   List.Clear;
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colClasses    := objWMIService.SubclassesOf();
-  oEnum         := IUnknown(colClasses._NewEnum) as IEnumVariant;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colClasses      := objWMIService.SubclassesOf();
+  oEnum           := IUnknown(colClasses._NewEnum) as IEnumVariant;
   while oEnum.Next(1, objClass, iValue) = 0 do
   begin
       oEnumQualif :=  IUnknown(objClass.Qualifiers_._NewEnum) as IEnumVariant;
        while oEnumQualif.Next(1, objClassQualifier, iValue) = 0 do
-          if  (LowerCase(objClassQualifier.Name) = 'dynamic') and (objClass.Methods_.Count>0) then
+        begin
+          if  ((CompareText(objClassQualifier.Name,'dynamic')=0) and (objClass.Methods_.Count>0)) then
             List.Add(objClass.Path_.Class);
+          objClassQualifier:=Unassigned;
+        end;
+     objClass:=Unassigned;
   end;
+
+  objSWbemLocator   :=Unassigned;
+  objWMIService     :=Unassigned;
+  colClasses        :=Unassigned;
+  objClass          :=Unassigned;
+  objClassQualifier :=Unassigned;
 end;
-
-
-
 
 procedure  GetListWmiEvents(const NameSpace:String;const List :TStrings);
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator: OleVariant;
+  objWMIService  : OLEVariant;
+  colItems       : OLEVariant;
+  colItem        : OLEVariant;
+  oEnum          : IEnumvariant;
+  iValue         : LongWord;
 begin
   List.Clear;
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colItems      := objWMIService.ExecQuery('select * from meta_class where __this isa ''__EVENT''');
-  oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.ExecQuery('select * from meta_class where __this isa ''__EVENT''');
+  oEnum           := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
+  begin
     List.Add(colItem.Path_.Class);
+    colItem:=Unassigned;
+  end;
+
 
   if List.Count>0 then
   List.Delete(0); //Remove '__Event'
+
+  objSWbemLocator:=Unassigned;
+  objWMIService  :=Unassigned;
+  colItems       :=Unassigned;
+  colItem        :=Unassigned;
 end;
 
 procedure GetListWmiClassPropertiesValues(const NameSpace,WQL:String;Const List :TList);
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator : OleVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
 
-  Props         : OLEVariant;
-  PropItem      : OLEVariant;
-  oEnumProp     : IEnumvariant;
-  Str           : string;
-  Value         : string;
+  Props           : OLEVariant;
+  PropItem        : OLEVariant;
+  oEnumProp       : IEnumvariant;
+  Str             : string;
+  Value           : string;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colItems      := objWMIService.ExecQuery(WQL);
   oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
    while oEnum.Next(1, colItem, iValue) = 0 do
@@ -498,16 +673,30 @@ begin
        Str        :='';
        Props      :=colItem.Properties_;
        oEnumProp  := IUnknown(Props._NewEnum) as IEnumVariant;
+
         while oEnumProp.Next(1, PropItem, iValue) = 0 do
         begin
             Value:=StringReplace(VarStrNull(PropItem.Value),',',';',[rfReplaceAll,rfIgnoreCase]);
             Value:=StringReplace(Value,' ','_',[rfReplaceAll,rfIgnoreCase]);
             str:=Str+Format('%s=%s, ',[VarStrNull(PropItem.Name),Value]);
+
+            PropItem:=Unassigned;
         end;
         TStringList(List[List.Count-1]).CommaText := Str;
+
+       colItem:=Unassigned;
+       Props  :=Unassigned;
     end;
 
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colItem         :=Unassigned;
+  Props           :=Unassigned;
+  PropItem        :=Unassigned;
 end;
+
 procedure  GetListWmiClassProperties(const NameSpace,WmiClass:String;Const List :TStrings);
 var
   objWMIService : OLEVariant;
@@ -521,8 +710,14 @@ begin
   colItems      := objWMIService.Properties_;
   oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
-   List.Add(colItem.Name);
+   begin
+    List.Add(colItem.Name);
+    colItem:=Unassigned;
+   end;
 
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
 end;
 
 
@@ -541,8 +736,15 @@ begin
   colItems      := objWMIService.Properties_;
   oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
+  begin
     Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.cimtype)]);
+    colItem:=Unassigned;
+  end;
   List.CommaText:=Str;
+
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
 end;
 
 
@@ -559,106 +761,157 @@ begin
   colItems      := objWMIService.Methods_;
   oEnum         := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
+  begin
     List.Add(colItem.Name);
+    colItem:=Unassigned;
+  end;
+
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
 end;
 
 
 function  GetWmiClassMOF(const NameSpace,WmiClass:String):string;
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
+  objSWbemLocator: OLEVariant;
+  objWMIService  : OLEVariant;
+  colItems       : OLEVariant;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colItems      := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
-  Result        := VarStrNull(colItems.GetObjectText_);
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
+  Result          := VarStrNull(colItems.GetObjectText_);
+
+  objWMIService  :=Unassigned;
+  colItems       :=Unassigned;
+  objSWbemLocator:=Unassigned;
 end;
 
 function  GetWmiClassXML(const NameSpace,WmiClass:String;FormatXml:boolean=True):string;
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colNamedValueSet  : OLEVariant;
+  objSWbemLocator : OLEVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colNamedValueSet: OLEVariant;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colItems      := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
-  colNamedValueSet := CreateOleObject('Wbemscripting.SWbemNamedValueSet');
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
+
+  colNamedValueSet:= CreateOleObject('Wbemscripting.SWbemNamedValueSet');
   colNamedValueSet.Add('LocalOnly', False);
   colNamedValueSet.Add('IncludeQualifiers', True);
   colNamedValueSet.Add('ExcludeSystemProperties', False);
   colNamedValueSet.Add('IncludeClassOrigin', True);
+
   Result:=VarStrNull(colItems.GetText_(wbemObjectTextFormatWMIDTD20, 0, colNamedValueSet));
   if FormatXml then
-  Result:=xmlDoc.FormatXMLData(Result);
+    Result:=xmlDoc.FormatXMLData(Result);
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colNamedValueSet:=Unassigned;
 end;
 
 function  GetWmiClassDescription(const NameSpace,WmiClass:String):string;
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  Qualifiers    : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator: OleVariant;
+  objWMIService  : OLEVariant;
+  colItems       : OLEVariant;
+  colItem        : OLEVariant;
+  Qualifiers     : OLEVariant;
+  oEnum          : IEnumvariant;
+  iValue         : LongWord;
 begin
   Result:='';
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colItems      := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
   Qualifiers    := colItems.Qualifiers_;
   oEnum         := IUnknown(Qualifiers._NewEnum) as IEnumVariant;
-  if oEnum.Next(1, colItem, iValue) = 0 then
-    if LowerCase(VarStrNull(colItem.Name))='description' then
+  while oEnum.Next(1, colItem, iValue) = 0 do
+   begin
+    if CompareText(VarStrNull(colItem.Name),'description')=0 then
     begin
      Result:=VarStrNull(colItem.Value);
-     exit;
+     break;
     end;
+    colItem:=Unassigned;
+   end;
+
+  objSWbemLocator:=Unassigned;
+  objWMIService  :=Unassigned;
+  colItems       :=Unassigned;
+  colItem        :=Unassigned;
+  Qualifiers     :=Unassigned;
 end;
 
 
 
 function  GetWmiMethodDescription(const NameSpace,WmiClass,WmiMethod:String):string;
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  Qualifiers    : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator : OleVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  Qualifiers      : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\localhost\%s',[NameSpace]));
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colItems      := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
   Qualifiers    := colItems.Methods_.Item(WmiMethod).Qualifiers_;
   oEnum         := IUnknown(Qualifiers._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
   begin
-    if LowerCase(VarStrNull(colItem.Name))='description' then
+    if CompareText(VarStrNull(colItem.Name),'description')=0 then
     begin
      Result:= VarStrNull(colItem.Value);
-     exit;
+     break;
     end;
+    colItem:=Unassigned;
   end;
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colItem         :=Unassigned;
+  Qualifiers      :=Unassigned;
 end;
 
 function  GetWmiPropertyDescription(const NameSpace,WmiClass,WmiProperty:String):string;
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  Qualifiers    : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
+  objSWbemLocator : OleVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  Qualifiers      : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
 begin
-  objWMIService := GetWMIObject(Format('winmgmts:\\localhost\%s',[NameSpace]));
-  colItems      := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
-  Qualifiers    := colItems.Properties_.Item(WmiProperty).Qualifiers_;
-  oEnum         := IUnknown(Qualifiers._NewEnum) as IEnumVariant;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.Get(WmiClass, wbemFlagUseAmendedQualifiers);
+  Qualifiers      := colItems.Properties_.Item(WmiProperty).Qualifiers_;
+  oEnum           := IUnknown(Qualifiers._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
   begin
-    if LowerCase(VarStrNull(colItem.Name))='description' then
+    if CompareText(VarStrNull(colItem.Name),'description')=0 then
     begin
      Result:= VarStrNull(colItem.Value);
-     exit;
+     break;
     end;
+    colItem:=Unassigned;
   end;
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colItem         :=Unassigned;
+  Qualifiers      :=Unassigned;
 end;
 
 procedure  GetWmiClassQualifiers(const NameSpace,WmiClass:String;Const List :TStringList);
@@ -682,9 +935,14 @@ begin
     Value:=StringReplace(VarStrNull(colItem.Value),',',';',[rfReplaceAll,rfIgnoreCase]);
     Value:=StringReplace(Value,' ','_',[rfReplaceAll,rfIgnoreCase]);
     str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),Value]);
+    colItem:=Unassigned;
    end;
 
   List.CommaText := Str;
+
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
 end;
 
 procedure  GetWmiClassPropertiesQualifiers(const NameSpace,WmiClass,WmiProperty:String;Const List :TStringList);
@@ -715,9 +973,17 @@ begin
         Value:=StringReplace(VarStrNull(Qualif.Value),',',';',[rfReplaceAll,rfIgnoreCase]);
         Value:=StringReplace(Value,' ','_',[rfReplaceAll,rfIgnoreCase]);
         str:=Str+Format('%s=%s, ',[VarStrNull(Qualif.Name),Value]);
+        Qualif:=Unassigned;
        end;
-  end;
+    colItem:=Unassigned;
+  end
+  else
+   colItem:=Unassigned;
+
   List.CommaText := Str;
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
 end;
 
 procedure GetWmiClassMethodsQualifiers(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
@@ -748,9 +1014,20 @@ begin
           Value:=StringReplace(VarStrNull(Qualif.Value),',',';',[rfReplaceAll,rfIgnoreCase]);
           Value:=StringReplace(Value,' ','_',[rfReplaceAll,rfIgnoreCase]);
           str:=Str+Format('%s=%s, ',[VarStrNull(Qualif.Name),Value]);
+          Qualif:=Unassigned;
          end;
-    end;
+      colItem:=Unassigned;
+    end
+    else
+    colItem:=Unassigned;
+
     List.CommaText := Str;
+
+  objWMIService :=Unassigned;
+  colItems      :=Unassigned;
+  colItem       :=Unassigned;
+  Qualifiers    :=Unassigned;
+  Qualif        :=Unassigned;
 end;
 
 function  WmiMethodIsStatic(const NameSpace,WmiClass,WmiMethod:String):Boolean;
@@ -771,32 +1048,43 @@ begin
 end;
 
 
-procedure  GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
+procedure  GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  Parameters    : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
-  Str           : string;
+  objSWbemLocator : OLEVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  Parameters      : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
+  Str             : string;
 begin
   List.Clear;
   Str:='';
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
-  colItems      := objWMIService.Get(WmiClass);
-  Parameters    := colItems.Methods_.Item(WmiMethod).inParameters;
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
+  colItems        := objWMIService.Get(WmiClass);
+  Parameters      := colItems.Methods_.Item(WmiMethod).inParameters;
   //if Parameters.Count>0 then
   //if (not VarIsNull(Parameters)) and (not VarIsEmpty(Parameters)) then
   try
     Parameters:= Parameters.Properties_;
     oEnum     := IUnknown(Parameters._NewEnum) as IEnumVariant;
       while oEnum.Next(1, colItem, iValue) = 0 do
+      begin
         Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        colItem:=Unassigned;
+      end;
   except
     Str:='';
   end;
   List.CommaText := Str;
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colItem         :=Unassigned;
+  Parameters      :=Unassigned;
 end;
 
 function  GetWmiMethodInParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
@@ -841,30 +1129,41 @@ begin
    end;
 end;
 
-procedure GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
+procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
 var
-  objWMIService : OLEVariant;
-  colItems      : OLEVariant;
-  colItem       : OLEVariant;
-  Parameters    : OLEVariant;
-  oEnum         : IEnumvariant;
-  iValue        : LongWord;
-  Str           : string;
+  objSWbemLocator : OleVariant;
+  objWMIService   : OLEVariant;
+  colItems        : OLEVariant;
+  colItem         : OLEVariant;
+  Parameters      : OLEVariant;
+  oEnum           : IEnumvariant;
+  iValue          : LongWord;
+  Str             : string;
 begin
   List.Clear;
   Str:='';
-  objWMIService := GetWMIObject(Format('winmgmts:\\%s\%s',[wbemLocalhost,NameSpace]));
+  objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
+  objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colItems      := objWMIService.Get(WmiClass);
   Parameters    := colItems.Methods_.Item(WmiMethod).OutParameters;
   try
     Parameters:= Parameters.Properties_;
     oEnum     := IUnknown(Parameters._NewEnum) as IEnumVariant;
       while oEnum.Next(1, colItem, iValue) = 0 do
+       begin
         Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        colItem:=Unassigned;
+       end;
   except
     Str:='';
   end;
   List.CommaText := Str;
+
+  objSWbemLocator :=Unassigned;
+  objWMIService   :=Unassigned;
+  colItems        :=Unassigned;
+  colItem         :=Unassigned;
+  Parameters      :=Unassigned;
 end;
 
 initialization
