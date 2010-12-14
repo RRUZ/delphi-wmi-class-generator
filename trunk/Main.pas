@@ -68,11 +68,12 @@ var
 implementation
 
 uses
-CommCtrl,
-ComObj,
-AsyncCalls,
-Wmi_Helper,
-ListView_Helper, uWmiDelphiCodeCreator;
+  CommCtrl,
+  ComObj,
+  AsyncCalls,
+  Wmi_Helper,
+  ListView_Helper,
+  uWmiDelphiCodeCreator;
 
 {$R *.dfm}
 
@@ -103,6 +104,8 @@ begin
    ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
    SetWindowLong(ProgressBarWmi.Handle, GWL_EXSTYLE, ProgressBarStyle);
    ProgressBarWmi.Perform(PBM_SETMARQUEE, 1, 100);
+
+   ReportMemoryLeaksOnShutDown := True;
 end;
 
 procedure TFrmMain.GenerateWMILibrary;
@@ -116,6 +119,7 @@ var
  FConsoleProj : TStringList;
  FFileName    : string;
 begin
+
   FNamespace:=CbWmiNameSpaces.Text;
   FPath:= IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+StringReplace(FNamespace,'\','_',[rfReplaceAll]);
   Addlog(Format('Generating library for namespace %s',[FNamespace]));
@@ -127,12 +131,14 @@ begin
   ProgressBarWmi.Visible:=True;
   try
 
-        FConsoleProj.Add('program TestLib;');
-        FConsoleProj.Add('');
-        FConsoleProj.Add('{$APPTYPE CONSOLE}');
-        FConsoleProj.Add('');
-        FConsoleProj.Add('uses');
+      FConsoleProj.Add('program TestLib;');
+      FConsoleProj.Add('');
+      FConsoleProj.Add('{$APPTYPE CONSOLE}');
+      FConsoleProj.Add('');
+      FConsoleProj.Add('uses');
+
       c:=0;
+
       for i := 0 to LvClasses.Items.Count-1 do
       if LvClasses.Items.Item[i].Checked then
       begin
@@ -141,12 +147,12 @@ begin
          FFileName:=Format('%s\u%s.pas',[FPath,FClass]);
          Addlog(Format('Generating unit %s',[ExtractFileName(FFileName)]));
 
-        FConsoleProj.Add('u'+FClass+',');
-        FCode.Text:=CreateDelphiClassFromWMI(
-        FNameSpace,
-        FClass,
-        nil,
-        nil);
+          FConsoleProj.Add(Format('%s in %s,',['u'+FClass,QuotedStr('u'+FClass+'.pas')]));
+          FCode.Text:=CreateDelphiClassFromWMI(
+          FNameSpace,
+          FClass,
+          nil,
+          nil);
 
 
         DeleteFile(FFileName);
@@ -172,7 +178,7 @@ begin
     PChar(FPath+'\uWmiDelphiClass.pas'),
     False);
 
-    Addlog(Format( 'Done');
+    Addlog(Format('Done, %d units generated',[c]));
   finally
     FCode.Free;
     FConsoleProj.Free;
@@ -208,14 +214,13 @@ begin
            Addlog(Format('Loading WMI Classes for namespace %s',[CbWmiNameSpaces.Text]));
           try
            {
-           IWmiClasses := AsyncCall(@GetListWmiClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
+           IWmiClasses := AsyncCall(@GetListWmiDynamicAndStaticClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
            while AsyncMultiSync([IWmiClasses], True, 1) = WAIT_TIMEOUT do
              Application.ProcessMessages;
            }
-           GetListWmiClasses(CbWmiNameSpaces.Text, FWmiClasses);
+           GetListWmiDynamicAndStaticClasses(CbWmiNameSpaces.Text, FWmiClasses);
 
            Addlog(Format('%d WMI Classes loaded',[FWmiClasses.Count]));
-           //cbWmiClasses.Items.AddStrings(FWmiClasses);
 
            for i := 0 to FWmiClasses.Count-1 do
            begin
@@ -385,9 +390,12 @@ begin
        FNameSpaces.Sorted:=True;
           try
            Addlog('Loading WMI namespaces');
+           {
            IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, ['root', FNameSpaces]);
            while AsyncMultiSync([IWmiNamespaces], True, 1) = WAIT_TIMEOUT do
              Application.ProcessMessages;
+           }
+           GetListWMINameSpaces(FNameSpaces);
 
             Addlog(Format('%d WMI namespaces loaded',[FNameSpaces.Count]));
           except
