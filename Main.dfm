@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
   Left = 411
   Top = 213
-  Caption = 'nn'
+  Caption = 'Delphi  WMI Class Generator'
   ClientHeight = 562
   ClientWidth = 1008
   Color = clBtnFace
@@ -160,15 +160,13 @@ object FrmMain: TFrmMain
           RowSelect = True
           TabOrder = 0
           ViewStyle = vsReport
+          ExplicitLeft = 2
+          ExplicitTop = 3
         end
       end
       object TabSheet2: TTabSheet
         Caption = 'Methods'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object LvMethods: TListView
           Left = 0
           Top = 0
@@ -202,10 +200,6 @@ object FrmMain: TFrmMain
       object TabSheet3: TTabSheet
         Caption = 'Class Info'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object MemoClassDescr: TMemo
           Left = 0
           Top = 0
@@ -218,10 +212,6 @@ object FrmMain: TFrmMain
       object TabSheet4: TTabSheet
         Caption = 'Delphi Class'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object SynMemoDelphiCode: TSynMemo
           Left = 0
           Top = 0
@@ -338,8 +328,6 @@ object FrmMain: TFrmMain
             'nt64Null(GetPropertyValue('#39'TIME_CREATED'#39'));'#13#10'       FTrustLevel ' +
             '                         :=VarStrNull(GetPropertyValue('#39'TrustLev' +
             'el'#39'));'#13#10'    end;'#13#10' end;'#13#10#13#10'end.'
-          ExplicitLeft = 2
-          ExplicitTop = 3
         end
       end
     end
@@ -404,7 +392,7 @@ object FrmMain: TFrmMain
     Left = 645
     Top = 93
     Bitmap = {
-      494C01010C0018004C0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C0018007C0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

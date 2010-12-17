@@ -15,9 +15,9 @@ Sysutils;
 
 const
   EscapeChr        = '&';
-  NumReservedWords = 73;
+  NumReservedWords = 74;
   DelphiReservedWords : Array [0..NumReservedWords-1] of string =(
-  'add','else','initialization','program','then','and','end','inline','property',
+  'add','else','initialization','program','then','and','end','inline','property','Object',
   'threadvar','array','except','interface','raise','to','as','exports','is','record',
   'try','asm','file','label','remove','type','begin','final','library','repeat','unit',
   'case','finalization','mod','resourcestring','unsafe','class','finally','nil','seled',
