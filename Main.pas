@@ -107,6 +107,31 @@ begin
    //ReportMemoryLeaksOnShutDown := True;
 end;
 
+function GetFileVersion(const AExeName : string): string;
+const
+  c_StringInfo = 'StringFileInfo\040904E4\FileVersion';
+var
+  n, Len : cardinal;
+  Buf, Value : PChar;
+begin
+  Result := '';
+  n := GetFileVersionInfoSize(PChar(AExeName),n);
+  if n > 0 then
+  begin
+    Buf := AllocMem(n);
+    try
+      GetFileVersionInfo(PChar(AExeName),0,n,Buf);
+      if VerQueryValue(Buf,PChar(c_StringInfo),Pointer(Value),Len) then
+      begin
+        Result := Trim(Value);
+      end;
+    finally
+      FreeMem(Buf,n);
+    end;
+  end;
+end;
+
+
 procedure TFrmMain.GenerateWMILibrary;
 var
  i            : integer;
@@ -117,8 +142,10 @@ var
  FCode        : TStringList;
  FConsoleProj : TStringList;
  FFileName    : string;
+ CodeHeader   : TCodeHeader;
 begin
-
+  CodeHeader.WmiVersion:=GetWmiVersion;
+  CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
   FNamespace:=CbWmiNameSpaces.Text;
   FPath:= IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+StringReplace(FNamespace,'\','_',[rfReplaceAll]);
   Addlog(Format('Generating library for namespace %s',[FNamespace]));
@@ -148,6 +175,7 @@ begin
 
           FConsoleProj.Add(Format('%s in %s,',['u'+FClass,QuotedStr('u'+FClass+'.pas')]));
           FCode.Text:=CreateDelphiClassFromWMI(
+          CodeHeader,
           FNameSpace,
           FClass,
           nil,
@@ -347,7 +375,10 @@ var
  Methods    : TStringList;
  sValue     : string;
  i          : integer;
+ CodeHeader : TCodeHeader;
 begin
+  CodeHeader.WmiVersion:=GetWmiVersion;
+  CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
   FNameSpace:= CbWmiNameSpaces.Text;
   FClass    := GetCurrentClass;
   Props     := TStringList.Create;
@@ -364,6 +395,7 @@ begin
        Methods.Add(LvMethods.Items.Item[i].Caption);
 
     SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
+    CodeHeader,
     FNameSpace,
     FClass,
     Props,

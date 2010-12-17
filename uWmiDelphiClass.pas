@@ -26,7 +26,7 @@ interface
      Sorry Only Windows
 {$ENDIF}
 {.$DEFINE _DEBUG}
-{.$DEFINE WbemScripting_TLB}
+{$DEFINE WbemScripting_TLB}
 
 {$IFDEF FPC}
 {$mode objfpc}{$H+}
@@ -134,7 +134,7 @@ type
     {$IFDEF WbemScripting_TLB}
     property  SWbemLocator  : ISWbemLocator  read FSWbemLocator;
     property  WMIService    : ISWbemServices read FWMIService;
-    function  GetNullValue : IDispatch;
+    function  GetNullValue  : IDispatch;
     {$ENDIF}
     property  Value[const PropName : string] : OleVariant read GetPropValue; default;
     property  WmiCollectionIndex : integer read FWmiCollectionIndex  write FWmiCollectionIndex;
@@ -442,6 +442,8 @@ function TWmiClass.GetPropValue(const PropName: string): OleVariant;
 begin
 Result:=GetPropertyValue(PropName);
 end;
+
+
 
 //Improving Enumeration Performance  http://msdn.microsoft.com/en-us/library/aa390880%28VS.85%29.aspx
 function TWmiClass._LoadWmiData: boolean;
