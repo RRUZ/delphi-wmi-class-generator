@@ -27,8 +27,13 @@ interface
 uses
  Classes;
 
+type
+ TCodeHeader = record
+  WmiVersion : string;
+  AppVersion : string;
+ end;
 
-function  CreateDelphiClassFromWMI(const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
+function  CreateDelphiClassFromWMI(CodeHeader:TCodeHeader;const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
 function  WmiTypeToDelphiType(const WmiType:string):string;
 
 
@@ -81,46 +86,62 @@ end;
 
 function  GetWmiMethodInParamsPascalDecl(const NameSpace,WmiClass,WmiMethod:String):string;
 var
- Params : TStringList;
- i      : integer;
+ Params      : TStringList;
+ ParamsTypes : TStringList;
+ Descr       : TStringList;
+ i           : integer;
 begin
    Result:='';
-   Params:=TStringList.Create;
+   Params      :=TStringList.Create;
+   ParamsTypes :=TStringList.Create;
+   Descr       :=TStringList.Create;
    try
-     GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod,Params);
+     GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod,Params,ParamsTypes,Descr);
       for i := 0 to Params.Count-1 do
       begin
-        Result:= Result + Format('const %s : %s',[EscapeDelphiReservedWord(Params.Names[i]),WmiTypeToDelphiType(Params.ValueFromIndex[i])]);
+        Result:= Result + Format('const %s : %s',[EscapeDelphiReservedWord(Params[i]),WmiTypeToDelphiType(ParamsTypes[i])]);
 
         if i<Params.Count-1 then
         Result:=Result+';';
       end;
    finally
      Params.Free;
+     ParamsTypes.Free;
+     Descr.Free;
    end;
 end;
 
 function  GetWmiMethodOutParamsPascalDecl(const NameSpace,WmiClass,WmiMethod:String):string;//ommit returnvalue
 var
- Params : TStringList;
- i      : integer;
+ Params      : TStringList;
+ ParamsTypes : TStringList;
+ Descr       : TStringList;
+ i           : integer;
 begin
    Result:='';
-   Params:=TStringList.Create;
+   Params      :=TStringList.Create;
+   ParamsTypes :=TStringList.Create;
+   Descr       :=TStringList.Create;
    try
-     GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod,Params);
-     if Params.IndexOfName('ReturnValue')>=0 then
-     Params.Delete(Params.IndexOfName('ReturnValue'));
+     GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod,Params,ParamsTypes,Descr);
+     //remove the ReturnValue from the list of Out params
+     if Params.IndexOf('ReturnValue')>=0 then
+     begin
+      ParamsTypes.Delete(Params.IndexOf('ReturnValue'));
+      Params.Delete(Params.IndexOf('ReturnValue'));
+     end;
 
       for i := 0 to Params.Count-1 do
       begin
-        Result:= Result + Format('var %s : %s',[EscapeDelphiReservedWord(Params.Names[i]),WmiTypeToDelphiType(Params.ValueFromIndex[i])]);
-
+        Result:= Result + Format('var %s : %s',[EscapeDelphiReservedWord(Params[i]),WmiTypeToDelphiType(ParamsTypes[i])]);
         if i<Params.Count-1 then
         Result:=Result+';';
       end;
+
    finally
      Params.Free;
+     ParamsTypes.Free;
+     Descr.Free;
    end;
 end;
 
@@ -190,18 +211,53 @@ begin
   colItem       :=Unassigned;
 end;
 
-
-procedure GetFormattedClassDescr(const ADescription:string;AList:TStrings);
+//http://www.devjet.net/announcements/delphi-documentation-guidelines/
+procedure AddHelpInsight(const Summary:string;Params,Descr,HelpInsightList:TStrings;Indent:Integer=3);
 var
-  j : integer;
+  j,i   : integer;
+  List  : TStringList;
+  Space : string;
 begin
-   AList.Text:=WrapText(ADescription,80);
+  HelpInsightList.Clear;
+  space:=StringOfChar(' ',Indent);
 
-    for j:=0 to AList.Count-1 do
-     AList[j]:=Format('   ///%s',[AList[j]]);
+  if Summary<>'' then
+  begin
+     if Pos(#10,Summary)=0 then //check if the description has format
+      HelpInsightList.Text:=WrapText(Summary,80)
+     else
+      HelpInsightList.Text:=Summary;//WrapText(Summary,sLineBreak,[#10],80);
 
-  AList.Insert(0,'   ///<summary>');
-  AList.Add('   ///</summary>');
+      for j:=0 to HelpInsightList.Count-1 do
+       HelpInsightList[j]:=Format('%s/// %s',[space,HelpInsightList[j]]);
+
+    HelpInsightList.Insert(0,Format('%s/// <summary>',[space]));
+    HelpInsightList.Add     (Format('%s/// </summary>',[space]));
+  end;
+
+  if Params<>nil then
+  begin
+     List:=TStringList.Create;
+     try
+      for j := 0 to Params.Count-1 do
+       if Descr[j]<>'' then
+       begin
+          HelpInsightList.Add(Format('%s/// <param name="%s">',[space,Params[j]]));
+          List.Text:=WrapText(Descr[j],80);
+           for i := 0 to List.Count-1 do
+               HelpInsightList.Add(Format('%s/// %s',[space,List[i]]));
+          HelpInsightList.Add(Format('%s/// </param>',[space]));
+       end;
+     finally
+       List.Free;
+     end;
+  end;
+
+  if HelpInsightList.Count>0 then
+  begin
+    HelpInsightList.Insert(0,Format('%s{$REGION ''Documentation''}',[space]));
+    HelpInsightList.Add(Format('%s{$ENDREGION}',[space]));
+  end;
 end;
 
 
@@ -212,11 +268,11 @@ begin
   Result:=Min;
   for i := low(ArrList) to high(ArrList) do
    for j:=0 to ArrList[i].Count-1 do
-     if Length(ArrList[i].Names[j])>Result then
-      Result:=Length(ArrList[i].Names[j]);
+     if Length(ArrList[i][j])>Result then
+      Result:=Length(ArrList[i][j]);
 end;
 
-function  CreateDelphiClassFromWMI(const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
+function  CreateDelphiClassFromWMI(CodeHeader:TCodeHeader;const NameSpace,WmiClass:string;APropsList,AMethodsList :TStringList) : string;
 Const
 ArrOverload : Array[0..0] of string =('Create');
 MinLength   = 1;
@@ -229,8 +285,18 @@ var
   MethodsImpl    : TStrings;
   ImplList       : TStrings; //implementation of class
   ListDescr      : TStrings;
+
   MethodInParams : TStringList;
-  MethodOutParams: TStringList;
+  MethodInParType: TStringList;
+  MethodInDescr  : TStringList;
+
+
+  MethodOutParams : TStringList;
+  MethodOutParType: TStringList;
+  MethodOutDescr  : TStringList;
+
+  AllMethodParams : TStringList;
+  AllMethodDescr  : TStringList;
 
   InDelphiParams  : string;
   OutDelphiParams : string;
@@ -269,10 +335,15 @@ begin
   MethodsImpl   :=TStringList.Create;
   try
       Description:=GetWmiClassDescription(NameSpace,WmiClass);
-      UsesList.Add('// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010');
-      UsesList.Add('// WMI version '+GetWmiVersion);
-      UsesList.Add(Format('// Namespace %s Class %s',[NameSpace,WmiClass]));
-      UsesList.Add('// MSDN info about this class '+Format(UrlWmiHelp,[WmiClass]));
+      UsesList.Add('/// <summary>');
+      UsesList.Add('/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010');
+      UsesList.Add('/// Application version '+CodeHeader.AppVersion);
+      UsesList.Add('/// WMI version '+CodeHeader.WmiVersion);
+      UsesList.Add('/// Creation Date '+FormatDateTime('dd-mm-yyyy hh:nn:ss',Now));
+      UsesList.Add(Format('/// Namespace %s Class %s',[NameSpace,WmiClass]));
+      UsesList.Add('/// MSDN info about this class '+Format(UrlWmiHelp,[WmiClass]));
+      UsesList.Add('/// </summary>');
+      UsesList.Add('');
       UsesList.Add(format('unit u%s;',[WmiClass]));
       UsesList.Add('');
 
@@ -297,7 +368,8 @@ begin
            sValue:=GetWmiPropertyDescription(NameSpace,WmiClass,APropsList.Names[i]);
            if sValue<>'' then
            begin
-            GetFormattedClassDescr(sValue,ListDescr);
+            //Add property description
+            AddHelpInsight(sValue,nil,nil,ListDescr);
             PropertiesList.AddStrings(ListDescr);
            end;
          finally
@@ -307,8 +379,12 @@ begin
          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(APropsList.Names[i]),APropsList.ValueFromIndex[i],'F'+APropsList.Names[i]]));
       end;
 
-      MethodInParams :=TStringList.Create;
-      MethodOutParams:=TStringList.Create;
+      MethodInParams  :=TStringList.Create;
+      MethodInParType :=TStringList.Create;
+      MethodInDescr   :=TStringList.Create;
+      MethodOutParams :=TStringList.Create;
+      MethodOutParType:=TStringList.Create;
+      MethodOutDescr  :=TStringList.Create;
       try
           for i:=0 to AMethodsList.Count-1 do
           begin
@@ -321,22 +397,35 @@ begin
                break;
              end;
 
-             GetListWmiMethodInParameters(NameSpace,WmiClass,AMethodsList[i],MethodInParams);
-             GetListWmiMethodOutParameters(NameSpace,WmiClass,AMethodsList[i],MethodOutParams);
+             GetListWmiMethodInParameters(NameSpace,WmiClass,AMethodsList[i],MethodInParams,MethodInParType,MethodInDescr);
+             GetListWmiMethodOutParameters(NameSpace,WmiClass,AMethodsList[i],MethodOutParams,MethodOutParType,MethodOutDescr);
+
              IsStatic:=WmiMethodIsStatic(NameSpace,WmiClass,AMethodsList[i]);
              sValue:=GetWmiMethodDescription(NameSpace,WmiClass,AMethodsList[i]);
              ListDescr:=TStringList.Create;
              LengthVar:=GetMaxLenName([MethodInParams,MethodOutParams],MinLength);
 
-             IsFunction :=(MethodOutParams.Count>0) and (MethodOutParams.IndexOfName('ReturnValue')<>-1);
+             IsFunction :=(MethodOutParams.Count>0) and (MethodOutParams.IndexOf('ReturnValue')<>-1);
              MethodType:='procedure';
              if IsFunction  then
              MethodType :='function';
 
 
              try
-                  if sValue<>'' then
-                     GetFormattedClassDescr(sValue,ListDescr);
+                  //if sValue<>'' then
+                    //format method description and parameters description
+                 AllMethodParams:=TStringList.Create;
+                 AllMethodDescr :=TStringList.Create;
+                 try
+                     AllMethodParams.AddStrings(MethodInParams);
+                     AllMethodParams.AddStrings(MethodOutParams);
+                     AllMethodDescr.AddStrings(MethodInDescr);
+                     AllMethodDescr.AddStrings(MethodOutDescr);
+                     AddHelpInsight(sValue,AllMethodParams,AllMethodDescr,ListDescr);
+                 finally
+                   AllMethodParams.Free;
+                   AllMethodDescr.Free;
+                 end;
 
                  if (MethodInParams.Count=0) and (MethodOutParams.Count=1) then
                  begin
@@ -375,15 +464,16 @@ begin
                          MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,AMethodsList[i],InDelphiParams,'Integer']));
                          MethodsImpl.Add('var');
                          MethodsImpl.Add('  objInParams     : OleVariant;');
-                         MethodsImpl.Add('  ReturnValue     : OleVariant;');
+                         MethodsImpl.Add('  objOutParams    : OleVariant;');
                          MethodsImpl.Add('begin');
+
                          MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',['objInParams',QuotedStr(AMethodsList[i])]));
 
                          for  j:=0 to MethodInParams.Count-1 do
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+MethodInParams.Names[j],EscapeDelphiReservedWord(MethodInParams.Names[j])]));
+                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+MethodInParams[j],EscapeDelphiReservedWord(MethodInParams[j])]));
 
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['ReturnValue',QuotedStr(AMethodsList[i])]));
-                         MethodsImpl.Add('  Result := VarIntegerNull(ReturnValue);');
+                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(AMethodsList[i])]));
+                         MethodsImpl.Add('  Result := VarIntegerNull(objOutParams.ReturnValue);');
                          MethodsImpl.Add('end;');
                          MethodsImpl.Add('');
                    end
@@ -392,7 +482,7 @@ begin
                          sValue:='';
                          for j:=0 to MethodInParams.Count-1 do
                          begin
-                           sValue:=sValue + EscapeDelphiReservedWord(MethodInParams.Names[j]);
+                           sValue:=sValue + EscapeDelphiReservedWord(MethodInParams[j]);
                            if j<MethodInParams.Count-1 then
                             sValue:=sValue+',';
                          end;
@@ -443,14 +533,14 @@ begin
 
                          sValue:='';
                          for j:=0  to MethodInParams.Count-1 do
-                          sValue:=sValue+MethodInParams.Names[j]+',';
+                          sValue:=sValue+MethodInParams[j]+',';
 
                          //sValue:='';
                          for j:=0  to MethodOutParams.Count-1 do
-                          if CompareText(MethodOutParams.Names[j],'ReturnValue')<>0 then
+                          if CompareText(MethodOutParams[j],'ReturnValue')<>0 then
                           begin
-                           MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s : OleVariant;',['v'+MethodOutParams.Names[j]]));
-                           sValue:=sValue+'v'+MethodOutParams.Names[j]+',';
+                           MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s : OleVariant;',['v'+MethodOutParams[j]]));
+                           sValue:=sValue+'v'+MethodOutParams[j]+',';
                           end;
 
                          if sValue[length(sValue)]=',' then
@@ -460,8 +550,8 @@ begin
                          MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetInstanceOf.%s(%s));',['Result',AMethodsList[i],sValue]));
 
                          for j:=0  to MethodOutParams.Count-1 do
-                         if CompareText(MethodOutParams.Names[j],'ReturnValue')<>0 then
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := %s(v%s);',[MethodOutParams.Names[j],GetFunctNameVarNull(MethodOutParams.ValueFromIndex[j]),MethodOutParams.Names[j]]));
+                         if CompareText(MethodOutParams[j],'ReturnValue')<>0 then
+                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := %s(v%s);',[MethodOutParams[j],GetFunctNameVarNull(MethodOutParType[j]),MethodOutParams[j]]));
 
                          MethodsImpl.Add('end;');
                    end
@@ -483,13 +573,13 @@ begin
                          MethodsImpl.Add(Format('  objInParams := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',[QuotedStr(AMethodsList[i])]));
 
                          for j:=0  to MethodInParams.Count-1 do
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+MethodInParams.Names[j],MethodInParams.Names[j]]));
+                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+MethodInParams[j],MethodInParams[j]]));
 
                          MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(AMethodsList[i])]));
 
                          for j:=0  to MethodOutParams.Count-1 do
-                         if CompareText(MethodOutParams.Names[j],'ReturnValue')<>0 then
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s(objOutParams.%s);',[MethodOutParams.Names[j],GetFunctNameVarNull(MethodOutParams.ValueFromIndex[j]),MethodOutParams.Names[j]]));
+                         if CompareText(MethodOutParams[j],'ReturnValue')<>0 then
+                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s(objOutParams.%s);',[MethodOutParams[j],GetFunctNameVarNull(MethodOutParType[j]),MethodOutParams[j]]));
 
                          MethodsImpl.Add(Format('  %s  := VarIntegerNull(objOutParams.ReturnValue);',['Result']));
                          MethodsImpl.Add('end;');
@@ -509,7 +599,11 @@ begin
           end;
       finally
        MethodInParams.Free;
+       MethodInParType.Free;
+       MethodInDescr.Free;
        MethodOutParams.Free;
+       MethodOutParType.Free;
+       MethodOutDescr.Free;
       end;
 
       InterfaceList.Add('type');
@@ -517,7 +611,8 @@ begin
       begin
         ListDescr:=TStringList.Create;
         try
-          GetFormattedClassDescr(Description,ListDescr);
+          //Add class description
+          AddHelpInsight(Description,nil,nil,ListDescr,2);
           InterfaceList.AddStrings(ListDescr);
         finally
          ListDescr.Free;
@@ -530,12 +625,11 @@ begin
 
       InterfaceList.AddStrings(FieldsList);
       InterfaceList.Add('  public');
-      InterfaceList.Add('   constructor Create; overload;');
-      InterfaceList.Add('   constructor Create(LoadData:boolean); overload;');
+      InterfaceList.Add('   constructor Create(LoadWmiData : boolean=True); overload;');
       InterfaceList.AddStrings(PropertiesList);
       InterfaceList.AddStrings(MethodsList);
 
-      InterfaceList.Add('   procedure SetCollectionIndex(Index:Integer); override;');
+      InterfaceList.Add('   procedure SetCollectionIndex(Index : Integer); override;');
       InterfaceList.Add('  end;');
       InterfaceList.Add('');
       InterfaceList.Add('');
@@ -547,64 +641,59 @@ begin
       ImplList.Add(Format('{T%s}',[WmiClass]));
       ImplList.Add('');
 
-      ImplList.Add(Format(' constructor T%s.Create;',[WmiClass]));
-      ImplList.Add(' begin');
-      ImplList.Add('   Create(True);');
-      ImplList.Add(' end;');
-      ImplList.Add('');
-      ImplList.Add(Format(' constructor T%s.Create(LoadData: boolean);',[WmiClass]));
-      ImplList.Add(' begin');
-      ImplList.Add(Format('   Create(LoadData,%s,%s);',[QuotedStr(NameSpace),QuotedStr(WmiClass)]));
-      ImplList.Add(' end;');
+      ImplList.Add(Format('constructor T%s.Create(LoadWmiData : boolean=True);',[WmiClass]));
+      ImplList.Add('begin');
+      ImplList.Add(Format('  Create(LoadWmiData,%s,%s);',[QuotedStr(NameSpace),QuotedStr(WmiClass)]));
+      ImplList.Add('end;');
       ImplList.Add('');
 
-      ImplList.Add(Format(' procedure T%s.SetCollectionIndex(Index: Integer);',[WmiClass]));
-      ImplList.Add(' begin');
-      ImplList.Add('    if (Index>=0) and (Index<=FWmiCollection.Count-1) then');
-      ImplList.Add('    begin');
-      ImplList.Add('     FWmiCollectionIndex:=Index;');
+      ImplList.Add(Format('procedure T%s.SetCollectionIndex(Index : Integer);',[WmiClass]));
+      ImplList.Add('begin');
+      ImplList.Add('  if (Index>=0) and (Index<=FWmiCollection.Count-1) then');
+      ImplList.Add('  begin');
+      ImplList.Add('    FWmiCollectionIndex:=Index;');
 
        LengthVar:=GetMaxLenName([APropsList],MinLength)+5;
 
        for i:=0 to APropsList.Count-1 do
        begin
           if CompareText(APropsList.ValueFromIndex[i],'Word')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarWordNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarWordNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Boolean')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarBoolNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarBoolNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Int64')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarInt64Null(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarInt64Null(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'String')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarStrNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarStrNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Longint')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarLongNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarLongNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'TDateTime')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarDateTimeNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDateTimeNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Double')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarDoubleNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDoubleNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Byte')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarByteNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarByteNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'Integer')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'SmallInt')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := VarSmallIntNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarSmallIntNull(GetPropertyValue(%s));',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
           if CompareText(APropsList.ValueFromIndex[i],'OleVariant')=0 then
-            ImplList.Add(Format('     %-'+IntToStr(LengthVar)+'s  := GetPropertyValue(%s);',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := GetPropertyValue(%s);',['F'+APropsList.Names[i],QuotedStr(APropsList.Names[i])]))
           else
-            ImplList.Add(Format('     Unsoported %s : %s ',[APropsList.Names[i],APropsList.ValueFromIndex[i]]));
+            ImplList.Add(Format('    Unsoported %s : %s ',[APropsList.Names[i],APropsList.ValueFromIndex[i]]));
        end;
-      ImplList.Add('    end;');
-      ImplList.Add(' end;');
+      ImplList.Add('  end;');
+      ImplList.Add('end;');
       ImplList.Add('');
       ImplList.AddStrings(MethodsImpl);
       ImplList.Add('end.');

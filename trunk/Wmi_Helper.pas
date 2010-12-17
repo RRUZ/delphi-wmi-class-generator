@@ -221,8 +221,8 @@ procedure GetListWmiClassPropertiesTypes(const NameSpace,WmiClass:String;const L
 procedure GetListWmiClassPropertiesValues(const NameSpace,WQL:String;const List :TList);
 procedure GetListWmiClassMethods(const NameSpace,WmiClass:String;const List :TStrings);
 procedure GetListWmiEvents(const NameSpace:String;const List :TStrings);
-procedure GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;const List :TStringList);
-procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;const List :TStringList);
+procedure GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
+procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
 
 function  GetWmiClassMOF(const NameSpace,  WmiClass:String):string;
 function  GetWmiClassXML(const NameSpace,WmiClass:String;FormatXml:boolean=True):string;
@@ -1048,22 +1048,26 @@ begin
 end;
 
 
-procedure  GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
+procedure  GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
 var
-  objSWbemLocator : OLEVariant;
-  objWMIService   : OLEVariant;
-  colItems        : OLEVariant;
-  colItem         : OLEVariant;
-  Parameters      : OLEVariant;
-  oEnum           : IEnumvariant;
-  iValue          : LongWord;
-  Str             : string;
+  objSWbemLocator   : OLEVariant;
+  objWMIService     : OLEVariant;
+  colItems          : OLEVariant;
+  colItem           : OLEVariant;
+  Parameters        : OLEVariant;
+  objParamQualifier : OLEVariant;
+  oEnum             : IEnumvariant;
+  oEnumQualif       : IEnumvariant;
+  iValue            : LongWord;
+  //Str               : string;
 begin
-  List.Clear;
-  Str:='';
+  ParamsList.Clear;
+  ParamsTypes.Clear;
+  ParamsDescr.Clear;
+  //Str:='';
   objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
-  colItems        := objWMIService.Get(WmiClass);
+  colItems        := objWMIService.Get(WmiClass,wbemFlagUseAmendedQualifiers);
   Parameters      := colItems.Methods_.Item(WmiMethod).inParameters;
   //if Parameters.Count>0 then
   //if (not VarIsNull(Parameters)) and (not VarIsEmpty(Parameters)) then
@@ -1072,13 +1076,28 @@ begin
     oEnum     := IUnknown(Parameters._NewEnum) as IEnumVariant;
       while oEnum.Next(1, colItem, iValue) = 0 do
       begin
-        Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        //Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        ParamsList.Add(VarStrNull(colItem.Name));
+        ParamsTypes.Add(CIMTypeStr(colItem.CIMType));
+        ParamsDescr.Add('');
+
+          oEnumQualif :=  IUnknown(colItem.Qualifiers_._NewEnum) as IEnumVariant;
+           while oEnumQualif.Next(1, objParamQualifier, iValue) = 0 do
+            begin
+              //Writeln(VarStrNull(objParamQualifier.Name));
+              if  CompareText(objParamQualifier.Name,'Description')=0 Then
+              begin
+                ParamsDescr[ParamsDescr.Count-1]:= VarStrNull(objParamQualifier.Value);
+                break;
+              end;
+              objParamQualifier:=Unassigned;
+            end;
         colItem:=Unassigned;
       end;
   except
-    Str:='';
+    //Str:='';
   end;
-  List.CommaText := Str;
+  //ParamsList.CommaText := Str;
 
   objSWbemLocator :=Unassigned;
   objWMIService   :=Unassigned;
@@ -1087,77 +1106,54 @@ begin
   Parameters      :=Unassigned;
 end;
 
-function  GetWmiMethodInParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
+
+procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
 var
- Params : TStringList;
- i      : integer;
+  objSWbemLocator   : OleVariant;
+  objWMIService     : OLEVariant;
+  colItems          : OLEVariant;
+  colItem           : OLEVariant;
+  Parameters        : OLEVariant;
+  objParamQualifier : OLEVariant;
+  oEnum             : IEnumvariant;
+  oEnumQualif       : IEnumvariant;
+  iValue            : LongWord;
+  //Str             : string;
 begin
-   Result:='';
-   Params:=TStringList.Create;
-   try
-     GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod,Params);
-      for i := 0 to Params.Count-1 do
-      begin
-        Result:= Result + Format('%s : %s',[Params.Names[i],Params.ValueFromIndex[i]]);
-
-        if i<Params.Count-1 then
-        Result:=Result+' - ';
-      end;
-   finally
-     Params.Free;
-   end;
-end;
-
-function  GetWmiMethodOutParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
-var
- Params : TStringList;
- i      : integer;
-begin
-   Result:='';
-   Params:=TStringList.Create;
-   try
-     GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod,Params);
-      for i := 0 to Params.Count-1 do
-      begin
-        Result:= Result + Format('%s : %s',[Params.Names[i],Params.ValueFromIndex[i]]);
-
-        if i<Params.Count-1 then
-        Result:=Result+' - ';
-      end;
-   finally
-     Params.Free;
-   end;
-end;
-
-procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
-var
-  objSWbemLocator : OleVariant;
-  objWMIService   : OLEVariant;
-  colItems        : OLEVariant;
-  colItem         : OLEVariant;
-  Parameters      : OLEVariant;
-  oEnum           : IEnumvariant;
-  iValue          : LongWord;
-  Str             : string;
-begin
-  List.Clear;
-  Str:='';
+  ParamsList.Clear;
+  ParamsTypes.Clear;
+  ParamsDescr.Clear;
+  //Str:='';
   objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
-  colItems      := objWMIService.Get(WmiClass);
+  colItems      := objWMIService.Get(WmiClass,wbemFlagUseAmendedQualifiers);
   Parameters    := colItems.Methods_.Item(WmiMethod).OutParameters;
   try
     Parameters:= Parameters.Properties_;
     oEnum     := IUnknown(Parameters._NewEnum) as IEnumVariant;
       while oEnum.Next(1, colItem, iValue) = 0 do
        begin
-        Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        //Str:=Str+Format('%s=%s, ',[VarStrNull(colItem.Name),CIMTypeStr(colItem.CIMType)]);
+        ParamsList.Add(VarStrNull(colItem.Name));
+        ParamsTypes.Add(CIMTypeStr(colItem.CIMType));
+        ParamsDescr.Add('');
+
+          oEnumQualif :=  IUnknown(colItem.Qualifiers_._NewEnum) as IEnumVariant;
+           while oEnumQualif.Next(1, objParamQualifier, iValue) = 0 do
+            begin
+              if  CompareText(objParamQualifier.Name,'Description')=0 Then
+              begin
+                ParamsDescr[ParamsDescr.Count-1]:= VarStrNull(objParamQualifier.Value);
+                break;
+              end;
+              objParamQualifier:=Unassigned;
+            end;
         colItem:=Unassigned;
        end;
   except
-    Str:='';
+    //Str:='';
   end;
-  List.CommaText := Str;
+  //List.CommaText := Str;
 
   objSWbemLocator :=Unassigned;
   objWMIService   :=Unassigned;
@@ -1165,6 +1161,63 @@ begin
   colItem         :=Unassigned;
   Parameters      :=Unassigned;
 end;
+
+
+function  GetWmiMethodInParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
+var
+ Params : TStringList;
+ Types  : TStringList;
+ Descr  : TStringList;
+ i      : integer;
+begin
+   Result:='';
+   Params:=TStringList.Create;
+   Types :=TStringList.Create;
+   Descr :=TStringList.Create;
+   try
+     GetListWmiMethodInParameters(NameSpace,WmiClass,WmiMethod,Params,Types,Descr);
+      for i := 0 to Params.Count-1 do
+      begin
+        Result:= Result + Format('%s : %s',[Params[i],Types[i]]);
+
+        if i<Params.Count-1 then
+        Result:=Result+' - ';
+      end;
+   finally
+     Params.Free;
+     Types.Free;
+     Descr.Free;
+   end;
+end;
+
+function  GetWmiMethodOutParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
+var
+ Params : TStringList;
+ Types  : TStringList;
+ Descr  : TStringList;
+ i      : integer;
+begin
+   Result:='';
+   Params:=TStringList.Create;
+   Types :=TStringList.Create;
+   Descr :=TStringList.Create;
+   try
+     GetListWmiMethodOutParameters(NameSpace,WmiClass,WmiMethod,Params,Types,Descr);
+      for i := 0 to Params.Count-1 do
+      begin
+        Result:= Result + Format('%s : %s',[Params[i],Types[i]]);
+
+        if i<Params.Count-1 then
+        Result:=Result+' - ';
+      end;
+   finally
+     Params.Free;
+     Types.Free;
+     Descr.Free;
+   end;
+end;
+
+
 
 initialization
 CoInitialize(nil);
