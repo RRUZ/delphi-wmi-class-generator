@@ -70,7 +70,7 @@ implementation
 uses
   CommCtrl,
   ComObj,
-  AsyncCalls,
+  //AsyncCalls,
   Wmi_Helper,
   ListView_Helper,
   uWmiDelphiCodeCreator;
@@ -104,8 +104,7 @@ begin
    ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
    SetWindowLong(ProgressBarWmi.Handle, GWL_EXSTYLE, ProgressBarStyle);
    ProgressBarWmi.Perform(PBM_SETMARQUEE, 1, 100);
-
-   ReportMemoryLeaksOnShutDown := True;
+   //ReportMemoryLeaksOnShutDown := True;
 end;
 
 procedure TFrmMain.GenerateWMILibrary;
@@ -154,7 +153,6 @@ begin
           nil,
           nil);
 
-
         DeleteFile(FFileName);
         FCode.SaveToFile(FFileName);
         inc(c);
@@ -178,6 +176,11 @@ begin
     PChar(FPath+'\uWmiDelphiClass.pas'),
     False);
 
+    CopyFile(
+    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'WbemScripting_TLB.pas'),
+    PChar(FPath+'\WbemScripting_TLB.pas'),
+    False);
+
     Addlog(Format('Done, %d units generated',[c]));
   finally
     FCode.Free;
@@ -196,7 +199,7 @@ end;
 
 procedure TFrmMain.LoadWmiClasses;
 var
- IWmiClasses  : IAsyncCall;
+ //IWmiClasses  : IAsyncCall;
  FWmiClasses  : TStringList;
 
  i            : integer;
@@ -219,7 +222,6 @@ begin
              Application.ProcessMessages;
            }
            GetListWmiDynamicAndStaticClasses(CbWmiNameSpaces.Text, FWmiClasses);
-
            Addlog(Format('%d WMI Classes loaded',[FWmiClasses.Count]));
 
            for i := 0 to FWmiClasses.Count-1 do
@@ -249,8 +251,6 @@ begin
      LvClasses.Selected:=LvClasses.Items[0];
      LvClassesChange(nil,nil,ctText);
     end;
-
-
 end;
 
 procedure TFrmMain.LoadWmiClassInfo;
@@ -381,7 +381,7 @@ end;
 
 procedure TFrmMain.LoadWmiMetaData;
 var
- IWmiNamespaces : IAsyncCall;
+ //IWmiNamespaces : IAsyncCall;
  FNameSpaces    : TStringList;
 begin
     ProgressBarWmi.Visible:=True;
