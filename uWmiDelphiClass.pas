@@ -167,9 +167,11 @@ type
   function VarIntegerNull(const V:OleVariant):Integer;
   function VarInt64Null(const V:OleVariant):Int64;
   function VarLongNull(const V:OleVariant):Longint;
+  function VarCardinalNull(const V:OleVariant):Cardinal;
   function VarBoolNull(const V:OleVariant):Boolean;
   function VarDoubleNull(const V:OleVariant):Double;
   function VarDateTimeNull(const V : OleVariant): TDateTime; //UTC
+  function DateTimeToUTC(const DateTimeValue:TDateTime):string;
 
 
 implementation
@@ -200,6 +202,7 @@ Const
  DefaultIntegerNullValue :Integer=0;
  DefaultInt64NullValue   :Int64=0;
  DefaultLongNullValue    :Longint=0;
+ DefaultCardinalNullValue    :Cardinal=0;
  DefaultBoolNullValue    :Boolean=False;
 
 function CreateInstanceDataWmiClass: TDataWmiClass;
@@ -280,12 +283,31 @@ begin
     Result:=V;
 end;
 
+function VarCardinalNull(const V:OleVariant):Cardinal;
+begin
+  Result:=DefaultCardinalNullValue;
+  if not VarIsNull(V) then
+    Result:=V;
+end;
+
+
 function VarBoolNull(const V:OleVariant):Boolean;
 begin
   Result:=DefaultBoolNullValue;
   if not VarIsNull(V) then
     Result:=V;
 end;
+
+//Universal Time (UTC) format of YYYYMMDDHHMMSS.MMMMMM(+-)OOO.
+function DateTimeToUTC(const DateTimeValue:TDateTime):string;
+var Year, Month, Day: Word;
+var Hour, Min, Sec, MSec: Word;
+begin
+  DecodeDate(DateTimeValue, Year, Month, Day);
+  DecodeTime(DateTimeValue,Hour, Min, Sec, MSec);
+  Result:=Format('%.4d%.2d%.2d%.2d%.2d%.2d.000000+000',[Year, Month, Day, Hour, Min, Sec]);
+end;
+
 
 //Universal Time (UTC) format of YYYYMMDDHHMMSS.MMMMMM(+-)OOO.
 //20091231000000.000000+000

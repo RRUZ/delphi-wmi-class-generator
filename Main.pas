@@ -49,7 +49,7 @@ type
     procedure LoadWmiClassMethods;
     procedure LoadWMIDelphiCode;
     procedure Addlog(const Msg:String);
-    procedure SetStatusMsg(const Msg:String);
+    //procedure SetStatusMsg(const Msg:String);
     function  GetCurrentClass:string;
 
     Procedure GenerateWMILibrary;
@@ -414,12 +414,12 @@ begin
    LoadWMIDelphiCode;
  end;
 end;
-
+{
 procedure TFrmMain.SetStatusMsg(const Msg: String);
 begin
    StatusBar1.Panels[0].Text:=Msg;
 end;
-
+}
 procedure TFrmMain.StatusBar1DrawPanel(StatusBar: TStatusBar;
   Panel: TStatusPanel; const Rect: TRect);
 begin
