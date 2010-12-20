@@ -4,7 +4,7 @@ uses
   ExceptionLog,
   Forms,
   Main in 'Main.pas' {FrmMain},
-  Wmi_Helper in 'Wmi_Helper.pas',
+  uWmi_Metadata in 'uWmi_Metadata.pas',
   AsyncCalls in 'AsyncCalls.pas',
   ListView_Helper in 'ListView_Helper.pas',
   DelphiSyntax in 'DelphiSyntax.pas',
