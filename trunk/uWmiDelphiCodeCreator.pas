@@ -571,7 +571,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the result of the function %s',[WMiClassMetaData.Methods[i]]),nil,nil,ListDescr);
+              Format('Return the description for the result of the function %s',[WMiClassMetaData.Methods[i]]),nil,nil,ListDescr,2);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -598,7 +598,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the result of the function %s',[WMiClassMetaData.Methods[i]]),nil,nil,ListDescr);
+              Format('Return the description for the result of the function %s',[WMiClassMetaData.Methods[i]]),nil,nil,ListDescr,2);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -638,7 +638,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the value of the property %s',[WMiClassMetaData.Properties[i]]),nil,nil,ListDescr);
+              Format('Return the description for the value of the property %s',[WMiClassMetaData.Properties[i]]),nil,nil,ListDescr,2);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -664,7 +664,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the value of the property %s',[WMiClassMetaData.Properties[i]]),nil,nil,ListDescr);
+              Format('Return the description for the value of the property %s',[WMiClassMetaData.Properties[i]]),nil,nil,ListDescr,2);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;

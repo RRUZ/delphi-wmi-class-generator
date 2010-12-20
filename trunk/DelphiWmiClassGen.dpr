@@ -4,11 +4,12 @@ uses
   ExceptionLog,
   Forms,
   Main in 'Main.pas' {FrmMain},
-  uWmi_Metadata in 'uWmi_Metadata.pas',
   AsyncCalls in 'AsyncCalls.pas',
   ListView_Helper in 'ListView_Helper.pas',
   DelphiSyntax in 'DelphiSyntax.pas',
-  uWmiDelphiCodeCreator in 'uWmiDelphiCodeCreator.pas';
+  uWmiDelphiCodeCreator in 'uWmiDelphiCodeCreator.pas',
+  uWmi_Metadata in 'uWmi_Metadata.pas',
+  CodeView in 'CodeView.pas' {FrmViewCode};
 
 {$R *.res}
 
@@ -16,5 +17,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmMain, FrmMain);
+  Application.CreateForm(TFrmViewCode, FrmViewCode);
   Application.Run;
 end.

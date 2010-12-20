@@ -4,8 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, SynEdit, SynMemo, SynEditHighlighter,
-  SynHighlighterPas, pngimage, ImgList, ToolWin;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, pngimage, ImgList, ToolWin;
 
 type
   TFrmMain = class(TForm)
@@ -23,17 +22,13 @@ type
     LvMethods: TListView;
     TabSheet3: TTabSheet;
     MemoClassDescr: TMemo;
-    TabSheet4: TTabSheet;
-    SaveDialog1: TSaveDialog;
-    SynMemoDelphiCode: TSynMemo;
-    SynPasSyn1: TSynPasSyn;
     LvClasses: TListView;
     ToolBar1: TToolBar;
-    ToolButtonSave: TToolButton;
     ToolButtonGenerate: TToolButton;
     ImageList1: TImageList;
     CbWmiNameSpaces: TComboBox;
     ToolButton3: TToolButton;
+    ToolButtonViewCode: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
@@ -41,8 +36,8 @@ type
     procedure CbWmiNameSpacesChange(Sender: TObject);
     procedure LvClassesChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
-    procedure ToolButtonSaveClick(Sender: TObject);
     procedure ToolButtonGenerateClick(Sender: TObject);
+    procedure ToolButtonViewCodeClick(Sender: TObject);
   private
     { Private declarations }
     FMetaDataLoaded : Boolean;
@@ -58,6 +53,7 @@ type
     function  GetCurrentClass:string;
 
     Procedure GenerateWMILibrary;
+    procedure ViewCode;
   public
     { Public declarations }
   end;
@@ -71,9 +67,10 @@ uses
   CommCtrl,
   ComObj,
   //AsyncCalls,
-  Wmi_Helper,
+  uWmi_Metadata,
   ListView_Helper,
-  uWmiDelphiCodeCreator;
+  uWmiDelphiCodeCreator,
+  CodeView;
 
 {$R *.dfm}
 
@@ -366,20 +363,7 @@ begin
 end;
 
 procedure TFrmMain.LoadWMIDelphiCode;
-var
- FNameSpace : string;
- FClass     : string;
- CodeHeader : TCodeHeader;
 begin
-  CodeHeader.WmiVersion:=GetWmiVersion;
-  CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
-  FNameSpace:= CbWmiNameSpaces.Text;
-  FClass    := GetCurrentClass;
-
-    SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
-    CodeHeader,
-    FNameSpace,
-    FClass);
 end;
 
 procedure TFrmMain.LoadWmiMetaData;
@@ -454,11 +438,40 @@ begin
    GenerateWMILibrary;
 end;
 
-procedure TFrmMain.ToolButtonSaveClick(Sender: TObject);
+procedure TFrmMain.ToolButtonViewCodeClick(Sender: TObject);
 begin
- SaveDialog1.InitialDir:=ExtractFilePath(ParamStr(0));
-  if SaveDialog1.Execute then
-    SynMemoDelphiCode.Lines.SaveToFile(SaveDialog1.FileName);
+  ViewCode;
 end;
+
+procedure TFrmMain.ViewCode;
+var
+ FNameSpace : string;
+ FClass     : string;
+ CodeHeader : TCodeHeader;
+ Frm        : TFrmViewCode;
+begin
+  CodeHeader.WmiVersion:=GetWmiVersion;
+  CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
+  FNameSpace:= CbWmiNameSpaces.Text;
+  FClass    := GetCurrentClass;
+
+  if FClass='' then
+    Application.MessageBox('You must select a wmi class to view', 'Warning', MB_OK + MB_ICONWARNING)
+  else
+  begin
+    Frm:=TFrmViewCode.Create(nil);
+    try
+      Frm.Caption:=Format('Code view of %s:%s',[FNameSpace,FClass]);
+      Frm.SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
+      CodeHeader,
+      FNameSpace,
+      FClass);
+      Frm.ShowModal;
+    finally
+      Frm.Free;
+    end;
+  end;
+end;
+
 
 end.
