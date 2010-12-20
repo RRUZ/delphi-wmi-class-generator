@@ -206,6 +206,7 @@ Const
 
 
 type
+  TArrayBoolean = Array of Boolean;
   TWMiMethodMetaData=class
   private
     FInParams: TStrings;
@@ -223,12 +224,14 @@ type
     FName: string;
     FDescription: string;
     FType: string;
+    FInParamsIsArray : TArrayBoolean;
   public
     constructor Create; overload;
     Destructor  Destroy; override;
     property Name : string read FName;
     property Description : string read FDescription;
     property &Type : string read FType;
+    property InParamsIsArray: TArrayBoolean read FInParamsIsArray;
     property InParams       : TStrings read FInParams;
     property InParamsTypes  : TStrings read FInParamsTypes;
     property InParamsDescr  : TStrings read FInParamsDescr;
@@ -501,7 +504,7 @@ begin
    else
    if WmiType= wbemtypeSint32   then Result:='Integer'
    else
-   if WmiType=wbemtypeUint32   then Result:='LongInt'
+   if WmiType=wbemtypeUint32   then Result:='Cardinal'//LongInt
    else
    if WmiType=wbemtypeSint64   then Result:='Int64'//???
    else
@@ -1734,6 +1737,7 @@ begin
               MethodMetaData.InParams.Add(VarStrNull(Param.Name));
               MethodMetaData.InParamsTypes.Add(CIMTypeStr(Param.CIMType));
               MethodMetaData.InParamsDescr.Add('');
+              MethodMetaData.InParamsIsArray[MethodMetaData.InParams.Count-1]:=Param.IsArray;
 
               oEnumQualif :=  IUnknown(colItem.Qualifiers_._NewEnum) as IEnumVariant;
                while oEnumQualif.Next(1, Qualif, iValue) = 0 do
@@ -1996,14 +2000,15 @@ end;
 constructor TWMiMethodMetaData.Create;
 begin
   inherited Create;
-  FInParams      := TStringList.Create;
-  FInParamsTypes := TStringList.Create;
-  FInParamsDescr := TStringList.Create;
-  FOutParams     := TStringList.Create;
-  FOutParamsTypes:= TStringList.Create;
-  FOutParamsDescr:= TStringList.Create;
-  FValidValues   := TStringList.Create;
-  FValidMapValues:= TStringList.Create;
+  FInParams       := TStringList.Create;
+  FInParamsTypes  := TStringList.Create;
+  FInParamsDescr  := TStringList.Create;
+  FOutParams      := TStringList.Create;
+  FOutParamsTypes := TStringList.Create;
+  FOutParamsDescr := TStringList.Create;
+  FValidValues    := TStringList.Create;
+  FValidMapValues := TStringList.Create;
+  SetLength(FInParamsIsArray,256);
 end;
 
 destructor TWMiMethodMetaData.Destroy;
@@ -2016,6 +2021,7 @@ begin
   FOutParams.Free;
   FValidValues.Free;
   FValidMapValues.Free;
+  SetLength(FInParamsIsArray,0);
   inherited;
 end;
 

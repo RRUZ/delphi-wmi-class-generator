@@ -124,7 +124,7 @@ begin
    else
    if CIMTypeStr =  wbemtypeSint32  then Result := 'VarIntegerNull'
    else
-   if CIMTypeStr =  wbemtypeUint32  then Result := 'VarLongNull'
+   if CIMTypeStr =  wbemtypeUint32  then Result := 'VarCardinalNull'
    else
    if CIMTypeStr =  wbemtypeSint64  then Result := 'VarInt64Null'
    else
@@ -204,7 +204,7 @@ begin
      List:=TStringList.Create;
      try
       for j := 0 to Params.Count-1 do
-       if Descr[j]<>'' then
+       if (Descr[j]<>'') and (CompareText(Params[j],'ReturnValue')<>0) then
        begin
           HelpInsightList.Add(Format('%s/// <param name="%s">',[space,Params[j]]));
           List.Text:=WrapText(Descr[j],80);
@@ -315,215 +315,233 @@ begin
 
          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i]]));
       end;
-          for i:=0 to WMiClassMetaData.MethodsCount-1 do
-          begin
 
-            MethodDirectiv:='';
-            for svalue in ArrOverload do
-             if CompareText(WMiClassMetaData.Methods[i],svalue)=0 then
-             begin
-               MethodDirectiv:=MethodDirectiv+'overload;';
-               break;
-             end;
+      for i:=0 to WMiClassMetaData.MethodsCount-1 do
+      begin
 
-             sValue:=WMiClassMetaData.MethodsDescr[i];
-             ListDescr:=TStringList.Create;
-             LengthVar:=GetMaxLenName([WMiClassMetaData.MethodMetaData[i].InParams,WMiClassMetaData.MethodMetaData[i].OutParams],MinLength);
+        MethodDirectiv:='';
+        for svalue in ArrOverload do
+         if CompareText(WMiClassMetaData.Methods[i],svalue)=0 then
+         begin
+           MethodDirectiv:=MethodDirectiv+'overload;';
+           break;
+         end;
 
-             MethodType:='procedure';
-             if WMiClassMetaData.MethodMetaData[i].IsFunction  then
-             MethodType :='function';
+         sValue:=WMiClassMetaData.MethodsDescr[i];
+         ListDescr:=TStringList.Create;
+         LengthVar:=GetMaxLenName([WMiClassMetaData.MethodMetaData[i].InParams,WMiClassMetaData.MethodMetaData[i].OutParams],MinLength);
+
+         MethodType:='procedure';
+         if WMiClassMetaData.MethodMetaData[i].IsFunction  then
+         MethodType :='function';
 
 
+         try
+                //format method description and parameters description
+             AllMethodParams:=TStringList.Create;
+             AllMethodDescr :=TStringList.Create;
              try
-                    //format method description and parameters description
-                 AllMethodParams:=TStringList.Create;
-                 AllMethodDescr :=TStringList.Create;
-                 try
-                     AllMethodParams.AddStrings(WMiClassMetaData.MethodMetaData[i].InParams);
-                     AllMethodParams.AddStrings(WMiClassMetaData.MethodMetaData[i].OutParams);
-                     AllMethodDescr.AddStrings(WMiClassMetaData.MethodMetaData[i].InParamsDescr);
-                     AllMethodDescr.AddStrings(WMiClassMetaData.MethodMetaData[i].OutParamsDescr);
-                     AddHelpInsight(sValue,AllMethodParams,AllMethodDescr,ListDescr);
-                 finally
-                   AllMethodParams.Free;
-                   AllMethodDescr.Free;
-                 end;
-
-                 if (WMiClassMetaData.MethodMetaData[i].InParams.Count=0) and (WMiClassMetaData.MethodMetaData[i].OutParams.Count=1) then
-                 begin
-                      MethodsList.AddStrings(ListDescr);
-                      MethodsList.Add(Format('   function %s: %s;%s',[WMiClassMetaData.Methods[i],'Integer',MethodDirectiv]));
-
-                      if not WMiClassMetaData.MethodMetaData[i].IsStatic then
-                      begin
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//not static, OutParams=1, InParams=0');
-                      end
-                      else
-                      begin
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//static, OutParams=1, InParams=0');
-                      end;
-                         MethodsImpl.Add(Format('function T%s.%s: integer;',[WmiClass,WMiClassMetaData.Methods[i]]));
-                         MethodsImpl.Add('var');
-                         MethodsImpl.Add('  ReturnValue : OleVariant;');
-                         MethodsImpl.Add('begin');
-                         MethodsImpl.Add(Format('  ReturnValue := GetInstanceOf.%s;',[WMiClassMetaData.Methods[i]]));
-                                MethodsImpl.Add('  Result      := VarIntegerNull(ReturnValue);');
-                         MethodsImpl.Add('end;');
-                 end
-                 else
-                 if (WMiClassMetaData.MethodMetaData[i].InParams.Count>0) and (WMiClassMetaData.MethodMetaData[i].OutParams.Count=1) then
-                 begin
-                   InDelphiParams:= WMiClassMetaData.MethodMetaData[i].MethodInParamsPascalDecl;
-                   MethodsList.AddStrings(ListDescr);
-                   MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],InDelphiParams,'Integer',MethodDirectiv]));
-
-                   if WMiClassMetaData.MethodMetaData[i].IsStatic then
-                   begin
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//static, OutParams=1, InParams>0');
-                         MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,'Integer']));
-                         MethodsImpl.Add('var');
-                         MethodsImpl.Add('  objInParams     : OleVariant;');
-                         MethodsImpl.Add('  objOutParams    : OleVariant;');
-                         MethodsImpl.Add('begin');
-
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',['objInParams',QuotedStr(WMiClassMetaData.Methods[i])]));
-
-                         for  j:=0 to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
-
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
-                         MethodsImpl.Add('  Result := VarIntegerNull(objOutParams.ReturnValue);');
-                         MethodsImpl.Add('end;');
-                         MethodsImpl.Add('');
-                   end
-                   else
-                   begin
-                         sValue:='';
-                         for j:=0 to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                         begin
-                           sValue:=sValue + EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j]);
-                           if j<WMiClassMetaData.MethodMetaData[i].InParams.Count-1 then
-                            sValue:=sValue+',';
-                         end;
-
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//not static, OutParams=1, InParams>0');
-                         MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,'Integer']));
-                         MethodsImpl.Add('var');
-                         MethodsImpl.Add('  ReturnValue : OleVariant;');
-                         MethodsImpl.Add('begin');
-                         MethodsImpl.Add(Format('  ReturnValue := GetInstanceOf.%s(%s);',[WMiClassMetaData.Methods[i],sValue]));
-                                MethodsImpl.Add('  Result      := VarIntegerNull(ReturnValue);');
-                         MethodsImpl.Add('end;');
-                         MethodsImpl.Add('');
-                   end;
-                 end
-                 else
-                 if (WMiClassMetaData.MethodMetaData[i].OutParams.Count>1) then
-                 begin
-                   InDelphiParams := WMiClassMetaData.MethodMetaData[i].MethodInParamsPascalDecl;
-                   OutDelphiParams:= WMiClassMetaData.MethodMetaData[i].MethodOutParamsPascalDecl;
-                   MethodsList.AddStrings(ListDescr);
-
-                   if (InDelphiParams<>'')  then
-                    MethodsList.Add(Format('   function %s(%s ; %s): %s;%s',[WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer',MethodDirectiv]))
-                   else
-                   if (InDelphiParams='')   then
-                    MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],OutDelphiParams,'Integer',MethodDirectiv]));
-
-
-                   if not WMiClassMetaData.MethodMetaData[i].IsStatic then
-                   begin
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//not static, OutParams>1, InParams>0');
-
-                         if (InDelphiParams<>'')  then
-                          MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
-                         else
-                         if (InDelphiParams='')   then
-                          MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],OutDelphiParams,'Integer']));
-
-                         MethodsImpl.Add('var');
-                         MethodsImpl.Add('//output variants  helpers');
-                         //MethodsImpl.Add('  vUser           : OleVariant;');
-
-                         sValue:='';
-                         for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                          sValue:=sValue+WMiClassMetaData.MethodMetaData[i].InParams[j]+',';
-
-                         //sValue:='';
-                         for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
-                          if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
-                          begin
-                           MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s : OleVariant;',['v'+WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
-                           sValue:=sValue+'v'+WMiClassMetaData.MethodMetaData[i].OutParams[j]+',';
-                          end;
-
-                         if sValue[length(sValue)]=',' then
-                          Delete(sValue,length(sValue),1);
-
-                         MethodsImpl.Add('begin');
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetInstanceOf.%s(%s));',['Result',WMiClassMetaData.Methods[i],sValue]));
-
-                         for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
-                         if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := %s(v%s);',
-                         [WMiClassMetaData.MethodMetaData[i].OutParams[j],GetFunctNameVarNull(WMiClassMetaData.MethodMetaData[i].OutParamsTypes[j]),WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
-
-                         MethodsImpl.Add('end;');
-                   end
-                   else
-                   begin
-                         MethodsImpl.Add('');
-                         MethodsImpl.Add('//static, OutParams>1, InParams>0');
-
-                         if (InDelphiParams<>'')  then
-                          MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',
-                          [WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
-                         else
-                         if (InDelphiParams='')   then
-                          MethodsImpl.Add(Format('function T%s.%s(%s): %s;',
-                          [WmiClass,WMiClassMetaData.Methods[i],OutDelphiParams,'Integer']));
-
-                         MethodsImpl.Add('var');
-                         MethodsImpl.Add('  objInParams     : OleVariant;');
-                         MethodsImpl.Add('  objOutParams    : OleVariant;');
-                         MethodsImpl.Add('begin');
-                         MethodsImpl.Add(Format('  objInParams := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',
-                         [QuotedStr(WMiClassMetaData.Methods[i])]));
-
-                         for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',
-                         ['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],WMiClassMetaData.MethodMetaData[i].InParams[j]]));
-
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',
-                         ['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
-
-                         for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
-                         if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
-                         MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s(objOutParams.%s);',
-                         [WMiClassMetaData.MethodMetaData[i].OutParams[j],GetFunctNameVarNull(WMiClassMetaData.MethodMetaData[i].OutParamsTypes[j]),WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
-
-                         MethodsImpl.Add(Format('  %s  := VarIntegerNull(objOutParams.ReturnValue);',['Result']));
-                         MethodsImpl.Add('end;');
-                   end;
-
-                 end
-                 else
-                 begin
-                    //MethodsList.Add(Format('Unsupported (procedure) WmiMethod %s',[WMiClassMetaData.Methods[i]]));
-                 end;
-
-
+               AllMethodParams.AddStrings(WMiClassMetaData.MethodMetaData[i].InParams);
+               AllMethodParams.AddStrings(WMiClassMetaData.MethodMetaData[i].OutParams);
+               AllMethodDescr.AddStrings(WMiClassMetaData.MethodMetaData[i].InParamsDescr);
+               AllMethodDescr.AddStrings(WMiClassMetaData.MethodMetaData[i].OutParamsDescr);
+               AddHelpInsight(sValue,AllMethodParams,AllMethodDescr,ListDescr);
              finally
-               ListDescr.Free;
+               AllMethodParams.Free;
+               AllMethodDescr.Free;
              end;
 
-          end;
+             if (WMiClassMetaData.MethodMetaData[i].InParams.Count=0) and (WMiClassMetaData.MethodMetaData[i].OutParams.Count=1) then
+             begin
+                MethodsList.AddStrings(ListDescr);
+                MethodsList.Add(Format('   function %s: %s;%s',[WMiClassMetaData.Methods[i],'Integer',MethodDirectiv]));
+
+                if not WMiClassMetaData.MethodMetaData[i].IsStatic then
+                begin
+                   MethodsImpl.Add('');
+                   MethodsImpl.Add('//not static, OutParams=1, InParams=0');
+                end
+                else
+                begin
+                   MethodsImpl.Add('');
+                   MethodsImpl.Add('//static, OutParams=1, InParams=0');
+                end;
+                   MethodsImpl.Add(Format('function T%s.%s: integer;',[WmiClass,WMiClassMetaData.Methods[i]]));
+                   MethodsImpl.Add('var');
+                   MethodsImpl.Add('  ReturnValue : OleVariant;');
+                   MethodsImpl.Add('begin');
+                   MethodsImpl.Add(Format('  ReturnValue := GetInstanceOf.%s;',[WMiClassMetaData.Methods[i]]));
+                          MethodsImpl.Add('  Result      := VarIntegerNull(ReturnValue);');
+                   MethodsImpl.Add('end;');
+             end
+             else
+             if (WMiClassMetaData.MethodMetaData[i].InParams.Count>0) and (WMiClassMetaData.MethodMetaData[i].OutParams.Count=1) then
+             begin
+               InDelphiParams:= WMiClassMetaData.MethodMetaData[i].MethodInParamsPascalDecl;
+               MethodsList.AddStrings(ListDescr);
+               MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],InDelphiParams,'Integer',MethodDirectiv]));
+
+               if WMiClassMetaData.MethodMetaData[i].IsStatic then
+               begin
+                 MethodsImpl.Add('');
+                 MethodsImpl.Add('//static, OutParams=1, InParams>0');
+                 MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,'Integer']));
+                 MethodsImpl.Add('var');
+                 MethodsImpl.Add('  objInParams     : OleVariant;');
+                 MethodsImpl.Add('  objOutParams    : OleVariant;');
+                 MethodsImpl.Add('begin');
+
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',['objInParams',QuotedStr(WMiClassMetaData.Methods[i])]));
+
+                 for  j:=0 to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
+
+                 if CompareText(WMiClassMetaData.MethodMetaData[i].InParamsTypes[j],wbemtypeDatetime)=0 then
+                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := DateTimeToUTC(%s);',['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]))
+                 else
+                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
+
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
+                 MethodsImpl.Add('  Result := VarIntegerNull(objOutParams.ReturnValue);');
+                 MethodsImpl.Add('end;');
+                 MethodsImpl.Add('');
+               end
+               else
+               begin
+                 sValue:='';
+                 for j:=0 to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
+                 begin
+
+                   if CompareText(WMiClassMetaData.MethodMetaData[i].InParamsTypes[j],wbemtypeDatetime)=0 then
+                    sValue:=sValue + 'DateTimeToUTC('+EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])+')'
+                   else
+                    sValue:=sValue + EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j]);
+
+
+                   if j<WMiClassMetaData.MethodMetaData[i].InParams.Count-1 then
+                    sValue:=sValue+',';
+                 end;
+
+                 MethodsImpl.Add('');
+                 MethodsImpl.Add('//not static, OutParams=1, InParams>0');
+                 MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,'Integer']));
+                 MethodsImpl.Add('var');
+                 MethodsImpl.Add('  ReturnValue : OleVariant;');
+                 MethodsImpl.Add('begin');
+                 MethodsImpl.Add(Format('  ReturnValue := GetInstanceOf.%s(%s);',[WMiClassMetaData.Methods[i],sValue]));
+                        MethodsImpl.Add('  Result      := VarIntegerNull(ReturnValue);');
+                 MethodsImpl.Add('end;');
+                 MethodsImpl.Add('');
+               end;
+             end
+             else
+             if (WMiClassMetaData.MethodMetaData[i].OutParams.Count>1) then
+             begin
+               InDelphiParams := WMiClassMetaData.MethodMetaData[i].MethodInParamsPascalDecl;
+               OutDelphiParams:= WMiClassMetaData.MethodMetaData[i].MethodOutParamsPascalDecl;
+               MethodsList.AddStrings(ListDescr);
+
+               if (InDelphiParams<>'')  then
+                MethodsList.Add(Format('   function %s(%s ; %s): %s;%s',[WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer',MethodDirectiv]))
+               else
+               if (InDelphiParams='')   then
+                MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],OutDelphiParams,'Integer',MethodDirectiv]));
+
+
+               if not WMiClassMetaData.MethodMetaData[i].IsStatic then
+               begin
+                 MethodsImpl.Add('');
+                 MethodsImpl.Add('//not static, OutParams>1, InParams>0');
+
+                 if (InDelphiParams<>'')  then
+                  MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
+                 else
+                 if (InDelphiParams='')   then
+                  MethodsImpl.Add(Format('function T%s.%s(%s): %s;',[WmiClass,WMiClassMetaData.Methods[i],OutDelphiParams,'Integer']));
+
+                 MethodsImpl.Add('var');
+                 MethodsImpl.Add('//output variants  helpers');
+                 //MethodsImpl.Add('  vUser           : OleVariant;');
+
+                 sValue:='';
+                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
+                 if CompareText(WMiClassMetaData.MethodMetaData[i].InParamsTypes[j],wbemtypeDatetime)=0 then
+                  sValue:=sValue+'DateTimeToUTC('+WMiClassMetaData.MethodMetaData[i].InParams[j]+'),'
+                 else
+                  sValue:=sValue+WMiClassMetaData.MethodMetaData[i].InParams[j]+',';
+
+                 //sValue:='';
+                 for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
+                  if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
+                  begin
+                   MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s : OleVariant;',['v'+WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
+                   sValue:=sValue+'v'+WMiClassMetaData.MethodMetaData[i].OutParams[j]+',';
+                  end;
+
+                 if sValue[length(sValue)]=',' then
+                  Delete(sValue,length(sValue),1);
+
+                 MethodsImpl.Add('begin');
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetInstanceOf.%s(%s));',['Result',WMiClassMetaData.Methods[i],sValue]));
+
+                 for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
+                 if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := %s(v%s);',
+                 [WMiClassMetaData.MethodMetaData[i].OutParams[j],GetFunctNameVarNull(WMiClassMetaData.MethodMetaData[i].OutParamsTypes[j]),WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
+
+                 MethodsImpl.Add('end;');
+               end
+               else
+               begin
+                 MethodsImpl.Add('');
+                 MethodsImpl.Add('//static, OutParams>1, InParams>0');
+
+                 if (InDelphiParams<>'')  then
+                  MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',
+                  [WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
+                 else
+                 if (InDelphiParams='')   then
+                  MethodsImpl.Add(Format('function T%s.%s(%s): %s;',
+                  [WmiClass,WMiClassMetaData.Methods[i],OutDelphiParams,'Integer']));
+
+                 MethodsImpl.Add('var');
+                 MethodsImpl.Add('  objInParams     : OleVariant;');
+                 MethodsImpl.Add('  objOutParams    : OleVariant;');
+                 MethodsImpl.Add('begin');
+                 MethodsImpl.Add(Format('  objInParams := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',
+                 [QuotedStr(WMiClassMetaData.Methods[i])]));
+
+                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
+                 if CompareText(WMiClassMetaData.MethodMetaData[i].InParamsTypes[j],wbemtypeDatetime)=0 then
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := DateTimeToUTC(%s);',
+                 ['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],WMiClassMetaData.MethodMetaData[i].InParams[j]]))
+                 else
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',
+                 ['objInParams.'+WMiClassMetaData.MethodMetaData[i].InParams[j],WMiClassMetaData.MethodMetaData[i].InParams[j]]));
+
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',
+                 ['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
+
+                 for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
+                 if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s(objOutParams.%s);',
+                 [WMiClassMetaData.MethodMetaData[i].OutParams[j],GetFunctNameVarNull(WMiClassMetaData.MethodMetaData[i].OutParamsTypes[j]),WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
+
+                 MethodsImpl.Add(Format('  %s  := VarIntegerNull(objOutParams.ReturnValue);',['Result']));
+                 MethodsImpl.Add('end;');
+               end;
+
+             end
+             else
+             begin
+                //MethodsList.Add(Format('Unsupported (procedure) WmiMethod %s',[WMiClassMetaData.Methods[i]]));
+             end;
+
+
+         finally
+           ListDescr.Free;
+         end;
+
+      end;
 
 
       InterfaceList.Add('type');
@@ -578,9 +596,9 @@ begin
            end;
 
 
-          InterfaceList.Add(Format('  function GetResult%sAsString(%s:%s) : string;',
+          InterfaceList.Add(Format('  function GetResult%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Methods[i],EscapeDelphiReservedWord(WMiClassMetaData.Methods[i]),'Integer']));
-          ImplList.Add(Format('function GetResult%sAsString(%s:%s) : string;',
+          ImplList.Add(Format('function GetResult%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Methods[i],EscapeDelphiReservedWord(WMiClassMetaData.Methods[i]),'Integer']));
           ImplList.Add('begin');
           ImplList.Add(Format('Result:=%s;',[QuotedStr('')]));
@@ -604,9 +622,9 @@ begin
              ListDescr.Free;
            end;
 
-          InterfaceList.Add(Format('  function GetResult%sAsString(%s:%s) : string;',
+          InterfaceList.Add(Format('  function GetResult%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Methods[i],EscapeDelphiReservedWord(WMiClassMetaData.Methods[i]),'Integer']));
-          ImplList.Add(Format('function GetResult%sAsString(%s:%s) : string;',
+          ImplList.Add(Format('function GetResult%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Methods[i],EscapeDelphiReservedWord(WMiClassMetaData.Methods[i]),'Integer']));
           ImplList.Add('begin');
           ImplList.Add(Format('Result:=%s;',[QuotedStr('')]));
@@ -644,9 +662,9 @@ begin
              ListDescr.Free;
            end;
 
-          InterfaceList.Add(Format('  function Get%sAsString(%s:%s) : string;',
+          InterfaceList.Add(Format('  function Get%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Properties[i],EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertyMetaData[i].PascalType]));
-          ImplList.Add(Format('function Get%sAsString(%s:%s) : string;',
+          ImplList.Add(Format('function Get%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Properties[i],EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertyMetaData[i].PascalType]));
           ImplList.Add('begin');
           ImplList.Add(Format('Result:=%s;',[QuotedStr('')]));
@@ -670,9 +688,9 @@ begin
              ListDescr.Free;
            end;
 
-          InterfaceList.Add(Format('  function Get%sAsString(%s:%s) : string;',
+          InterfaceList.Add(Format('  function Get%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Properties[i],EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertyMetaData[i].PascalType]));
-          ImplList.Add(Format('function Get%sAsString(%s:%s) : string;',
+          ImplList.Add(Format('function Get%sAsString(const %s:%s) : string;',
           [WMiClassMetaData.Properties[i],EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertyMetaData[i].PascalType]));
           ImplList.Add('begin');
           ImplList.Add(Format('Result:=%s;',[QuotedStr('')]));
@@ -718,37 +736,37 @@ begin
        for i:=0 to WMiClassMetaData.PropertiesCount-1 do
        begin
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Word')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarWordNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarWordNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Boolean')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarBoolNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarBoolNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Int64')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarInt64Null(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarInt64Null(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'String')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarStrNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarStrNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
-          if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Longint')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarLongNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+          if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Cardinal')=0 then
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarCardinalNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'TDateTime')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDateTimeNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDateTimeNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Double')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDoubleNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarDoubleNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Byte')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarByteNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarByteNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Integer')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'SmallInt')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarSmallIntNull(GetPropertyValue(%s));',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarSmallIntNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'OleVariant')=0 then
-            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := GetPropertyValue(%s);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
+            ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := inherited Value[%s];',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
             ImplList.Add(Format('    Unsoported %s : %s ',[WMiClassMetaData.Properties[i],WMiClassMetaData.PropertiesTypes[i]]));
        end;
