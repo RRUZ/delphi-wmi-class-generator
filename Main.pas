@@ -177,9 +177,7 @@ begin
           FCode.Text:=CreateDelphiClassFromWMI(
           CodeHeader,
           FNameSpace,
-          FClass,
-          nil,
-          nil);
+          FClass);
 
         DeleteFile(FFileName);
         FCode.SaveToFile(FFileName);
@@ -371,44 +369,17 @@ procedure TFrmMain.LoadWMIDelphiCode;
 var
  FNameSpace : string;
  FClass     : string;
- Props      : TStringList;
- Methods    : TStringList;
- sValue     : string;
- i          : integer;
  CodeHeader : TCodeHeader;
 begin
   CodeHeader.WmiVersion:=GetWmiVersion;
   CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
   FNameSpace:= CbWmiNameSpaces.Text;
   FClass    := GetCurrentClass;
-  Props     := TStringList.Create;
-  Methods   := TStringList.Create;
-  try
-    for i:= 0 to LvProperties.Items.Count-1 do
-     if LvProperties.Items.Item[i].Checked then
-      sValue:=sValue+Format('%s=%s, ',[LvProperties.Items.Item[i].Caption,LvProperties.Items.Item[i].SubItems[1]]);
-
-    Props.CommaText:=sValue;
-
-    for i:= 0 to LvMethods.Items.Count-1 do
-     if LvMethods.Items.Item[i].Checked then
-       Methods.Add(LvMethods.Items.Item[i].Caption);
 
     SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
     CodeHeader,
     FNameSpace,
-    FClass,
-    Props,
-    Methods);
-  finally
-  {
-    if Props<>nil then
-    Props.Free;
-
-    if Methods<>nil then
-    Methods.Free;
-  }
-  end;
+    FClass);
 end;
 
 procedure TFrmMain.LoadWmiMetaData;

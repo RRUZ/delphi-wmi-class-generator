@@ -406,12 +406,18 @@ end;
 
 function TWmiClass.GetCollectionCount: Integer;
 begin
-  Result:=FWmiCollection.Count;
+  if FWMiDataLoaded then
+   Result:=FWmiCollection.Count
+  else
+   Result:=-1;
 end;
 
 function TWmiClass.GetInstanceOf: OleVariant;
 begin
-  Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).InstanceOf.Value;
+  if FWMiDataLoaded then
+    Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).InstanceOf.Value
+  else
+    raise Exception.Create('WMI Data not loaded');
 end;
 
 {$IFDEF WMI_LateBinding}
