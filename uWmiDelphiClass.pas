@@ -29,7 +29,7 @@ interface
 {$DEFINE WbemScripting_TLB}
 
 {$IFDEF FPC}
-{$mode objfpc}{$H+}
+{$MODE DELPHI}{$H+}
 {$UNDEF WbemScripting_TLB}
 {$ENDIF}
 
@@ -161,7 +161,9 @@ type
 }
 
   function VarStrNull(const V:OleVariant):string;
+  function VarWideStringNull(const V:OleVariant):WideString;
   function VarByteNull(const V:OleVariant):Byte;
+  function VarShortIntNull(const V:OleVariant):ShortInt;
   function VarWordNull(const V:OleVariant):Word;
   function VarSmallIntNull(const V:OleVariant):SmallInt;
   function VarIntegerNull(const V:OleVariant):Integer;
@@ -172,6 +174,15 @@ type
   function VarDoubleNull(const V:OleVariant):Double;
   function VarDateTimeNull(const V : OleVariant): TDateTime; //UTC
   function DateTimeToUTC(const DateTimeValue:TDateTime):string;
+
+  function ArrayToVarArray(Arr : Array Of string):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Word):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Integer):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Byte):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Cardinal):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Int64):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of Boolean):OleVariant; overload;
+  function ArrayToVarArray(Arr : Array Of OleVariant):OleVariant; overload;
 
 
 implementation
@@ -197,6 +208,7 @@ Const
  DefaultDoubleNullValue  :Double=0.0;
  //DefaultDateTimeNullValue=0;
  DefaultByteNullValue    :Byte=0;
+ DefaultShorIntNullValue :ShortInt=0;
  DefaultWordNullValue    :Word=0;
  DefaultSmallIntNullValue:Smallint=0;
  DefaultIntegerNullValue :Integer=0;
@@ -204,6 +216,79 @@ Const
  DefaultLongNullValue    :Longint=0;
  DefaultCardinalNullValue    :Cardinal=0;
  DefaultBoolNullValue    :Boolean=False;
+
+
+function ArrayToVarArray(Arr : Array Of string):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Word):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Integer):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Byte):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Cardinal):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Int64):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of Boolean):OleVariant;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
+
+function ArrayToVarArray(Arr : Array Of OleVariant):OleVariant; overload;
+var
+ i : integer;
+begin
+    Result   :=VarArrayCreate([0, High(Arr)], varVariant);
+    for i:=Low(Arr) to High(Arr) do
+     Result[i]:=Arr[i];
+end;
 
 function CreateInstanceDataWmiClass: TDataWmiClass;
 begin
@@ -240,9 +325,23 @@ begin
     Result:=V;//VarToStr(V);
 end;
 
+function VarWideStringNull(const V:OleVariant):WideString;
+begin
+  Result:='';
+  if not VarIsNull(V) then
+    Result:=V;//VarToStr(V);
+end;
+
 function VarByteNull(const V:OleVariant):Byte;
 begin
   Result:=DefaultByteNullValue;
+  if not VarIsNull(V) then
+    Result:=V;
+end;
+
+function VarShortIntNull(const V:OleVariant):ShortInt;
+begin
+  Result:=DefaultShorIntNullValue;
   if not VarIsNull(V) then
     Result:=V;
 end;
@@ -470,7 +569,6 @@ function TWmiClass.GetPropValue(const PropName: string): OleVariant;
 begin
 Result:=GetPropertyValue(PropName);
 end;
-
 
 
 //Improving Enumeration Performance  http://msdn.microsoft.com/en-us/library/aa390880%28VS.85%29.aspx
