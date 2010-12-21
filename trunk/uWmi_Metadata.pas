@@ -1685,6 +1685,12 @@ begin
         end;
         Qualif:=Unassigned;
       end;
+
+    //avoid problems when the length of Valid Map Values list is distinct from the length of the Valid Values list
+    if PropertyMetaData.FValidMapValues.Count>0 then
+       if PropertyMetaData.FValidMapValues.Count<>PropertyMetaData.FValidValues.Count then
+       PropertyMetaData.FValidMapValues.Clear;
+
     colItem:=Unassigned;
   end;
 
@@ -1781,6 +1787,10 @@ begin
 
         MethodMetaData.FMethodInParamsPascalDecl:='';
         for i := 0 to MethodMetaData.InParams.Count-1 do
+         if MethodMetaData.InParamsIsArray[i] then
+            MethodMetaData.FMethodInParamsPascalDecl:=MethodMetaData.FMethodInParamsPascalDecl+Format('const %s : Array of %s;',
+            [EscapeDelphiReservedWord(MethodMetaData.InParams[i]),WmiTypeToDelphiType(MethodMetaData.InParamsTypes[i])])
+         else
             MethodMetaData.FMethodInParamsPascalDecl:=MethodMetaData.FMethodInParamsPascalDecl+Format('const %s : %s;',
             [EscapeDelphiReservedWord(MethodMetaData.InParams[i]),WmiTypeToDelphiType(MethodMetaData.InParamsTypes[i])]);
 
@@ -1806,6 +1816,11 @@ begin
      Writeln(MethodMetaData.MethodsInParams.Text);
      Writeln(MethodMetaData.MethodsOutParams.Text);
                         }
+    //avoid problems when the length of Valid Map Values list is distinct from the length of the Valid Values list
+    if MethodMetaData.FValidMapValues.Count>0 then
+       if MethodMetaData.FValidMapValues.Count<>MethodMetaData.FValidValues.Count then
+       MethodMetaData.FValidMapValues.Clear;
+
     colItem:=Unassigned;
   end;
 
