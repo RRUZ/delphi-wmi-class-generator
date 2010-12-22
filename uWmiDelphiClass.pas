@@ -66,6 +66,24 @@ wbemFlagUseAmendedQualifiers      = $00020000; //Causes WMI to return class amen
 {$ENDIF}
 
 type
+  TWordArray      = Array of Word;
+  TShortIntArray  = Array of ShortInt;
+  TByteArray      = Array of Byte;
+  TSmallIntArray  = Array of SmallInt;
+  TIntegerArray   = Array of Integer;
+  TCardinalArray  = Array of Cardinal;
+  TInt64Array     = Array of Int64;
+  TDoubleArray    = Array of Double;
+  TBooleanArray   = Array of Boolean;
+  TTDateTimeArray = Array of TDateTime;
+  TOleVariantArray= Array of OleVariant;
+  TWideStringArray= Array of WideString;
+
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The TWmiClass class represents the base class to access the WMI info.
+  /// </summary>
+  {$ENDREGION}
   TWmiClass=class//(TObject)
   private
     {$IFDEF WbemScripting_TLB}
@@ -112,38 +130,123 @@ type
     function    _LoadWmiData: boolean;
     constructor Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string); overload;
   public
-    {$IFDEF FPC}
-    property  WmiNameSpace  : WideString read FWmiNameSpace;
-    property  WmiClass  : WideString read FWmiClass;
-    property  WmiServer : WideString read FWmiServer write SetWmiServer;
-    property  WmiUser : WideString read FWmiUser write SetWmiUser;
-    property  WmiPass: WideString read FWmiPass write SetWmiPass;
-    {$ELSE}
-    property  WmiNameSpace  : string read FWmiNameSpace;
-    property  WmiClass  : string read FWmiClass;
-    property  WmiServer : string read FWmiServer write SetWmiServer;
-    property  WmiUser : string read FWmiUser write SetWmiUser;
-    property  WmiPass: string read FWmiPass write SetWmiPass;
-    {$ENDIF}
-    property  WmiConnected  : boolean read FWmiConnected;
-    {$IFDEF WMI_LateBinding}
-    property  SWbemLocator  : OleVariant read FSWbemLocator;
-    property  WMIService    : OleVariant read FWMIService;
-    function  GetNullValue  : OleVariant;
-    {$ENDIF}
-    {$IFDEF WbemScripting_TLB}
-    property  SWbemLocator  : ISWbemLocator  read FSWbemLocator;
-    property  WMIService    : ISWbemServices read FWMIService;
-    function  GetNullValue  : IDispatch;
-    {$ENDIF}
-    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
-    property  WmiCollectionIndex : integer read FWmiCollectionIndex  write FWmiCollectionIndex;
-    function  GetCollectionCount:Integer;
-    procedure SetCollectionIndex(Index: Integer);virtual;
-    function  GetPropertyValue(const PropName: string): OleVariant;
-    function  GetInstanceOf: OleVariant;
-    procedure LoadWmiData;
-    Destructor Destroy; override;
+   {$IFDEF FPC}
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiNameSpace property return the current WMI namespace
+   /// </summary>
+   {$ENDREGION}
+   property  WmiNameSpace  : WideString read FWmiNameSpace;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiClass property return the current WMI class
+   /// </summary>
+   {$ENDREGION}
+   property  WmiClass  : WideString read FWmiClass;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiServer property return or set the current server name or ip where the WMi service is connected
+   /// </summary>
+   {$ENDREGION}
+   property  WmiServer : WideString read FWmiServer write SetWmiServer;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiUser property return or set the user name used to connect to the WMI service
+   /// </summary>
+   {$ENDREGION}
+   property  WmiUser : WideString read FWmiUser write SetWmiUser;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiPass property return or set the password used to connect to the WMI service
+   /// </summary>
+   {$ENDREGION}
+   property  WmiPass: WideString read FWmiPass write SetWmiPass;
+   {$ELSE}
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiNameSpace property return the current WMI namespace
+   /// </summary>
+   {$ENDREGION}
+   property  WmiNameSpace  : string read FWmiNameSpace;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiClass property return the current WMI class
+   /// </summary>
+   {$ENDREGION}
+   property  WmiClass  : string read FWmiClass;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiServer property return or set the current server name or ip where the WMi service is connected
+   /// </summary>
+   {$ENDREGION}
+   property  WmiServer : string read FWmiServer write SetWmiServer;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiUser property return or set the user name used to connect to the WMI service
+   /// </summary>
+   {$ENDREGION}
+   property  WmiUser : string read FWmiUser write SetWmiUser;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiPass property return or set the password used to connect to the WMI service
+   /// </summary>
+   {$ENDREGION}
+   property  WmiPass: string read FWmiPass write SetWmiPass;
+   {$ENDIF}
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiPass property return True or False if the current instance is connected to the WMI service
+   /// </summary>
+   {$ENDREGION}
+   property  WmiConnected  : boolean read FWmiConnected;
+   {$IFDEF WMI_LateBinding}
+   property  SWbemLocator  : OleVariant read FSWbemLocator;
+   property  WMIService    : OleVariant read FWMIService;
+   function  GetNullValue  : OleVariant;
+   {$ENDIF}
+   {$IFDEF WbemScripting_TLB}
+   property  SWbemLocator  : ISWbemLocator  read FSWbemLocator;
+   property  WMIService    : ISWbemServices read FWMIService;
+   function  GetNullValue  : IDispatch;
+   {$ENDIF}
+   property  Value[const PropName : string] : OleVariant read GetPropValue; default;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiCollectionIndex property return the current index to the collection which store the WMI Data
+   /// </summary>
+   {$ENDREGION}
+   property  WmiCollectionIndex : integer read FWmiCollectionIndex  write FWmiCollectionIndex;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The GetCollectionCount function return the number of items of the collection which store the WMI Data
+   /// </summary>
+   {$ENDREGION}
+   function  GetCollectionCount:Integer;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The SetCollectionIndex procedure set the  index of the collection which store the WMI Data
+   /// </summary>
+   {$ENDREGION}
+   procedure SetCollectionIndex(Index: Integer);virtual;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The GetPropertyValue function return the value of an property
+   /// </summary>
+   {$ENDREGION}
+   function  GetPropertyValue(const PropName: string): OleVariant;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The GetInstanceOf function return an instance to the current wmi class returned by the ExecQuery method
+   /// </summary>
+   {$ENDREGION}
+   function  GetInstanceOf: OleVariant;
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The LoadWmiData procedure fill the collection with the data returbes by the ExecQuery method
+   /// </summary>
+   {$ENDREGION}
+   procedure LoadWmiData;
+   Destructor Destroy; override;
   end;
 {
   TWmiError=class
@@ -160,19 +263,89 @@ type
   end;
 }
 
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarStrNull function convert a OleVariant value to an string in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarStrNull(const V:OleVariant):string;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarWideStringNull function convert a OleVariant value to an WideString in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarWideStringNull(const V:OleVariant):WideString;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarByteNull function convert a OleVariant value to a Byte value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarByteNull(const V:OleVariant):Byte;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarShortIntNull function convert a OleVariant value to a ShortInt value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarShortIntNull(const V:OleVariant):ShortInt;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarWordNull function convert a OleVariant value to a Word value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarWordNull(const V:OleVariant):Word;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarSmallIntNull function convert a OleVariant value to a SmallInt value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarSmallIntNull(const V:OleVariant):SmallInt;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarIntegerNull function convert a OleVariant value to a Integer value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarIntegerNull(const V:OleVariant):Integer;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarInt64Null function convert a OleVariant value to a Int64 value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarInt64Null(const V:OleVariant):Int64;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarLongNull function convert a OleVariant value to a Longint value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarLongNull(const V:OleVariant):Longint;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarCardinalNull function convert a OleVariant value to a Cardinal value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarCardinalNull(const V:OleVariant):Cardinal;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarBoolNull function convert a OleVariant value to a Boolean value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarBoolNull(const V:OleVariant):Boolean;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarDoubleNull function convert a OleVariant value to a Double value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarDoubleNull(const V:OleVariant):Double;
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The VarDateTimeNull function convert a OleVariant value in UTC format to a TDateTime value in a safe way to avoid problems with null values
+  /// </summary>
+  {$ENDREGION}
   function VarDateTimeNull(const V : OleVariant): TDateTime; //UTC
+  {$REGION 'Documentation'}
+  /// <summary>
+  /// The DateTimeToUTC function convert a TDateTime Value to the UTC format
+  /// </summary>
+  {$ENDREGION}
   function DateTimeToUTC(const DateTimeValue:TDateTime):string;
 
   function ArrayToVarArray(Arr : Array Of string):OleVariant; overload;
@@ -183,6 +356,22 @@ type
   function ArrayToVarArray(Arr : Array Of Int64):OleVariant; overload;
   function ArrayToVarArray(Arr : Array Of Boolean):OleVariant; overload;
   function ArrayToVarArray(Arr : Array Of OleVariant):OleVariant; overload;
+
+
+  procedure  VarArrayToArray(Arr : OleVariant;OutArr : TStrings); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TWordArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TShortIntArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TByteArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TSmallIntArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TIntegerArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TCardinalArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TInt64Array); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TDoubleArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TBooleanArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TTDateTimeArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TOleVariantArray); overload;
+  procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TWideStringArray); overload;
+
 
 
 implementation
@@ -218,6 +407,190 @@ Const
  DefaultBoolNullValue    :Boolean=False;
 
 
+procedure  VarArrayToArray(Arr : OleVariant;OutArr : TStrings); overload;
+var
+  i : integer;
+begin
+   OutArr.Clear;
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr.Add(VarStrNull(Arr[i]));
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TWordArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarWordNull(Arr[i]);
+   end;
+end;
+
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TShortIntArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarShortIntNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TByteArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarByteNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TSmallIntArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarSmallIntNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TIntegerArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarIntegerNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TCardinalArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarCardinalNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TInt64Array); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarInt64Null(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TDoubleArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarShortIntNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TBooleanArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarBoolNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TTDateTimeArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarDateTimeNull(Arr[i]);
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TOleVariantArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=Arr[i];
+   end;
+end;
+
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TWideStringArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarWideStringNull(Arr[i]);
+   end;
+end;
+
+
+{
+procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TStringArray); overload;
+var
+  i : integer;
+begin
+   SetLength(OutArr,0);
+   if not VarIsNull(Arr) and VarIsArray(Arr) then
+   begin
+     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
+      OutArr[i]:=VarStrNull(Arr[i]);
+   end;
+end;
+ }
 function ArrayToVarArray(Arr : Array Of string):OleVariant;
 var
  i : integer;
@@ -372,7 +745,7 @@ function VarInt64Null(const V:OleVariant):Int64;
 begin
   Result:=DefaultInt64NullValue;
   if not VarIsNull(V) then
-    Result:=0;
+    Result:=V;
 end;
 
 function VarLongNull(const V:OleVariant):Longint;
@@ -447,11 +820,6 @@ end;
 constructor TWmiClass.Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string);
 begin
   inherited Create;
-  {$IFNDEF FPC}
-  CoInitialize(nil);
-  {$ELSE}
-  comobj.CoInitializeEx(nil, CoInitFlags);
-  {$ENDIF}
   FWmiConnected       := False;
   FWmiIsLocal         := True;
   FWmiServer          := 'localhost';
@@ -477,9 +845,6 @@ begin
   {$IFDEF WMI_LateBinding}
   FSWbemLocator:=Unassigned;
   FWMIService  :=Unassigned;
-  {$ENDIF}
-  {$IFNDEF FPC}
-  CoUninitialize;
   {$ENDIF}
   inherited;
 end;
@@ -618,12 +983,12 @@ begin;
      objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
      oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ELSE}
-     objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly);
+     objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately);
      oEnum           := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$ENDIF}
     {$IFDEF WbemScripting_TLB}
-    objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly,nil);
+    objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately,nil);
     oEnum           := (objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Query Executed in '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
@@ -779,4 +1144,14 @@ begin
   inherited;
 end;
 }
+
+initialization
+{$IFNDEF FPC}
+CoInitialize(nil);
+{$ENDIF}
+
+finalization
+{$IFNDEF FPC}
+CoUninitialize;
+{$ENDIF}
 end.

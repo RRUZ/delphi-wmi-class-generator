@@ -44,7 +44,7 @@ Uses
  uWmi_Metadata,
  DelphiSyntax,
  StrUtils,
- SysUtils;
+ SysUtils, uWmiDelphiClass;
 
 
 function GetFunctNameVarNull(const CIMTypeStr:string): string;
@@ -207,7 +207,7 @@ begin
       UsesList.Add('interface');
       UsesList.Add('');
       UsesList.Add('uses');
-      UsesList.Add('');
+      UsesList.Add(' Classes,');
       UsesList.Add(' Activex,');
       UsesList.Add(' Variants,');
       UsesList.Add(' ComObj,');
@@ -215,6 +215,12 @@ begin
       UsesList.Add('');
 
       for i:=0 to WMiClassMetaData.PropertiesCount-1 do
+      if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+       FieldsList.Add(Format('    %-35s : %s;',['F'+WMiClassMetaData.Properties[i],'TStrings']))
+      else
+      if WMiClassMetaData.PropertyMetaData[i].IsArray then
+       FieldsList.Add(Format('    %-35s : %s;',['F'+WMiClassMetaData.Properties[i],'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array']))
+      else
        FieldsList.Add(Format('    %-35s : %s;',['F'+WMiClassMetaData.Properties[i],WMiClassMetaData.PropertiesPascalTypes[i]]));
 
       for i:=0 to WMiClassMetaData.PropertiesCount-1 do
@@ -232,7 +238,13 @@ begin
            ListDescr.Free;
          end;
 
-         PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i]]));
+         if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'TStrings','F'+WMiClassMetaData.Properties[i]]))
+         else
+         if WMiClassMetaData.PropertyMetaData[i].IsArray then
+          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array','F'+WMiClassMetaData.Properties[i]]))
+         else
+          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i]]));
       end;
 
       for i:=0 to WMiClassMetaData.MethodsCount-1 do
@@ -643,12 +655,12 @@ begin
       InterfaceList.Add('  Word=Longint;');
       InterfaceList.Add('{$ENDIF}');
 
-       if Description<>'' then
+      if WMiClassMetaData.Description<>'' then
       begin
         ListDescr:=TStringList.Create;
         try
           //Add class description
-          AddHelpInsight(Description,nil,nil,ListDescr,2);
+          AddHelpInsight(WMiClassMetaData.Description,nil,nil,ListDescr,2);
           InterfaceList.AddStrings(ListDescr);
         finally
          ListDescr.Free;
@@ -662,6 +674,7 @@ begin
       InterfaceList.AddStrings(FieldsList);
       InterfaceList.Add('  public');
       InterfaceList.Add('   constructor Create(LoadWmiData : boolean=True); overload;');
+      InterfaceList.Add('   destructor Destroy;Override;');
       InterfaceList.AddStrings(PropertiesList);
       InterfaceList.AddStrings(MethodsList);
 
@@ -815,12 +828,32 @@ begin
       ImplList.Add(Format('constructor T%s.Create(LoadWmiData : boolean=True);',[WmiClass]));
       ImplList.Add('begin');
       ImplList.Add(Format('  Create(LoadWmiData,%s,%s);',[QuotedStr(NameSpace),QuotedStr(WmiClass)]));
+        for i:=0 to WMiClassMetaData.PropertiesCount-1 do
+         if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+          ImplList.Add(Format('  %s:=TStringList.Create;',['F'+WMiClassMetaData.Properties[i]]))
+         else
+         if WMiClassMetaData.PropertyMetaData[i].IsArray then
+          ImplList.Add(Format('  SetLength(%s,0);',['F'+WMiClassMetaData.Properties[i]]));
+
       ImplList.Add('end;');
       ImplList.Add('');
 
+      ImplList.Add(Format('destructor T%s.Destroy;',[WmiClass]));
+      ImplList.Add('begin');
+        for i:=0 to WMiClassMetaData.PropertiesCount-1 do
+         if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+          ImplList.Add(Format('  %s.Free;',['F'+WMiClassMetaData.Properties[i]]))
+         else
+         if WMiClassMetaData.PropertyMetaData[i].IsArray then
+          ImplList.Add(Format('  SetLength(%s,0);',['F'+WMiClassMetaData.Properties[i]]));
+      ImplList.Add('  inherited;');
+      ImplList.Add('end;');
+      ImplList.Add('');
+
+
       ImplList.Add(Format('procedure T%s.SetCollectionIndex(Index : Integer);',[WmiClass]));
       ImplList.Add('begin');
-      ImplList.Add('  if (Index>=0) and (Index<=FWmiCollection.Count-1) then');
+      ImplList.Add('  if (Index>=0) and (Index<=FWmiCollection.Count-1) and (FWmiCollectionIndex<>Index) then');
       ImplList.Add('  begin');
       ImplList.Add('    FWmiCollectionIndex:=Index;');
 
@@ -833,6 +866,9 @@ begin
 
        for i:=0 to WMiClassMetaData.PropertiesCount-1 do
        begin
+          if WMiClassMetaData.PropertyMetaData[i].IsArray then
+            ImplList.Add(Format('    VarArrayToArray(inherited Value[%s],F%s);',[QuotedStr(WMiClassMetaData.Properties[i]),WMiClassMetaData.Properties[i]]))
+          else
           if CompareText(WMiClassMetaData.PropertiesPascalTypes[i],'Word')=0 then
             ImplList.Add(Format('    %-'+IntToStr(LengthVar)+'s  := VarWordNull(inherited Value[%s]);',['F'+WMiClassMetaData.Properties[i],QuotedStr(WMiClassMetaData.Properties[i])]))
           else
