@@ -253,9 +253,11 @@ type
     FValidValues: TStrings;
     FValidMapValues: TStrings;
     FIsOrdinal: Boolean;
+    FIsArray : Boolean;
   public
     constructor Create; overload;
     Destructor  Destroy; override;
+    property IsArray : Boolean read FIsArray;
     property IsOrdinal : Boolean read FIsOrdinal;
     property Name : string read FName;
     property Description : string read FDescription;
@@ -1652,6 +1654,20 @@ begin
   objWMIService    := objSWbemLocator.ConnectServer(wbemLocalhost, FNameSpace, '', '');
   objSWbemObjectSet:= objWMIService.Get(FClass, wbemFlagUseAmendedQualifiers);
 
+
+  Qualifiers    := objSWbemObjectSet.Qualifiers_;
+  oEnum         := IUnknown(Qualifiers._NewEnum) as IEnumVariant;
+  while oEnum.Next(1, colItem, iValue) = 0 do
+   begin
+    if CompareText(VarStrNull(colItem.Name),'Description')=0 then
+    begin
+     FDescription:=VarStrNull(colItem.Value);
+     colItem:=Unassigned;
+     break;
+    end;
+    colItem:=Unassigned;
+   end;
+
   colItems         := objSWbemObjectSet.Properties_;
   oEnum            := IUnknown(colItems._NewEnum) as IEnumVariant;
   while oEnum.Next(1, colItem, iValue) = 0 do
@@ -1662,6 +1678,8 @@ begin
     PropertyMetaData.FType:=CIMTypeStr(colItem.cimtype);
     PropertyMetaData.FPascalType :=WmiTypeToDelphiType(CIMTypeStr(colItem.cimtype));
     PropertyMetaData.FIsOrdinal  :=CIMTypeOrdinal(colItem.cimtype);
+    PropertyMetaData.FIsArray    :=colItem.IsArray;
+
 
       Qualifiers      := colItem.Qualifiers_;
       oEnumQualif     := IUnknown(Qualifiers._NewEnum) as IEnumVariant;

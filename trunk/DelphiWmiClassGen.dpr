@@ -9,7 +9,8 @@ uses
   DelphiSyntax in 'DelphiSyntax.pas',
   uWmiDelphiCodeCreator in 'uWmiDelphiCodeCreator.pas',
   uWmi_Metadata in 'uWmi_Metadata.pas',
-  CodeView in 'CodeView.pas' {FrmViewCode};
+  CodeView in 'CodeView.pas' {FrmViewCode},
+  uWmiDelphiClass in 'uWmiDelphiClass.pas';
 
 {$R *.res}
 
