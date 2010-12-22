@@ -1,18 +1,14 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.105
+/// Application version 0.1.0.109
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 04:00:19
+/// Creation Date 22-12-2010 05:34:07
 /// Namespace root\CIMV2 Class Win32_RegistryAction
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_RegistryAction.asp
 /// </summary>
 
 {$IFDEF FPC}
  {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
-
-{$IFNDEF UNDEF}
  {$DEFINE OLD_DELPHI}
 {$ENDIF}
 
@@ -32,6 +28,11 @@ type
   Cardinal=Longint;
   Int64=Integer;
   Word=Longint;
+{$ENDIF}
+{$IFNDEF FPC}
+  {$IF CompilerVersion <= 15}
+    {$DEFINE OLD_DELPHI}
+  {$IFEND}
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
@@ -206,8 +207,8 @@ function GetRootAsString(const APropValue:SmallInt) : string;
 begin
 Result:='';
   case APropValue of
-    -1 : Result:='HKEY_CURRENT_USER';
-    //-1 : Result:='HKEY_LOCAL_MACHINE';
+   // -1 : Result:='HKEY_CURRENT_USER';
+    -1 : Result:='HKEY_LOCAL_MACHINE';
     0 : Result:='HKEY_CLASSES_ROOT';
     1 : Result:='HKEY_CURRENT_USER';
     2 : Result:='HKEY_LOCAL_MACHINE';

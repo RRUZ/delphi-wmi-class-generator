@@ -203,10 +203,6 @@ begin
       UsesList.Add(' {$DEFINE OLD_DELPHI}');
       UsesList.Add('{$ENDIF}');
       UsesList.Add('');
-      UsesList.Add('{$IFNDEF UNDEF}');
-      UsesList.Add(' {$DEFINE OLD_DELPHI}');
-      UsesList.Add('{$ENDIF}');
-      UsesList.Add('');
       UsesList.Add(format('unit u%s;',[WmiClass]));
       UsesList.Add('');
 
@@ -659,6 +655,12 @@ begin
       InterfaceList.Add('  Cardinal=Longint;');
       InterfaceList.Add('  Int64=Integer;');
       InterfaceList.Add('  Word=Longint;');
+      InterfaceList.Add('{$ENDIF}');
+
+      InterfaceList.Add('{$IFNDEF FPC}');
+      InterfaceList.Add('  {$IF CompilerVersion <= 15}');
+      InterfaceList.Add('    {$DEFINE OLD_DELPHI}');
+      InterfaceList.Add('  {$IFEND}');
       InterfaceList.Add('{$ENDIF}');
 
       if WMiClassMetaData.Description<>'' then
