@@ -36,7 +36,8 @@ Result:=Trim(AWord);
     if CompareText(Result,DelphiReservedWords[i])=0 then
     begin
        //Result:=  EscapeChr+Result;
-       Result:=Format('{$IFDEF FPC}_%s{$ELSE}&%s{$ENDIF}',[Result,Result]);
+       //Result:=Format('{$IFDEF FPC}_%s{$ELSE}&%s{$ENDIF}',[Result,Result]);
+       Result:=Format('{$IFDEF OLD_DELPHI}_%s{$ELSE}&%s{$ENDIF}',[Result,Result]);
        break;
     end;
 end;

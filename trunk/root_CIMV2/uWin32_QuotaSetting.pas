@@ -1,0 +1,173 @@
+/// <summary>
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
+/// Application version 0.1.0.105
+/// WMI version 7600.16385
+/// Creation Date 22-12-2010 04:00:19
+/// Namespace root\CIMV2 Class Win32_QuotaSetting
+/// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_QuotaSetting.asp
+/// </summary>
+
+{$IFDEF FPC}
+ {$MODE DELPHI} {$H+}
+ {$DEFINE OLD_DELPHI}
+{$ENDIF}
+
+{$IFNDEF UNDEF}
+ {$DEFINE OLD_DELPHI}
+{$ENDIF}
+
+unit uWin32_QuotaSetting;
+
+interface
+
+uses
+ Classes,
+ Activex,
+ Variants,
+ ComObj,
+ uWmiDelphiClass;
+
+type
+{$IFDEF FPC}
+  Cardinal=Longint;
+  Int64=Integer;
+  Word=Longint;
+{$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Win32_QuotaSetting class contains setting information for disk quotas on a 
+  /// volume.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  TWin32_QuotaSetting=class(TWmiClass)
+  private
+    FCaption                            : String;
+    FDefaultLimit                       : Int64;
+    FDefaultWarningLimit                : Int64;
+    FDescription                        : String;
+    FExceededNotification               : Boolean;
+    FSettingID                          : String;
+    FState                              : Cardinal;
+    FVolumePath                         : String;
+    FWarningExceededNotification        : Boolean;
+  public
+   constructor Create(LoadWmiData : boolean=True); overload;
+   destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The DefaultLimit property indicates the default limit set for quotas on this 
+   /// particular volume.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property DefaultLimit : Int64 read FDefaultLimit;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The DefaultWarningLimit property indicates the default warning limit set for 
+   /// quotas on this particular volume.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property DefaultWarningLimit : Int64 read FDefaultWarningLimit;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property Description : String read FDescription;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The ExceedNotification property indicates whether or not events will be written 
+   /// to the event log when quotas are exceeded.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property ExceededNotification : Boolean read FExceededNotification;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The identifier by which the CIM_Setting object is known.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property SettingID : String read FSettingID;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The State property indicates what the level of quota management set for this 
+   /// particular volume. Disabled indicates that Quota management is not enabled on 
+   /// this volume. Tracked indicates that 
+   /// Quota's are tracked but the limit value is not enforced and users may exceed their quota limit. Enforced indicates that Quota's 
+   /// are tracked and enforce on this volume.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property State : Cardinal read FState;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The VolumePath property indicates the name of the volume that disk quotas are 
+   /// on. It can be volume name, volume path (ex D:\) or it can be the unique volume 
+   /// name like \\?Volume{GUID}\.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property VolumePath : String read FVolumePath;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The WarningExceedNotification property indicates whether or not events will be 
+   /// written to the event log when warnings are exceeded.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property WarningExceededNotification : Boolean read FWarningExceededNotification;
+   procedure SetCollectionIndex(Index : Integer); override;
+  end;
+
+
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// Return the description for the value of the property TWin32_QuotaSetting.State
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  function GetStateAsString(const APropValue:Cardinal) : string;
+
+implementation
+
+
+function GetStateAsString(const APropValue:Cardinal) : string;
+begin
+Result:='';
+  case APropValue of
+    0 : Result:='Disabled';
+    1 : Result:='Tracked';
+    2 : Result:='Enforced';
+  end;
+end;
+
+{TWin32_QuotaSetting}
+
+constructor TWin32_QuotaSetting.Create(LoadWmiData : boolean=True);
+begin
+  inherited Create(LoadWmiData,'root\CIMV2','Win32_QuotaSetting');
+end;
+
+destructor TWin32_QuotaSetting.Destroy;
+begin
+  inherited;
+end;
+
+procedure TWin32_QuotaSetting.SetCollectionIndex(Index : Integer);
+begin
+  if (Index>=0) and (Index<=FWmiCollection.Count-1) and (FWmiCollectionIndex<>Index) then
+  begin
+    FWmiCollectionIndex:=Index;
+    FCaption                          := VarStrNull(inherited Value['Caption']);
+    FDefaultLimit                     := VarInt64Null(inherited Value['DefaultLimit']);
+    FDefaultWarningLimit              := VarInt64Null(inherited Value['DefaultWarningLimit']);
+    FDescription                      := VarStrNull(inherited Value['Description']);
+    FExceededNotification             := VarBoolNull(inherited Value['ExceededNotification']);
+    FSettingID                        := VarStrNull(inherited Value['SettingID']);
+    FState                            := VarCardinalNull(inherited Value['State']);
+    FVolumePath                       := VarStrNull(inherited Value['VolumePath']);
+    FWarningExceededNotification      := VarBoolNull(inherited Value['WarningExceededNotification']);
+  end;
+end;
+
+end.

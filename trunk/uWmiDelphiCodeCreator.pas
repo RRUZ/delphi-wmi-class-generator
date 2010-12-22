@@ -135,8 +135,8 @@ begin
 
   if HelpInsightList.Count>0 then
   begin
-    HelpInsightList.Insert(0,Format('%s{$REGION ''Documentation''}',[space]));
-    HelpInsightList.Add(Format('%s{$ENDREGION}',[space]));
+    HelpInsightList.Insert(0,Format('%s{$IFDEF UNDEF}{$REGION ''Documentation''}{$ENDIF}',[space]));
+    HelpInsightList.Add(Format('%s{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}',[space]));
   end;
 end;
 
@@ -199,8 +199,14 @@ begin
       UsesList.Add('/// </summary>');
       UsesList.Add('');
       UsesList.Add('{$IFDEF FPC}');
-      UsesList.Add('{$MODE DELPHI}');
+      UsesList.Add(' {$MODE DELPHI} {$H+}');
+      UsesList.Add(' {$DEFINE OLD_DELPHI}');
       UsesList.Add('{$ENDIF}');
+      UsesList.Add('');
+      UsesList.Add('{$IFNDEF UNDEF}');
+      UsesList.Add(' {$DEFINE OLD_DELPHI}');
+      UsesList.Add('{$ENDIF}');
+      UsesList.Add('');
       UsesList.Add(format('unit u%s;',[WmiClass]));
       UsesList.Add('');
 
@@ -827,13 +833,15 @@ begin
 
       ImplList.Add(Format('constructor T%s.Create(LoadWmiData : boolean=True);',[WmiClass]));
       ImplList.Add('begin');
-      ImplList.Add(Format('  Create(LoadWmiData,%s,%s);',[QuotedStr(NameSpace),QuotedStr(WmiClass)]));
+
         for i:=0 to WMiClassMetaData.PropertiesCount-1 do
          if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
           ImplList.Add(Format('  %s:=TStringList.Create;',['F'+WMiClassMetaData.Properties[i]]))
          else
          if WMiClassMetaData.PropertyMetaData[i].IsArray then
           ImplList.Add(Format('  SetLength(%s,0);',['F'+WMiClassMetaData.Properties[i]]));
+
+      ImplList.Add(Format('  inherited Create(LoadWmiData,%s,%s);',[QuotedStr(NameSpace),QuotedStr(WmiClass)]));
 
       ImplList.Add('end;');
       ImplList.Add('');

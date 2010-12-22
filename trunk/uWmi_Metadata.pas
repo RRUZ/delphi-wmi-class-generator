@@ -204,6 +204,11 @@ Const
   wbemLocalhost                = 'localhost';
 
 
+{.$DEFINE USEXML}
+
+{$IFDEF USEXML}
+ Unfinished not activate
+{$ENDIF}
 
 type
   TArrayBoolean = Array of Boolean;
@@ -270,15 +275,19 @@ type
 
   TWMiClassMetaData=class
   private
+    {$IFDEF USEXML}
     FXmlDoc    : OleVariant;
     FXml       : string;
+    {$ENDIF}
     FNameSpace : string;
     FClass     : string;
-    FMethodMetaData  : TList;
-    FPropertyMetaData: TList;
+    FCollectionMethodMetaData  : TList;
+    FCollectionPropertyMetaData: TList;
     FDescription: string;
     FURI: string;
-    //procedure LoadWmiClassDataXML;
+    {$IFDEF USEXML}
+    procedure LoadWmiClassDataXML;
+    {$ENDIF}
     procedure LoadWmiClassData;
     function GetWMiMethodMetaData(index: integer): TWMiMethodMetaData;
     function GetMethodName(index: integer): string;
@@ -296,8 +305,10 @@ type
     function GetMethodValidMapValues(index: integer): TStrings;
     function GetMethodValidValues(index: integer): TStrings;
   public
+    {$IFDEF USEXML}
     property Xml : string Read FXml;
     property XmlDoc : OleVariant read FXmlDoc;
+    {$ENDIF}
     constructor Create(const ANameSpace,AClass:string); overload;
     Destructor  Destroy; override;
     property URI     : string read FURI;
@@ -334,31 +345,31 @@ type
   procedure GetListWmiDynamicClasses(const NameSpace:String;const List :TStrings);
   procedure GetListWmiStaticClasses(const NameSpace:String;const List :TStrings);
   procedure GetListWmiClassesWithMethods(const NameSpace:String;const List :TStrings);
-{}  procedure GetListWmiClassProperties(const NameSpace,WmiClass:String;const List :TStrings);
-{}  procedure GetListWmiClassPropertiesTypes(const NameSpace,WmiClass:String;const List :TStringList);
+  procedure GetListWmiClassProperties(const NameSpace,WmiClass:String;const List :TStrings);
+  procedure GetListWmiClassPropertiesTypes(const NameSpace,WmiClass:String;const List :TStringList);
   procedure GetListWmiClassPropertiesValues(const NameSpace,WQL:String;const List :TList);
   procedure GetListWmiClassMethods(const NameSpace,WmiClass:String;const List :TStrings);
   procedure GetListWmiEvents(const NameSpace:String;const List :TStrings);
-{}  procedure GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
-{}  procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
+  procedure GetListWmiMethodInParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
+  procedure GetListWmiMethodOutParameters(const NameSpace,WmiClass,WmiMethod:String;ParamsList,ParamsTypes,ParamsDescr :TStringList);
 
   function  GetWmiClassMOF(const NameSpace,  WmiClass:String):string;
   function  GetWmiClassXML(const NameSpace,WmiClass:String;FormatXml:boolean=True):string;
-{}  function  GetWmiClassDescription(const NameSpace,WmiClass:String):string;
-{?}  procedure GetWmiClassQualifiers(const NameSpace,WmiClass:String;Const List :TStringList);
-{?}  procedure GetWmiClassPropertiesQualifiers(const NameSpace,WmiClass,WmiProperty:String;Const List :TStringList);
-{?}  procedure GetWmiClassMethodsQualifiers(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
-{}  function  WmiMethodIsStatic(const NameSpace,WmiClass,WmiMethod:String):Boolean;
+  function  GetWmiClassDescription(const NameSpace,WmiClass:String):string;
+  procedure GetWmiClassQualifiers(const NameSpace,WmiClass:String;Const List :TStringList);
+  procedure GetWmiClassPropertiesQualifiers(const NameSpace,WmiClass,WmiProperty:String;Const List :TStringList);
+  procedure GetWmiClassMethodsQualifiers(const NameSpace,WmiClass,WmiMethod:String;Const List :TStringList);
+  function  WmiMethodIsStatic(const NameSpace,WmiClass,WmiMethod:String):Boolean;
 
-{}  function  GetWmiPropertyDescription(const NameSpace,WmiClass,WmiProperty:String):string;
+  function  GetWmiPropertyDescription(const NameSpace,WmiClass,WmiProperty:String):string;
   //return a list of Valid Values returned by a property.
-{}  procedure GetWmiPropertyValidValues(const NameSpace,WmiClass,WmiProperty:String;Values:TStrings);
-{}  function  GetWmiMethodDescription(const NameSpace,WmiClass,WmiMethod:String):string;
+  procedure GetWmiPropertyValidValues(const NameSpace,WmiClass,WmiProperty:String;Values:TStrings);
+  function  GetWmiMethodDescription(const NameSpace,WmiClass,WmiMethod:String):string;
 
-{?}  function  GetWmiMethodInParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
-{?}  function  GetWmiMethodOutParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
-{?}  procedure GetWmiMethodValidValues(const NameSpace,WmiClass,WmiMethod:String;ValidValues :TStringList);
-{?}  procedure GetOutParamsValidValues(const NameSpace,WmiClass,WmiMethod, ParamName:String;ValidValues :TStringList);
+  function  GetWmiMethodInParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
+  function  GetWmiMethodOutParamsDeclaration(const NameSpace,WmiClass,WmiMethod:String):string;
+  procedure GetWmiMethodValidValues(const NameSpace,WmiClass,WmiMethod:String;ValidValues :TStringList);
+  procedure GetOutParamsValidValues(const NameSpace,WmiClass,WmiMethod, ParamName:String;ValidValues :TStringList);
 
 implementation
 
@@ -1425,12 +1436,10 @@ var
   oEnum             : IEnumvariant;
   oEnumQualif       : IEnumvariant;
   iValue            : LongWord;
-  //Str             : string;
 begin
   ParamsList.Clear;
   ParamsTypes.Clear;
   ParamsDescr.Clear;
-  //Str:='';
   objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, NameSpace, '', '');
   colItems      := objWMIService.Get(WmiClass,wbemFlagUseAmendedQualifiers);
@@ -1458,9 +1467,7 @@ begin
         colItem:=Unassigned;
        end;
   except
-    //Str:='';
   end;
-  //List.CommaText := Str;
 
   objSWbemLocator :=Unassigned;
   objWMIService   :=Unassigned;
@@ -1533,10 +1540,12 @@ begin
   inherited Create;
   FNameSpace    := ANameSpace;
   FClass        := AClass;
+  {$IFDEF USEXML}
   FXmlDoc       := CreateOleObject('Msxml2.DOMDocument.6.0');
   FXmlDoc.Async := false;
-  FMethodMetaData    := TList.Create;
-  FPropertyMetaData  := TList.Create;
+  {$ENDIF}
+  FCollectionMethodMetaData    := TList.Create;
+  FCollectionPropertyMetaData  := TList.Create;
   FURI               := Format(UrlWmiHelp,[AClass]);
   LoadWmiClassData;
 end;
@@ -1545,90 +1554,90 @@ destructor TWMiClassMetaData.Destroy;
 var
   i : integer;
 begin
-  for i:=0 to FMethodMetaData.Count-1 do
-   TWMiMethodMetaData(FMethodMetaData[i]).Free;
-  FMethodMetaData.Free;
+  for i:=0 to FCollectionMethodMetaData.Count-1 do
+   TWMiMethodMetaData(FCollectionMethodMetaData[i]).Free;
+  FCollectionMethodMetaData.Free;
 
-  for i:=0 to FPropertyMetaData.Count-1 do
-   TWMiPropertyMetaData(FPropertyMetaData[i]).Free;
+  for i:=0 to FCollectionPropertyMetaData.Count-1 do
+   TWMiPropertyMetaData(FCollectionPropertyMetaData[i]).Free;
 
-  FPropertyMetaData.Free;
+  FCollectionPropertyMetaData.Free;
   inherited;
 end;
 
 function TWMiClassMetaData.GetMethodDescr(index: integer): string;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]).FDescription;
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]).FDescription;
 end;
 
 function TWMiClassMetaData.GetMethodName(index: integer): string;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]).FName;
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]).FName;
 end;
 
 function TWMiClassMetaData.GetMethodsCount: Integer;
 begin
-   Result:=FMethodMetaData.Count;
+   Result:=FCollectionMethodMetaData.Count;
 end;
 
 function TWMiClassMetaData.GetMethodType(index: integer): string;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]).FType;
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]).FType;
 end;
 
 function TWMiClassMetaData.GetMethodValidMapValues(index: integer): TStrings;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]).FValidMapValues;
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]).FValidMapValues;
 end;
 
 function TWMiClassMetaData.GetMethodValidValues(index: integer): TStrings;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]).FValidValues;
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]).FValidValues;
 end;
 
 function TWMiClassMetaData.GetPropertiesCount: Integer;
 begin
-   Result:=FPropertyMetaData.Count;
+   Result:=FCollectionPropertyMetaData.Count;
 end;
 
 function TWMiClassMetaData.GetPropertyDescription(index: integer): string;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FDescription;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FDescription;
 end;
 
 function TWMiClassMetaData.GetPropertyMetaData(index: integer): TWMiPropertyMetaData;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]);
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]);
 end;
 
 function TWMiClassMetaData.GetPropertyName(index: integer): string;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FName;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FName;
 end;
 
 function TWMiClassMetaData.GetPropertyPascalType(index: integer): string;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FPascalType;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FPascalType;
 end;
 
 function TWMiClassMetaData.GetPropertyType(index: integer): string;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FType;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FType;
 end;
 
 function TWMiClassMetaData.GetPropertyValidMapValues(index: integer): TStrings;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FValidMapValues;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FValidMapValues;
 end;
 
 function TWMiClassMetaData.GetPropertyValidValues(index: integer): TStrings;
 begin
-   Result:=TWMiPropertyMetaData(FPropertyMetaData[index]).FValidValues;
+   Result:=TWMiPropertyMetaData(FCollectionPropertyMetaData[index]).FValidValues;
 end;
 
 function TWMiClassMetaData.GetWMiMethodMetaData(index: integer): TWMiMethodMetaData;
 begin
-   Result:=TWMiMethodMetaData(FMethodMetaData[index]);
+   Result:=TWMiMethodMetaData(FCollectionMethodMetaData[index]);
 end;
 
 procedure TWMiClassMetaData.LoadWmiClassData;
@@ -1673,7 +1682,7 @@ begin
   while oEnum.Next(1, colItem, iValue) = 0 do
   begin
     PropertyMetaData:=TWMiPropertyMetaData.Create;
-    FPropertyMetaData.Add(PropertyMetaData);
+    FCollectionPropertyMetaData.Add(PropertyMetaData);
     PropertyMetaData.FName:=VarStrNull(colItem.Name);
     PropertyMetaData.FType:=CIMTypeStr(colItem.cimtype);
     PropertyMetaData.FPascalType :=WmiTypeToDelphiType(CIMTypeStr(colItem.cimtype));
@@ -1718,7 +1727,7 @@ begin
   begin
     MethodMetaData:=TWMiMethodMetaData.Create;
     MethodMetaData.FIsStatic:=False;
-    FMethodMetaData.Add(MethodMetaData);
+    FCollectionMethodMetaData.Add(MethodMetaData);
     MethodMetaData.FName:=colItem.Name;
     MethodMetaData.FType:=wbemtypeSint32;
 
@@ -1829,11 +1838,6 @@ begin
         if not MethodMetaData.FIsFunction then  //delete default type value for method because is a method and not a function.
          MethodMetaData.FType:='';
 
-                                         {
-     Writeln(FMethods[FMethods.Count-1]);
-     Writeln(MethodMetaData.MethodsInParams.Text);
-     Writeln(MethodMetaData.MethodsOutParams.Text);
-                        }
     //avoid problems when the length of Valid Map Values list is distinct from the length of the Valid Values list
     if MethodMetaData.FValidMapValues.Count>0 then
        if MethodMetaData.FValidMapValues.Count<>MethodMetaData.FValidValues.Count then
@@ -1843,20 +1847,9 @@ begin
   end;
 
 
-
-             {
-  Writeln(FProperties.Text);
-  Writeln(FPropertiesTypes.Text);
-  Writeln(FPropertiesDescr.Text);
-
-  Writeln(FMethods.Text);
-  Writeln(FMethodsTypes.Text);
-  Writeln(FMethodsDescr.Text);
-
-  }
 end;
 
-{
+{$IFDEF USEXML}
 procedure TWMiClassMetaData.LoadWmiClassDataXML;
 Var
   i,j,k  : integer;
@@ -2019,15 +2012,18 @@ begin
       end;
     end;
 
+    //load objects types
 
+    //load arrays types and params
 
-    //cargar Result param
+    //load Result param
   end;
 
 
 
 end;
-}
+{$ENDIF}
+
 { TWMiMethodMetaData }
 
 constructor TWMiMethodMetaData.Create;
