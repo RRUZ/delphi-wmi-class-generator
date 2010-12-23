@@ -11,6 +11,7 @@ procedure TestBaseBoard;
 var
   BaseBoard : TWin32_BaseBoard;
 begin
+  ReportMemoryLeaksOnShutdown:=True;
   BaseBoard:=TWin32_BaseBoard.Create;
   try
     Writeln('Base Board Info');

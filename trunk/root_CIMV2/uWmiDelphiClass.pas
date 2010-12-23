@@ -86,6 +86,7 @@ type
   {$IFDEF UNDEF}{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}{$ENDIF}
   TWmiClass=class//(TObject)
   private
+    FStaticInstance : OleVariant;
     {$IFDEF WbemScripting_TLB}
     FSWbemLocator   : ISWbemLocator;
     FWMIService     : ISWbemServices;
@@ -212,6 +213,12 @@ type
    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// The WmiProperties property return the list of the properties of the current class
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property  WmiProperties : TStrings read FWmiPropsNames;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// The WmiCollectionIndex property return the current index to the collection which store the WMI Data
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
@@ -230,16 +237,32 @@ type
    procedure SetCollectionIndex(Index: Integer);virtual;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// The GetCollectionIndexByPropertyValue function get the index of the coolection based in the Property name and value
+   /// if the value is not found return a -1
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   function  GetCollectionIndexByPropertyValue(const PropertyName:string; AValue:OleVariant):integer;virtual;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// The GetPropertyValue function return the value of an property
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function  GetPropertyValue(const PropName: string): OleVariant;
+   function  GetPropertyValueByIndex(const PropName: string;Index:Integer): OleVariant;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetInstanceOf function return an instance to the current wmi class returned by the ExecQuery method
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function  GetInstanceOf: OleVariant;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The GetStaticInstance function return an instance to the current wmi class
+   /// is equivalent to call WMIService.Get(WmiClass,0,GetNullValue);
+   /// MSDN : Retrieves an object, that is either a class definition or an instance, based on the object path.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   function  GetStaticInstance : OleVariant;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The LoadWmiData procedure fill the collection with the data returbes by the ExecQuery method
@@ -421,12 +444,12 @@ end;
 
 procedure  VarArrayToArray(Arr : OleVariant;var OutArr : TWordArray); overload;
 var
-  i : integer;
+  i    : integer;
 begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarWordNull(Arr[i]);
    end;
@@ -453,7 +476,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarByteNull(Arr[i]);
    end;
@@ -466,7 +489,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarSmallIntNull(Arr[i]);
    end;
@@ -479,7 +502,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarIntegerNull(Arr[i]);
    end;
@@ -492,7 +515,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarCardinalNull(Arr[i]);
    end;
@@ -505,7 +528,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarInt64Null(Arr[i]);
    end;
@@ -518,7 +541,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarShortIntNull(Arr[i]);
    end;
@@ -531,7 +554,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarBoolNull(Arr[i]);
    end;
@@ -544,7 +567,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarDateTimeNull(Arr[i]);
    end;
@@ -557,7 +580,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=Arr[i];
    end;
@@ -570,7 +593,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarWideStringNull(Arr[i]);
    end;
@@ -585,7 +608,7 @@ begin
    SetLength(OutArr,0);
    if not VarIsNull(Arr) and VarIsArray(Arr) then
    begin
-     SetLength(OutArr,VarArrayHighBound(Arr, 1));
+     SetLength(OutArr,VarArrayHighBound(Arr, 1)+1);
      for i := VarArrayLowBound(Arr, 1) to VarArrayHighBound(Arr, 1) do
       OutArr[i]:=VarStrNull(Arr[i]);
    end;
@@ -865,8 +888,8 @@ end;
 //http://www.computerperformance.co.uk/Logon/code/code_80070005.htm#Local_Security_and_Policies_and_DCOM
 procedure TWmiClass.WmiConnect;
 begin
-   if not FWmiConnected then
-   begin
+   //if not FWmiConnected then
+   //begin
      {$IFDEF WMI_LateBinding}
      {$IFDEF FPC}
       FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
@@ -886,7 +909,7 @@ begin
         FWMIService.Security_.ImpersonationLevel := wbemImpersonationLevelImpersonate;
      {$ENDIF}
       FWmiConnected   := True;
-   end;
+   //end;
 end;
 
 
@@ -896,6 +919,27 @@ begin
    Result:=FWmiCollection.Count
   else
    Result:=-1;
+end;
+
+function TWmiClass.GetCollectionIndexByPropertyValue(const PropertyName: string; AValue: OleVariant): integer;
+var
+  i : Integer;
+  V : OleVariant;
+begin
+  Result:=-1;
+  if FWMiDataLoaded then
+    for i:=0 to FWmiCollection.Count-1 do
+    begin
+      V:=GetPropertyValueByIndex(PropertyName,i);
+      if V=AValue then
+      begin
+        Result:=i;
+        VarClear(V);
+        Break;
+      end
+      else
+      VarClear(V);
+    end;
 end;
 
 function TWmiClass.GetInstanceOf: OleVariant;
@@ -924,17 +968,29 @@ function TWmiClass.GetPropertyValue(const PropName: string): OleVariant;
 var
  i  : integer;
 begin
-  //i:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).PropsValues.IndexOf(PropName);
-  //Result:=TVariantValueClass(TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).PropsValues.Objects[i]).Value;
   i     :=FWmiPropsNames.IndexOf(PropName);
   Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).PropsValues[i];
 end;
 
-function TWmiClass.GetPropValue(const PropName: string): OleVariant;
+function TWmiClass.GetPropertyValueByIndex(const PropName: string; Index: Integer): OleVariant;
+var
+ i  : integer;
 begin
-Result:=GetPropertyValue(PropName);
+  i     :=FWmiPropsNames.IndexOf(PropName);
+  Result:=TDataWmiClass(FWmiCollection[Index]).PropsValues[i];
 end;
 
+
+function TWmiClass.GetPropValue(const PropName: string): OleVariant;
+begin
+  Result:=GetPropertyValue(PropName);
+end;
+
+
+function TWmiClass.GetStaticInstance: OleVariant;
+begin
+  Result:=FStaticInstance;
+end;
 
 //Improving Enumeration Performance  http://msdn.microsoft.com/en-us/library/aa390880%28VS.85%29.aspx
 function TWmiClass._LoadWmiData: boolean;
@@ -983,15 +1039,17 @@ begin;
      objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
      oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ELSE}
-     objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately);
-     oEnum           := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
+     objWbemObjectSet := FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately);
+     oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$ENDIF}
     {$IFDEF WbemScripting_TLB}
-    objWbemObjectSet:= FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately,nil);
-    oEnum           := (objWbemObjectSet._NewEnum) as IEnumVariant;
+    objWbemObjectSet  := FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately,nil);
+    oEnum             := (objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Query Executed in '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
+
+    FStaticInstance   := FWMIService.Get(FWmiClass,0,GetNullValue);
 
     {$IFDEF _DEBUG} dg:=now; {$ENDIF}
 
@@ -1121,7 +1179,7 @@ end;
 
 procedure TWmiClass.LoadWmiData;
 begin
- _LoadWmiData;
+ FWMiDataLoaded:=_LoadWmiData;
 end;
 
 { TWmiError }

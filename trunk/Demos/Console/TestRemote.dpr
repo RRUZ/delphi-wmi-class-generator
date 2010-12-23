@@ -3,6 +3,7 @@ program TestRemote;
 {$APPTYPE CONSOLE}
 
 uses
+  ExceptionLog,
   SysUtils,
   uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
   uWin32_BIOS in '..\..\root_CIMV2\uWin32_BIOS.pas';
@@ -15,12 +16,14 @@ begin
      ReportMemoryLeaksOnShutdown:=True;
      RemoteBiosInfo:=TWin32_BIOS.Create(False);
      try
+
        RemoteBiosInfo.WmiServer:='192.168.217.128';
        RemoteBiosInfo.WmiUser  :='Administrator';
-       RemoteBiosInfo.WmiPass  :='the password goes here';
-       if RemoteBiosInfo.WmiConnected then
+       RemoteBiosInfo.WmiPass  :='desarrollo'; 
+       RemoteBiosInfo.LoadWmiData;
+
+       if RemoteBiosInfo.WmiConnected then  
        begin
-         RemoteBiosInfo.LoadWmiData;
          Writeln('Serial Number       '+RemoteBiosInfo.SerialNumber);
          Writeln('BuildNumber         '+RemoteBiosInfo.BuildNumber);
          if RemoteBiosInfo.BIOSVersion.Count>0 then
@@ -35,7 +38,7 @@ begin
 
          Writeln('');
          Writeln('Bios Characteristics');
-         Writeln('--------------------');
+         Writeln('--------------------'); 
          for i:=Low(RemoteBiosInfo.BiosCharacteristics)  to High(RemoteBiosInfo.BiosCharacteristics) do
           Writeln(GetBiosCharacteristicsAsString(RemoteBiosInfo.BiosCharacteristics[i]));
        end

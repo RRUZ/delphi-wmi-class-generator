@@ -12,6 +12,7 @@ var
  LogicalDisk : TWin32_LogicalDisk;
  i,j         : Integer;
 begin
+  ReportMemoryLeaksOnShutdown:=True;
   LogicalDisk:=TWin32_LogicalDisk.Create;
   try
    Writeln('LogicalDisk');

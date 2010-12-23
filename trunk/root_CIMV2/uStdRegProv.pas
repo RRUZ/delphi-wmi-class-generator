@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.109
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 05:33:30
+/// Creation Date 23-12-2010 06:06:18
 /// Namespace root\CIMV2 Class StdRegProv
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/StdRegProv.asp
 /// </summary>
@@ -539,30 +539,23 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.EnumKey(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vsNames     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('EnumKey').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'EnumKey', objInParams, 0, GetNullValue);
-  sNames                   := VarStrNull(objOutParams.sNames);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.EnumKey(hDefKey,sSubKeyName,vsNames));
+  sNames       := VarStrNull(vsNames);
 end;
 
 //static, OutParams>1, InParams>0
 function TStdRegProv.EnumValues(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String;var Types : Integer): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vsNames     : OleVariant;
+  vTypes      : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('EnumValues').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'EnumValues', objInParams, 0, GetNullValue);
-  sNames                   := VarStrNull(objOutParams.sNames);
-  Types                    := VarIntegerNull(objOutParams.Types);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.EnumValues(hDefKey,sSubKeyName,vsNames,vTypes));
+  sNames       := VarStrNull(vsNames);
+  Types        := VarIntegerNull(vTypes);
 end;
 
 //static, OutParams=1, InParams>0
@@ -615,31 +608,21 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetDWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Cardinal): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vuValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetDWORDValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetDWORDValue', objInParams, 0, GetNullValue);
-  uValue                   := VarCardinalNull(objOutParams.uValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetDWORDValue(hDefKey,sSubKeyName,sValueName,vuValue));
+  uValue       := VarCardinalNull(vuValue);
 end;
 
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetQWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Int64): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vuValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetQWORDValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetQWORDValue', objInParams, 0, GetNullValue);
-  uValue                   := VarInt64Null(objOutParams.uValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetQWORDValue(hDefKey,sSubKeyName,sValueName,vuValue));
+  uValue       := VarInt64Null(vuValue);
 end;
 
 //static, OutParams=1, InParams>0
@@ -661,16 +644,11 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vsValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetStringValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetStringValue', objInParams, 0, GetNullValue);
-  sValue                   := VarStrNull(objOutParams.sValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetStringValue(hDefKey,sSubKeyName,sValueName,vsValue));
+  sValue       := VarStrNull(vsValue);
 end;
 
 //static, OutParams=1, InParams>0
@@ -698,16 +676,11 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetMultiStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vsValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetMultiStringValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetMultiStringValue', objInParams, 0, GetNullValue);
-  sValue                   := VarStrNull(objOutParams.sValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetMultiStringValue(hDefKey,sSubKeyName,sValueName,vsValue));
+  sValue       := VarStrNull(vsValue);
 end;
 
 //static, OutParams=1, InParams>0
@@ -729,16 +702,11 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetExpandedStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vsValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetExpandedStringValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetExpandedStringValue', objInParams, 0, GetNullValue);
-  sValue                   := VarStrNull(objOutParams.sValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetExpandedStringValue(hDefKey,sSubKeyName,sValueName,vsValue));
+  sValue       := VarStrNull(vsValue);
 end;
 
 //static, OutParams=1, InParams>0
@@ -766,31 +734,21 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetBinaryValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Byte): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vuValue     : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetBinaryValue').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetBinaryValue', objInParams, 0, GetNullValue);
-  uValue                   := VarByteNull(objOutParams.uValue);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetBinaryValue(hDefKey,sSubKeyName,sValueName,vuValue));
+  uValue       := VarByteNull(vuValue);
 end;
 
 //static, OutParams>1, InParams>0
 function TStdRegProv.CheckAccess(const hDefKey : Cardinal;const sSubKeyName : String;const uRequired : Cardinal ; var bGranted : Boolean): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vbGranted   : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('CheckAccess').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objInParams.Properties_.Item('uRequired').Value  := uRequired;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'CheckAccess', objInParams, 0, GetNullValue);
-  bGranted                 := VarBoolNull(objOutParams.bGranted);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.CheckAccess(hDefKey,sSubKeyName,uRequired,vbGranted));
+  bGranted     := VarBoolNull(vbGranted);
 end;
 
 //static, OutParams=1, InParams>0
@@ -811,14 +769,10 @@ end;
 //static, OutParams>1, InParams>0
 function TStdRegProv.GetSecurityDescriptor(const hDefKey : Cardinal;const sSubKeyName : String ; var Descriptor : OleVariant): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vDescriptor : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('GetSecurityDescriptor').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
-  objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'GetSecurityDescriptor', objInParams, 0, GetNullValue);
-  Descriptor               := VarStrNull(objOutParams.Descriptor);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.GetSecurityDescriptor(hDefKey,sSubKeyName,vDescriptor));
+  Descriptor   := VarStrNull(vDescriptor);
 end;
 end.

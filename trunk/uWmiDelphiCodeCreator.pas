@@ -461,10 +461,14 @@ begin
                 MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],OutDelphiParams,'Integer',MethodDirectiv]));
 
 
-               if not WMiClassMetaData.MethodMetaData[i].IsStatic then
+               if 1=1 then //if not WMiClassMetaData.MethodMetaData[i].IsStatic then
                begin
                  MethodsImpl.Add('');
-                 MethodsImpl.Add('//not static, OutParams>1, InParams>0');
+
+                 if WMiClassMetaData.MethodMetaData[i].IsStatic then
+                  MethodsImpl.Add('//static, OutParams>1, InParams>0')
+                 else
+                  MethodsImpl.Add('//not static, OutParams>1, InParams>0');
 
                  if (InDelphiParams<>'')  then
                   MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',[WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
@@ -516,7 +520,10 @@ begin
                  if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
                   MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := ArrayToVarArray(%s);',['v'+WMiClassMetaData.MethodMetaData[i].InParams[j],EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
 
-                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetInstanceOf.%s(%s));',['Result',WMiClassMetaData.Methods[i],sValue]));
+                 if WMiClassMetaData.MethodMetaData[i].IsStatic then
+                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetStaticInstance.%s(%s));',['Result',WMiClassMetaData.Methods[i],sValue]))
+                 else
+                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s  := VarIntegerNull(GetInstanceOf.%s(%s));',['Result',WMiClassMetaData.Methods[i],sValue]));
 
                  for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
                  if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
@@ -547,7 +554,7 @@ begin
                  //*****************************************************
 
                  MethodsImpl.Add('end;');
-               end
+               end {
                else
                begin
                  MethodsImpl.Add('');
@@ -633,7 +640,7 @@ begin
                  //*****************************************************
 
                  MethodsImpl.Add('end;');
-               end;
+               end; }
 
              end
              else

@@ -77,7 +77,7 @@ object FrmMain: TFrmMain
         Top = 0
         Width = 998
         Height = 29
-        ButtonWidth = 77
+        ButtonWidth = 99
         Caption = 'ToolBar1'
         DrawingStyle = dsGradient
         Images = ImageList1
@@ -87,12 +87,12 @@ object FrmMain: TFrmMain
         object ToolButtonGenerate: TToolButton
           Left = 0
           Top = 0
-          Caption = 'Generate'
+          Caption = 'Generate Units'
           ImageIndex = 10
           OnClick = ToolButtonGenerateClick
         end
         object ToolButtonViewCode: TToolButton
-          Left = 77
+          Left = 99
           Top = 0
           AutoSize = True
           Caption = 'View Code'
@@ -100,7 +100,7 @@ object FrmMain: TFrmMain
           OnClick = ToolButtonViewCodeClick
         end
         object ToolButton3: TToolButton
-          Left = 158
+          Left = 180
           Top = 0
           Width = 8
           Caption = 'ToolButton3'
@@ -108,7 +108,7 @@ object FrmMain: TFrmMain
           Style = tbsSeparator
         end
         object CbWmiNameSpaces: TComboBox
-          Left = 166
+          Left = 188
           Top = 0
           Width = 257
           Height = 21
@@ -160,10 +160,6 @@ object FrmMain: TFrmMain
       object TabSheet2: TTabSheet
         Caption = 'Methods'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object LvMethods: TListView
           Left = 0
           Top = 0
@@ -196,10 +192,6 @@ object FrmMain: TFrmMain
       object TabSheet3: TTabSheet
         Caption = 'Class Info'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object MemoClassDescr: TMemo
           Left = 0
           Top = 0
@@ -260,7 +252,7 @@ object FrmMain: TFrmMain
     Left = 645
     Top = 93
     Bitmap = {
-      494C01010C001800940010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800980010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -16,6 +16,7 @@ Var
  Domain   : string;
  PID      : Cardinal;
 begin
+   ReportMemoryLeaksOnShutdown:=True;
    Process:=TWin32_Process.Create(True);
    try
 

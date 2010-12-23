@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.109
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 05:33:35
+/// Creation Date 23-12-2010 06:06:28
 /// Namespace root\CIMV2 Class Win32_OfflineFilesCache
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OfflineFilesCache.asp
 /// </summary>
@@ -90,14 +90,11 @@ end;
 //static, OutParams>1, InParams>0
 function TWin32_OfflineFilesCache.Enable(const Enable : Boolean ; var RebootRequired : Boolean): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vRebootRequired : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('Enable').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('Enable').Value  := Enable;
-  objOutParams                := WMIService.ExecMethod(WmiClass, 'Enable', objInParams, 0, GetNullValue);
-  RebootRequired              := VarBoolNull(objOutParams.RebootRequired);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result          := VarIntegerNull(GetStaticInstance.Enable(Enable,vRebootRequired));
+  RebootRequired  := VarBoolNull(vRebootRequired);
 end;
 
 //static, OutParams=1, InParams>0
@@ -228,16 +225,11 @@ end;
 //static, OutParams>1, InParams>0
 function TWin32_OfflineFilesCache.TransitionOffline(const Flags : Cardinal;const Force : Boolean;const Path : String ; var OpenFiles : Boolean): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vOpenFiles  : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('TransitionOffline').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('Flags').Value  := Flags;
-  objInParams.Properties_.Item('Force').Value  := Force;
-  objInParams.Properties_.Item('Path').Value  := Path;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'TransitionOffline', objInParams, 0, GetNullValue);
-  OpenFiles                := VarBoolNull(objOutParams.OpenFiles);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.TransitionOffline(Flags,Force,Path,vOpenFiles));
+  OpenFiles    := VarBoolNull(vOpenFiles);
 end;
 
 //static, OutParams=1, InParams>0
