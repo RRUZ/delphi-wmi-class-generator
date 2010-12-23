@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.109
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 05:34:08
+/// Creation Date 23-12-2010 06:07:15
 /// Namespace root\CIMV2 Class Win32_SecurityDescriptorHelper
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SecurityDescriptorHelper.asp
 /// </summary>
@@ -166,69 +166,54 @@ end;
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.Win32SDToSDDL(const Descriptor : OleVariant ; var SDDL : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vSDDL       : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('Win32SDToSDDL').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('Descriptor').Value  := Descriptor;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Win32SDToSDDL', objInParams, 0, GetNullValue);
-  SDDL                     := VarStrNull(objOutParams.SDDL);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.Win32SDToSDDL(Descriptor,vSDDL));
+  SDDL         := VarStrNull(vSDDL);
 end;
 
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.Win32SDToBinarySD(const Descriptor : OleVariant ; var BinarySD : Byte): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vBinarySD   : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('Win32SDToBinarySD').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('Descriptor').Value  := Descriptor;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Win32SDToBinarySD', objInParams, 0, GetNullValue);
-  BinarySD                 := VarByteNull(objOutParams.BinarySD);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.Win32SDToBinarySD(Descriptor,vBinarySD));
+  BinarySD     := VarByteNull(vBinarySD);
 end;
 
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.SDDLToWin32SD(const SDDL : String ; var Descriptor : OleVariant): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vDescriptor : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('SDDLToWin32SD').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('SDDL').Value  := SDDL;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SDDLToWin32SD', objInParams, 0, GetNullValue);
-  Descriptor               := VarStrNull(objOutParams.Descriptor);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.SDDLToWin32SD(SDDL,vDescriptor));
+  Descriptor   := VarStrNull(vDescriptor);
 end;
 
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.SDDLToBinarySD(const SDDL : String ; var BinarySD : Byte): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vBinarySD   : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('SDDLToBinarySD').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('SDDL').Value  := SDDL;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SDDLToBinarySD', objInParams, 0, GetNullValue);
-  BinarySD                 := VarByteNull(objOutParams.BinarySD);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.SDDLToBinarySD(SDDL,vBinarySD));
+  BinarySD     := VarByteNull(vBinarySD);
 end;
 
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.BinarySDToWin32SD(const BinarySD : Array of Byte ; var Descriptor : OleVariant): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
-  vBinarySD               : OleVariant;
+//output variants  helpers
+  vDescriptor : OleVariant;
+  vBinarySD   : OleVariant;
 begin
  try
-  objInParams := GetInstanceOf.Methods_.Item('BinarySDToWin32SD').InParameters.SpawnInstance_();
-  vBinarySD                := ArrayToVarArray(BinarySD);
-  objInParams.Properties_.Item('BinarySD').Value  := vBinarySD;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'BinarySDToWin32SD', objInParams, 0, GetNullValue);
-  Descriptor               := VarStrNull(objOutParams.Descriptor);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  vBinarySD    := ArrayToVarArray(BinarySD);
+  Result       := VarIntegerNull(GetStaticInstance.BinarySDToWin32SD(vBinarySD,vDescriptor));
+  Descriptor   := VarStrNull(vDescriptor);
  finally
   VarClear(vBinarySD);
  end;
@@ -237,17 +222,14 @@ end;
 //static, OutParams>1, InParams>0
 function TWin32_SecurityDescriptorHelper.BinarySDToSDDL(const BinarySD : Array of Byte ; var SDDL : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
-  vBinarySD               : OleVariant;
+//output variants  helpers
+  vSDDL       : OleVariant;
+  vBinarySD   : OleVariant;
 begin
  try
-  objInParams := GetInstanceOf.Methods_.Item('BinarySDToSDDL').InParameters.SpawnInstance_();
-  vBinarySD                := ArrayToVarArray(BinarySD);
-  objInParams.Properties_.Item('BinarySD').Value  := vBinarySD;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'BinarySDToSDDL', objInParams, 0, GetNullValue);
-  SDDL                     := VarStrNull(objOutParams.SDDL);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  vBinarySD    := ArrayToVarArray(BinarySD);
+  Result       := VarIntegerNull(GetStaticInstance.BinarySDToSDDL(vBinarySD,vSDDL));
+  SDDL         := VarStrNull(vSDDL);
  finally
   VarClear(vBinarySD);
  end;

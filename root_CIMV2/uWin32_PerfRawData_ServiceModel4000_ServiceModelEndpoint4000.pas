@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.109
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 05:34:03
+/// Creation Date 23-12-2010 06:07:07
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ServiceModel4000_ServiceModelEndpoint4000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ServiceModel4000_ServiceModelEndpoint4000.asp
 /// </summary>

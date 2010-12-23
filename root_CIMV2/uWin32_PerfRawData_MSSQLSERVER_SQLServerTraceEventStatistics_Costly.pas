@@ -1,15 +1,17 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.104
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 21-12-2010 23:47:47
+/// Creation Date 23-12-2010 06:07:00
 /// Namespace root\CIMV2 Class Win32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly.asp
 /// </summary>
 
 {$IFDEF FPC}
-{$MODE DELPHI}
+ {$MODE DELPHI} {$H+}
+ {$DEFINE OLD_DELPHI}
 {$ENDIF}
+
 unit uWin32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly;
 
 interface
@@ -27,11 +29,16 @@ type
   Int64=Integer;
   Word=Longint;
 {$ENDIF}
-  {$REGION 'Documentation'}
+{$IFNDEF FPC}
+  {$IF CompilerVersion <= 15}
+    {$DEFINE OLD_DELPHI}
+  {$IFEND}
+{$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Statistics for separate SQL Trace events
   /// </summary>
-  {$ENDREGION}
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly=class(TWmiClass)
   private
     FBytesPersec                        : Int64;
@@ -51,57 +58,57 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Bytes transferred per second
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property BytesPersec : Int64 read FBytesPersec;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// CPU usage per second (Requires -T1904)
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CPUTicksPersec : Int64 read FCPUTicksPersec;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Filtered events per second
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property EventsFilteredPersec : Int64 read FEventsFilteredPersec;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Events fired per second
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property EventsFiredPersec : Int64 read FEventsFiredPersec;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Prefiltered events per second
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property EventsPrefilteredPersec : Int64 read FEventsPrefilteredPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$REGION 'Documentation'}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$ENDREGION}
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
@@ -118,7 +125,7 @@ implementation
 
 constructor TWin32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly.Create(LoadWmiData : boolean=True);
 begin
-  Create(LoadWmiData,'root\CIMV2','Win32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly');
+  inherited Create(LoadWmiData,'root\CIMV2','Win32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly');
 end;
 
 destructor TWin32_PerfRawData_MSSQLSERVER_SQLServerTraceEventStatistics_Costly.Destroy;

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.109
+/// Application version 0.1.0.112
 /// WMI version 7600.16385
-/// Creation Date 22-12-2010 05:34:10
+/// Creation Date 23-12-2010 06:07:16
 /// Namespace root\CIMV2 Class Win32_ShadowCopy
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ShadowCopy.asp
 /// </summary>
@@ -447,15 +447,11 @@ end;
 //static, OutParams>1, InParams>0
 function TWin32_ShadowCopy.Create(const Context : String;const Volume : String ; var ShadowID : String): Integer;
 var
-  objInParams     : OleVariant;
-  objOutParams    : OleVariant;
+//output variants  helpers
+  vShadowID   : OleVariant;
 begin
-  objInParams := GetInstanceOf.Methods_.Item('Create').InParameters.SpawnInstance_();
-  objInParams.Properties_.Item('Context').Value  := Context;
-  objInParams.Properties_.Item('Volume').Value  := Volume;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Create', objInParams, 0, GetNullValue);
-  ShadowID                 := VarStrNull(objOutParams.ShadowID);
-  Result  := VarIntegerNull(objOutParams.ReturnValue);
+  Result       := VarIntegerNull(GetStaticInstance.Create(Context,Volume,vShadowID));
+  ShadowID     := VarStrNull(vShadowID);
 end;
 
 //not static, OutParams=1, InParams>0
