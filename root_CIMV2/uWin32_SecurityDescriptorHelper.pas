@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:21
+/// Creation Date 24-12-2010 09:38:06
 /// Namespace root\CIMV2 Class Win32_SecurityDescriptorHelper
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SecurityDescriptorHelper.asp
 /// </summary>
@@ -34,16 +34,59 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Win32_SecurityDescriptorHelper class provides the basic functionality for 
+  /// converting a security descriptor between three different representations:    1) 
+  /// __SecurityDescriptor   2) SDDL - string representation of a security descriptor 
+  ///   3) Binary representation of a security descriptor
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_SecurityDescriptorHelper=class(TWmiClass)
   private
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a __SecurityDescriptor instance to SDDL string format.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function Win32SDToSDDL(const Descriptor : OleVariant ; var SDDL : String): Integer;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a __SecurityDescriptor instance to a binary blob security 
+   /// descriptor format.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function Win32SDToBinarySD(const Descriptor : OleVariant ; var BinarySD : Byte): Integer;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a SDDL string security descriptor format to a 
+   /// __SecurityDescriptor instance.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function SDDLToWin32SD(const SDDL : String ; var Descriptor : OleVariant): Integer;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a SDDL string security descriptor format to a binary blob 
+   /// security descriptor format.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function SDDLToBinarySD(const SDDL : String ; var BinarySD : Byte): Integer;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a binary blob security descriptor format to a 
+   /// __SecurityDescriptor instance.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function BinarySDToWin32SD(const BinarySD : Array of Byte ; var Descriptor : OleVariant): Integer;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This method converts a binary blob security descriptor formatto a SDDL string 
+   /// security descriptor format.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function BinarySDToSDDL(const BinarySD : Array of Byte ; var SDDL : String): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

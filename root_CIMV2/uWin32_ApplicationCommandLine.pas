@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:35
+/// Creation Date 24-12-2010 09:35:28
 /// Namespace root\CIMV2 Class Win32_ApplicationCommandLine
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ApplicationCommandLine.asp
 /// </summary>
@@ -34,6 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  ///  The ApplicationCommandLine association allows one to  to identify connection 
+  /// between an application and it's command line access point.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ApplicationCommandLine=class(TWmiClass)
   private
     FAntecedent                         : OleVariant;
@@ -41,7 +47,17 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// References the application.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// references the commandline used to access the antecedent.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

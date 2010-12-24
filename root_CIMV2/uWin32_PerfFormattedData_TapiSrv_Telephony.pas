@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:56
+/// Creation Date 24-12-2010 09:36:46
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_TapiSrv_Telephony
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_TapiSrv_Telephony.asp
 /// </summary>
@@ -34,6 +34,11 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Telephony System
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_TapiSrv_Telephony=class(TWmiClass)
   private
     FActiveLines                        : Cardinal;
@@ -57,20 +62,82 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of telephone lines serviced by this computer that are currently 
+   /// active.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ActiveLines : Cardinal read FActiveLines;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of telephone devices that are currently being monitored.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ActiveTelephones : Cardinal read FActiveTelephones;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of applications that are currently using telephony services.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ClientApps : Cardinal read FClientApps;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Current incoming calls being serviced by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CurrentIncomingCalls : Cardinal read FCurrentIncomingCalls;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Current outgoing calls being serviced by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CurrentOutgoingCalls : Cardinal read FCurrentOutgoingCalls;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The rate of incoming calls answered by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property IncomingCallsPersec : Cardinal read FIncomingCallsPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of telephone lines serviced by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Lines : Cardinal read FLines;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The rate of outgoing calls made by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutgoingCallsPersec : Cardinal read FOutgoingCallsPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of telephone devices serviced by this computer.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TelephoneDevices : Cardinal read FTelephoneDevices;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

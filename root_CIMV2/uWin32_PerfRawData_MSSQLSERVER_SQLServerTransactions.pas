@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:09
+/// Creation Date 24-12-2010 09:37:16
 /// Namespace root\CIMV2 Class Win32_PerfRawData_MSSQLSERVER_SQLServerTransactions
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_MSSQLSERVER_SQLServerTransactions.asp
 /// </summary>
@@ -34,6 +34,11 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// Statistics related to SQL Server transactions.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_MSSQLSERVER_SQLServerTransactions=class(TWmiClass)
   private
     FCaption                            : String;
@@ -62,28 +67,111 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The free space in tempdb in KB.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property FreeSpaceintempdbKB : Int64 read FFreeSpaceintempdbKB;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The longest running time of any transcation in seconds.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property LongestTransactionRunningTime : Int64 read FLongestTransactionRunningTime;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of active non-snapshot transactions that generate version 
+   /// records.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NonSnapshotVersionTransactions : Int64 read FNonSnapshotVersionTransactions;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of active snapshot transactions.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SnapshotTransactions : Int64 read FSnapshotTransactions;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of active transactions.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Transactions : Int64 read FTransactions;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The fraction of update snapshot transactions that have update conflicts to the 
+   /// total number of update snapshot transactions.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Updateconflictratio : Int64 read FUpdateconflictratio;
    property Updateconflictratio_Base : Cardinal read FUpdateconflictratio_Base;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of active snapshot transactions that do updates.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property UpdateSnapshotTransactions : Int64 read FUpdateSnapshotTransactions;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The version cleanup rate in KB per seconds.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionCleanuprateKBPers : Int64 read FVersionCleanuprateKBPers;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The version generation rate in KB per seconds.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionGenerationrateKBPers : Int64 read FVersionGenerationrateKBPers;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The size of the version store in KB.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionStoreSizeKB : Int64 read FVersionStoreSizeKB;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Number of unit in Version Store.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionStoreunitcount : Int64 read FVersionStoreunitcount;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Creation of new unit in Version Store.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionStoreunitcreation : Int64 read FVersionStoreunitcreation;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Truncation of unit in Version Store.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VersionStoreunittruncation : Int64 read FVersionStoreunittruncation;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

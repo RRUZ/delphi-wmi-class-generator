@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:05
+/// Creation Date 24-12-2010 09:37:02
 /// Namespace root\CIMV2 Class Win32_PerfRawData_Counters_TeredoServer
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_Counters_TeredoServer.asp
 /// </summary>
@@ -34,6 +34,11 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// Statistics of Teredo server hosted on this machine.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_Counters_TeredoServer=class(TWmiClass)
   private
     FCaption                            : String;
@@ -62,25 +67,111 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total error packets( authentication error) received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerErrorPacketsAuthenticationError : Cardinal read FInTeredoServerErrorPacketsAuthenticationError;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total error packets( destination error) received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerErrorPacketsDestinationError : Cardinal read FInTeredoServerErrorPacketsDestinationError;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total error packets( header error) received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerErrorPacketsHeaderError : Cardinal read FInTeredoServerErrorPacketsHeaderError;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total error packets( source error) received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerErrorPacketsSourceError : Cardinal read FInTeredoServerErrorPacketsSourceError;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total error packets received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerErrorPacketsTotal : Cardinal read FInTeredoServerErrorPacketsTotal;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total bubbles received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerSuccessPacketsBubbles : Cardinal read FInTeredoServerSuccessPacketsBubbles;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total echo packets received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerSuccessPacketsEcho : Cardinal read FInTeredoServerSuccessPacketsEcho;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total Router Solicitations received by the primary server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerSuccessPacketsRSPrimary : Cardinal read FInTeredoServerSuccessPacketsRSPrimary;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total Router Solicitations received by the secondary server
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerSuccessPacketsRSSecondary : Cardinal read FInTeredoServerSuccessPacketsRSSecondary;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total valid packets received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerSuccessPacketsTotal : Cardinal read FInTeredoServerSuccessPacketsTotal;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total packets received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerTotalPacketsSuccessError : Cardinal read FInTeredoServerTotalPacketsSuccessError;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Rate of total packets received by the Teredo server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InTeredoServerTotalPacketsSuccessErrorPersec : Cardinal read FInTeredoServerTotalPacketsSuccessErrorPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total Router Advertisements sent by the primary server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutTeredoServerRAPrimary : Cardinal read FOutTeredoServerRAPrimary;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total Router Advertisements sent by the secondary server.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutTeredoServerRASecondary : Cardinal read FOutTeredoServerRASecondary;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

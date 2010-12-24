@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:36
+/// Creation Date 24-12-2010 09:35:30
 /// Namespace root\CIMV2 Class Win32_CheckCheck
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_CheckCheck.asp
 /// </summary>
@@ -34,6 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// This association relates a MSI Check with any locational information it 
+  /// requires.  The location is in the form of a file and/or directory specification.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_CheckCheck=class(TWmiClass)
   private
     FCheck                              : OleVariant;
@@ -41,7 +47,17 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Check reference represents one side of the Check.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Check : OleVariant read FCheck;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Location reference represents the other side of the Check.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Location : OleVariant read FLocation;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

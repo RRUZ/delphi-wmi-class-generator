@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:19
+/// Creation Date 24-12-2010 09:37:59
 /// Namespace root\CIMV2 Class Win32_PrinterConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterConfiguration.asp
 /// </summary>
@@ -36,9 +36,10 @@ type
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// The Win32_PrinterConfiguration class defines the configuration for a printer 
-  /// device.  This includes capabilities such as resolution, color, fonts, and 
-  /// orientation.
+  /// The Setting class represents configuration-related and operational parameters 
+  /// for one or more ManagedSystemElement(s). A ManagedSystemElement may have 
+  /// multiple Setting objects associated with it. The current operational values for 
+  /// an Element's parameters are reflected by properties in the Element itself or by properties in its associations. These properties do not have to be the same values present in the Setting object. For example, a modem may have a Setting baud rate of 56Kb/sec but be operating at 19.2Kb/sec.
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PrinterConfiguration=class(TWmiClass)
@@ -87,6 +88,11 @@ type
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property BitsPerPel : Cardinal read FBitsPerPel;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
@@ -112,6 +118,11 @@ type
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Copies : Cardinal read FCopies;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
@@ -273,6 +284,11 @@ type
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Scale : Cardinal read FScale;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The identifier by which the CIM_Setting object is known.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SettingID : String read FSettingID;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>

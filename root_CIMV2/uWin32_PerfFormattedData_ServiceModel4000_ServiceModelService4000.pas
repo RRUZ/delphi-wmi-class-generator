@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:55
+/// Creation Date 24-12-2010 09:36:42
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_ServiceModel4000_ServiceModelService4000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_ServiceModel4000_ServiceModelService4000.asp
 /// </summary>
@@ -34,6 +34,11 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// ServiceModel performance counters for service
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_ServiceModel4000_ServiceModelService4000=class(TWmiClass)
   private
     FCalls                              : Cardinal;
@@ -83,49 +88,314 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.Calls.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Calls : Cardinal read FCalls;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The average duration of calls to this service. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallDuration.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsDuration : Cardinal read FCallsDuration;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls with unhandled exceptions in this service. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFailed.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsFailed : Cardinal read FCallsFailed;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls with unhandled exceptions in this service per second. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFailedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsFailedPerSecond : Cardinal read FCallsFailedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that returned faults. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFaulted.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsFaulted : Cardinal read FCallsFaulted;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that returned faults per second. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFaultedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsFaultedPerSecond : Cardinal read FCallsFaultedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that are in progress. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsOutstanding.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsOutstanding : Cardinal read FCallsOutstanding;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CallsPerSecond : Cardinal read FCallsPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of instances of the service. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.Instances.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Instances : Cardinal read FInstances;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The creation rate of service instances per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.InstancesPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InstancesCreatedPerSecond : Cardinal read FInstancesCreatedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Number of calls waiting to be or being processed in the dispatcher as a 
+   /// percentage of max calls throttle. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsPercentOfMaxCalls.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentCalls : Cardinal read FPercentOfMaxConcurrentCalls;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Number of active instances and messages waiting for instances as a percentage 
+   /// of max instances throttle. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.InstancessPercentOfMaxInstances.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentInstances : Cardinal read FPercentOfMaxConcurrentInstances;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Number of active sessions and messages waiting for sessions as a percentage of 
+   /// max sessions throttle. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SessionsPercentOfMaxSessions.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentSessions : Cardinal read FPercentOfMaxConcurrentSessions;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this service that were dropped by the queued 
+   /// transport. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqDroppedMessages.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedMessagesDropped : Cardinal read FQueuedMessagesDropped;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this service that were dropped by the queued 
+   /// transport per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqDroppedMessagesPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedMessagesDroppedPerSecond : Cardinal read FQueuedMessagesDroppedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this servcie that were rejected by the queued 
+   /// transport. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqRejectedMessages.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedMessagesRejected : Cardinal read FQueuedMessagesRejected;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this service that were rejected by the queued 
+   /// transport per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqRejectedMessagesPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedMessagesRejectedPerSecond : Cardinal read FQueuedMessagesRejectedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this service that were marked poisoned by the queued 
+   /// transport. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqPoisonMessages.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedPoisonMessages : Cardinal read FQueuedPoisonMessages;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of messages to this service that were marked poisoned by the queued 
+   /// transport per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqPoisonMessagesPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueuedPoisonMessagesPerSecond : Cardinal read FQueuedPoisonMessagesPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of reliable messaging messages that were dropped in this service. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMMessagesDropped.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReliableMessagingMessagesDropped : Cardinal read FReliableMessagingMessagesDropped;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of reliable messaging messages that were dropped in this service per 
+   /// second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMMessagesDroppedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReliableMessagingMessagesDroppedPerSecond : Cardinal read FReliableMessagingMessagesDroppedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of reliable messaging sessions that were faulted in this service. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMSessionsFaulted.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReliableMessagingSessionsFaulted : Cardinal read FReliableMessagingSessionsFaulted;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of reliable messaging sessions that were faulted in this service per 
+   /// second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMSessionsFaultedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReliableMessagingSessionsFaultedPerSecond : Cardinal read FReliableMessagingSessionsFaultedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that failed authorization. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityCallsNotAuthorized.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorized : Cardinal read FSecurityCallsNotAuthorized;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that failed authorization per second. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityCallsNotAuthorizedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorizedPerSecond : Cardinal read FSecurityCallsNotAuthorizedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that failed validation or authentication. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityValidationAuthenticationFailures.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailures : Cardinal read FSecurityValidationandAuthenticationFailures;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of calls to this service that failed validation or authentication 
+   /// per second. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityValidationAuthenticationFailuresPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailuresPerSecond : Cardinal read FSecurityValidationandAuthenticationFailuresPerSecond;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with the outcome aborted in this service. 
+   /// Work done under such operations is rolled back. Resources are reverted to their 
+   /// previous state. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxAborted.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsAborted : Cardinal read FTransactedOperationsAborted;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with the outcome aborted in this service 
+   /// per second. Work done under such operations is rolled back. Resources are 
+   /// reverted to their previous state. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxAbortedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsAbortedPerSecond : Cardinal read FTransactedOperationsAbortedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with the outcome committed in this service. 
+   /// Work done under such operations is fully committed. Resources are updated in 
+   /// accordance with the work done in the operation. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxCommitted.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsCommitted : Cardinal read FTransactedOperationsCommitted;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with the outcome committed in this service 
+   /// per second. Work done under such operations is fully committed. Resources are 
+   /// updated in accordance with the work done in the operation. 
+   /// http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxCommittedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsCommittedPerSecond : Cardinal read FTransactedOperationsCommittedPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with an outcome in doubt in this service. 
+   /// Work done with an outcome in doubt is in an indeterminate state. Resources are 
+   /// held pending outcome. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxInDoubt.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsInDoubt : Cardinal read FTransactedOperationsInDoubt;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transacted operations with an outcome in doubt in this service 
+   /// per second. Work done with an outcome in doubt is in an indeterminate state. 
+   /// Resources are held pending outcome. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxInDoubtPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactedOperationsInDoubtPerSecond : Cardinal read FTransactedOperationsInDoubtPerSecond;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transactions that flowed to operations in this service. This 
+   /// counter is incremented any time a transaction ID is present in the message that 
+   /// is sent to the service. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxFlowed.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactionsFlowed : Cardinal read FTransactionsFlowed;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The number of transactions that flowed to operations in this service per 
+   /// second. This counter is incremented any time a transaction ID is present in the 
+   /// message that is sent to the service. http://msdn.microsoft.com/en-
+   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxFlowedPerSecond.aspx
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TransactionsFlowedPerSecond : Cardinal read FTransactionsFlowedPerSecond;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

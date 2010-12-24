@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:22
+/// Creation Date 24-12-2010 09:38:13
 /// Namespace root\CIMV2 Class Win32_SoftwareElementCheck
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SoftwareElementCheck.asp
 /// </summary>
@@ -34,6 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// This association relates an MSI element with any condition or locational 
+  /// information that a feature may require.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_SoftwareElementCheck=class(TWmiClass)
   private
     FCheck                              : OleVariant;
@@ -42,16 +48,48 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The check.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Check : OleVariant read FCheck;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The element.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Element : OleVariant read FElement;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   ///  The Phase property indicates whether the referenced check is an  in-state 
+   /// check or a next-state check.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Phase : Word read FPhase;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// Return the description for the value of the property 
+  /// TWin32_SoftwareElementCheck.Phase
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  function GetPhaseAsString(const APropValue:Word) : string;
 
 implementation
 
+
+function GetPhaseAsString(const APropValue:Word) : string;
+begin
+Result:='';
+  case APropValue of
+    0 : Result:='In-State';
+    1 : Result:='Next-State';
+  end;
+end;
 
 {TWin32_SoftwareElementCheck}
 

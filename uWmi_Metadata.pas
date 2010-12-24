@@ -1673,7 +1673,7 @@ var
 begin
   objSWbemLocator  := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService    := objSWbemLocator.ConnectServer(wbemLocalhost, FNameSpace, '', '');
-  objSWbemObjectSet:= objWMIService.Get(FClass, wbemFlagUseAmendedQualifiers and wbemFlagForwardOnly);
+  objSWbemObjectSet:= objWMIService.Get(FClass, wbemFlagUseAmendedQualifiers);
 
 
   Qualifiers    := objSWbemObjectSet.Qualifiers_;

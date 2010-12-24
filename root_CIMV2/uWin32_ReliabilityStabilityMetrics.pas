@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:21
+/// Creation Date 24-12-2010 09:38:05
 /// Namespace root\CIMV2 Class Win32_ReliabilityStabilityMetrics
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ReliabilityStabilityMetrics.asp
 /// </summary>
@@ -34,6 +34,11 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// System stability index value history
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ReliabilityStabilityMetrics=class(TWmiClass)
   private
     FEndMeasurementDate                 : TDateTime;
@@ -44,11 +49,45 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The most recent UTC time at which reliability metric data was collected
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property EndMeasurementDate : TDateTime read FEndMeasurementDate;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A GUID used to correlate reliability metrics on this computer. The GUID will be 
+   /// reset if an error prevents reliability metrics from being calculated
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property RelID : String read FRelID;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The UTC time at which reliability metric data collection began
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property StartMeasurementDate : TDateTime read FStartMeasurementDate;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The system stability index value
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SystemStabilityIndex : Double read FSystemStabilityIndex;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The UTC time at which the system stability index value was calculated
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TimeGenerated : TDateTime read FTimeGenerated;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Get the number of stability metric records
+   /// </summary>
+   /// <param name="RecordCount">
+   /// Number of stability metric records in the database
+   /// </param>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    function GetRecordCount(var RecordCount : Cardinal): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

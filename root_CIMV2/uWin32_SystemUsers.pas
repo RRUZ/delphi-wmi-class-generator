@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:23
+/// Creation Date 24-12-2010 09:38:16
 /// Namespace root\CIMV2 Class Win32_SystemUsers
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SystemUsers.asp
 /// </summary>
@@ -34,6 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Win32_SystemUsers class represents an association between a computer system 
+  /// and a user account on that system.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_SystemUsers=class(TWmiClass)
   private
     FGroupComponent                     : OleVariant;
@@ -41,7 +47,18 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The GroupComponent reference represents the computer system containing the user 
+   /// account.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GroupComponent : OleVariant read FGroupComponent;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The PartComponent reference represents the user account on the computer system.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PartComponent : OleVariant read FPartComponent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
