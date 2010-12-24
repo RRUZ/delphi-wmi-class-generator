@@ -1,0 +1,830 @@
+This is the meta-data in xml format for the Win32_Share WMI class.
+
+{{{
+<CLASS NAME="Win32_Share" SUPERCLASS="CIM_LogicalElement">
+    <QUALIFIER NAME="CreateBy" TYPE="string" TOSUBCLASS="false">
+        <VALUE>
+            Create
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="DeleteBy" TYPE="string" TOSUBCLASS="false">
+        <VALUE>
+            DeleteInstance
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+        <VALUE>
+            The Win32_Share class represents a shared resource on a Win32 system. This may be a disk drive, printer, interprocess communication, or other shareable device.
+            Example: C:\PUBLIC.
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="dynamic" TYPE="boolean" TOSUBCLASS="false" TOINSTANCE="true">
+        <VALUE>
+            TRUE
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="Locale" TYPE="sint32" TOSUBCLASS="false" TOINSTANCE="true" AMENDED="true">
+        <VALUE>
+            1033
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="provider" TYPE="string" TOSUBCLASS="false" TOINSTANCE="true">
+        <VALUE>
+            CIMWin32
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="SupportsCreate" TYPE="boolean" TOSUBCLASS="false">
+        <VALUE>
+            TRUE
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="SupportsDelete" TYPE="boolean" TOSUBCLASS="false">
+        <VALUE>
+            TRUE
+        </VALUE>
+    </QUALIFIER>
+    <QUALIFIER NAME="UUID" TYPE="string" TOSUBCLASS="false" TOINSTANCE="true">
+        <VALUE>
+            {8502C4D6-5FBB-11D2-AAC1-006008C78BC7}
+        </VALUE>
+    </QUALIFIER>
+    <PROPERTY NAME="__PATH" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            \\DEXTER-PC\ROOT\CIMV2:Win32_Share
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__NAMESPACE" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            ROOT\CIMV2
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__SERVER" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            DEXTER-PC
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY.ARRAY NAME="__DERIVATION" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE.ARRAY>
+            <VALUE>
+                CIM_LogicalElement
+            </VALUE>
+            <VALUE>
+                CIM_ManagedSystemElement
+            </VALUE>
+        </VALUE.ARRAY>
+    </PROPERTY.ARRAY>
+    <PROPERTY NAME="__PROPERTY_COUNT" CLASSORIGIN="___SYSTEM" TYPE="sint32">
+        <VALUE>
+            10
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__RELPATH" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            Win32_Share
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__DYNASTY" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            CIM_ManagedSystemElement
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__SUPERCLASS" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            CIM_LogicalElement
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__CLASS" CLASSORIGIN="___SYSTEM" TYPE="string">
+        <VALUE>
+            Win32_Share
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="__GENUS" CLASSORIGIN="___SYSTEM" TYPE="sint32">
+        <VALUE>
+            1
+        </VALUE>
+    </PROPERTY>
+    <PROPERTY NAME="AccessMask" CLASSORIGIN="Win32_Share" TYPE="uint32">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                uint32
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="DEPRECATED" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                This property has been deprecated in favour of the GetAccessMask method of this class due to the expense of calling GetEffectiveRightsFromAcl. The value will be set to NULL
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="AllowMaximum" CLASSORIGIN="Win32_Share" TYPE="boolean">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                boolean
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The AllowMaximum property indicates whether the number of concurrent users for this resource has been limited.
+                Values: TRUE or FALSE. A value of TRUE indicates the number of concurrent users of this resource has not been limited and the value in the MaximumAllowed property is ignored.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Structures|SHARE_INFO_502|shi502_max_uses
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Caption" CLASSORIGIN="CIM_ManagedSystemElement" PROPAGATED="true" TYPE="string">
+        <QUALIFIER NAME="CIMTYPE" PROPAGATED="true" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                string
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Caption property is a short textual description (one-line string) of the object.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MaxLen" PROPAGATED="true" TYPE="sint32">
+            <VALUE>
+                64
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" PROPAGATED="true" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Description" CLASSORIGIN="CIM_ManagedSystemElement" PROPAGATED="true" TYPE="string">
+        <QUALIFIER NAME="CIMTYPE" PROPAGATED="true" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                string
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Description property provides a textual description of the object.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" PROPAGATED="true" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="InstallDate" CLASSORIGIN="CIM_ManagedSystemElement" PROPAGATED="true" TYPE="datetime">
+        <QUALIFIER NAME="CIMTYPE" PROPAGATED="true" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                datetime
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The InstallDate property is datetime value indicating when the object was installed. A lack of a value does not indicate that the object is not installed.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" PROPAGATED="true" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    MIF.DMTF|ComponentID|001.5
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" PROPAGATED="true" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="MaximumAllowed" CLASSORIGIN="Win32_Share" TYPE="uint32">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                uint32
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The MaximumAllowed property indicates the limit on the maximum number of users allowed to use this resource concurrently. The value is only valid if the AllowMaximum member set to FALSE
+                Example: 10.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Structures|SHARE_INFO_502|shi502_max_uses
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Name" CLASSORIGIN="CIM_ManagedSystemElement" PROPAGATED="true" TYPE="string">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                string
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Name property indicates the alias given to a path set up as a share on a Win32 system.
+                Example: public.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="key" TYPE="boolean" OVERRIDABLE="false" TOINSTANCE="true">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Structures|SHARE_INFO_1|shi1_netname
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="Override" TYPE="string">
+            <VALUE>
+                Name
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Path" CLASSORIGIN="Win32_Share" TYPE="string">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                string
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Path property indicates the local path of the Win32 share.
+                Example: C:\Program Files
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Structures|SHARE_INFO_502|shi502_path
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Status" CLASSORIGIN="CIM_ManagedSystemElement" PROPAGATED="true" TYPE="string">
+        <QUALIFIER NAME="CIMTYPE" PROPAGATED="true" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                string
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Status property is a string indicating the current status of the object. Various operational and non-operational statuses can be defined. Operational statuses are "OK", "Degraded" and "Pred Fail". "Pred Fail" indicates that an element may be functioning properly but predicting a failure in the near future. An example is a SMART-enabled hard drive. Non-operational statuses can also be specified. These are "Error", "Starting", "Stopping" and "Service". The latter, "Service", could apply during mirror-resilvering of a disk, reload of a user permissions list, or other administrative work. Not all such work is on-line, yet the managed element is neither "OK" nor in one of the other states.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MaxLen" PROPAGATED="true" TYPE="sint32">
+            <VALUE>
+                10
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" PROPAGATED="true" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="ValueMap" PROPAGATED="true" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    OK
+                </VALUE>
+                <VALUE>
+                    Error
+                </VALUE>
+                <VALUE>
+                    Degraded
+                </VALUE>
+                <VALUE>
+                    Unknown
+                </VALUE>
+                <VALUE>
+                    Pred Fail
+                </VALUE>
+                <VALUE>
+                    Starting
+                </VALUE>
+                <VALUE>
+                    Stopping
+                </VALUE>
+                <VALUE>
+                    Service
+                </VALUE>
+                <VALUE>
+                    Stressed
+                </VALUE>
+                <VALUE>
+                    NonRecover
+                </VALUE>
+                <VALUE>
+                    No Contact
+                </VALUE>
+                <VALUE>
+                    Lost Comm
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="Values" TYPE="string" AMENDED="true">
+            <VALUE.ARRAY>
+                <VALUE>
+                    OK
+                </VALUE>
+                <VALUE>
+                    Error
+                </VALUE>
+                <VALUE>
+                    Degraded
+                </VALUE>
+                <VALUE>
+                    Unknown
+                </VALUE>
+                <VALUE>
+                    Pred Fail
+                </VALUE>
+                <VALUE>
+                    Starting
+                </VALUE>
+                <VALUE>
+                    Stopping
+                </VALUE>
+                <VALUE>
+                    Service
+                </VALUE>
+                <VALUE>
+                    Stressed
+                </VALUE>
+                <VALUE>
+                    NonRecover
+                </VALUE>
+                <VALUE>
+                    No Contact
+                </VALUE>
+                <VALUE>
+                    Lost Comm
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+    </PROPERTY>
+    <PROPERTY NAME="Type" CLASSORIGIN="Win32_Share" TYPE="uint32">
+        <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+            <VALUE>
+                uint32
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Description" TYPE="string" AMENDED="true">
+            <VALUE>
+                The Type property specifies the type of resource being shared. Types include disk drives, print queues, interprocess communications (IPC), and general devices.
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Structures|SHARE_INFO_502|shi502_type
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="read" TYPE="boolean">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="ValueMap" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    0
+                </VALUE>
+                <VALUE>
+                    1
+                </VALUE>
+                <VALUE>
+                    2
+                </VALUE>
+                <VALUE>
+                    3
+                </VALUE>
+                <VALUE>
+                    2147483648
+                </VALUE>
+                <VALUE>
+                    2147483649
+                </VALUE>
+                <VALUE>
+                    2147483650
+                </VALUE>
+                <VALUE>
+                    2147483651
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="Values" TYPE="string" AMENDED="true">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Disk Drive
+                </VALUE>
+                <VALUE>
+                    Print Queue
+                </VALUE>
+                <VALUE>
+                    Device
+                </VALUE>
+                <VALUE>
+                    IPC
+                </VALUE>
+                <VALUE>
+                    Disk Drive Admin
+                </VALUE>
+                <VALUE>
+                    Print Queue Admin
+                </VALUE>
+                <VALUE>
+                    Device Admin
+                </VALUE>
+                <VALUE>
+                    IPC Admin
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+    </PROPERTY>
+    <METHOD NAME="Create" TYPE="uint32" CLASSORIGIN="Win32_Share">
+        <QUALIFIER NAME="Constructor" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Implemented" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Functions|NetShareAdd
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <QUALIFIER NAME="Static" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <PARAMETER NAME="Path" TYPE="string">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    string
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    0
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_502|shi502_path
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="Name" TYPE="string">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    string
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    1
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_1|shi1_netname
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="Type" TYPE="uint32">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    uint32
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    2
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_502|shi502_type
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="MaximumAllowed" TYPE="uint32">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    uint32
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    3
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_502|shi502_max_uses
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="Description" TYPE="string">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    string
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    4
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_1|shi1_remark
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="Password" TYPE="string">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    string
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    5
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_502|shi502_passwd
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER.OBJECT NAME="Access" REFERENCECLASS="Win32_SecurityDescriptor">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    object:Win32_SecurityDescriptor
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    6
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        WMI|Win32_SecurityDescriptor
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER.OBJECT>
+    </METHOD>
+    <METHOD NAME="SetShareInfo" TYPE="uint32" CLASSORIGIN="Win32_Share">
+        <QUALIFIER NAME="Implemented" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Functions|NetShareSetInfo
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+        <PARAMETER NAME="MaximumAllowed" TYPE="uint32">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    uint32
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    0
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_502|shi502_max_uses
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER NAME="Description" TYPE="string">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    string
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    1
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        Win32API|Network Management Structures|SHARE_INFO_1|shi1_remark
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER>
+        <PARAMETER.OBJECT NAME="Access" REFERENCECLASS="Win32_SecurityDescriptor">
+            <QUALIFIER NAME="CIMTYPE" TYPE="string" TOINSTANCE="true">
+                <VALUE>
+                    object:Win32_SecurityDescriptor
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="ID" TYPE="sint32" OVERRIDABLE="false" TOSUBCLASS="false" TOINSTANCE="true">
+                <VALUE>
+                    2
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="In" TYPE="boolean" TOSUBCLASS="false">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+            <QUALIFIER NAME="MappingStrings" TYPE="string">
+                <VALUE.ARRAY>
+                    <VALUE>
+                        WMI|Win32_SecurityDescriptor
+                    </VALUE>
+                </VALUE.ARRAY>
+            </QUALIFIER>
+            <QUALIFIER NAME="Optional" TYPE="boolean">
+                <VALUE>
+                    TRUE
+                </VALUE>
+            </QUALIFIER>
+        </PARAMETER.OBJECT>
+    </METHOD>
+    <METHOD NAME="GetAccessMask" TYPE="uint32" CLASSORIGIN="Win32_Share">
+        <QUALIFIER NAME="Implemented" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Access Control Functions|GetEffectiveRightsFromAcl
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+    </METHOD>
+    <METHOD NAME="Delete" TYPE="uint32" CLASSORIGIN="Win32_Share">
+        <QUALIFIER NAME="Destructor" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="Implemented" TYPE="boolean" TOSUBCLASS="false">
+            <VALUE>
+                TRUE
+            </VALUE>
+        </QUALIFIER>
+        <QUALIFIER NAME="MappingStrings" TYPE="string">
+            <VALUE.ARRAY>
+                <VALUE>
+                    Win32API|Network Management Functions|NetShareDel
+                </VALUE>
+            </VALUE.ARRAY>
+        </QUALIFIER>
+    </METHOD>
+</CLASS>
+}}}
