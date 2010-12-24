@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:19
+/// Creation Date 24-12-2010 08:19:35
 /// Namespace root\CIMV2 Class Win32_AutochkSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_AutochkSetting.asp
 /// </summary>
@@ -34,14 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// This class represents the settings for the autochk operation for a disk. The 
-  /// setting applies to all disks on the computer system. Note that the settings are 
-  /// applicable only to instances of logical disk that represent physical disks on 
-  /// the machine and not to mapped drives.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_AutochkSetting=class(TWmiClass)
   private
     FCaption                            : String;
@@ -51,30 +43,9 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) of the CIM_Setting object.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the CIM_Setting object.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The identifier by which the CIM_Setting object is known.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SettingID : String read FSettingID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   ///  The UserInputDelay property indicates the time to wait, in seconds, for the 
-   /// user to hit any key before it begins to autochk the disks.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property UserInputDelay : Cardinal read FUserInputDelay;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

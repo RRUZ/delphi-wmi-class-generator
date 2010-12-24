@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:39
+/// Creation Date 24-12-2010 08:19:49
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_MSSQLSERVER_SQLServerWorkloadGroupStats
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_MSSQLSERVER_SQLServerWorkloadGroupStats.asp
 /// </summary>
@@ -34,11 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Statistics associated with workload groups
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_MSSQLSERVER_SQLServerWorkloadGroupStats=class(TWmiClass)
   private
     FActiveparallelthreads              : Int64;
@@ -64,98 +59,22 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of threads used by parallel queries in the workload group. Serial 
-   /// queries and the main thread of parallel queries are not included in this number.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Activeparallelthreads : Int64 read FActiveparallelthreads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of currently running requests in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Activerequests : Int64 read FActiverequests;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of blocked tasks in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Blockedtasks : Int64 read FBlockedtasks;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// System CPU usage by all requests in the specified instance of the performance 
-   /// object.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CPUusagePercent : Int64 read FCPUusagePercent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Maximum CPU time in milliseconds used by a request in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Maxrequestcputimems : Int64 read FMaxrequestcputimems;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Maximum value of memory grant in kilobytes used by a query in the workload 
-   /// group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MaxrequestmemorygrantKB : Int64 read FMaxrequestmemorygrantKB;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of query optimizations per second occurring in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QueryoptimizationsPersec : Int64 read FQueryoptimizationsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of requests waiting in the queue due to resource governor limits in the 
-   /// workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Queuedrequests : Int64 read FQueuedrequests;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of queries per second getting less than ideal amount of memory in the 
-   /// workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReducedmemorygrantsPersec : Int64 read FReducedmemorygrantsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of completed requests per second in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property RequestscompletedPersec : Int64 read FRequestscompletedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of suboptimal query plans generated per second in the workload group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SuboptimalplansPersec : Int64 read FSuboptimalplansPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:26
+/// Creation Date 24-12-2010 08:19:40
 /// Namespace root\CIMV2 Class Win32_NamedJobObjectProcess
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NamedJobObjectProcess.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_NamedJobObjectProcess association class relates a job object and a 
-  /// process contained in the job object. A job can contain multiple processes.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_NamedJobObjectProcess=class(TWmiClass)
   private
     FCollection                         : OleVariant;
@@ -47,19 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// This property is a reference to the instance of Win32_NamedJobObject in which 
-   /// the processes are contained.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Collection : OleVariant read FCollection;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// This property is a reference to the instance of Win32_Process that is part of 
-   /// the job object.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Member : OleVariant read FMember;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

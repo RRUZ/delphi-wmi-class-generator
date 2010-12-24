@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:28
+/// Creation Date 24-12-2010 08:19:42
 /// Namespace root\CIMV2 Class Win32_OperatingSystemAutochkSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OperatingSystemAutochkSetting.asp
 /// </summary>
@@ -34,15 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// This class represents the association between an operating system and the 
-  /// autochk settings that apply to the disks on the machine.Note that the setting 
-  /// is associated to operating system rather than computer system since there can 
-  /// be one or more operating systems installed on the machine, each with its own 
-  /// autochk settings.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_OperatingSystemAutochkSetting=class(TWmiClass)
   private
     FElement                            : OleVariant;
@@ -50,21 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Element reference represents the role of the CIM_ManagedSystemElement 
-   /// object of the CIM_ElementSetting association. Role: The associated managed 
-   /// system element provides the element that implements the element setting.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Element : OleVariant read FElement;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The CIM_Setting reference represents the role of the CIM_Setting object of the 
-   /// CIM_ElementSetting association. Role: The associated setting provides the 
-   /// setting that implements the element setting.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Setting : OleVariant read FSetting;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

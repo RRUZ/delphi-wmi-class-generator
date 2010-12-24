@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:13
+/// Creation Date 24-12-2010 08:20:20
 /// Namespace root\CIMV2 Class Win32_PrinterSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterSetting.asp
 /// </summary>
@@ -36,8 +36,8 @@ type
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// The Win32_DeviceSettings class represents an association between a logical 
-  /// device and a setting that can be applied to it.
+  /// The Win32_PrinterSetting class represents an association between a printer and 
+  /// its configuration settings.
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PrinterSetting=class(TWmiClass)
@@ -49,15 +49,15 @@ type
    destructor Destroy;Override;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Element reference represents properties of the logical device on which the 
-   /// settings can be applied.
+   /// The Element reference represents the printer that can be configured with the 
+   /// Settings member.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Element : OleVariant read FElement;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Setting reference represents settings that can be applied to the logical 
-   /// device.
+   /// The Setting reference represents the printer configuration settings that can be 
+   /// applied to the associated printer.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Setting : OleVariant read FSetting;

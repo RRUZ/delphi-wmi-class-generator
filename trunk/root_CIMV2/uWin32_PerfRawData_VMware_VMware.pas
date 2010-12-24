@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:11
+/// Creation Date 24-12-2010 08:20:18
 /// Namespace root\CIMV2 Class Win32_PerfRawData_VMware_VMware
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_VMware_VMware.asp
 /// </summary>
@@ -34,11 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// VMware performance counters.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_VMware_VMware=class(TWmiClass)
   private
     FCaption                            : String;
@@ -71,140 +66,32 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes of simulated physical memory that is locked by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GuestLockedMemoryBytes : Cardinal read FGuestLockedMemoryBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes of simulated physical memory in the virtual machine
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GuestVirtualPhysicalMemoryBytes : Cardinal read FGuestVirtualPhysicalMemoryBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes received by the guest OS over the network
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkBytesReceivedPersec : Cardinal read FNetworkBytesReceivedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes sent by the guest OS over the network
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkBytesSentPersec : Cardinal read FNetworkBytesSentPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes sent or received by the guest OS over the network
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkBytesTransferredPersec : Cardinal read FNetworkBytesTransferredPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network packets received by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkPacketsReceivedPersec : Cardinal read FNetworkPacketsReceivedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network packets sent by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkPacketsSentPersec : Cardinal read FNetworkPacketsSentPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network errors from receiving packets by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkReceiveErrorsPersec : Cardinal read FNetworkReceiveErrorsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network errors from sending packets by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkSendErrorsPersec : Cardinal read FNetworkSendErrorsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network errors from sending or receiving packets by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkTransferErrorsPersec : Cardinal read FNetworkTransferErrorsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of network operations performed by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NetworkTransfersPersec : Cardinal read FNetworkTransfersPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The percentage of simulated physical memory recently used by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentGuestPhysicalMemoryTouched : Cardinal read FPercentGuestPhysicalMemoryTouched;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes transferred for disk read operations performed by the guest 
-   /// OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskBytesReadPersec : Cardinal read FVirtualDiskBytesReadPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes transferred for disk operations performed by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskBytesTransferredPersec : Cardinal read FVirtualDiskBytesTransferredPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of bytes transferred for disk write operations performed by the 
-   /// guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskBytesWrittenPersec : Cardinal read FVirtualDiskBytesWrittenPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of disk read operations performed by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskReadsPersec : Cardinal read FVirtualDiskReadsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of disk operations performed by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskTransfersPersec : Cardinal read FVirtualDiskTransfersPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of disk write operations performed by the guest OS
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualDiskWritesPersec : Cardinal read FVirtualDiskWritesPersec;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

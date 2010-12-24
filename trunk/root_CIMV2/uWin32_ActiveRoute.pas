@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:19
+/// Creation Date 24-12-2010 08:19:35
 /// Namespace root\CIMV2 Class Win32_ActiveRoute
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ActiveRoute.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The ActiveRoute class assoctiates the current IP4 Route being used with the 
-  /// persisted IP route table.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ActiveRoute=class(TWmiClass)
   private
     FSameElement                        : OleVariant;
@@ -47,17 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The SameElement represents persistent IP route in thisrelationship.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SameElement : OleVariant read FSameElement;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The SystemElement represents the active IP route beingused.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SystemElement : OleVariant read FSystemElement;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

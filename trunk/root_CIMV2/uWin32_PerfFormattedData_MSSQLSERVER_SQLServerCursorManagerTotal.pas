@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:37
+/// Creation Date 24-12-2010 08:19:48
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_MSSQLSERVER_SQLServerCursorManagerTotal
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_MSSQLSERVER_SQLServerCursorManagerTotal.asp
 /// </summary>
@@ -34,11 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Counters for cursor properties not grouped by type
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_MSSQLSERVER_SQLServerCursorManagerTotal=class(TWmiClass)
   private
     FAsyncpopulationcount               : Int64;
@@ -56,45 +51,14 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of cursors being populated asynchronously.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Asyncpopulationcount : Int64 read FAsyncpopulationcount;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of cursor conversions/sec.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Cursorconversionrate : Int64 read FCursorconversionrate;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times a flush for a cursor xstmt occured.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Cursorflushes : Int64 read FCursorflushes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

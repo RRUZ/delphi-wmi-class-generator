@@ -14,6 +14,7 @@ object FrmMain: TFrmMain
   Position = poScreenCenter
   OnActivate = FormActivate
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
@@ -72,13 +73,13 @@ object FrmMain: TFrmMain
       AutoSize = True
       BevelOuter = bvNone
       TabOrder = 0
-      object ToolBar1: TToolBar
+      object ToolBarMain: TToolBar
         Left = 0
         Top = 0
         Width = 998
         Height = 29
         ButtonWidth = 99
-        Caption = 'ToolBar1'
+        Caption = 'ToolBarMain'
         DrawingStyle = dsGradient
         Images = ImageList1
         List = True
@@ -99,16 +100,16 @@ object FrmMain: TFrmMain
           ImageIndex = 8
           OnClick = ToolButtonViewCodeClick
         end
-        object ToolButton3: TToolButton
+        object ToolButton1: TToolButton
           Left = 180
           Top = 0
-          Width = 8
-          Caption = 'ToolButton3'
-          ImageIndex = 2
+          Width = 13
+          Caption = 'ToolButton1'
+          ImageIndex = 3
           Style = tbsSeparator
         end
         object CbWmiNameSpaces: TComboBox
-          Left = 188
+          Left = 193
           Top = 0
           Width = 257
           Height = 21
@@ -126,6 +127,8 @@ object FrmMain: TFrmMain
       ActivePage = TabSheet1
       Align = alClient
       TabOrder = 1
+      ExplicitLeft = 271
+      ExplicitTop = 33
       object TabSheet1: TTabSheet
         Caption = 'Properties'
         object LvProperties: TListView
@@ -252,7 +255,7 @@ object FrmMain: TFrmMain
     Left = 645
     Top = 93
     Bitmap = {
-      494C01010C001800980010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800A40010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -786,5 +789,10 @@ object FrmMain: TFrmMain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
+  end
+  object ApplicationEvents1: TApplicationEvents
+    OnException = ApplicationEvents1Exception
+    Left = 600
+    Top = 96
   end
 end

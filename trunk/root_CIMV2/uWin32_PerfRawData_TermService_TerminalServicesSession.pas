@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:10
+/// Creation Date 24-12-2010 08:20:17
 /// Namespace root\CIMV2 Class Win32_PerfRawData_TermService_TerminalServicesSession
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_TermService_TerminalServicesSession.asp
 /// </summary>
@@ -34,11 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Terminal Services per-session resource monitoring.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_TermService_TerminalServicesSession=class(TWmiClass)
   private
     FCaption                            : String;
@@ -128,613 +123,89 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The total number of handles currently open by this process. This number is 
-   /// equal to the sum of the handles currently open by each thread in this process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property HandleCount : Cardinal read FHandleCount;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input async framing errors. These can be caused by a noisy 
-   /// transmission line. Using a smaller packet size may help in some cases.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputAsyncFrameError : Cardinal read FInputAsyncFrameError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input async overflow errors. These can be caused by a lack of buffer 
-   /// space available on the host.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputAsyncOverflow : Cardinal read FInputAsyncOverflow;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input async overrun errors. These can be caused by the baud rate 
-   /// being faster than the computer can handle, or a non-16550 serial line is used. 
-   /// Overruns can also occur if too many high speed serial lines are active at one 
-   /// time for the processor's power.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputAsyncOverrun : Cardinal read FInputAsyncOverrun;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input async parity errors. These can be caused by a noisy 
-   /// transmission line
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputAsyncParityError : Cardinal read FInputAsyncParityError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes input on this session that includes all protocol overhead.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputBytes : Cardinal read FInputBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes input after compression. This number compared with the Total 
-   /// Bytes input is the compression ratio.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputCompressedBytes : Cardinal read FInputCompressedBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input compression dictionary flushes. When the data can not be 
-   /// compressed, the compression dictionary is flushed so that newer data has a 
-   /// better chance of being compressed. Some causes of data not compressing includes 
-   /// transferring compressed files over Client Drive Mapping.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputCompressFlushes : Cardinal read FInputCompressFlushes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Compression ratio of the server input data stream.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputCompressionRatio : Cardinal read FInputCompressionRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of input errors of all types. Some example input errors are lost ACK's, badly formed packets, etc.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputErrors : Cardinal read FInputErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of frames (packets) input on this Session.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputFrames : Cardinal read FInputFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The total number of timeouts on the communication line as seen from the client 
-   /// side of the connection. These are typically the result of a noisy line. On some 
-   /// high latency networks, this could be the result of the protocol timeout being 
-   /// too short. Increasing the protocol timeout on these types of lines will improve 
-   /// performance by reducing needless re-transmissions.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputTimeouts : Cardinal read FInputTimeouts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of Terminal Services transport-level errors on input.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputTransportErrors : Cardinal read FInputTransportErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of times that a wait for an available send buffer was done by the 
-   /// protocols on the client side of the connection.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputWaitForOutBuf : Cardinal read FInputWaitForOutBuf;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes input on this session after all protocol overhead has been 
-   /// removed.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputWdBytes : Cardinal read FInputWdBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of frames input after any additional protocol added frames have been 
-   /// removed.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InputWdFrames : Cardinal read FInputWdFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output async framing errors. This could be caused by a hardware or 
-   /// line problem.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputAsyncFrameError : Cardinal read FOutputAsyncFrameError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output async overflow errors.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputAsyncOverflow : Cardinal read FOutputAsyncOverflow;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output async overrun errors.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputAsyncOverrun : Cardinal read FOutputAsyncOverrun;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output async parity errors. These can be caused by a hardware or line 
-   /// problem.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputAsyncParityError : Cardinal read FOutputAsyncParityError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes output on this Session that includes all protocol overhead.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputBytes : Cardinal read FOutputBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes output after compression. This number compared with the Total 
-   /// Bytes output is the compression ratio.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputCompressedBytes : Cardinal read FOutputCompressedBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output compression dictionary flushes. When the data can not be 
-   /// compressed, the compression dictionary is flushed so that newer data has a 
-   /// better chance of being compressed. Some causes of data not compressing includes 
-   /// transfering compressed files over Client Drive Mapping.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputCompressFlushes : Cardinal read FOutputCompressFlushes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Compression ratio of the server output data stream.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputCompressionRatio : Cardinal read FOutputCompressionRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of output errors of all types. Some example output errors are lost ACK's, badly formed packets, etc.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputErrors : Cardinal read FOutputErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of frames (packets) output on this session.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputFrames : Cardinal read FOutputFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The total number of timeouts on the communication line from the host side of 
-   /// the connection. These are typically the result of a noisy line. On some high 
-   /// latency networks, this could be the result of the protocol timeout being too 
-   /// short. Increasing the protocol timeout on these types of lines will improve 
-   /// performance by reducing needless re-transmissions.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputTimeouts : Cardinal read FOutputTimeouts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of Terminal Services transport-level errors on output.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputTransportErrors : Cardinal read FOutputTransportErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// This is the number of times that a wait for an available send buffer was done 
-   /// by the protocol on the server side of the connection.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputWaitForOutBuf : Cardinal read FOutputWaitForOutBuf;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of bytes output on this session after all protocol overhead has been 
-   /// removed.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputWdBytes : Cardinal read FOutputWdBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of frames output before any additional protocol frames have been 
-   /// added.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OutputWdFrames : Cardinal read FOutputWdFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Page Faults/sec is the rate at which page faults by the threads executing in 
-   /// this process are occurring.  A page fault occurs when a thread refers to a 
-   /// virtual memory page that is not in its working set in main memory. This may not 
-   /// cause the page to be fetched from disk if it is on the standby list and hence 
-   /// already in main memory, or if it is in use by another process with whom the 
-   /// page is shared.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PageFaultsPersec : Cardinal read FPageFaultsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Page File Bytes is the current amount of virtual memory, in bytes, that this 
-   /// process has reserved for use in the paging file(s). Paging files are used to 
-   /// store pages of memory used by the process that are not contained in other 
-   /// files. Paging files are shared by all processes, and the lack of space in 
-   /// paging files can prevent other processes from allocating memory. If there is no 
-   /// paging file, this counter reflects the current amount of virtual memory that 
-   /// the process has reserved for use in physical memory.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PageFileBytes : Int64 read FPageFileBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Page File Bytes Peak is the maximum amount of virtual memory, in bytes, that 
-   /// this process has reserved for use in the paging file(s). Paging files are used 
-   /// to store pages of memory used by the process that are not contained in other 
-   /// files.  Paging files are shared by all processes, and the lack of space in 
-   /// paging files can prevent other processes from allocating memory. If there is no 
-   /// paging file, this counter reflects the maximum amount of virtual memory that 
-   /// the process has reserved for use in physical memory.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PageFileBytesPeak : Int64 read FPageFileBytesPeak;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// % Privileged Time is the percentage of elapsed time that the process threads 
-   /// spent executing code in privileged mode. When a Windows system service is 
-   /// called, the service will often run in privileged mode to gain access to system-
-   /// private data. Such data is protected from access by threads executing in user 
-   /// mode. Calls to the system can be explicit or implicit, such as page faults or 
-   /// interrupts. Unlike some early operating systems, Windows uses process 
-   /// boundaries for subsystem protection in addition to the traditional protection 
-   /// of user and privileged modes. Some work done by Windows on behalf of the 
-   /// application might appear in other subsystem processes in addition to the 
-   /// privileged time in the process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentPrivilegedTime : Int64 read FPercentPrivilegedTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// % Processor Time is the percentage of elapsed time that all of process threads 
-   /// used the processor to execution instructions. An instruction is the basic unit 
-   /// of execution in a computer, a thread is the object that executes instructions, 
-   /// and a process is the object created when a program is run. Code executed to 
-   /// handle some hardware interrupts and trap conditions are included in this count.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentProcessorTime : Int64 read FPercentProcessorTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// % User Time is the percentage of elapsed time that the process threads spent 
-   /// executing code in user mode. Applications, environment subsystems, and integral 
-   /// subsystems execute in user mode. Code executing in user mode cannot damage the 
-   /// integrity of the Windows executive, kernel, and device drivers. Unlike some 
-   /// early operating systems, Windows uses process boundaries for subsystem 
-   /// protection in addition to the traditional protection of user and privileged 
-   /// modes. Some work done by Windows on behalf of the application might appear in 
-   /// other subsystem processes in addition to the privileged time in the process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PercentUserTime : Int64 read FPercentUserTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Pool Nonpaged Bytes is the size, in bytes, of the nonpaged pool, an area of 
-   /// system memory (physical memory used by the operating system) for objects that 
-   /// cannot be written to disk, but must remain in physical memory as long as they 
-   /// are allocated.  Memory\\Pool Nonpaged Bytes is calculated differently than 
-   /// Process\\Pool Nonpaged Bytes, so it might not equal Process\\Pool Nonpaged 
-   /// Bytes\\_Total.  This counter displays the last observed value only; it is not 
-   /// an average.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PoolNonpagedBytes : Cardinal read FPoolNonpagedBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Pool Paged Bytes is the size, in bytes, of the paged pool, an area of system 
-   /// memory (physical memory used by the operating system) for objects that can be 
-   /// written to disk when they are not being used.  Memory\\Pool Paged Bytes is 
-   /// calculated differently than Process\\Pool Paged Bytes, so it might not equal 
-   /// Process\\Pool Paged Bytes\\_Total. This counter displays the last observed 
-   /// value only; it is not an average.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PoolPagedBytes : Cardinal read FPoolPagedBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Private Bytes is the current size, in bytes, of memory that this process has 
-   /// allocated that cannot be shared with other processes.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PrivateBytes : Int64 read FPrivateBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Hit ratio in the protocol bitmap cache. A higher hit ratio means better 
-   /// performance since data transmissions are reduced. Low hit ratios are due to the 
-   /// screen updating with new information that is either not re-used, or is flushed 
-   /// out of the client cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBitmapCacheHitRatio : Cardinal read FProtocolBitmapCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of hits in the protocol bitmap cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBitmapCacheHits : Cardinal read FProtocolBitmapCacheHits;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of references to the protocol bitmap cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBitmapCacheReads : Cardinal read FProtocolBitmapCacheReads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Hit ratio in the protocol brush cache. A higher hit ratio means better 
-   /// performance since data transmissions are reduced. Low hit ratios are due to the 
-   /// screen updating with new information that is either not re-used, or is flushed 
-   /// out of the client cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBrushCacheHitRatio : Cardinal read FProtocolBrushCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of hits in the protocol brush cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBrushCacheHits : Cardinal read FProtocolBrushCacheHits;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of references to the protocol brush cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolBrushCacheReads : Cardinal read FProtocolBrushCacheReads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Hit ratio in the protocol glyph cache. A higher hit ratio means better 
-   /// performance since data transmissions are reduced. Low hit ratios are due to the 
-   /// screen updating with new information that is either not re-used, or is flushed 
-   /// out of the client cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolGlyphCacheHitRatio : Cardinal read FProtocolGlyphCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of hits in the protocol glyph cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolGlyphCacheHits : Cardinal read FProtocolGlyphCacheHits;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of references to the protocol glyph cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolGlyphCacheReads : Cardinal read FProtocolGlyphCacheReads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Hit ratio in the protocol save screen bitmap cache. A higher hit ratio means 
-   /// better performance since data transmissions are reduced. Low hit ratios are due 
-   /// to the screen updating with new information that is either not re-used, or is 
-   /// flushed out of the client cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolSaveScreenBitmapCacheHitRatio : Cardinal read FProtocolSaveScreenBitmapCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of hits in the protocol save screen bitmap cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolSaveScreenBitmapCacheHits : Cardinal read FProtocolSaveScreenBitmapCacheHits;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of references to the protocol save screen bitmap cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProtocolSaveScreenBitmapCacheReads : Cardinal read FProtocolSaveScreenBitmapCacheReads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of threads currently active in this process. An instruction is the 
-   /// basic unit of execution in a processor, and a thread is the object that 
-   /// executes instructions. Every running process has at least one thread.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ThreadCount : Cardinal read FThreadCount;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of async framing errors. These can be caused by a noisy 
-   /// transmission line. Using a smaller packet size may help in some cases.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalAsyncFrameError : Cardinal read FTotalAsyncFrameError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of async overflow errors. These can be caused by a lack of buffer 
-   /// space available on the host.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalAsyncOverflow : Cardinal read FTotalAsyncOverflow;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of async overrun errors. These can be caused by the baud rate 
-   /// being faster than the computer can handle, or a non-16550 serial line is used. 
-   /// Overruns can also occur if too many high speed serial lines are active at one 
-   /// time for the processor's power.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalAsyncOverrun : Cardinal read FTotalAsyncOverrun;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of async parity errors. These can be caused by a noisy 
-   /// transmission line.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalAsyncParityError : Cardinal read FTotalAsyncParityError;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of bytes on this Session that includes all protocol overhead.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalBytes : Cardinal read FTotalBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of bytes after compression. This number compared with the total 
-   /// bytes is the compression ratio.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCompressedBytes : Cardinal read FTotalCompressedBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of compression dictionary flushes. When the data can not be 
-   /// compressed, the compression dictionary is flushed so that newer data has a 
-   /// better chance of being compressed. Some causes of data not compressing includes 
-   /// transfering compressed files over Client Drive Mapping.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCompressFlushes : Cardinal read FTotalCompressFlushes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total compression ratio of the server data stream.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCompressionRatio : Cardinal read FTotalCompressionRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of errors of all types. Some example errors are lost ACK's, badly formed packets, etc.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalErrors : Cardinal read FTotalErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of frames (packets) on this Session.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalFrames : Cardinal read FTotalFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Overall hit ratio for all protocol caches.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalProtocolCacheHitRatio : Cardinal read FTotalProtocolCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total hits in all protocol caches. The protocol caches Windows objects that are 
-   /// likely to be re-used to avoid having to re-send them on the transmission line. 
-   /// Example objects are Windows icons and brushes. Hits in the cache represent 
-   /// objects that did not need to be re-sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalProtocolCacheHits : Cardinal read FTotalProtocolCacheHits;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total references to all protocol caches.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalProtocolCacheReads : Cardinal read FTotalProtocolCacheReads;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The total number of timeouts on the communication line from both the host and 
-   /// client sides of the connection. These are typically the result of a noisy line. 
-   /// On some high latency networks, this could be the result of the protocol timeout 
-   /// being too short. Increasing the protocol timeout on these types of lines will 
-   /// improve performance by reducing needless re-transmissions.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalTimeouts : Cardinal read FTotalTimeouts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of Terminal Services transport-level errors.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalTransportErrors : Cardinal read FTotalTransportErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The number of times that a wait for an available send buffer was done by the 
-   /// protocols on both the server and client sides of the connection.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalWaitForOutBuf : Cardinal read FTotalWaitForOutBuf;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of bytes on this Session after all protocol overhead has been 
-   /// removed.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalWdBytes : Cardinal read FTotalWdBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The total number of frames input and output before any additional protocol 
-   /// frames have been added.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalWdFrames : Cardinal read FTotalWdFrames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Virtual Bytes is the current size, in bytes, of the virtual address space the 
-   /// process is using. Use of virtual address space does not necessarily imply 
-   /// corresponding use of either disk or main memory pages. Virtual space is finite, 
-   /// and the process can limit its ability to load libraries.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualBytes : Int64 read FVirtualBytes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Virtual Bytes Peak is the maximum size, in bytes, of virtual address space the 
-   /// process has used at any one time. Use of virtual address space does not 
-   /// necessarily imply corresponding use of either disk or main memory pages. 
-   /// However, virtual space is finite, and the process might limit its ability to 
-   /// load libraries.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property VirtualBytesPeak : Int64 read FVirtualBytesPeak;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Working Set is the current size, in bytes, of the Working Set of this process. 
-   /// The Working Set is the set of memory pages touched recently by the threads in 
-   /// the process. If free memory in the computer is above a threshold, pages are 
-   /// left in the Working Set of a process even if they are not in use.  When free 
-   /// memory falls below a threshold, pages are trimmed from Working Sets. If they 
-   /// are needed they will then be soft-faulted back into the Working Set before 
-   /// leaving main memory.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property WorkingSet : Int64 read FWorkingSet;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Working Set Peak is the maximum size, in bytes, of the Working Set of this 
-   /// process at any point in time. The Working Set is the set of memory pages 
-   /// touched recently by the threads in the process. If free memory in the computer 
-   /// is above a threshold, pages are left in the Working Set of a process even if 
-   /// they are not in use. When free memory falls below a threshold, pages are 
-   /// trimmed from Working Sets. If they are needed they will then be soft-faulted 
-   /// back into the Working Set before they leave main memory.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property WorkingSetPeak : Int64 read FWorkingSetPeak;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

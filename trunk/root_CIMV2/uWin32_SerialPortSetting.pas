@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:16
+/// Creation Date 24-12-2010 08:20:21
 /// Namespace root\CIMV2 Class Win32_SerialPortSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SerialPortSetting.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_SerialPortSetting class represents an association between a serial 
-  /// port and its configuration settings.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_SerialPortSetting=class(TWmiClass)
   private
     FElement                            : OleVariant;
@@ -47,19 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Element reference represents the Win32_SerialPort containing the properties 
-   /// of a serial port on the computer system.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Element : OleVariant read FElement;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Setting reference represents the Win32_SerialPortConfiguration containing a 
-   /// configuration setting for the serial port.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Setting : OleVariant read FSetting;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

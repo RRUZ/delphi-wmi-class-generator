@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:09
+/// Creation Date 24-12-2010 08:20:15
 /// Namespace root\CIMV2 Class Win32_PerfRawData_Tcpip_ICMP
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_Tcpip_ICMP.asp
 /// </summary>
@@ -34,13 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The ICMP performance object consists of counters that measure the rates at 
-  /// which messages are sent and received by using ICMP protocols.  It also includes 
-  /// counters that monitor ICMP protocol errors.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_Tcpip_ICMP=class(TWmiClass)
   private
     FCaption                            : String;
@@ -82,212 +75,38 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Messages Outbound Errors is the number of ICMP messages that were not send due 
-   /// to problems within ICMP, such as lack of buffers.  This value does not include 
-   /// errors discovered outside the ICMP layer, such as those recording the failure 
-   /// of IP to route the resultant datagram.  In some implementations, none of the 
-   /// error types are included in the value of this counter.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MessagesOutboundErrors : Cardinal read FMessagesOutboundErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Messages/sec is the total rate, in incidents per second, at which ICMP messages 
-   /// were sent and received by the entity. The rate includes messages received or 
-   /// sent in error.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MessagesPersec : Cardinal read FMessagesPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Messages Received Errors is the number of ICMP messages that the entity 
-   /// received but had errors, such as bad ICMP checksums, bad length, etc.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MessagesReceivedErrors : Cardinal read FMessagesReceivedErrors;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Messages Received/sec is the rate, in incidents per second at which ICMP 
-   /// messages were received. The rate includes messages received in error.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MessagesReceivedPersec : Cardinal read FMessagesReceivedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Messages Sent/sec is the rate, in incidents per second, at which the server 
-   /// attempted to send. The rate includes those messages sent in error.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MessagesSentPersec : Cardinal read FMessagesSentPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Address Mask is the number of ICMP Address Mask Request messages 
-   /// received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedAddressMask : Cardinal read FReceivedAddressMask;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Address Mask Reply is the number of ICMP Address Mask Reply messages 
-   /// received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedAddressMaskReply : Cardinal read FReceivedAddressMaskReply;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Destination Unreachable is the number of ICMP Destination Unreachable 
-   /// messages received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedDestUnreachable : Cardinal read FReceivedDestUnreachable;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Echo/sec is the rate, in incidents per second, at which ICMP Echo 
-   /// messages were received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedEchoPersec : Cardinal read FReceivedEchoPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Echo Reply/sec is the rate, in incidents per second, at which ICMP 
-   /// Echo Reply messages were received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedEchoReplyPersec : Cardinal read FReceivedEchoReplyPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Parameter Problem is the number of ICMP Parameter Problem messages 
-   /// received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedParameterProblem : Cardinal read FReceivedParameterProblem;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Redirect/sec is the rate, in incidents per second, at which ICMP 
-   /// Redirect messages were received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedRedirectPersec : Cardinal read FReceivedRedirectPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Source Quench is the number of ICMP Source Quench messages received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedSourceQuench : Cardinal read FReceivedSourceQuench;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Time Exceeded is the number of ICMP Time Exceeded messages received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedTimeExceeded : Cardinal read FReceivedTimeExceeded;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Timestamp/sec is the rate, in incidents per second at which ICMP 
-   /// Timestamp Request messages were received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedTimestampPersec : Cardinal read FReceivedTimestampPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Received Timestamp Reply/sec is the rate of ICMP Timestamp Reply messages 
-   /// received.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReceivedTimestampReplyPersec : Cardinal read FReceivedTimestampReplyPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Address Mask is the number of ICMP Address Mask Request messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentAddressMask : Cardinal read FSentAddressMask;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Address Mask Reply is the number of ICMP Address Mask Reply messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentAddressMaskReply : Cardinal read FSentAddressMaskReply;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Destination Unreachable is the number of ICMP Destination Unreachable 
-   /// messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentDestinationUnreachable : Cardinal read FSentDestinationUnreachable;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Echo/sec is the rate of ICMP Echo messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentEchoPersec : Cardinal read FSentEchoPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Echo Reply/sec is the rate, in incidents per second, at which ICMP Echo 
-   /// Reply messages were sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentEchoReplyPersec : Cardinal read FSentEchoReplyPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Parameter Problem is the number of ICMP Parameter Problem messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentParameterProblem : Cardinal read FSentParameterProblem;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Redirect/sec is the rate, in incidents per second, at which ICMP Redirect 
-   /// messages were sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentRedirectPersec : Cardinal read FSentRedirectPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Source Quench is the number of ICMP Source Quench messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentSourceQuench : Cardinal read FSentSourceQuench;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Time Exceeded is the number of ICMP Time Exceeded messages sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentTimeExceeded : Cardinal read FSentTimeExceeded;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Timestamp/sec is the rate, in incidents per second, at which ICMP 
-   /// Timestamp Request messages were sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentTimestampPersec : Cardinal read FSentTimestampPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Sent Timestamp Reply/sec is the rate, in incidents per second,  at which ICMP 
-   /// Timestamp Reply messages were sent.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SentTimestampReplyPersec : Cardinal read FSentTimestampReplyPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

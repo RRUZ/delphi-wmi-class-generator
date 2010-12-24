@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:24
+/// Creation Date 24-12-2010 08:19:39
 /// Namespace root\CIMV2 Class Win32_LogicalDiskToPartition
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_LogicalDiskToPartition.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_LogicalDiskToPartition class represents an association between a 
-  /// logical disk drive and the disk partition it resides on.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_LogicalDiskToPartition=class(TWmiClass)
   private
     FAntecedent                         : OleVariant;
@@ -49,34 +43,9 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Antecedent reference represents the Win32_DiskPartition containing the 
-   /// properties of a disk partition where the logical disk resides.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Dependent reference represents the Win32_LogicalDisk containing the 
-   /// properties of a logical disk that resides on a physical disk partition.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// EndingAddress indicates where in lower level storage, the higher level extent 
-   /// ends. This property is useful when mapping non-contiguous extents into a higher 
-   /// level grouping.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property EndingAddress : Int64 read FEndingAddress;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// StartingAddress indicates where in lower level storage, the higher level extent 
-   /// begins.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property StartingAddress : Int64 read FStartingAddress;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

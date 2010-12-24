@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:19
+/// Creation Date 24-12-2010 08:19:35
 /// Namespace root\CIMV2 Class Win32_ActionCheck
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ActionCheck.asp
 /// </summary>
@@ -34,13 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// This association relates an MSI action with any locational information it 
-  /// requires.  This location is in the form of a file and/or directory 
-  /// specification.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ActionCheck=class(TWmiClass)
   private
     FAction                             : OleVariant;
