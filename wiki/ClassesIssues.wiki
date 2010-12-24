@@ -1,0 +1,2 @@
+ * Namespace root\CIMV2
+ * Class Win32_POTSModem
