@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:45
+/// Creation Date 24-12-2010 09:36:00
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Counters_PerProcessorNetworkActivityCycles
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Counters_PerProcessorNetworkActivityCycles.asp
 /// </summary>
@@ -34,6 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Per Processor Network Activity Cycles counter set measure processor cycles 
+  /// due to network activity of an interface on each processor.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_Counters_PerProcessorNetworkActivityCycles=class(TWmiClass)
   private
     FBuildScatterGatherCyclesPersec     : Cardinal;
@@ -60,23 +66,111 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Build Scatter Gather Cycles/sec is the average rate, in cycles per second, at 
+   /// which NDIS processed building Scatter Gather DMA lists for an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property BuildScatterGatherCyclesPersec : Cardinal read FBuildScatterGatherCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Interrupt Cycles/sec is the average rate, in cycles per second, at which NDIS 
+   /// processed hardware interrupts for an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InterruptCyclesPersec : Cardinal read FInterruptCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Interrupt DPC Cycles/sec is the average rate, in cycles per second, at which 
+   /// NDIS processed a Deferred Procedure Call (DPC) for an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property InterruptDPCCyclesPersec : Cardinal read FInterruptDPCCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Miniport Return Packet Cycles/sec is the average rate, in cycles per second, at 
+   /// which an interface processed returning received packets.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MiniportReturnPacketCyclesPersec : Cardinal read FMiniportReturnPacketCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Miniport RSS Indirection Table Change Cycles is the average rate, in cycles per 
+   /// second, at which an interface processed changing the RSS indirection table.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MiniportRSSIndirectionTableChangeCycles : Cardinal read FMiniportRSSIndirectionTableChangeCycles;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Miniport Send Cycles/sec is the average rate, in cycles per second, at which an 
+   /// interface processed transmitting packets.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MiniportSendCyclesPersec : Cardinal read FMiniportSendCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// NDIS Receive Indication Cycles/sec is the average rate, in cycles per second, 
+   /// at which NDIS processed a receive indicaion call from an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NDISReceiveIndicationCyclesPersec : Cardinal read FNDISReceiveIndicationCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// NDIS Return Packet Cycles/sec is the average rate, in cycles per second, at 
+   /// which NDIS processed returning received packets to an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NDISReturnPacketCyclesPersec : Cardinal read FNDISReturnPacketCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// NDIS Send Complete Cycles/sec is the average rate, in cycles per second, at 
+   /// which NDIS processed transmit-complete notifications from an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NDISSendCompleteCyclesPersec : Cardinal read FNDISSendCompleteCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// NDIS Send Cycles/sec is the average rate, in cycles per second, at which NDIS 
+   /// processed transmit requests from stack for an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NDISSendCyclesPersec : Cardinal read FNDISSendCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Stack Receive Indication Cycles/sec is the average rate, in cycles per second, 
+   /// at which stack processed a receive indicaion call from an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property StackReceiveIndicationCyclesPersec : Cardinal read FStackReceiveIndicationCyclesPersec;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Stack Send Complete Cycles/sec is the average rate, in cycles per second, at 
+   /// which stack processed transmit-complete notifications from an interface.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property StackSendCompleteCyclesPersec : Cardinal read FStackSendCompleteCyclesPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

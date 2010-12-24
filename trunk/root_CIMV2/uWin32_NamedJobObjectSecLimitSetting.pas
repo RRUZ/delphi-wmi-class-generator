@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:40
+/// Creation Date 24-12-2010 09:35:44
 /// Namespace root\CIMV2 Class Win32_NamedJobObjectSecLimitSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NamedJobObjectSecLimitSetting.asp
 /// </summary>
@@ -34,6 +34,14 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Win32_NamedJobObjectSecLimitSetting class represents the security limit 
+  /// settings for a job object. For more information about job object security limit 
+  /// settings, see the Job Object Security and Access Rights topic in the Platform 
+  /// SDK Base Services documentation.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_NamedJobObjectSecLimitSetting=class(TWmiClass)
   private
     FCaption                            : String;
@@ -46,20 +54,87 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the CIM_Setting object.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This property specifies the privileges to delete from the token, if 
+   /// SecurityLimitFlags is Filter Tokens. This property can be NULL if you do not 
+   /// want to delete any privileges. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PrivilegesToDelete : OleVariant read FPrivilegesToDelete;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This property specifies the deny-only SIDs that will be added to the access 
+   /// token, if SecurityLimitFlags is Filter Tokens. This property can be NULL if you 
+   /// do not want to specify any deny-only SIDs.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property RestrictedSIDs : OleVariant read FRestrictedSIDs;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Specifies the security limitations for the job.A value of No Administrator 
+   /// prevents any process in the job from using a token that specifies the local 
+   /// administrators group.A value of Rescricted Token prevents any process in the 
+   /// job from using a token that was not created with the CreateRestrictedToken 
+   /// function.A value of Specific Token forces processes in the job to run under.A 
+   /// value Filter Tokens of applies a filter to the token when a process 
+   /// impersonates a client. Requires at least one of the following properties to be 
+   /// set - SidsToDisable, PrivilegesToDelete, or RestrictedSids.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SecurityLimitFlags : Cardinal read FSecurityLimitFlags;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The identifier by which the job object security limit setting instance is known. 
+   /// As a Kernel object job object names are case sensitive.  Because WMI keys are case insensitive, the name of the named job object must be decorated as follows: a capital letter should be preceded by a backslash.  As a consequence of this convention, 'A' and 'a' are lower case and '\A' and '\a' are upper case.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SettingID : String read FSettingID;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// This property specifies the SIDs to disable for access checking, if 
+   /// SecurityLimitFlagss is Filter Tokens.This property can be NULL if you do not 
+   /// want to disable any SIDs.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property SIDsToDisable : OleVariant read FSIDsToDisable;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// Return the description for the value of the property 
+  /// TWin32_NamedJobObjectSecLimitSetting.SecurityLimitFlags
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  function GetSecurityLimitFlagsAsString(const APropValue:Cardinal) : string;
 
 implementation
 
+
+function GetSecurityLimitFlagsAsString(const APropValue:Cardinal) : string;
+begin
+Result:='';
+  case APropValue of
+    0 : Result:='No Administrator';
+    1 : Result:='Restricted Token';
+    2 : Result:='Specific Token';
+    3 : Result:='Filter Tokens';
+  end;
+end;
 
 {TWin32_NamedJobObjectSecLimitSetting}
 

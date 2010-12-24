@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:38
+/// Creation Date 24-12-2010 09:35:38
 /// Namespace root\CIMV2 Class Win32_DriverForDevice
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_DriverForDevice.asp
 /// </summary>
@@ -36,8 +36,7 @@ type
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// The Win32_DriverForDevice class represents an association between a printing 
-  /// device on a Win32 computer system and the driver that supports this device.
+  /// A generic association to establish dependency relationships between objects.
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_DriverForDevice=class(TWmiClass)
@@ -49,14 +48,13 @@ type
    destructor Destroy;Override;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Antecedent reference represents the printing device controlled by the 
-   /// driver.
+   /// Antecedent represents the independent object in this association.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Dependent reference represents the driver that supports the printing device.
+   /// Dependent represents the object dependent on the Antecedent.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;

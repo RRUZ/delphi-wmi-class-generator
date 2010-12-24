@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:19:39
+/// Creation Date 24-12-2010 09:35:41
 /// Namespace root\CIMV2 Class Win32_LoadOrderGroupServiceMembers
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_LoadOrderGroupServiceMembers.asp
 /// </summary>
@@ -34,6 +34,14 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Win32_LoadOrderGroupServiceMembers class represents an association between 
+  /// a load order group and a base service. Note: Win32_SystemDriver objects are 
+  /// members of that load order group. Not all services are members of groups, and 
+  /// not all groups have services within them.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_LoadOrderGroupServiceMembers=class(TWmiClass)
   private
     FGroupComponent                     : OleVariant;
@@ -41,7 +49,19 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The GroupComponent reference represents the Win32_LoadOrderGroup containing the 
+   /// load order group properties associated with the base service.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GroupComponent : OleVariant read FGroupComponent;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The PartComponent reference represents the Win32_BaseService containing the 
+   /// base service that is a member of a load order group
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PartComponent : OleVariant read FPartComponent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

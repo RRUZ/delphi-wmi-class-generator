@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.116
+/// Application version 0.1.0.120
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 08:20:13
+/// Creation Date 24-12-2010 09:37:38
 /// Namespace root\CIMV2 Class Win32_PerfRawData_PerfOS_Objects
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_PerfOS_Objects.asp
 /// </summary>
@@ -34,6 +34,15 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The Object performance object consists of counters that monitor  logical 
+  /// objects in the system, such as processes, threads, mutexes, and semaphores.  
+  /// This information can be used to detect the unnecessary consumption of computer 
+  /// resources.  Each object requires memory to store basic information about the 
+  /// object.
+  /// </summary>
+  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_PerfOS_Objects=class(TWmiClass)
   private
     FCaption                            : String;
@@ -54,17 +63,79 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A short textual description (one-line string) for the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// A textual description of the statistic or metric.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Events is the number of events in the computer at the time of data collection. 
+   /// This is an instantaneous count, not an average over the time interval.  An 
+   /// event is used when two or more threads try to synchronize execution.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Events : Cardinal read FEvents;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Mutexes counts the number of mutexes in the computer at the time of data 
+   /// collection. This is an instantaneous count, not an average over the time 
+   /// interval.  Mutexes are used by threads to assure only one thread is executing a 
+   /// particular section of code.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Mutexes : Cardinal read FMutexes;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The Name property defines the label by which the statistic or metric is known. 
+   /// When subclassed, the property can be overridden to be a Key property. 
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Processes is the number of processes in the computer at the time of data 
+   /// collection. This is an instantaneous count, not an average over the time 
+   /// interval.  Each process represents the running of a program.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Processes : Cardinal read FProcesses;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Sections is the number of sections in the computer at the time of data 
+   /// collection. This is an instantaneous count, not an average over the time 
+   /// interval.  A section is a portion of virtual memory created by a process for 
+   /// storing data. A process can share sections with other processes.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Sections : Cardinal read FSections;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Semaphores is the number of semaphores in the computer at the time of data 
+   /// collection. This is an instantaneous count, not an average over the time 
+   /// interval.  Threads use semaphores to obtain exclusive access to data structures 
+   /// that they share with other threads.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Semaphores : Cardinal read FSemaphores;
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Threads is the number of threads in the computer at the time of data 
+   /// collection. This is an instantaneous count, not an average over the time 
+   /// interval.  A thread is the basic executable entity that can execute 
+   /// instructions in a processor.
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Threads : Cardinal read FThreads;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
