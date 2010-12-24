@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ComCtrls, pngimage, ImgList, ToolWin;
+  Dialogs, StdCtrls, ExtCtrls, ComCtrls, pngimage, ImgList, ToolWin, uWmi_Metadata,
+  AppEvnts;
 
 type
   TFrmMain = class(TForm)
@@ -23,12 +24,13 @@ type
     TabSheet3: TTabSheet;
     MemoClassDescr: TMemo;
     LvClasses: TListView;
-    ToolBar1: TToolBar;
+    ToolBarMain: TToolBar;
     ToolButtonGenerate: TToolButton;
     ImageList1: TImageList;
     CbWmiNameSpaces: TComboBox;
-    ToolButton3: TToolButton;
     ToolButtonViewCode: TToolButton;
+    ToolButton1: TToolButton;
+    ApplicationEvents1: TApplicationEvents;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
@@ -38,16 +40,18 @@ type
       Change: TItemChange);
     procedure ToolButtonGenerateClick(Sender: TObject);
     procedure ToolButtonViewCodeClick(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+    procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
   private
     { Private declarations }
-    FMetaDataLoaded : Boolean;
-    FLoading        : Boolean;
+    FMetaDataLoaded     : Boolean;
+    FLoading            : Boolean;
+    FWMiClassMetaData   : TWMiClassMetaData;
     procedure LoadWmiMetaData;
     procedure LoadWmiClasses;
     procedure LoadWmiClassInfo;
     procedure LoadWmiClassProperties;
     procedure LoadWmiClassMethods;
-    procedure LoadWMIDelphiCode;
     procedure Addlog(const Msg:String);
     //procedure SetStatusMsg(const Msg:String);
     function  GetCurrentClass:string;
@@ -66,8 +70,7 @@ implementation
 uses
   CommCtrl,
   ComObj,
-  //AsyncCalls,
-  uWmi_Metadata,
+  AsyncCalls,
   ListView_Helper,
   uWmiDelphiCodeCreator,
   CodeView;
@@ -79,6 +82,15 @@ begin
   MemoLog.Lines.Add(Msg);
 end;
 
+procedure TFrmMain.ApplicationEvents1Exception(Sender: TObject; E: Exception);
+begin
+    if E is EOleSysError then
+    if EOleSysError(E).ErrorCode = HRESULT(wbemErrAccessDenied) then
+     Addlog(Format('Access denied  %s %s  Code : %x',['GetListWmiClasses',E.Message,EOleSysError(E).ErrorCode]))
+    else
+     Addlog(E.Message);
+end;
+
 procedure TFrmMain.CbWmiNameSpacesChange(Sender: TObject);
 begin
   LoadWmiClasses;
@@ -88,20 +100,25 @@ procedure TFrmMain.FormActivate(Sender: TObject);
 begin
   if not FMetaDataLoaded then
   LoadWmiMetaData;
-
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
 var
   ProgressBarStyle: integer;
 begin
+   FWMiClassMetaData:=nil;
    FMetaDataLoaded:=False;
    ProgressBarWmi.Parent := StatusBar1;
    ProgressBarStyle := GetWindowLong(ProgressBarWmi.Handle, GWL_EXSTYLE);
    ProgressBarStyle := ProgressBarStyle - WS_EX_STATICEDGE;
    SetWindowLong(ProgressBarWmi.Handle, GWL_EXSTYLE, ProgressBarStyle);
    ProgressBarWmi.Perform(PBM_SETMARQUEE, 1, 100);
-   //ReportMemoryLeaksOnShutDown := True;
+end;
+
+procedure TFrmMain.FormDestroy(Sender: TObject);
+begin
+  if Assigned(FWMiClassMetaData) then
+   FWMiClassMetaData.Free;
 end;
 
 function GetFileVersion(const AExeName : string): string;
@@ -222,7 +239,7 @@ end;
 
 procedure TFrmMain.LoadWmiClasses;
 var
- //IWmiClasses  : IAsyncCall;
+ IWmiClasses  : IAsyncCall;
  FWmiClasses  : TStringList;
 
  i            : integer;
@@ -233,19 +250,23 @@ begin
     ProgressBarWmi.Visible:=True;
     LvClasses.Items.BeginUpdate;
     FLoading:=True;
+    ToolBarMain.Enabled:=False;
     try
        LvClasses.Items.Clear;
-         if CbWmiNameSpaces.Text<>'' then
-         begin
-           Addlog(Format('Loading WMI Classes for namespace %s',[CbWmiNameSpaces.Text]));
-          try
-           {
-           IWmiClasses := AsyncCall(@GetListWmiDynamicAndStaticClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
-           while AsyncMultiSync([IWmiClasses], True, 1) = WAIT_TIMEOUT do
-             Application.ProcessMessages;
-           }
-           GetListWmiDynamicAndStaticClasses(CbWmiNameSpaces.Text, FWmiClasses);
-           Addlog(Format('%d WMI Classes loaded',[FWmiClasses.Count]));
+       if CbWmiNameSpaces.Text<>'' then
+       begin
+         Addlog(Format('Loading WMI Classes for namespace %s',[CbWmiNameSpaces.Text]));
+        try
+           try
+
+             IWmiClasses := AsyncCall(@GetListWmiDynamicAndStaticClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
+             while AsyncMultiSync([IWmiClasses], True, 1) = WAIT_TIMEOUT do
+               Application.ProcessMessages;
+
+             // GetListWmiDynamicAndStaticClasses(CbWmiNameSpaces.Text, FWmiClasses);
+           finally
+             Addlog(Format('%d WMI Classes loaded',[FWmiClasses.Count]));
+           end;
 
            for i := 0 to FWmiClasses.Count-1 do
            begin
@@ -253,20 +274,21 @@ begin
               Item.Caption:=FWmiClasses[i];
               Item.Checked:=True;
            end;
-          except
-            on E: EOleSysError do
-            if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
-             Addlog(Format('Access denied  %s %s  Code : %x',['GetListWmiClasses',E.Message,E.ErrorCode]))
-            else
-            raise;
-          end;
-         end;
+        except
+          on E: EOleSysError do
+          if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
+           Addlog(Format('Access denied  %s %s  Code : %x',['GetListWmiClasses',E.Message,E.ErrorCode]))
+          else
+          raise;
+        end;
+       end;
 
     finally
      FWmiClasses.Free;
      ProgressBarWmi.Visible:=False;
      LvClasses.Items.EndUpdate;
      FLoading:=False;
+     ToolBarMain.Enabled:=True;
     end;
 
     if LvClasses.Items.Count>0 then
@@ -283,108 +305,94 @@ var
 begin
   FNameSpace:=CbWmiNameSpaces.Text;
   FClass    :=GetCurrentClass;
-  MemoClassDescr.Text:=GetWmiClassDescription(FNameSpace,FClass);
+  if Assigned(FWMiClassMetaData) then
+  FWMiClassMetaData.Free;
+  FWMiClassMetaData  :=TWMiClassMetaData.Create(FNameSpace,FClass);
+  MemoClassDescr.Text:=FWMiClassMetaData.Description;
 end;
 
 procedure TFrmMain.LoadWmiClassMethods;
 var
- FNameSpace : string;
- FClass     : string;
- Methods    : TStringList;
  i          : Integer;
  item       : TListItem;
 begin
-  FNameSpace:=CbWmiNameSpaces.Text;
-  FClass    :=GetCurrentClass;
-
   LvMethods.Items.BeginUpdate;
-  Methods:=TStringList.Create;
   LvMethods.Items.Clear;
   try
-   if (FNameSpace<>'') and (FClass<>'') then
+   if Assigned(FWMiClassMetaData) then
    begin
-    GetListWmiClassMethods(FNameSpace,FClass,Methods);
-    for i := 0 to Methods.Count - 1 do
+    for i := 0 to FWMiClassMetaData.MethodsCount - 1 do
       begin
          item:=LvMethods.Items.Add;
-         item.Caption:=Methods[i];
+         item.Caption:=FWMiClassMetaData.Methods[i];
          item.SubItems.Add(''); //In Parameters
          item.SubItems.Add(''); //Out Parameters
          item.SubItems.Add(''); //Description
-         item.SubItems[0]:=GetWmiMethodInParamsDeclaration(FNameSpace,FClass,Methods[i]);
-         item.SubItems[1]:=GetWmiMethodOutParamsDeclaration(FNameSpace,FClass,Methods[i]);
-         item.SubItems[2]:=GetWmiMethodDescription(FNameSpace,FClass,Methods[i]);//Description
+         item.SubItems[0]:=FWMiClassMetaData.MethodMetaData[i].MethodInParamsDecl;
+         item.SubItems[1]:=FWMiClassMetaData.MethodMetaData[i].MethodOutParamsDecl;
+         item.SubItems[2]:=FWMiClassMetaData.MethodMetaData[i].Description;
          item.Checked:=True;
       end;
    end;
   finally
     LvMethods.Items.EndUpdate;
-    Methods.Free;
     AutoResizeListView(LvMethods);
   end;
 end;
 
 procedure TFrmMain.LoadWmiClassProperties;
 var
- FNameSpace : string;
- FClass     : string;
- Props      : TStringList;
  i          : Integer;
  item       : TListItem;
 begin
-  FNameSpace:=CbWmiNameSpaces.Text;
-  FClass    :=GetCurrentClass;
-
   LvProperties.Items.BeginUpdate;
-  Props:=TStringList.Create;
   LvProperties.Items.Clear;
   try
-   if (FNameSpace<>'') and (FClass<>'') then
+   if Assigned(FWMiClassMetaData) then
    begin
-    GetListWmiClassPropertiesTypes(FNameSpace,FClass,Props);
-    for i := 0 to Props.Count - 1 do
+    for i := 0 to FWMiClassMetaData.PropertiesCount - 1 do
       begin
          item:=LvProperties.Items.Add;
-         item.Caption:=Props.Names[i];
+         item.Caption:=FWMiClassMetaData.Properties[i];
          item.SubItems.Add(''); //Wmi Type
          item.SubItems.Add(''); //Delphi Type
          item.SubItems.Add(''); //Description
-         item.SubItems[0]:=Props.ValueFromIndex[i];//Wmi Type
-         item.SubItems[1]:=WmiTypeToDelphiType(Props.ValueFromIndex[i]);//Delphi Type
-         item.SubItems[2]:=GetWmiPropertyDescription(FNameSpace,FClass,Props.Names[i]);
+         item.SubItems[0]:=FWMiClassMetaData.PropertiesTypes[i];//Wmi Type
+         item.SubItems[1]:=FWMiClassMetaData.PropertiesPascalTypes[i];//Delphi Type
+         item.SubItems[2]:=FWMiClassMetaData.PropertiesDescr[i];
          item.Checked:=True;
       end;
    end;
   finally
     LvProperties.Items.EndUpdate;
-    Props.Free;
     AutoResizeListView(LvProperties);
   end;
 end;
 
-procedure TFrmMain.LoadWMIDelphiCode;
-begin
-end;
+
 
 procedure TFrmMain.LoadWmiMetaData;
 var
- //IWmiNamespaces : IAsyncCall;
+ IWmiNamespaces : IAsyncCall;
  FNameSpaces    : TStringList;
 begin
     ProgressBarWmi.Visible:=True;
     FNameSpaces :=TStringList.Create;
+    ToolBarMain.Enabled:=False;
     try
        FNameSpaces.Sorted:=True;
           try
            Addlog('Loading WMI namespaces');
-           {
-           IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, ['root', FNameSpaces]);
-           while AsyncMultiSync([IWmiNamespaces], True, 1) = WAIT_TIMEOUT do
-             Application.ProcessMessages;
-           }
-           GetListWMINameSpaces(FNameSpaces);
+           try
+             //IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, ['root', FNameSpaces, False]);
+             IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, [FNameSpaces]);
+             while AsyncMultiSync([IWmiNamespaces], True, 1) = WAIT_TIMEOUT do
+               Application.ProcessMessages;
 
-            Addlog(Format('%d WMI namespaces loaded',[FNameSpaces.Count]));
+             //GetListWMINameSpaces(FNameSpaces);
+           finally
+             Addlog(Format('%d WMI namespaces loaded',[FNameSpaces.Count]));
+           end;
           except
             on E: EOleSysError do
             if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
@@ -396,6 +404,7 @@ begin
       if FNameSpaces.Count>0 then
       CbWmiNameSpaces.ItemIndex:=0;
     finally
+     ToolBarMain.Enabled:=True;
      FNameSpaces.Free;
      ProgressBarWmi.Visible:=False;
     end;
@@ -411,7 +420,6 @@ begin
    LoadWmiClassInfo;
    LoadWmiClassProperties;
    LoadWmiClassMethods;
-   LoadWMIDelphiCode;
  end;
 end;
 {

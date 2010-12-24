@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:20
+/// Creation Date 24-12-2010 08:19:36
 /// Namespace root\CIMV2 Class Win32_ComClassAutoEmulator
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ComClassAutoEmulator.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_ComClassAutoEmulator class represents an association between a COM 
-  /// class and another COM class that it automatically emulates.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ComClassAutoEmulator=class(TWmiClass)
   private
     FNewVersion                         : OleVariant;
@@ -47,20 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The NewVersion reference represents the COM component that can automatically 
-   /// emulate the associated COM component. This information is obtained through the 
-   /// AutoTreatAs registry entry.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NewVersion : OleVariant read FNewVersion;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The OldVersion reference represents the COM component that is automatically 
-   /// emulated by another component.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property OldVersion : OleVariant read FOldVersion;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

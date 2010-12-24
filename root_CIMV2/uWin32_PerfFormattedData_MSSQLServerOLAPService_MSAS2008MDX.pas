@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:39
+/// Creation Date 24-12-2010 08:19:49
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_MSSQLServerOLAPService_MSAS2008MDX
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_MSSQLServerOLAPService_MSAS2008MDX.asp
 /// </summary>
@@ -34,11 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Statistics related to Microsoft Analysis Services MDX Calculations.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_MSSQLServerOLAPService_MSAS2008MDX=class(TWmiClass)
   private
     FCaption                            : String;
@@ -79,194 +74,40 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Current (approximate) number of cached evaluation nodes built by MDX execution 
-   /// plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Currentnumberofcachedevaluationnodes : Cardinal read FCurrentnumberofcachedevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Current (approximate) number of evaluation nodes built by MDX execution plans 
-   /// including active and cached
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Currentnumberofevaluationnodes : Cardinal read FCurrentnumberofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of bulk-mode evaluation nodes built by MDX execution plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofbulkmodeevaluationnodes : Cardinal read FNumberofbulkmodeevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cached bulk-mode evaluation nodes built by MDX execution plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcachedbulkmodeevaluationnodes : Cardinal read FNumberofcachedbulkmodeevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cached evaluation nodes built by MDX execution plans that are 
-   /// neither Storage Engine nor Bulk-mode
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcachedotherevaluationnodes : Cardinal read FNumberofcachedotherevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cached Storage Engine evaluation nodes built by MDX execution 
-   /// plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NumberofcachedStorageEngineevaluationnodes : Cardinal read FNumberofcachedStorageEngineevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of evaluation nodes built by MDX execution plans including active 
-   /// and cached
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcalculationcovers : Cardinal read FNumberofcalculationcovers;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cell-by-cell evaluation nodes built by MDX execution plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcellbycellevaluationnodes : Cardinal read FNumberofcellbycellevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cell-by-cell hits in the cache of evaluation nodes
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcellbycellhitsinthecacheofevaluationnodes : Cardinal read FNumberofcellbycellhitsinthecacheofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cell-by-cell misses in the cache of evaluation nodes
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofcellbycellmissesinthecacheofevaluationnodes : Cardinal read FNumberofcellbycellmissesinthecacheofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of evaluation nodes built by MDX execution plans that covered only 
-   /// one cell
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofevaluationnodesthatcoveredasinglecell : Cardinal read FNumberofevaluationnodesthatcoveredasinglecell;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of evaluation nodes built by MDX execution plans for which the 
-   /// calculations were at the same granularity as the evaluation node
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofevaluationnodeswithcalculationsatthesamegranularity : Cardinal read FNumberofevaluationnodeswithcalculationsatthesamegranularity;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cache evictions of evaluation nodes due to collisions
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofevictionsofevaluationnodes : Cardinal read FNumberofevictionsofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of hits in the cache of evaluation nodes that were satisfied by 
-   /// the hash index
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofhashindexhitsinthecacheofevaluationnodes : Cardinal read FNumberofhashindexhitsinthecacheofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of Storage Engine evaluation nodes built by MDX execution plans
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NumberofStorageEngineevaluationnodes : Cardinal read FNumberofStorageEngineevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of subcube hits in the cache of evaluation nodes
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofsubcubehitsinthecacheofevaluationnodes : Cardinal read FNumberofsubcubehitsinthecacheofevaluationnodes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of subcube misses in the cache of evaluation nodes
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Numberofsubcubemissesinthecacheofevaluationnodes : Cardinal read FNumberofsubcubemissesinthecacheofevaluationnodes;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times autoexist performed
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalAutoexist : Cardinal read FTotalAutoexist;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cell properties calculated
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Totalcellscalculated : Cardinal read FTotalcellscalculated;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times EXISTING set operator performed
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalEXISTING : Cardinal read FTotalEXISTING;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cell values inserted into flat calculation cache
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Totalflatcacheinserts : Cardinal read FTotalflatcacheinserts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times NON EMPTY algorithms is used
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalNONEMPTY : Cardinal read FTotalNONEMPTY;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times NON EMPTY algorithm was looping over calculated members
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalNONEMPTYforcalculatedmembers : Cardinal read FTotalNONEMPTYforcalculatedmembers;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of times unoptimized NON EMPTY algorithm is used
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalNONEMPTYunoptimized : Cardinal read FTotalNONEMPTYunoptimized;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of cells recomputed due to error
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Totalrecomputes : Cardinal read FTotalrecomputes;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Total number of subcubes that query optimizer generated
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalSonarsubcubes : Cardinal read FTotalSonarsubcubes;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

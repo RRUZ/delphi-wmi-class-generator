@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:34
+/// Creation Date 24-12-2010 08:19:46
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_ESENT_DatabaseTableClasses
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_ESENT_DatabaseTableClasses.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Statistics for the ESE high performance embedded database management system by 
-  /// Table Class
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_ESENT_DatabaseTableClasses=class(TWmiClass)
   private
     FCaption                            : String;
@@ -58,64 +52,15 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A short textual description (one-line string) for the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Database Cache Misses per second is the rate at which database file page 
-   /// requests were fulfilled by the database cache by causing a file operation.  If 
-   /// this rate is high then the database cache size may be too small.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property DatabaseCacheMissesPersec : Cardinal read FDatabaseCacheMissesPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Database Cache % Hit is the percentage of database file page requests that were 
-   /// fulfilled by the database cache without causing a file operation.  If this 
-   /// percentage is too low, the database cache size may be too small.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property DatabaseCachePercentHit : Cardinal read FDatabaseCachePercentHit;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Database Cache Requests/sec is the rate that pages are requested from the 
-   /// database cache.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property DatabaseCacheRequestsPersec : Cardinal read FDatabaseCacheRequestsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Database Cache Size (MB) is the amount of system memory (in MegaBytes) used by 
-   /// the database cache manager to hold commonly used information from the database 
-   /// file(s) to prevent file operations.  If the database cache size seems to be too 
-   /// small for optimal performance and there is very little available memory on the 
-   /// system (see Memory/Available Bytes), adding more memory to the system may 
-   /// increase performance.  If there is a lot of available memory on the system and 
-   /// the database cache size is not growing beyond a certain point, the database 
-   /// cache size may be capped at an artificially low limit.  Increasing this limit 
-   /// may increase performance.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property DatabaseCacheSizeMB : Int64 read FDatabaseCacheSizeMB;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A textual description of the statistic or metric.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Name property defines the label by which the statistic or metric is known. 
-   /// When subclassed, the property can be overridden to be a Key property. 
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:21
+/// Creation Date 24-12-2010 08:19:37
 /// Namespace root\CIMV2 Class Win32_ComputerSystemProcessor
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ComputerSystemProcessor.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_ComputerSystemProcessor class represents an association between a 
-  /// computer system and a processor running on that system.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_ComputerSystemProcessor=class(TWmiClass)
   private
     FGroupComponent                     : OleVariant;
@@ -47,19 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The GroupComponent reference represents the Win32_ComputerSystem containing the 
-   /// properties of the computer system on which the processor is running.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GroupComponent : OleVariant read FGroupComponent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The PartComponent reference represents the Win32_Processor containing the 
-   /// properties of a processor which is running the computer system.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PartComponent : OleVariant read FPartComponent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

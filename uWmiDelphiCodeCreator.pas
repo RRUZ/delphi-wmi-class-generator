@@ -461,8 +461,7 @@ begin
                 MethodsList.Add(Format('   function %s(%s): %s;%s',[WMiClassMetaData.Methods[i],OutDelphiParams,'Integer',MethodDirectiv]));
 
 
-               if 1=1 then //if not WMiClassMetaData.MethodMetaData[i].IsStatic then
-               begin
+
                  MethodsImpl.Add('');
 
                  if WMiClassMetaData.MethodMetaData[i].IsStatic then
@@ -501,8 +500,6 @@ begin
                  for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
                  if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
                    MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar)+'s : OleVariant;',['v'+WMiClassMetaData.MethodMetaData[i].InParams[j]]));
-
-
 
                  if sValue[length(sValue)]=',' then
                   Delete(sValue,length(sValue),1);
@@ -554,98 +551,10 @@ begin
                  //*****************************************************
 
                  MethodsImpl.Add('end;');
-               end {
-               else
-               begin
-                 MethodsImpl.Add('');
-                 MethodsImpl.Add('//static, OutParams>1, InParams>0');
-
-                 if (InDelphiParams<>'')  then
-                  MethodsImpl.Add(Format('function T%s.%s(%s ; %s): %s;',
-                  [WmiClass,WMiClassMetaData.Methods[i],InDelphiParams,OutDelphiParams,'Integer']))
-                 else
-                 if (InDelphiParams='')   then
-                  MethodsImpl.Add(Format('function T%s.%s(%s): %s;',
-                  [WmiClass,WMiClassMetaData.Methods[i],OutDelphiParams,'Integer']));
-
-                 MethodsImpl.Add('var');
-                 MethodsImpl.Add('  objInParams     : OleVariant;');
-                 MethodsImpl.Add('  objOutParams    : OleVariant;');
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                   MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s : OleVariant;',['v'+WMiClassMetaData.MethodMetaData[i].InParams[j]]));
-
-
-                 MethodsImpl.Add('begin');
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                 begin
-                  MethodsImpl.Add(' try');
-                  break;
-                 end;
-
-                 MethodsImpl.Add(Format('  objInParams := GetInstanceOf.Methods_.Item(%s).InParameters.SpawnInstance_();',
-                 [QuotedStr(WMiClassMetaData.Methods[i])]));
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if CompareText(WMiClassMetaData.MethodMetaData[i].InParamsTypes[j],wbemtypeDatetime)=0 then
-                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := DateTimeToUTC(%s);',
-                  ['objInParams.Properties_.Item('+QuotedStr(WMiClassMetaData.MethodMetaData[i].InParams[j])+').Value',EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]))
-                 else
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                 begin
-                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := ArrayToVarArray(%s);',
-                  ['v'+WMiClassMetaData.MethodMetaData[i].InParams[j],EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
-                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',
-                  ['objInParams.Properties_.Item('+QuotedStr(WMiClassMetaData.MethodMetaData[i].InParams[j])+').Value',EscapeDelphiReservedWord('v'+WMiClassMetaData.MethodMetaData[i].InParams[j])]));
-                 end
-                 else
-                  MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',
-                  ['objInParams.Properties_.Item('+QuotedStr(WMiClassMetaData.MethodMetaData[i].InParams[j])+').Value',EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
-
-
-
-                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',
-                 ['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].OutParams.Count-1 do
-                 if CompareText(WMiClassMetaData.MethodMetaData[i].OutParams[j],'ReturnValue')<>0 then
-                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s(objOutParams.%s);',
-                 [WMiClassMetaData.MethodMetaData[i].OutParams[j],GetFunctNameVarNull(WMiClassMetaData.MethodMetaData[i].OutParamsTypes[j]),WMiClassMetaData.MethodMetaData[i].OutParams[j]]));
-
-                 MethodsImpl.Add(Format('  %s  := VarIntegerNull(objOutParams.ReturnValue);',['Result']));
-
-                 //clear the helpers array variables ***************
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                 begin
-                  MethodsImpl.Add(' finally');
-                  break;
-                 end;
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                 begin
-                   MethodsImpl.Add(Format('  VarClear(%s);',['v'+WMiClassMetaData.MethodMetaData[i].InParams[j]]));
-                 end;
-
-                 for j:=0  to WMiClassMetaData.MethodMetaData[i].InParams.Count-1 do
-                 if WMiClassMetaData.MethodMetaData[i].InParamsIsArray[j] then
-                 begin
-                  MethodsImpl.Add(' end;');
-                  break;
-                 end;
-                 //*****************************************************
-
-                 MethodsImpl.Add('end;');
-               end; }
-
              end
              else
              begin
-                //MethodsList.Add(Format('Unsupported (procedure) WmiMethod %s',[WMiClassMetaData.Methods[i]]));
+                MethodsList.Add(Format('   //Unsupported (procedure) WmiMethod %s',[WMiClassMetaData.Methods[i]]));
              end;
 
 

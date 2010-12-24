@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:19
+/// Creation Date 24-12-2010 08:20:23
 /// Namespace root\CIMV2 Class Win32_SystemSystemDriver
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SystemSystemDriver.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_SystemSystemDriver class represents an association between a computer 
-  /// system and a system driver running on that computer system.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_SystemSystemDriver=class(TWmiClass)
   private
     FGroupComponent                     : OleVariant;
@@ -47,19 +41,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The GroupComponent reference represents the properties of the computer system 
-   /// upon which the driver is running.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GroupComponent : OleVariant read FGroupComponent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The PartComponent reference represents the system driver running on the 
-   /// computer system.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property PartComponent : OleVariant read FPartComponent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

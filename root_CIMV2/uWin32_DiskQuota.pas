@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:22
+/// Creation Date 24-12-2010 08:19:38
 /// Namespace root\CIMV2 Class Win32_DiskQuota
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_DiskQuota.asp
 /// </summary>
@@ -34,15 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// The Win32_DiskQuota association class tracks disk space usage for NTFS volumes. 
-  /// System administrators can configure Windows to prevent further disk space use 
-  /// and log an event when a user exceeds a specified disk space limit. They can 
-  /// also log an event when a user exceeds a specified disk space warning level. 
-  /// Note that disk quotas cannot be set for the Administrator accounts themselves.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_DiskQuota=class(TWmiClass)
   private
     FDiskSpaceUsed                      : Int64;
@@ -54,67 +45,19 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The DiskSpaceUsed property indicates the current number of bytes currently in 
-   /// use by this particular user or group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property DiskSpaceUsed : Int64 read FDiskSpaceUsed;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The Limit property indicates the limit set for this particular user or group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Limit : Int64 read FLimit;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The QuotaVolume reference represents the disk volume which has disk quotas.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property QuotaVolume : OleVariant read FQuotaVolume;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// A Status property indicates the current status of the Disk Quota.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Status : Cardinal read FStatus;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The User reference represents the user account associated with a disk quota.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property User : OleVariant read FUser;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The WarningLimit property indicates the warning limit set for this particular 
-   /// user or group.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property WarningLimit : Int64 read FWarningLimit;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Return the description for the value of the property TWin32_DiskQuota.Status
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-  function GetStatusAsString(const APropValue:Cardinal) : string;
 
 implementation
 
-
-function GetStatusAsString(const APropValue:Cardinal) : string;
-begin
-Result:='';
-  case APropValue of
-    0 : Result:='OK';
-    1 : Result:='Warning';
-    2 : Result:='Exceeded';
-  end;
-end;
 
 {TWin32_DiskQuota}
 

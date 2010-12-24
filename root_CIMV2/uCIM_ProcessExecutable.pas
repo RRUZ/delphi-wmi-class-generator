@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:06:18
+/// Creation Date 24-12-2010 08:19:35
 /// Namespace root\CIMV2 Class CIM_ProcessExecutable
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/CIM_ProcessExecutable.asp
 /// </summary>
@@ -34,12 +34,6 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// A link between a process and a data file indicating that the file participates in the execution of the process.
-  /// Note: In order to receive all possible instances of this class, the SE_DEBUG_PRIVILEGE should be enabled.
-  /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TCIM_ProcessExecutable=class(TWmiClass)
   private
     FAntecedent                         : OleVariant;
@@ -51,46 +45,11 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The data file participating in the execution of the process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// BaseAddress represents the base address of the module in the address space of 
-   /// the associated process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property BaseAddress : Int64 read FBaseAddress;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// GlobalProcessCount is the current number of processes that have the file loaded 
-   /// in memory.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property GlobalProcessCount : Cardinal read FGlobalProcessCount;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// ModuleInstance represents the Win32 instance handle.The ModuleInstance property 
-   /// has been deprecated.  There is no replacement value and this property is now 
-   /// considered obsolete.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ModuleInstance : Cardinal read FModuleInstance;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// ProcessCount represents the reference count of the file in the associated 
-   /// process.
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ProcessCount : Cardinal read FProcessCount;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

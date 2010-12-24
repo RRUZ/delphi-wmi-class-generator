@@ -198,7 +198,8 @@ Const
   wbemErrResetToDefault = $80043002;
 
 
-  wbemFlagUseAmendedQualifiers = $20000;
+  wbemFlagForwardOnly          = $00000020;
+  wbemFlagUseAmendedQualifiers = $00020000;
   wbemObjectTextFormatWMIDTD20 = 2;
   wbemTargetInstance           = 'TargetInstance';
   wbemLocalhost                = 'localhost';
@@ -224,12 +225,15 @@ type
     FOutParams: TStrings;
     FIsStatic   : Boolean;
     FIsFunction : Boolean;
+    FMethodInParamsDecl: string;
+    FMethodOutParamsDecl: string;
     FMethodInParamsPascalDecl: string;
     FMethodOutParamsPascalDecl: string;
     FName: string;
     FDescription: string;
     FType: string;
     FInParamsIsArray : TArrayBoolean;
+    FOutParamsIsArray: TArrayBoolean;
   public
     constructor Create; overload;
     Destructor  Destroy; override;
@@ -240,11 +244,14 @@ type
     property InParams       : TStrings read FInParams;
     property InParamsTypes  : TStrings read FInParamsTypes;
     property InParamsDescr  : TStrings read FInParamsDescr;
+    property OutParamsIsArray: TArrayBoolean read FOutParamsIsArray;
     property OutParams      : TStrings read FOutParams;
     property OutParamsTypes : TStrings read FOutParamsTypes;
     property OutParamsDescr : TStrings read FOutParamsDescr;
     property MethodInParamsPascalDecl : string read FMethodInParamsPascalDecl;
     property MethodOutParamsPascalDecl : string read FMethodOutParamsPascalDecl;
+    property MethodInParamsDecl : string read FMethodInParamsDecl;
+    property MethodOutParamsDecl : string read FMethodOutParamsDecl;
     property IsStatic : Boolean read FIsStatic;
     property IsFunction : Boolean read FIsFunction;
   end;
@@ -339,7 +346,7 @@ type
   function  GetWMIObject(const objectName: string): IDispatch;
   function  GetWmiVersion:string;
   procedure GetListWMINameSpaces(const List :TStrings);  cdecl; overload;
-  procedure GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings);  cdecl; overload;
+  procedure GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings;ReportException:Boolean=True); cdecl; overload;
   procedure GetListWmiClasses(const NameSpace:String;Const List :TStrings); cdecl;
   procedure GetListWmiDynamicAndStaticClasses(const NameSpace:String;const List :TStrings); cdecl;
   procedure GetListWmiDynamicClasses(const NameSpace:String;const List :TStrings);
@@ -572,11 +579,11 @@ end;
 
 procedure  GetListWMINameSpaces(const List :TStrings);
 begin
-  GetListWMINameSpaces('root', List);
+  GetListWMINameSpaces('root', List, True);
 end;
 
 
-procedure  GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings);//recursive function
+procedure  GetListWMINameSpaces(const RootNameSpace:String;const List :TStrings;ReportException:Boolean=True);//recursive function
 var
   objSWbemLocator : OleVariant;
   objWMIService   : OleVariant;
@@ -586,6 +593,7 @@ var
   iValue          : LongWord;
   sValue          : string;
 begin
+ try
   objSWbemLocator := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService   := objSWbemLocator.ConnectServer(wbemLocalhost, RootNameSpace, '', '');
   colItems        := objWMIService.InstancesOf('__NAMESPACE');
@@ -597,6 +605,10 @@ begin
     List.Add(RootNameSpace+'\'+sValue);
     GetListWMINameSpaces(RootNameSpace+'\'+sValue,List);
   end;
+ except
+     if ReportException then
+     raise;
+ end;
 end;
 
 procedure  GetListWmiClasses(const NameSpace:String;Const List :TStrings);
@@ -1661,7 +1673,7 @@ var
 begin
   objSWbemLocator  := CreateOleObject('WbemScripting.SWbemLocator');
   objWMIService    := objSWbemLocator.ConnectServer(wbemLocalhost, FNameSpace, '', '');
-  objSWbemObjectSet:= objWMIService.Get(FClass, wbemFlagUseAmendedQualifiers);
+  objSWbemObjectSet:= objWMIService.Get(FClass, wbemFlagUseAmendedQualifiers and wbemFlagForwardOnly);
 
 
   Qualifiers    := objSWbemObjectSet.Qualifiers_;
@@ -1772,7 +1784,7 @@ begin
               MethodMetaData.InParamsDescr.Add('');
               MethodMetaData.InParamsIsArray[MethodMetaData.InParams.Count-1]:=Param.IsArray;
 
-              oEnumQualif :=  IUnknown(colItem.Qualifiers_._NewEnum) as IEnumVariant;
+              oEnumQualif :=  IUnknown(Param.Qualifiers_._NewEnum) as IEnumVariant;
                while oEnumQualif.Next(1, Qualif, iValue) = 0 do
                 begin
                    if  CompareText(Qualif.Name,'Description')=0 Then
@@ -1797,8 +1809,9 @@ begin
               MethodMetaData.OutParams.Add(VarStrNull(Param.Name));
               MethodMetaData.OutParamsTypes.Add(CIMTypeStr(Param.CIMType));
               MethodMetaData.OutParamsDescr.Add('');
+              MethodMetaData.OutParamsIsArray[MethodMetaData.OutParams.Count-1]:=Param.IsArray;
 
-              oEnumQualif :=  IUnknown(colItem.Qualifiers_._NewEnum) as IEnumVariant;
+              oEnumQualif :=  IUnknown(Param.Qualifiers_._NewEnum) as IEnumVariant;
                while oEnumQualif.Next(1, Qualif, iValue) = 0 do
                 begin
                    if  CompareText(Qualif.Name,'Description')=0 Then
@@ -1811,6 +1824,33 @@ begin
 
           end;
         end;
+
+
+        MethodMetaData.FMethodInParamsDecl:='';
+        for i := 0 to MethodMetaData.InParams.Count-1 do
+         if MethodMetaData.InParamsIsArray[i] then
+            MethodMetaData.FMethodInParamsDecl:=MethodMetaData.FMethodInParamsDecl+Format('%s : Array of %s -',
+            [MethodMetaData.InParams[i],MethodMetaData.InParamsTypes[i]])
+         else
+            MethodMetaData.FMethodInParamsDecl:=MethodMetaData.FMethodInParamsDecl+Format('%s : %s -',
+            [MethodMetaData.InParams[i],MethodMetaData.InParamsTypes[i]]);
+
+        if MethodMetaData.FMethodInParamsDecl<>'' then
+        Delete(MethodMetaData.FMethodInParamsDecl,Length(MethodMetaData.FMethodInParamsDecl),1);
+
+        MethodMetaData.FMethodOutParamsDecl:='';
+        for i := 0 to MethodMetaData.OutParams.Count-1 do
+         if MethodMetaData.OutParamsIsArray[i] then
+            MethodMetaData.FMethodOutParamsDecl:=MethodMetaData.FMethodOutParamsDecl+Format('%s : Array of %s -',
+            [MethodMetaData.OutParams[i],MethodMetaData.OutParamsTypes[i]])
+         else
+            MethodMetaData.FMethodOutParamsDecl:=MethodMetaData.FMethodOutParamsDecl+Format('%s : %s -',
+            [MethodMetaData.OutParams[i],MethodMetaData.OutParamsTypes[i]]);
+
+        if MethodMetaData.FMethodOutParamsDecl<>'' then
+        Delete(MethodMetaData.FMethodOutParamsDecl,Length(MethodMetaData.FMethodOutParamsDecl),1);
+
+
 
         MethodMetaData.FMethodInParamsPascalDecl:='';
         for i := 0 to MethodMetaData.InParams.Count-1 do
@@ -2038,6 +2078,7 @@ begin
   FValidValues    := TStringList.Create;
   FValidMapValues := TStringList.Create;
   SetLength(FInParamsIsArray,256);
+  SetLength(FOutParamsIsArray,256);
 end;
 
 destructor TWMiMethodMetaData.Destroy;
@@ -2051,6 +2092,7 @@ begin
   FValidValues.Free;
   FValidMapValues.Free;
   SetLength(FInParamsIsArray,0);
+  SetLength(FOutParamsIsArray,0);
   inherited;
 end;
 

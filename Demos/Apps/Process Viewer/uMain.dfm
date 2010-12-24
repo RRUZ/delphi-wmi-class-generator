@@ -1,7 +1,7 @@
 object FrmMain: TFrmMain
-  Left = 445
-  Top = 313
-  Caption = 'Process Viewer'
+  Left = 513
+  Top = 273
+  Caption = 'Processes and  Services Viewer'
   ClientHeight = 507
   ClientWidth = 799
   Color = clBtnFace
@@ -20,7 +20,7 @@ object FrmMain: TFrmMain
     Left = 0
     Top = 0
     Width = 799
-    Height = 59
+    Height = 53
     Align = alTop
     TabOrder = 0
     object Label1: TLabel
@@ -88,33 +88,30 @@ object FrmMain: TFrmMain
   end
   object Panel2: TPanel
     Left = 0
-    Top = 59
+    Top = 53
     Width = 799
-    Height = 448
+    Height = 454
     Align = alClient
     BorderWidth = 5
     TabOrder = 1
-    ExplicitLeft = 128
-    ExplicitTop = 144
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitTop = 65
+    ExplicitHeight = 448
     object PageControl1: TPageControl
       Left = 6
       Top = 6
       Width = 787
-      Height = 436
+      Height = 442
       ActivePage = TabSheet1
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 531
-      ExplicitHeight = 245
+      ExplicitHeight = 436
       object TabSheet1: TTabSheet
-        Caption = 'Process'
+        Caption = 'Processes'
         object LvProcess: TListView
           Left = 0
           Top = 0
           Width = 779
-          Height = 408
+          Height = 414
           Align = alClient
           Columns = <
             item
@@ -126,64 +123,56 @@ object FrmMain: TFrmMain
               Width = 79
             end
             item
-              Caption = 'Domain'
+              Caption = 'Priority'
               Width = 47
             end
             item
-              Caption = 'User'
+              Caption = 'Domain'
               Width = 34
             end
             item
-              Caption = 'Creation Time'
+              Caption = 'User'
               Width = 78
             end
             item
-              Caption = 'Handles Count'
-              Width = 82
-            end
-            item
-              Caption = 'Min Working Set'
-              Width = 89
-            end
-            item
-              Caption = 'Max Working Set'
-              Width = 93
+              Caption = 'Creation Time'
+              Width = 88
             end
             item
               Caption = 'Execution State'
-              Width = 88
-            end
-            item
-              Caption = 'Parent PID'
               Width = 64
             end
             item
-              Caption = 'Page Faults'
+              Caption = 'Parent PID'
               Width = 68
             end
             item
-              Caption = 'Page File Usage'
+              Caption = 'Page Faults'
               Width = 88
             end
             item
-              Caption = 'Peak Page File Usage'
+              Caption = 'Page File Usage'
               Width = 114
             end
             item
-              Caption = 'Peak  Virtual Size'
+              Caption = 'Peak Page File Usage'
               Width = 93
             end
             item
-              Caption = 'Peak Working Set Size'
+              Caption = 'Peak  Virtual Size'
               Width = 118
             end
             item
-              Caption = 'Threads'
+              Caption = 'Peak Working Set Size'
               Width = 51
             end
             item
-              Caption = 'Command Line'
+              Caption = 'Threads'
               Width = 81
+            end
+            item
+              Caption = 'Command Line'
+              Width = 34
             end>
           GridLines = True
           ReadOnly = True
@@ -191,6 +180,73 @@ object FrmMain: TFrmMain
           PopupMenu = PopupMenu1
           TabOrder = 0
           ViewStyle = vsReport
+        end
+      end
+      object TabSheet2: TTabSheet
+        Caption = 'Services'
+        ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 408
+        object LvServices: TListView
+          Left = 0
+          Top = 0
+          Width = 779
+          Height = 414
+          Align = alClient
+          Columns = <
+            item
+              Caption = 'PID'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Service Name'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Description'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Status'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Service Type'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Account'
+              Width = -2
+              WidthType = (
+                -2)
+            end
+            item
+              Caption = 'Path'
+              Width = -2
+              WidthType = (
+                -2)
+            end>
+          GridLines = True
+          ReadOnly = True
+          RowSelect = True
+          TabOrder = 0
+          ViewStyle = vsReport
+          ExplicitLeft = 88
+          ExplicitTop = 72
+          ExplicitWidth = 250
+          ExplicitHeight = 150
         end
       end
     end
@@ -205,13 +261,17 @@ object FrmMain: TFrmMain
   object PopupMenu1: TPopupMenu
     Left = 234
     Top = 169
+    object StartNewProcess1: TMenuItem
+      Caption = 'Start New Process'
+      OnClick = StartNewProcess1Click
+    end
     object erminateProcess1: TMenuItem
       Caption = 'Kill Process'
       OnClick = erminateProcess1Click
     end
-    object StartNewProcess1: TMenuItem
-      Caption = 'Start New Process'
-      OnClick = StartNewProcess1Click
+    object Debug1: TMenuItem
+      Caption = 'Debug'
+      OnClick = Debug1Click
     end
   end
 end

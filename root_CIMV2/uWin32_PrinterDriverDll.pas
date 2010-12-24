@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.112
+/// Application version 0.1.0.116
 /// WMI version 7600.16385
-/// Creation Date 23-12-2010 06:07:13
+/// Creation Date 24-12-2010 08:20:20
 /// Namespace root\CIMV2 Class Win32_PrinterDriverDll
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterDriverDll.asp
 /// </summary>
@@ -36,7 +36,8 @@ type
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// A generic association to establish dependency relationships between objects.
+  /// The Win32_PrinterDriverDll class represents the association between a local 
+  /// printer and its driver file.
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PrinterDriverDll=class(TWmiClass)
@@ -48,13 +49,14 @@ type
    destructor Destroy;Override;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Antecedent represents the independent object in this association.
+   /// The CIM_DataFile antecedent reference represents the driver file for this Win32 
+   /// printer.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Dependent represents the object dependent on the Antecedent.
+   /// The Win32_Printer dependent reference represents the Win32_Printer.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
