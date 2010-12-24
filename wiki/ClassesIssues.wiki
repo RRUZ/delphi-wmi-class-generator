@@ -1,5 +1,3 @@
-
-
 =Namespace root\CIMV2=
 
  * *Class* [http://msdn.microsoft.com/en-us/library/aa394360%28VS.85%29.aspx Win32_POTSModem]
@@ -20,10 +18,10 @@ You must rename the property _Reset_
 
 The _PrintQuality_ property is of _uint32_ type  this type is mapped to a _Cardinal_ type, however some values returned by this property are negative.
 
-The application resolve in this way the values.
+The application create a code like this.
 
 {{{
-function GetPrintQualityAsString(const APropValue:Cardinal) : string;
+function GetPrintQualityAsString(const APropValue:Cardinal) : string; 
 begin
 Result:='';
   case APropValue of
@@ -44,3 +42,36 @@ function GetPrintQualityAsString(const APropValue:Integer) : string;
 }}}
 
 ----
+
+
+ * *Class* [http://msdn.microsoft.com/en-us/library/aa394506%28VS.85%29.aspx Win32_USBHub]
+
+
+===Description===
+
+This class exposes a method called _GetDescriptor_ this methoad have two parameters called _RequestLength_  
+
+
+===Workaround===
+you must rename the last parameter _RequestLength_ to _`_`RequestLength_ in this way
+
+{{{
+   function GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var _RequestLength : Word): Integer;
+}}}
+
+
+and change the implementation of this function in this way
+
+{{{
+//not static, OutParams>1, InParams>0
+function TWin32_USBHub.GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var _RequestLength : Word): Integer;
+var
+//output variants  helpers
+  vBuffer        : OleVariant;
+  vRequestLength : OleVariant;
+begin
+  Result         := VarIntegerNull(GetInstanceOf.GetDescriptor(RequestIndex,RequestLength,RequestType,RequestValue,vBuffer,vRequestLength));
+  Buffer         := VarByteNull(vBuffer);
+  _RequestLength := VarWordNull(vRequestLength);
+end;
+}}}
