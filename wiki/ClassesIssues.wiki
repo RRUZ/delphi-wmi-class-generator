@@ -1,2 +1,46 @@
- * Namespace root\CIMV2
- * Class Win32_POTSModem
+
+
+=Namespace root\CIMV2=
+
+ * *Class* [http://msdn.microsoft.com/en-us/library/aa394360%28VS.85%29.aspx Win32_POTSModem]
+
+===Description===
+
+This class exposes a property and a function called _Reset_ 
+
+===Workaround===
+
+You must rename the property _Reset_
+
+----
+
+ * *Class* [http://msdn.microsoft.com/en-us/library/aa394364%28VS.85%29.aspx Win32_PrinterConfiguration]
+
+===Description===
+
+The _PrintQuality_ property is of _uint32_ type  this type is mapped to a _Cardinal_ type, however some values returned by this property are negative.
+
+The application resolve in this way the values.
+
+{{{
+function GetPrintQualityAsString(const APropValue:Cardinal) : string;
+begin
+Result:='';
+  case APropValue of
+    -1 : Result:='Draft';
+    -2 : Result:='Low';
+    -3 : Result:='Medium';
+    -4 : Result:='High';
+  end;
+end;
+}}}
+
+
+===Workaround===
+change the type of the _APropValue_ to _Integer_
+
+{{{
+function GetPrintQualityAsString(const APropValue:Integer) : string;
+}}}
+
+----
