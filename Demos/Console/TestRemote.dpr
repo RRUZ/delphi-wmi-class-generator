@@ -19,7 +19,7 @@ begin
 
        RemoteBiosInfo.WmiServer:='192.168.217.128';
        RemoteBiosInfo.WmiUser  :='Administrator';
-       RemoteBiosInfo.WmiPass  :='desarrollo'; 
+       RemoteBiosInfo.WmiPass  :='password'; 
        RemoteBiosInfo.LoadWmiData;
 
        if RemoteBiosInfo.WmiConnected then  
