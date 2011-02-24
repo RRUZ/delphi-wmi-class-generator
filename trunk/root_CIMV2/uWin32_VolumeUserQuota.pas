@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:23
+/// Creation Date 23-02-2011 23:39:31
 /// Namespace root\CIMV2 Class Win32_VolumeUserQuota
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_VolumeUserQuota.asp
 /// </summary>
@@ -52,6 +52,8 @@ type
     FStatus                             : Cardinal;
     FVolume                             : OleVariant;
     FWarningLimit                       : Int64;
+    procedure SetLimit(const Value:Int64);
+    procedure SetWarningLimit(const Value:Int64);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -73,7 +75,7 @@ type
    /// The Limit property indicates the limit set for this particular user or group.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Limit : Int64 read FLimit;
+   property Limit : Int64 read FLimit write SetLimit;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A Status property indicates the current status of the Disk Quota.
@@ -92,7 +94,7 @@ type
    /// user or group.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property WarningLimit : Int64 read FWarningLimit;
+   property WarningLimit : Int64 read FWarningLimit write SetWarningLimit;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -128,6 +130,20 @@ end;
 destructor TWin32_VolumeUserQuota.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_VolumeUserQuota.SetLimit(const Value:Int64);
+begin
+  GetInstanceOf.Limit:=Value;
+  GetInstanceOf.Put_();
+  FLimit := Value;
+end;
+
+procedure TWin32_VolumeUserQuota.SetWarningLimit(const Value:Int64);
+begin
+  GetInstanceOf.WarningLimit:=Value;
+  GetInstanceOf.Put_();
+  FWarningLimit := Value;
 end;
 
 procedure TWin32_VolumeUserQuota.SetCollectionIndex(Index : Integer);

@@ -26,7 +26,7 @@ interface
      Sorry Only Windows
 {$ENDIF}
 {.$DEFINE _DEBUG}
-{$DEFINE WbemScripting_TLB}
+{.$DEFINE WbemScripting_TLB}
 
 {$IFDEF FPC}
 {$MODE DELPHI}{$H+}

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:45
+/// Creation Date 23-02-2011 23:37:39
 /// Namespace root\CIMV2 Class Win32_NetworkAdapter
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NetworkAdapter.asp
 /// </summary>
@@ -81,6 +81,7 @@ type
     FSystemCreationClassName            : String;
     FSystemName                         : String;
     FTimeOfLastReset                    : TDateTime;
+    procedure SetNetConnectionID(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -310,7 +311,7 @@ type
    /// appears in the 'Network Connections' folder.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property NetConnectionID : String read FNetConnectionID;
+   property NetConnectionID : String read FNetConnectionID write SetNetConnectionID;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// NetConnectionStatus is a string indicating the state of the network adapter's connection to the network. The value of the property is to be interpreted as follows:
@@ -700,6 +701,13 @@ begin
   FNetworkAddresses.Free;
   SetLength(FPowerManagementCapabilities,0);
   inherited;
+end;
+
+procedure TWin32_NetworkAdapter.SetNetConnectionID(const Value:String);
+begin
+  GetInstanceOf.NetConnectionID:=Value;
+  GetInstanceOf.Put_();
+  FNetConnectionID := Value;
 end;
 
 procedure TWin32_NetworkAdapter.SetCollectionIndex(Index : Integer);

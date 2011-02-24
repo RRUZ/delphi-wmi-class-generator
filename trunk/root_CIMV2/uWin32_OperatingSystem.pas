@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:49
+/// Creation Date 23-02-2011 23:37:44
 /// Namespace root\CIMV2 Class Win32_OperatingSystem
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OperatingSystem.asp
 /// </summary>
@@ -105,6 +105,8 @@ type
     FTotalVisibleMemorySize             : Int64;
     FVersion                            : String;
     FWindowsDirectory                   : String;
+    procedure SetDescription(const Value:String);
+    procedure SetForegroundApplicationBoost(const Value:Byte);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -244,7 +246,7 @@ type
    /// limit its length to 48 characters.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Description : String read FDescription;
+   property Description : String read FDescription write SetDescription;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Boolean indicating whether the operating system is distributed across several 
@@ -272,7 +274,7 @@ type
    /// value is 2.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ForegroundApplicationBoost : Byte read FForegroundApplicationBoost;
+   property ForegroundApplicationBoost : Byte read FForegroundApplicationBoost write SetForegroundApplicationBoost;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of kilobytes of physical memory currently unused and available
@@ -974,6 +976,20 @@ destructor TWin32_OperatingSystem.Destroy;
 begin
   FMUILanguages.Free;
   inherited;
+end;
+
+procedure TWin32_OperatingSystem.SetDescription(const Value:String);
+begin
+  GetInstanceOf.Description:=Value;
+  GetInstanceOf.Put_();
+  FDescription := Value;
+end;
+
+procedure TWin32_OperatingSystem.SetForegroundApplicationBoost(const Value:Byte);
+begin
+  GetInstanceOf.ForegroundApplicationBoost:=Value;
+  GetInstanceOf.Put_();
+  FForegroundApplicationBoost := Value;
 end;
 
 procedure TWin32_OperatingSystem.SetCollectionIndex(Index : Integer);

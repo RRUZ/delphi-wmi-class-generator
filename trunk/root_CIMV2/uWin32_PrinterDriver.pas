@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:00
+/// Creation Date 23-02-2011 23:39:13
 /// Namespace root\CIMV2 Class Win32_PrinterDriver
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterDriver.asp
 /// </summary>
@@ -66,6 +66,10 @@ type
     FSystemCreationClassName            : String;
     FSystemName                         : String;
     FVersion                            : Word;
+    procedure SetFilePath(const Value:String);
+    procedure SetInfName(const Value:String);
+    procedure SetSupportedPlatform(const Value:String);
+    procedure SetVersion(const Value:Word);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -132,7 +136,7 @@ type
    /// c:\temp\driver).
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property FilePath : String read FFilePath;
+   property FilePath : String read FFilePath write SetFilePath;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The HelpFile property contains the help file for this printer driver, (example: 
@@ -147,7 +151,7 @@ type
    /// directly by the manufacturer of the printer and not the operating system.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property InfName : String read FInfName;
+   property InfName : String read FInfName write SetInfName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
@@ -209,7 +213,7 @@ type
    /// driver is intended for.  Examples are 'Windows NT x86' or 'Windows IA64'.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SupportedPlatform : String read FSupportedPlatform;
+   property SupportedPlatform : String read FSupportedPlatform write SetSupportedPlatform;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The scoping System's CreationClassName. 
@@ -228,7 +232,7 @@ type
    /// intended for.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Version : Word read FVersion;
+   property Version : Word read FVersion write SetVersion;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The StartService method places the Service in the started state. It returns an 
@@ -318,6 +322,34 @@ destructor TWin32_PrinterDriver.Destroy;
 begin
   FDependentFiles.Free;
   inherited;
+end;
+
+procedure TWin32_PrinterDriver.SetFilePath(const Value:String);
+begin
+  GetInstanceOf.FilePath:=Value;
+  GetInstanceOf.Put_();
+  FFilePath := Value;
+end;
+
+procedure TWin32_PrinterDriver.SetInfName(const Value:String);
+begin
+  GetInstanceOf.InfName:=Value;
+  GetInstanceOf.Put_();
+  FInfName := Value;
+end;
+
+procedure TWin32_PrinterDriver.SetSupportedPlatform(const Value:String);
+begin
+  GetInstanceOf.SupportedPlatform:=Value;
+  GetInstanceOf.Put_();
+  FSupportedPlatform := Value;
+end;
+
+procedure TWin32_PrinterDriver.SetVersion(const Value:Word);
+begin
+  GetInstanceOf.Version:=Value;
+  GetInstanceOf.Put_();
+  FVersion := Value;
 end;
 
 procedure TWin32_PrinterDriver.SetCollectionIndex(Index : Integer);

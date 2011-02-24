@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:37:59
+/// Creation Date 23-02-2011 23:39:12
 /// Namespace root\CIMV2 Class Win32_PrinterConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterConfiguration.asp
 /// </summary>
@@ -380,7 +380,7 @@ type
   /// TWin32_PrinterConfiguration.PrintQuality
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-  function GetPrintQualityAsString(const APropValue:Integer) : string;
+  function GetPrintQualityAsString(const APropValue:Cardinal) : string;
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
@@ -453,14 +453,14 @@ Result:='';
   end;
 end;
 
-function GetPrintQualityAsString(const APropValue:Integer) : string;
+function GetPrintQualityAsString(const APropValue:Cardinal) : string;
 begin
 Result:='';
   case APropValue of
-    -1 : Result:='Draft';
-    -2 : Result:='Low';
-    -3 : Result:='Medium';
-    -4 : Result:='High';
+    1 : Result:='Draft';
+    2 : Result:='Low';
+    3 : Result:='Medium';
+    4 : Result:='High';
   end;
 end;
 

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:34
+/// Creation Date 23-02-2011 23:37:28
 /// Namespace root\CIMV2 Class Win32_DCOMApplicationSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_DCOMApplicationSetting.asp
 /// </summary>
@@ -56,6 +56,9 @@ type
     FServiceParameters                  : String;
     FSettingID                          : String;
     FUseSurrogate                       : Boolean;
+    procedure SetAuthenticationLevel(const Value:Cardinal);
+    procedure SetRemoteServerName(const Value:String);
+    procedure SetUseSurrogate(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -77,7 +80,7 @@ type
    /// PacketPrivacy - The properties of the other authentication levels are used, and all data is encrypted.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property AuthenticationLevel : Cardinal read FAuthenticationLevel;
+   property AuthenticationLevel : Cardinal read FAuthenticationLevel write SetAuthenticationLevel;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
@@ -119,7 +122,7 @@ type
    /// application is activated.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property RemoteServerName : String read FRemoteServerName;
+   property RemoteServerName : String read FRemoteServerName write SetRemoteServerName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The RunAsUser property indicates whether the application is to be run under a 
@@ -147,7 +150,7 @@ type
    /// activated as an out-of-processserver by use of a surrogate executable.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property UseSurrogate : Boolean read FUseSurrogate;
+   property UseSurrogate : Boolean read FUseSurrogate write SetUseSurrogate;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Retrieves a structural representation of the object's security descriptor.
@@ -336,6 +339,27 @@ end;
 destructor TWin32_DCOMApplicationSetting.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_DCOMApplicationSetting.SetAuthenticationLevel(const Value:Cardinal);
+begin
+  GetInstanceOf.AuthenticationLevel:=Value;
+  GetInstanceOf.Put_();
+  FAuthenticationLevel := Value;
+end;
+
+procedure TWin32_DCOMApplicationSetting.SetRemoteServerName(const Value:String);
+begin
+  GetInstanceOf.RemoteServerName:=Value;
+  GetInstanceOf.Put_();
+  FRemoteServerName := Value;
+end;
+
+procedure TWin32_DCOMApplicationSetting.SetUseSurrogate(const Value:Boolean);
+begin
+  GetInstanceOf.UseSurrogate:=Value;
+  GetInstanceOf.Put_();
+  FUseSurrogate := Value;
 end;
 
 procedure TWin32_DCOMApplicationSetting.SetCollectionIndex(Index : Integer);

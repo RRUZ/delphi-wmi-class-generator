@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:32
+/// Creation Date 23-02-2011 23:37:27
 /// Namespace root\CIMV2 Class Win32_ComputerSystem
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ComputerSystem.asp
 /// </summary>
@@ -100,6 +100,15 @@ type
     FUserName                           : String;
     FWakeUpType                         : Word;
     FWorkgroup                          : String;
+    procedure SetAutomaticManagedPagefile(const Value:Boolean);
+    procedure SetAutomaticResetBootOption(const Value:Boolean);
+    procedure SetCurrentTimeZone(const Value:SmallInt);
+    procedure SetEnableDaylightSavingsTime(const Value:Boolean);
+    procedure SetRoles(const Value:TStrings);
+    procedure SetSystemStartupDelay(const Value:Word);
+    procedure SetSystemStartupOptions(const Value:TStrings);
+    procedure SetSystemStartupSetting(const Value:Byte);
+    procedure SetWorkgroup(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -116,14 +125,14 @@ type
    /// Values: TRUE or FALSE. If TRUE, the automatic managed pagefile is enabled.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property AutomaticManagedPagefile : Boolean read FAutomaticManagedPagefile;
+   property AutomaticManagedPagefile : Boolean read FAutomaticManagedPagefile write SetAutomaticManagedPagefile;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The AutomaticResetBootOption property determines whether the automatic reset boot option is enabled, i.e. whether the machine will try to reboot after a system failure.
    /// Values: TRUE or FALSE. If TRUE, the automatic reset boot option is enabled.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property AutomaticResetBootOption : Boolean read FAutomaticResetBootOption;
+   property AutomaticResetBootOption : Boolean read FAutomaticResetBootOption write SetAutomaticResetBootOption;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The AutomaticResetCapability property determines whether the auto reboot feature is available with this machine. This capability is available on Windows NT but not on Windows 95.
@@ -187,7 +196,7 @@ type
    /// system is offset from Coordinated Universal Time.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property CurrentTimeZone : SmallInt read FCurrentTimeZone;
+   property CurrentTimeZone : SmallInt read FCurrentTimeZone write SetCurrentTimeZone;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DaylightInEffect property specifies if the daylight savings is in effect. 
@@ -230,7 +239,7 @@ type
    /// behind in the year.  NULL - the status of DST is unknown on this system
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableDaylightSavingsTime : Boolean read FEnableDaylightSavingsTime;
+   property EnableDaylightSavingsTime : Boolean read FEnableDaylightSavingsTime write SetEnableDaylightSavingsTime;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The FrontPanelResetStatus property identifies the hardware security settings 
@@ -474,7 +483,7 @@ type
    /// or 'Bridge'.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Roles : TStrings read FRoles;
+   property Roles : TStrings read FRoles write SetRoles;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -503,7 +512,7 @@ type
    /// Note:  The SE_SYSTEM_ENVIRONMENT privilege is required on IA64bit machines. This privilege is not required for 32bit systems.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SystemStartupDelay : Word read FSystemStartupDelay;
+   property SystemStartupDelay : Word read FSystemStartupDelay write SetSystemStartupDelay;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SystemStartupOptions property array indicates the options for starting up the computer system. Note that this property is not writable on IA64 bit machines. 
@@ -512,7 +521,7 @@ type
    /// Note:  The SE_SYSTEM_ENVIRONMENT privilege is required on IA64bit machines. This privilege is not required for other systems.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SystemStartupOptions : TStrings read FSystemStartupOptions;
+   property SystemStartupOptions : TStrings read FSystemStartupOptions write SetSystemStartupOptions;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SystemStartupSetting property indicates the index of the default start profile. This value is 'calculated' so that it usually returns zero (0) because at write-time, the profile string is physically moved to the top of the list. (This is how Windows NT determines which value is the default.)
@@ -520,7 +529,7 @@ type
    /// Note:  The SE_SYSTEM_ENVIRONMENT privilege is required on IA64bit machines. This privilege is not required for 32bit systems.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SystemStartupSetting : Byte read FSystemStartupSetting;
+   property SystemStartupSetting : Byte read FSystemStartupSetting write SetSystemStartupSetting;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SystemType property indicates the type of system running on the Win32 computer.
@@ -561,7 +570,7 @@ type
    /// valid if the PartOfDomain property is FALSE.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Workgroup : String read FWorkgroup;
+   property Workgroup : String read FWorkgroup write SetWorkgroup;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// SetPowerState method defines the desired power state of a computer system and 
@@ -1133,6 +1142,69 @@ begin
   FSupportContactDescription.Free;
   FSystemStartupOptions.Free;
   inherited;
+end;
+
+procedure TWin32_ComputerSystem.SetAutomaticManagedPagefile(const Value:Boolean);
+begin
+  GetInstanceOf.AutomaticManagedPagefile:=Value;
+  GetInstanceOf.Put_();
+  FAutomaticManagedPagefile := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetAutomaticResetBootOption(const Value:Boolean);
+begin
+  GetInstanceOf.AutomaticResetBootOption:=Value;
+  GetInstanceOf.Put_();
+  FAutomaticResetBootOption := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetCurrentTimeZone(const Value:SmallInt);
+begin
+  GetInstanceOf.CurrentTimeZone:=Value;
+  GetInstanceOf.Put_();
+  FCurrentTimeZone := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetEnableDaylightSavingsTime(const Value:Boolean);
+begin
+  GetInstanceOf.EnableDaylightSavingsTime:=Value;
+  GetInstanceOf.Put_();
+  FEnableDaylightSavingsTime := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetRoles(const Value:TStrings);
+begin
+  GetInstanceOf.Roles:=Value;
+  GetInstanceOf.Put_();
+  FRoles := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetSystemStartupDelay(const Value:Word);
+begin
+  GetInstanceOf.SystemStartupDelay:=Value;
+  GetInstanceOf.Put_();
+  FSystemStartupDelay := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetSystemStartupOptions(const Value:TStrings);
+begin
+  GetInstanceOf.SystemStartupOptions:=Value;
+  GetInstanceOf.Put_();
+  FSystemStartupOptions := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetSystemStartupSetting(const Value:Byte);
+begin
+  GetInstanceOf.SystemStartupSetting:=Value;
+  GetInstanceOf.Put_();
+  FSystemStartupSetting := Value;
+end;
+
+procedure TWin32_ComputerSystem.SetWorkgroup(const Value:String);
+begin
+  GetInstanceOf.Workgroup:=Value;
+  GetInstanceOf.Put_();
+  FWorkgroup := Value;
 end;
 
 procedure TWin32_ComputerSystem.SetCollectionIndex(Index : Integer);

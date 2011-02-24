@@ -8,11 +8,11 @@ uses
 
 type
   TFrmViewCode = class(TForm)
-    SynMemoDelphiCode: TSynMemo;
-    SynPasSyn1: TSynPasSyn;
     PopupMenu1: TPopupMenu;
     Save1: TMenuItem;
     SaveDialog1: TSaveDialog;
+    SynMemoDelphiCode: TSynMemo;
+    SynPasSyn1: TSynPasSyn;
     procedure Save1Click(Sender: TObject);
   private
     { Private declarations }

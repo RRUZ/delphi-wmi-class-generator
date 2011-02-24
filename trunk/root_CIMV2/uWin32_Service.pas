@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:08
+/// Creation Date 23-02-2011 23:39:19
 /// Namespace root\CIMV2 Class Win32_Service
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Service.asp
 /// </summary>
@@ -71,6 +71,7 @@ type
     FSystemName                         : String;
     FTagId                              : Cardinal;
     FWaitHint                           : Cardinal;
+    procedure SetState(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -238,7 +239,7 @@ type
    /// The State property indicates the current state of the base service.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property State : String read FState;
+   property State : String read FState write SetState;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -1097,6 +1098,13 @@ end;
 destructor TWin32_Service.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_Service.SetState(const Value:String);
+begin
+  GetInstanceOf.State:=Value;
+  GetInstanceOf.Put_();
+  FState := Value;
 end;
 
 procedure TWin32_Service.SetCollectionIndex(Index : Integer);

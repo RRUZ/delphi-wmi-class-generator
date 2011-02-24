@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:38
+/// Creation Date 23-02-2011 23:37:31
 /// Namespace root\CIMV2 Class Win32_Environment
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Environment.asp
 /// </summary>
@@ -50,6 +50,8 @@ type
     FSystemVariable                     : Boolean;
     FUserName                           : String;
     FVariableValue                      : String;
+    procedure SetName(const Value:String);
+    procedure SetVariableValue(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -79,7 +81,7 @@ type
    /// Example: Path.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Name : String read FName;
+   property Name : String read FName write SetName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -114,7 +116,7 @@ type
    /// Example: %SystemRoot%.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property VariableValue : String read FVariableValue;
+   property VariableValue : String read FVariableValue write SetVariableValue;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -133,6 +135,20 @@ end;
 destructor TWin32_Environment.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_Environment.SetName(const Value:String);
+begin
+  GetInstanceOf.Name:=Value;
+  GetInstanceOf.Put_();
+  FName := Value;
+end;
+
+procedure TWin32_Environment.SetVariableValue(const Value:String);
+begin
+  GetInstanceOf.VariableValue:=Value;
+  GetInstanceOf.Put_();
+  FVariableValue := Value;
 end;
 
 procedure TWin32_Environment.SetCollectionIndex(Index : Integer);

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:04
+/// Creation Date 23-02-2011 23:39:15
 /// Namespace root\CIMV2 Class Win32_QuotaSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_QuotaSetting.asp
 /// </summary>
@@ -51,6 +51,12 @@ type
     FState                              : Cardinal;
     FVolumePath                         : String;
     FWarningExceededNotification        : Boolean;
+    procedure SetDefaultLimit(const Value:Int64);
+    procedure SetDefaultWarningLimit(const Value:Int64);
+    procedure SetExceededNotification(const Value:Boolean);
+    procedure SetState(const Value:Cardinal);
+    procedure SetVolumePath(const Value:String);
+    procedure SetWarningExceededNotification(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -66,14 +72,14 @@ type
    /// particular volume.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DefaultLimit : Int64 read FDefaultLimit;
+   property DefaultLimit : Int64 read FDefaultLimit write SetDefaultLimit;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DefaultWarningLimit property indicates the default warning limit set for 
    /// quotas on this particular volume.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DefaultWarningLimit : Int64 read FDefaultWarningLimit;
+   property DefaultWarningLimit : Int64 read FDefaultWarningLimit write SetDefaultWarningLimit;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the CIM_Setting object.
@@ -86,7 +92,7 @@ type
    /// to the event log when quotas are exceeded.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ExceededNotification : Boolean read FExceededNotification;
+   property ExceededNotification : Boolean read FExceededNotification write SetExceededNotification;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
@@ -102,7 +108,7 @@ type
    /// are tracked and enforce on this volume.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property State : Cardinal read FState;
+   property State : Cardinal read FState write SetState;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The VolumePath property indicates the name of the volume that disk quotas are 
@@ -110,14 +116,14 @@ type
    /// name like \\?Volume{GUID}\.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property VolumePath : String read FVolumePath;
+   property VolumePath : String read FVolumePath write SetVolumePath;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WarningExceedNotification property indicates whether or not events will be 
    /// written to the event log when warnings are exceeded.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property WarningExceededNotification : Boolean read FWarningExceededNotification;
+   property WarningExceededNotification : Boolean read FWarningExceededNotification write SetWarningExceededNotification;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -152,6 +158,48 @@ end;
 destructor TWin32_QuotaSetting.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_QuotaSetting.SetDefaultLimit(const Value:Int64);
+begin
+  GetInstanceOf.DefaultLimit:=Value;
+  GetInstanceOf.Put_();
+  FDefaultLimit := Value;
+end;
+
+procedure TWin32_QuotaSetting.SetDefaultWarningLimit(const Value:Int64);
+begin
+  GetInstanceOf.DefaultWarningLimit:=Value;
+  GetInstanceOf.Put_();
+  FDefaultWarningLimit := Value;
+end;
+
+procedure TWin32_QuotaSetting.SetExceededNotification(const Value:Boolean);
+begin
+  GetInstanceOf.ExceededNotification:=Value;
+  GetInstanceOf.Put_();
+  FExceededNotification := Value;
+end;
+
+procedure TWin32_QuotaSetting.SetState(const Value:Cardinal);
+begin
+  GetInstanceOf.State:=Value;
+  GetInstanceOf.Put_();
+  FState := Value;
+end;
+
+procedure TWin32_QuotaSetting.SetVolumePath(const Value:String);
+begin
+  GetInstanceOf.VolumePath:=Value;
+  GetInstanceOf.Put_();
+  FVolumePath := Value;
+end;
+
+procedure TWin32_QuotaSetting.SetWarningExceededNotification(const Value:Boolean);
+begin
+  GetInstanceOf.WarningExceededNotification:=Value;
+  GetInstanceOf.Put_();
+  FWarningExceededNotification := Value;
 end;
 
 procedure TWin32_QuotaSetting.SetCollectionIndex(Index : Integer);
