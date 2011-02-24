@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:37:59
+/// Creation Date 23-02-2011 23:39:12
 /// Namespace root\CIMV2 Class Win32_Printer
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Printer.asp
 /// </summary>
@@ -127,6 +127,34 @@ type
     FUntilTime                          : TDateTime;
     FVerticalResolution                 : Cardinal;
     FWorkOffline                        : Boolean;
+    procedure SetAttributes(const Value:Cardinal);
+    procedure SetComment(const Value:String);
+    procedure SetDefaultPriority(const Value:Cardinal);
+    procedure SetDirect(const Value:Boolean);
+    procedure SetDoCompleteFirst(const Value:Boolean);
+    procedure SetDriverName(const Value:String);
+    procedure SetEnableBIDI(const Value:Boolean);
+    procedure SetEnableDevQueryPrint(const Value:Boolean);
+    procedure SetErrorInformation(const Value:TStrings);
+    procedure SetHidden(const Value:Boolean);
+    procedure SetKeepPrintedJobs(const Value:Boolean);
+    procedure SetLocal(const Value:Boolean);
+    procedure SetLocation(const Value:String);
+    procedure SetNetwork(const Value:Boolean);
+    procedure SetParameters(const Value:String);
+    procedure SetPortName(const Value:String);
+    procedure SetPrintJobDataType(const Value:String);
+    procedure SetPrintProcessor(const Value:String);
+    procedure SetPriority(const Value:Cardinal);
+    procedure SetPublished(const Value:Boolean);
+    procedure SetQueued(const Value:Boolean);
+    procedure SetRawOnly(const Value:Boolean);
+    procedure SetSeparatorFile(const Value:String);
+    procedure SetShared(const Value:Boolean);
+    procedure SetShareName(const Value:String);
+    procedure SetStartTime(const Value:TDateTime);
+    procedure SetUntilTime(const Value:TDateTime);
+    procedure SetWorkOffline(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -149,7 +177,7 @@ type
    /// Published - Indicates whether the printer is published in the network directory service.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Attributes : Cardinal read FAttributes;
+   property Attributes : Cardinal read FAttributes write SetAttributes;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The availability and status of the device.  For example, the Availability 
@@ -222,7 +250,7 @@ type
    /// Example: Color printer
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Comment : String read FComment;
+   property Comment : String read FComment write SetComment;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Indicates the Win32 Configuration Manager error code.  The following values may be returned: 
@@ -384,7 +412,7 @@ type
    /// each print job.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DefaultPriority : Cardinal read FDefaultPriority;
+   property DefaultPriority : Cardinal read FDefaultPriority write SetDefaultPriority;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Description property provides a textual description of the object. 
@@ -409,34 +437,34 @@ type
    /// The Direct property indicates whether the print jobs should be sent directly to the printer.  This means that no spool files are created for the print jobs.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Direct : Boolean read FDirect;
+   property Direct : Boolean read FDirect write SetDirect;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DoCompleteFirst property indicates whether the printer should start jobs 
    /// that have finished spooling as opposed to the order of the job received.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DoCompleteFirst : Boolean read FDoCompleteFirst;
+   property DoCompleteFirst : Boolean read FDoCompleteFirst write SetDoCompleteFirst;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DriverName property specifies the name of the Win32 printer driver.
    /// Example: Windows NT Fax Driver
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DriverName : String read FDriverName;
+   property DriverName : String read FDriverName write SetDriverName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableBIDI property indicates whether the printer can print bidirectionally.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableBIDI : Boolean read FEnableBIDI;
+   property EnableBIDI : Boolean read FEnableBIDI write SetEnableBIDI;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableDevQueryPrint property indicates whether to hold documents in the 
    /// queue, if document and printer setups do not match
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableDevQueryPrint : Boolean read FEnableDevQueryPrint;
+   property EnableDevQueryPrint : Boolean read FEnableDevQueryPrint write SetEnableDevQueryPrint;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// ErrorCleared is a boolean property indicating that the error reported in 
@@ -458,7 +486,7 @@ type
    /// indicated in DetectedErrorState.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ErrorInformation : TStrings read FErrorInformation;
+   property ErrorInformation : TStrings read FErrorInformation write SetErrorInformation;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExtendedDetectedErrorState property reports standard error information.  
@@ -479,7 +507,7 @@ type
    /// The Hidden property indicates whether the printer is hidden from network users.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Hidden : Boolean read FHidden;
+   property Hidden : Boolean read FHidden write SetHidden;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Printer's horizontal resolution in pixels per inch.
@@ -506,7 +534,7 @@ type
    /// delete the jobs after they are completed.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property KeepPrintedJobs : Boolean read FKeepPrintedJobs;
+   property KeepPrintedJobs : Boolean read FKeepPrintedJobs write SetKeepPrintedJobs;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// An array indicating the print languages natively supported.
@@ -528,14 +556,14 @@ type
    /// intended behavior.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Local : Boolean read FLocal;
+   property Local : Boolean read FLocal write SetLocal;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Location property specifies the physical location of the printer.
    /// Example: Bldg. 38, Room 1164
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Location : String read FLocation;
+   property Location : String read FLocation write SetLocation;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Specifies the marking technology used by the Printer.
@@ -592,7 +620,7 @@ type
    /// The Network property indicates whether the printer is a network printer.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Network : Boolean read FNetwork;
+   property Network : Boolean read FNetwork write SetNetwork;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// An integer array indicating the types of paper supported.
@@ -617,7 +645,7 @@ type
    /// Example: Copies=2
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Parameters : String read FParameters;
+   property Parameters : String read FParameters write SetParameters;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Indicates the Win32 Plug and Play device ID of the logical device.  Example: 
@@ -631,7 +659,7 @@ type
    /// Example: LPT1:, LPT2:, LPT3:
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PortName : String read FPortName;
+   property PortName : String read FPortName write SetPortName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Indicates the specific power-related capabilities of the logical device. The 
@@ -691,48 +719,48 @@ type
    /// for a print job.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PrintJobDataType : String read FPrintJobDataType;
+   property PrintJobDataType : String read FPrintJobDataType write SetPrintJobDataType;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PrintProcessor property specifies the name of the print spooler that handles print jobs.
    /// Example: SPOOLSS.DLL.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PrintProcessor : String read FPrintProcessor;
+   property PrintProcessor : String read FPrintProcessor write SetPrintProcessor;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Priority property specifies the priority of the  printer. The jobs on a 
    /// higher priority printer are scheduled first.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Priority : Cardinal read FPriority;
+   property Priority : Cardinal read FPriority write SetPriority;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Published property indicates whether the printer is published in the 
    /// network directory service.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Published : Boolean read FPublished;
+   property Published : Boolean read FPublished write SetPublished;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Queued property indicates whether the printer buffers and queues print jobs.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Queued : Boolean read FQueued;
+   property Queued : Boolean read FQueued write SetQueued;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The RawOnly property indicates whether the printer accepts only raw data to be 
    /// spooled.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property RawOnly : Boolean read FRawOnly;
+   property RawOnly : Boolean read FRawOnly write SetRawOnly;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SeparatorFile property specifies the name of the file used to create a 
    /// separator page. This page is used to separate print jobs sent to the printer.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SeparatorFile : String read FSeparatorFile;
+   property SeparatorFile : String read FSeparatorFile write SetSeparatorFile;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ServerName property identifies the server that controls the printer. If 
@@ -746,14 +774,14 @@ type
    /// network resource.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Shared : Boolean read FShared;
+   property Shared : Boolean read FShared write SetShared;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ShareName property indicates the share name of the Win32 printing device.
    /// Example: \\PRINTSERVER1\PRINTER2
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ShareName : String read FShareName;
+   property ShareName : String read FShareName write SetShareName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SpoolEnabled property shows whether spooling is enabled for this printer. 
@@ -769,7 +797,7 @@ type
    /// expressed as time elapsed since 12:00 AM GMT (Greenwich mean time).
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property StartTime : TDateTime read FStartTime;
+   property StartTime : TDateTime read FStartTime write SetStartTime;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -818,7 +846,7 @@ type
    /// expressed as time elapsed since 12:00 AM GMT (Greenwich mean time).
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property UntilTime : TDateTime read FUntilTime;
+   property UntilTime : TDateTime read FUntilTime write SetUntilTime;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Printer's vertical resolution in pixels per inch.
@@ -831,7 +859,7 @@ type
    /// if the printer is offline.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property WorkOffline : Boolean read FWorkOffline;
+   property WorkOffline : Boolean read FWorkOffline write SetWorkOffline;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// SetPowerState defines the desired power state for a logical device and when a 
@@ -1852,6 +1880,202 @@ begin
   SetLength(FPowerManagementCapabilities,0);
   FPrinterPaperNames.Free;
   inherited;
+end;
+
+procedure TWin32_Printer.SetAttributes(const Value:Cardinal);
+begin
+  GetInstanceOf.Attributes:=Value;
+  GetInstanceOf.Put_();
+  FAttributes := Value;
+end;
+
+procedure TWin32_Printer.SetComment(const Value:String);
+begin
+  GetInstanceOf.Comment:=Value;
+  GetInstanceOf.Put_();
+  FComment := Value;
+end;
+
+procedure TWin32_Printer.SetDefaultPriority(const Value:Cardinal);
+begin
+  GetInstanceOf.DefaultPriority:=Value;
+  GetInstanceOf.Put_();
+  FDefaultPriority := Value;
+end;
+
+procedure TWin32_Printer.SetDirect(const Value:Boolean);
+begin
+  GetInstanceOf.Direct:=Value;
+  GetInstanceOf.Put_();
+  FDirect := Value;
+end;
+
+procedure TWin32_Printer.SetDoCompleteFirst(const Value:Boolean);
+begin
+  GetInstanceOf.DoCompleteFirst:=Value;
+  GetInstanceOf.Put_();
+  FDoCompleteFirst := Value;
+end;
+
+procedure TWin32_Printer.SetDriverName(const Value:String);
+begin
+  GetInstanceOf.DriverName:=Value;
+  GetInstanceOf.Put_();
+  FDriverName := Value;
+end;
+
+procedure TWin32_Printer.SetEnableBIDI(const Value:Boolean);
+begin
+  GetInstanceOf.EnableBIDI:=Value;
+  GetInstanceOf.Put_();
+  FEnableBIDI := Value;
+end;
+
+procedure TWin32_Printer.SetEnableDevQueryPrint(const Value:Boolean);
+begin
+  GetInstanceOf.EnableDevQueryPrint:=Value;
+  GetInstanceOf.Put_();
+  FEnableDevQueryPrint := Value;
+end;
+
+procedure TWin32_Printer.SetErrorInformation(const Value:TStrings);
+begin
+  GetInstanceOf.ErrorInformation:=Value;
+  GetInstanceOf.Put_();
+  FErrorInformation := Value;
+end;
+
+procedure TWin32_Printer.SetHidden(const Value:Boolean);
+begin
+  GetInstanceOf.Hidden:=Value;
+  GetInstanceOf.Put_();
+  FHidden := Value;
+end;
+
+procedure TWin32_Printer.SetKeepPrintedJobs(const Value:Boolean);
+begin
+  GetInstanceOf.KeepPrintedJobs:=Value;
+  GetInstanceOf.Put_();
+  FKeepPrintedJobs := Value;
+end;
+
+procedure TWin32_Printer.SetLocal(const Value:Boolean);
+begin
+  GetInstanceOf.Local:=Value;
+  GetInstanceOf.Put_();
+  FLocal := Value;
+end;
+
+procedure TWin32_Printer.SetLocation(const Value:String);
+begin
+  GetInstanceOf.Location:=Value;
+  GetInstanceOf.Put_();
+  FLocation := Value;
+end;
+
+procedure TWin32_Printer.SetNetwork(const Value:Boolean);
+begin
+  GetInstanceOf.Network:=Value;
+  GetInstanceOf.Put_();
+  FNetwork := Value;
+end;
+
+procedure TWin32_Printer.SetParameters(const Value:String);
+begin
+  GetInstanceOf.Parameters:=Value;
+  GetInstanceOf.Put_();
+  FParameters := Value;
+end;
+
+procedure TWin32_Printer.SetPortName(const Value:String);
+begin
+  GetInstanceOf.PortName:=Value;
+  GetInstanceOf.Put_();
+  FPortName := Value;
+end;
+
+procedure TWin32_Printer.SetPrintJobDataType(const Value:String);
+begin
+  GetInstanceOf.PrintJobDataType:=Value;
+  GetInstanceOf.Put_();
+  FPrintJobDataType := Value;
+end;
+
+procedure TWin32_Printer.SetPrintProcessor(const Value:String);
+begin
+  GetInstanceOf.PrintProcessor:=Value;
+  GetInstanceOf.Put_();
+  FPrintProcessor := Value;
+end;
+
+procedure TWin32_Printer.SetPriority(const Value:Cardinal);
+begin
+  GetInstanceOf.Priority:=Value;
+  GetInstanceOf.Put_();
+  FPriority := Value;
+end;
+
+procedure TWin32_Printer.SetPublished(const Value:Boolean);
+begin
+  GetInstanceOf.Published:=Value;
+  GetInstanceOf.Put_();
+  FPublished := Value;
+end;
+
+procedure TWin32_Printer.SetQueued(const Value:Boolean);
+begin
+  GetInstanceOf.Queued:=Value;
+  GetInstanceOf.Put_();
+  FQueued := Value;
+end;
+
+procedure TWin32_Printer.SetRawOnly(const Value:Boolean);
+begin
+  GetInstanceOf.RawOnly:=Value;
+  GetInstanceOf.Put_();
+  FRawOnly := Value;
+end;
+
+procedure TWin32_Printer.SetSeparatorFile(const Value:String);
+begin
+  GetInstanceOf.SeparatorFile:=Value;
+  GetInstanceOf.Put_();
+  FSeparatorFile := Value;
+end;
+
+procedure TWin32_Printer.SetShared(const Value:Boolean);
+begin
+  GetInstanceOf.Shared:=Value;
+  GetInstanceOf.Put_();
+  FShared := Value;
+end;
+
+procedure TWin32_Printer.SetShareName(const Value:String);
+begin
+  GetInstanceOf.ShareName:=Value;
+  GetInstanceOf.Put_();
+  FShareName := Value;
+end;
+
+procedure TWin32_Printer.SetStartTime(const Value:TDateTime);
+begin
+  GetInstanceOf.StartTime:=Value;
+  GetInstanceOf.Put_();
+  FStartTime := Value;
+end;
+
+procedure TWin32_Printer.SetUntilTime(const Value:TDateTime);
+begin
+  GetInstanceOf.UntilTime:=Value;
+  GetInstanceOf.Put_();
+  FUntilTime := Value;
+end;
+
+procedure TWin32_Printer.SetWorkOffline(const Value:Boolean);
+begin
+  GetInstanceOf.WorkOffline:=Value;
+  GetInstanceOf.Put_();
+  FWorkOffline := Value;
 end;
 
 procedure TWin32_Printer.SetCollectionIndex(Index : Integer);

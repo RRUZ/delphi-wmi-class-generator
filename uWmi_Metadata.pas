@@ -266,9 +266,11 @@ type
     FValidMapValues: TStrings;
     FIsOrdinal: Boolean;
     FIsArray : Boolean;
+    FIsReadOnly: Boolean;
   public
     constructor Create; overload;
     Destructor  Destroy; override;
+    property IsReadOnly : Boolean read FIsReadOnly;
     property IsArray : Boolean read FIsArray;
     property IsOrdinal : Boolean read FIsOrdinal;
     property Name : string read FName;
@@ -1700,6 +1702,7 @@ begin
     PropertyMetaData.FPascalType :=WmiTypeToDelphiType(CIMTypeStr(colItem.cimtype));
     PropertyMetaData.FIsOrdinal  :=CIMTypeOrdinal(colItem.cimtype);
     PropertyMetaData.FIsArray    :=colItem.IsArray;
+    PropertyMetaData.FIsReadOnly :=True;
 
 
       Qualifiers      := colItem.Qualifiers_;
@@ -1708,6 +1711,9 @@ begin
       begin
         if CompareText(VarStrNull(Qualif.Name),'Description')=0 then
          PropertyMetaData.FDescription := VarStrNull(Qualif.Value)
+        else
+        if CompareText(VarStrNull(Qualif.Name),'write')=0 then
+         PropertyMetaData.FIsReadOnly :=False
         else
         if CompareText(VarStrNull(Qualif.Name),'values')=0 then
         begin

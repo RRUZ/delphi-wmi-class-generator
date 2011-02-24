@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:04
+/// Creation Date 23-02-2011 23:39:16
 /// Namespace root\CIMV2 Class Win32_Registry
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Registry.asp
 /// </summary>
@@ -50,6 +50,7 @@ type
     FName                               : String;
     FProposedSize                       : Cardinal;
     FStatus                             : String;
+    procedure SetProposedSize(const Value:Cardinal);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -102,7 +103,7 @@ type
    /// attempted the next time the system boots.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ProposedSize : Cardinal read FProposedSize;
+   property ProposedSize : Cardinal read FProposedSize write SetProposedSize;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -135,6 +136,13 @@ end;
 destructor TWin32_Registry.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_Registry.SetProposedSize(const Value:Cardinal);
+begin
+  GetInstanceOf.ProposedSize:=Value;
+  GetInstanceOf.Put_();
+  FProposedSize := Value;
 end;
 
 procedure TWin32_Registry.SetCollectionIndex(Index : Integer);

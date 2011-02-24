@@ -160,6 +160,7 @@ var
   UsesList        : TStrings;
   InterfaceList   : TStrings;
   FieldsList      : TStrings;
+  SetFieldsList   : TStrings;
   PropertiesList  : TStrings;
   MethodsList     : TStrings;
   MethodsImpl     : TStrings;
@@ -183,6 +184,7 @@ begin
   UsesList      :=TStringList.Create;
   InterfaceList :=TStringList.Create;
   FieldsList    :=TStringList.Create;
+  SetFieldsList :=TStringList.Create;
   PropertiesList:=TStringList.Create;
   MethodsList   :=TStringList.Create;
   ImplList      :=TStringList.Create;
@@ -226,6 +228,18 @@ begin
        FieldsList.Add(Format('    %-35s : %s;',['F'+WMiClassMetaData.Properties[i],WMiClassMetaData.PropertiesPascalTypes[i]]));
 
       for i:=0 to WMiClassMetaData.PropertiesCount-1 do
+      if not WMiClassMetaData.PropertyMetaData[i].IsReadOnly then
+      begin
+        if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+         SetFieldsList.Add(Format('    procedure Set%s(const Value:%s);',[WMiClassMetaData.Properties[i],'TStrings']))
+        else
+        if WMiClassMetaData.PropertyMetaData[i].IsArray then
+         SetFieldsList.Add(Format('    procedure Set%s(const Value:%s);',[WMiClassMetaData.Properties[i],'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array']))
+        else
+         SetFieldsList.Add(Format('    procedure Set%s(const Value:%s);',[WMiClassMetaData.Properties[i],WMiClassMetaData.PropertiesPascalTypes[i]]));
+      end;
+
+      for i:=0 to WMiClassMetaData.PropertiesCount-1 do
       begin
          ListDescr:=TStringList.Create;
          try
@@ -240,13 +254,27 @@ begin
            ListDescr.Free;
          end;
 
-         if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
-          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'TStrings','F'+WMiClassMetaData.Properties[i]]))
+         if WMiClassMetaData.PropertyMetaData[i].IsReadOnly then
+         begin
+           if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+            PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'TStrings','F'+WMiClassMetaData.Properties[i]]))
+           else
+           if WMiClassMetaData.PropertyMetaData[i].IsArray then
+            PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array','F'+WMiClassMetaData.Properties[i]]))
+           else
+            PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i]]));
+         end
          else
-         if WMiClassMetaData.PropertyMetaData[i].IsArray then
-          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array','F'+WMiClassMetaData.Properties[i]]))
-         else
-          PropertiesList.Add(Format('   property %s : %s read %s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i]]));
+         begin
+           if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+            PropertiesList.Add(Format('   property %s : %s read %s write Set%s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'TStrings','F'+WMiClassMetaData.Properties[i],WMiClassMetaData.Properties[i]]))
+           else
+           if WMiClassMetaData.PropertyMetaData[i].IsArray then
+            PropertiesList.Add(Format('   property %s : %s read %s write Set%s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array','F'+WMiClassMetaData.Properties[i],WMiClassMetaData.Properties[i]]))
+           else
+            PropertiesList.Add(Format('   property %s : %s read %s write Set%s;',[EscapeDelphiReservedWord(WMiClassMetaData.Properties[i]),WMiClassMetaData.PropertiesPascalTypes[i],'F'+WMiClassMetaData.Properties[i],WMiClassMetaData.Properties[i]]));
+         end;
+
       end;
 
       for i:=0 to WMiClassMetaData.MethodsCount-1 do
@@ -596,6 +624,7 @@ begin
       InterfaceList.Add('  private');
 
       InterfaceList.AddStrings(FieldsList);
+      InterfaceList.AddStrings(SetFieldsList);
       InterfaceList.Add('  public');
       InterfaceList.Add('   constructor Create(LoadWmiData : boolean=True); overload;');
       InterfaceList.Add('   destructor Destroy;Override;');
@@ -776,6 +805,26 @@ begin
       ImplList.Add('end;');
       ImplList.Add('');
 
+      for i:=0 to WMiClassMetaData.PropertiesCount-1 do
+      if not WMiClassMetaData.PropertyMetaData[i].IsReadOnly then
+      begin
+        if WMiClassMetaData.PropertyMetaData[i].IsArray and (CompareText(WMiClassMetaData.PropertyMetaData[i].&Type,wbemtypeString)=0)  then
+         ImplList.Add(Format('procedure T%s.Set%s(const Value:%s);',[WmiClass,WMiClassMetaData.Properties[i],'TStrings']))
+        else
+        if WMiClassMetaData.PropertyMetaData[i].IsArray then
+         ImplList.Add(Format('procedure T%s.Set%s(const Value:%s);',[WmiClass,WMiClassMetaData.Properties[i],'T'+WMiClassMetaData.PropertiesPascalTypes[i]+'Array']))
+        else
+         ImplList.Add(Format('procedure T%s.Set%s(const Value:%s);',[WmiClass,WMiClassMetaData.Properties[i],WMiClassMetaData.PropertiesPascalTypes[i]]));
+
+         ImplList.Add('begin');
+         ImplList.Add(Format('  GetInstanceOf.%s:=Value;',[WMiClassMetaData.Properties[i]]));
+         ImplList.Add('  GetInstanceOf.Put_();');
+         ImplList.Add(Format('  F%s := Value;',[WMiClassMetaData.Properties[i]]));
+         ImplList.Add('end;');
+         ImplList.Add('');
+      end;
+
+
 
       ImplList.Add(Format('procedure T%s.SetCollectionIndex(Index : Integer);',[WmiClass]));
       ImplList.Add('begin');
@@ -851,6 +900,7 @@ begin
     UsesList.Free;
     InterfaceList.Free;
     FieldsList.Free;
+    SetFieldsList.Free;
     PropertiesList.Free;
     MethodsList.Free;
     MethodsImpl.Free;

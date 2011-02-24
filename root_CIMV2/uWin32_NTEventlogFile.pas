@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:47
+/// Creation Date 23-02-2011 23:37:41
 /// Namespace root\CIMV2 Class Win32_NTEventlogFile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NTEventlogFile.asp
 /// </summary>
@@ -81,6 +81,8 @@ type
     FSystem                             : Boolean;
     FVersion                            : String;
     FWriteable                          : Boolean;
+    procedure SetMaxFileSize(const Value:Cardinal);
+    procedure SetOverwriteOutDated(const Value:Cardinal);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -283,7 +285,7 @@ type
    /// limit. 
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property MaxFileSize : Cardinal read FMaxFileSize;
+   property MaxFileSize : Cardinal read FMaxFileSize write SetMaxFileSize;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property is a string representing the inherited name that serves as a 
@@ -309,7 +311,7 @@ type
    /// If one changes the OverWriteOutDated property value to 4294967295, the OverWritePolicy property value will be 'Never'.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property OverwriteOutDated : Cardinal read FOverwriteOutDated;
+   property OverwriteOutDated : Cardinal read FOverwriteOutDated write SetOverwriteOutDated;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Current overwrite policy the Windows NT/Windows 2000 Event Log service employs for this log file. The possible values of the property are: 
@@ -1079,6 +1081,20 @@ destructor TWin32_NTEventlogFile.Destroy;
 begin
   FSources.Free;
   inherited;
+end;
+
+procedure TWin32_NTEventlogFile.SetMaxFileSize(const Value:Cardinal);
+begin
+  GetInstanceOf.MaxFileSize:=Value;
+  GetInstanceOf.Put_();
+  FMaxFileSize := Value;
+end;
+
+procedure TWin32_NTEventlogFile.SetOverwriteOutDated(const Value:Cardinal);
+begin
+  GetInstanceOf.OverwriteOutDated:=Value;
+  GetInstanceOf.Put_();
+  FOverwriteOutDated := Value;
 end;
 
 procedure TWin32_NTEventlogFile.SetCollectionIndex(Index : Integer);

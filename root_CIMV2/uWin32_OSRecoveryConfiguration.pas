@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:50
+/// Creation Date 23-02-2011 23:37:45
 /// Namespace root\CIMV2 Class Win32_OSRecoveryConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OSRecoveryConfiguration.asp
 /// </summary>
@@ -58,6 +58,17 @@ type
     FSettingID                          : String;
     FWriteDebugInfo                     : Boolean;
     FWriteToSystemLog                   : Boolean;
+    procedure SetAutoReboot(const Value:Boolean);
+    procedure SetDebugFilePath(const Value:String);
+    procedure SetDebugInfoType(const Value:Cardinal);
+    procedure SetExpandedDebugFilePath(const Value:String);
+    procedure SetExpandedMiniDumpDirectory(const Value:String);
+    procedure SetKernelDumpOnly(const Value:Boolean);
+    procedure SetMiniDumpDirectory(const Value:String);
+    procedure SetOverwriteExistingDebugFile(const Value:Boolean);
+    procedure SetSendAdminAlert(const Value:Boolean);
+    procedure SetWriteDebugInfo(const Value:Boolean);
+    procedure SetWriteToSystemLog(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -67,7 +78,7 @@ type
    /// Values: TRUE or FALSE. If TRUE, the system will automatically rebooted.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property AutoReboot : Boolean read FAutoReboot;
+   property AutoReboot : Boolean read FAutoReboot write SetAutoReboot;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
@@ -80,7 +91,7 @@ type
    /// Example: %systemRoot%\Memory.dmp
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DebugFilePath : String read FDebugFilePath;
+   property DebugFilePath : String read FDebugFilePath write SetDebugFilePath;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DebugInfoType property indicates what type of debugging information is to be written to the log file.
@@ -90,7 +101,7 @@ type
    /// 3 = Small memory dump (64KB)
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DebugInfoType : Cardinal read FDebugInfoType;
+   property DebugInfoType : Cardinal read FDebugInfoType write SetDebugInfoType;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the CIM_Setting object.
@@ -103,14 +114,14 @@ type
    /// Example: C:\WinNT\Memory.dmp
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ExpandedDebugFilePath : String read FExpandedDebugFilePath;
+   property ExpandedDebugFilePath : String read FExpandedDebugFilePath write SetExpandedDebugFilePath;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExpandedMiniDumpDirectory property is an expanded version of the MiniDumpDirectory property. 
    /// Example: C:\WinNT\MiniDump
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ExpandedMiniDumpDirectory : String read FExpandedMiniDumpDirectory;
+   property ExpandedMiniDumpDirectory : String read FExpandedMiniDumpDirectory write SetExpandedMiniDumpDirectory;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The KernelDumpOnly property has been deprecated in favor of the DebugInfoType property in the same class.  All future work should use this new property.  
@@ -118,14 +129,14 @@ type
    /// Values TRUE or FALSE. If TRUE, then only the state of kernel is written to a file in the event of a system failure. If FALSE, the system will try to log the state of the memory and any devices that can provide information about the system when it failed.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property KernelDumpOnly : Boolean read FKernelDumpOnly;
+   property KernelDumpOnly : Boolean read FKernelDumpOnly write SetKernelDumpOnly;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MiniDumpDirectory property indicates the directory where small memory dump files will be recorded and accumulated. 
    /// Example: %systemRoot%\MiniDump
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property MiniDumpDirectory : String read FMiniDumpDirectory;
+   property MiniDumpDirectory : String read FMiniDumpDirectory write SetMiniDumpDirectory;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property contains an identifying name for this instance of the 
@@ -139,14 +150,14 @@ type
    /// Values: TRUE or FALSE. If TRUE, the existing debug file will be overwritten. If FALSE, a log file is not written if the filename already exists.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property OverwriteExistingDebugFile : Boolean read FOverwriteExistingDebugFile;
+   property OverwriteExistingDebugFile : Boolean read FOverwriteExistingDebugFile write SetOverwriteExistingDebugFile;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SendAdminAlert property indicates whether or not an alert message will be sent to the system administrator in the event of an operating system failure.
    /// Values: TRUE or FALSE. If TRUE, the system will send an alert to the system administrator.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property SendAdminAlert : Boolean read FSendAdminAlert;
+   property SendAdminAlert : Boolean read FSendAdminAlert write SetSendAdminAlert;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
@@ -160,14 +171,14 @@ type
    /// Values: TRUE or FALSE. If TRUE, debug information is written to a file.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property WriteDebugInfo : Boolean read FWriteDebugInfo;
+   property WriteDebugInfo : Boolean read FWriteDebugInfo write SetWriteDebugInfo;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WriteToSystemLog property indicates whether or not events will be written to a system log.  
    /// Values: TRUE or FALSE. If TRUE, information will be written to a system log file.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property WriteToSystemLog : Boolean read FWriteToSystemLog;
+   property WriteToSystemLog : Boolean read FWriteToSystemLog write SetWriteToSystemLog;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -204,6 +215,83 @@ end;
 destructor TWin32_OSRecoveryConfiguration.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetAutoReboot(const Value:Boolean);
+begin
+  GetInstanceOf.AutoReboot:=Value;
+  GetInstanceOf.Put_();
+  FAutoReboot := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetDebugFilePath(const Value:String);
+begin
+  GetInstanceOf.DebugFilePath:=Value;
+  GetInstanceOf.Put_();
+  FDebugFilePath := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetDebugInfoType(const Value:Cardinal);
+begin
+  GetInstanceOf.DebugInfoType:=Value;
+  GetInstanceOf.Put_();
+  FDebugInfoType := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetExpandedDebugFilePath(const Value:String);
+begin
+  GetInstanceOf.ExpandedDebugFilePath:=Value;
+  GetInstanceOf.Put_();
+  FExpandedDebugFilePath := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetExpandedMiniDumpDirectory(const Value:String);
+begin
+  GetInstanceOf.ExpandedMiniDumpDirectory:=Value;
+  GetInstanceOf.Put_();
+  FExpandedMiniDumpDirectory := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetKernelDumpOnly(const Value:Boolean);
+begin
+  GetInstanceOf.KernelDumpOnly:=Value;
+  GetInstanceOf.Put_();
+  FKernelDumpOnly := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetMiniDumpDirectory(const Value:String);
+begin
+  GetInstanceOf.MiniDumpDirectory:=Value;
+  GetInstanceOf.Put_();
+  FMiniDumpDirectory := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetOverwriteExistingDebugFile(const Value:Boolean);
+begin
+  GetInstanceOf.OverwriteExistingDebugFile:=Value;
+  GetInstanceOf.Put_();
+  FOverwriteExistingDebugFile := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetSendAdminAlert(const Value:Boolean);
+begin
+  GetInstanceOf.SendAdminAlert:=Value;
+  GetInstanceOf.Put_();
+  FSendAdminAlert := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetWriteDebugInfo(const Value:Boolean);
+begin
+  GetInstanceOf.WriteDebugInfo:=Value;
+  GetInstanceOf.Put_();
+  FWriteDebugInfo := Value;
+end;
+
+procedure TWin32_OSRecoveryConfiguration.SetWriteToSystemLog(const Value:Boolean);
+begin
+  GetInstanceOf.WriteToSystemLog:=Value;
+  GetInstanceOf.Put_();
+  FWriteToSystemLog := Value;
 end;
 
 procedure TWin32_OSRecoveryConfiguration.SetCollectionIndex(Index : Integer);

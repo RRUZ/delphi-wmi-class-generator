@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:40
+/// Creation Date 23-02-2011 23:37:33
 /// Namespace root\CIMV2 Class Win32_IP4PersistedRouteTable
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_IP4PersistedRouteTable.asp
 /// </summary>
@@ -54,6 +54,10 @@ type
     FName                               : String;
     FNextHop                            : String;
     FStatus                             : String;
+    procedure SetDestination(const Value:String);
+    procedure SetMask(const Value:String);
+    procedure SetMetric1(const Value:Integer);
+    procedure SetNextHop(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -76,7 +80,7 @@ type
    /// route.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Destination : String read FDestination;
+   property Destination : String read FDestination write SetDestination;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
@@ -91,7 +95,7 @@ type
    /// value in the ipRouteDest field.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Mask : String read FMask;
+   property Mask : String read FMask write SetMask;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric1 property contains the primary routing metric for this persisted 
@@ -99,7 +103,7 @@ type
    /// specified in the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric1 : Integer read FMetric1;
+   property Metric1 : Integer read FMetric1 write SetMetric1;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
@@ -114,7 +118,7 @@ type
    /// broadcast media, the value of this field is the agent's IP address on that interface.).
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property NextHop : String read FNextHop;
+   property NextHop : String read FNextHop write SetNextHop;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
@@ -147,6 +151,34 @@ end;
 destructor TWin32_IP4PersistedRouteTable.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_IP4PersistedRouteTable.SetDestination(const Value:String);
+begin
+  GetInstanceOf.Destination:=Value;
+  GetInstanceOf.Put_();
+  FDestination := Value;
+end;
+
+procedure TWin32_IP4PersistedRouteTable.SetMask(const Value:String);
+begin
+  GetInstanceOf.Mask:=Value;
+  GetInstanceOf.Put_();
+  FMask := Value;
+end;
+
+procedure TWin32_IP4PersistedRouteTable.SetMetric1(const Value:Integer);
+begin
+  GetInstanceOf.Metric1:=Value;
+  GetInstanceOf.Put_();
+  FMetric1 := Value;
+end;
+
+procedure TWin32_IP4PersistedRouteTable.SetNextHop(const Value:String);
+begin
+  GetInstanceOf.NextHop:=Value;
+  GetInstanceOf.Put_();
+  FNextHop := Value;
 end;
 
 procedure TWin32_IP4PersistedRouteTable.SetCollectionIndex(Index : Integer);

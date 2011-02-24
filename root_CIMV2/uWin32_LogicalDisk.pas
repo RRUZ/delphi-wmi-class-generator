@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:41
+/// Creation Date 23-02-2011 23:37:35
 /// Namespace root\CIMV2 Class Win32_LogicalDisk
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_LogicalDisk.asp
 /// </summary>
@@ -82,6 +82,7 @@ type
     FVolumeDirty                        : Boolean;
     FVolumeName                         : String;
     FVolumeSerialNumber                 : String;
+    procedure SetVolumeName(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -427,7 +428,7 @@ type
    /// Constraints: Maximum 32 characters
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property VolumeName : String read FVolumeName;
+   property VolumeName : String read FVolumeName write SetVolumeName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The VolumeSerialNumber property indicates the volume serial number of the logical disk.
@@ -800,6 +801,13 @@ destructor TWin32_LogicalDisk.Destroy;
 begin
   SetLength(FPowerManagementCapabilities,0);
   inherited;
+end;
+
+procedure TWin32_LogicalDisk.SetVolumeName(const Value:String);
+begin
+  GetInstanceOf.VolumeName:=Value;
+  GetInstanceOf.Put_();
+  FVolumeName := Value;
 end;
 
 procedure TWin32_LogicalDisk.SetCollectionIndex(Index : Integer);

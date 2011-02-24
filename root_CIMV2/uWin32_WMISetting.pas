@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:23
+/// Creation Date 23-02-2011 23:39:32
 /// Namespace root\CIMV2 Class Win32_WMISetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_WMISetting.asp
 /// </summary>
@@ -71,6 +71,23 @@ type
     FMaxWaitOnEvents                    : Cardinal;
     FMofSelfInstallDirectory            : String;
     FSettingID                          : String;
+    procedure SetASPScriptDefaultNamespace(const Value:String);
+    procedure SetASPScriptEnabled(const Value:Boolean);
+    procedure SetAutoStartWin9X(const Value:Cardinal);
+    procedure SetBackupInterval(const Value:Cardinal);
+    procedure SetBackupLastTime(const Value:TDateTime);
+    procedure SetEnableAnonWin9xConnections(const Value:Boolean);
+    procedure SetEnableEvents(const Value:Boolean);
+    procedure SetEnableStartupHeapPreallocation(const Value:Boolean);
+    procedure SetHighThresholdOnClientObjects(const Value:Cardinal);
+    procedure SetHighThresholdOnEvents(const Value:Cardinal);
+    procedure SetLoggingDirectory(const Value:String);
+    procedure SetLoggingLevel(const Value:Cardinal);
+    procedure SetLowThresholdOnClientObjects(const Value:Cardinal);
+    procedure SetLowThresholdOnEvents(const Value:Cardinal);
+    procedure SetMaxLogFileSize(const Value:Cardinal);
+    procedure SetMaxWaitOnClientObjects(const Value:Cardinal);
+    procedure SetMaxWaitOnEvents(const Value:Cardinal);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -80,7 +97,7 @@ type
    /// from the script API if none is specified by the caller.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ASPScriptDefaultNamespace : String read FASPScriptDefaultNamespace;
+   property ASPScriptDefaultNamespace : String read FASPScriptDefaultNamespace write SetASPScriptDefaultNamespace;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ASPScriptEnabled property indicates whether WMI scripting can be used on 
@@ -88,7 +105,7 @@ type
    /// only. For Windows 2000 systems, WMI scripting is always allowed on ASP.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property ASPScriptEnabled : Boolean read FASPScriptEnabled;
+   property ASPScriptEnabled : Boolean read FASPScriptEnabled write SetASPScriptEnabled;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The AutoRecoverMofs property contains a list of fully qualified MOF file names 
@@ -103,21 +120,21 @@ type
    /// start on Win9X systems.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property AutoStartWin9X : Cardinal read FAutoStartWin9X;
+   property AutoStartWin9X : Cardinal read FAutoStartWin9X write SetAutoStartWin9X;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The BackupInterval property specifies the length of time that will elapse 
    /// between backups of the WMI database.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property BackupInterval : Cardinal read FBackupInterval;
+   property BackupInterval : Cardinal read FBackupInterval write SetBackupInterval;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The BackupLastTime property specifies the date and time the last backup was 
    /// performed.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property BackupLastTime : TDateTime read FBackupLastTime;
+   property BackupLastTime : TDateTime read FBackupLastTime write SetBackupLastTime;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The BuildVersion property contains version information for the currently 
@@ -157,21 +174,21 @@ type
    /// systems.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableAnonWin9xConnections : Boolean read FEnableAnonWin9xConnections;
+   property EnableAnonWin9xConnections : Boolean read FEnableAnonWin9xConnections write SetEnableAnonWin9xConnections;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableEvents property indicates whether the WMI event subsystem should be enabled.
    /// Values: TRUE or FALSE, If TRUE,then the event subsystem is enabled.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableEvents : Boolean read FEnableEvents;
+   property EnableEvents : Boolean read FEnableEvents write SetEnableEvents;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableStartupHeapPreallocation property indicates whether WMI will start with a pre-allocated heap.
    /// Values: TRUE or FALSE. If TRUE, then a pre-allocated heap with the size of LastStartupHeapPreallocation is created when WMI is initialized.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property EnableStartupHeapPreallocation : Boolean read FEnableStartupHeapPreallocation;
+   property EnableStartupHeapPreallocation : Boolean read FEnableStartupHeapPreallocation write SetEnableStartupHeapPreallocation;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The HighThresholdOnClientObjects property specifies the maximum rate provider 
@@ -183,7 +200,7 @@ type
    /// providers and return WBEM_E_OUT_OF_MEMORY to the clients.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property HighThresholdOnClientObjects : Cardinal read FHighThresholdOnClientObjects;
+   property HighThresholdOnClientObjects : Cardinal read FHighThresholdOnClientObjects write SetHighThresholdOnClientObjects;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The HighThresholdOnEvents property specifies the maximum rate at which events 
@@ -195,7 +212,7 @@ type
    /// WBEM_E_OUT_OF_MEMORY to the clients.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property HighThresholdOnEvents : Cardinal read FHighThresholdOnEvents;
+   property HighThresholdOnEvents : Cardinal read FHighThresholdOnEvents write SetHighThresholdOnEvents;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallationDirectory property contains the directory path where the WMI 
@@ -216,14 +233,14 @@ type
    /// location of the WMI system log files.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property LoggingDirectory : String read FLoggingDirectory;
+   property LoggingDirectory : String read FLoggingDirectory write SetLoggingDirectory;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The LoggingLevel property indicates whether event logging is enabled and the 
    /// verbosity level of logging used.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property LoggingLevel : Cardinal read FLoggingLevel;
+   property LoggingLevel : Cardinal read FLoggingLevel write SetLoggingLevel;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The LowThresholdOnClientObjects property specifies the rate at which WMI will 
@@ -234,7 +251,7 @@ type
    /// the client's rate of use. This slowdown starts when the rate at which objects are being created exceeds the value of this property. The slowdown continues until equilibrium is achieved, or the high threshold is reached.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property LowThresholdOnClientObjects : Cardinal read FLowThresholdOnClientObjects;
+   property LowThresholdOnClientObjects : Cardinal read FLowThresholdOnClientObjects write SetLowThresholdOnClientObjects;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The LowThresholdOnEvents property specifies the rate at which  WMI will start 
@@ -244,14 +261,14 @@ type
    /// gradually to get them in line with the client's rate . This slowdown starts when the rate at which events are generated exceeds the value of the this property. The slowdown continues until either the equilibrium is achieved, or the high threshold is reached.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property LowThresholdOnEvents : Cardinal read FLowThresholdOnEvents;
+   property LowThresholdOnEvents : Cardinal read FLowThresholdOnEvents write SetLowThresholdOnEvents;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MaxLogFileSize property indicates the maximum size of the log files 
    /// produced by the WMI service.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property MaxLogFileSize : Cardinal read FMaxLogFileSize;
+   property MaxLogFileSize : Cardinal read FMaxLogFileSize write SetMaxLogFileSize;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MaxWaitOnClientObjects property specifies the amount of time a newly 
@@ -259,14 +276,14 @@ type
    /// error value is returned.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property MaxWaitOnClientObjects : Cardinal read FMaxWaitOnClientObjects;
+   property MaxWaitOnClientObjects : Cardinal read FMaxWaitOnClientObjects write SetMaxWaitOnClientObjects;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MaxWaitOnEvents property specifies the amount of time an event sent to a 
    /// client is queued before being discarded.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property MaxWaitOnEvents : Cardinal read FMaxWaitOnEvents;
+   property MaxWaitOnEvents : Cardinal read FMaxWaitOnEvents write SetMaxWaitOnEvents;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MofSelfInstallDirectory property contains the directory path for 
@@ -339,6 +356,125 @@ destructor TWin32_WMISetting.Destroy;
 begin
   FAutorecoverMofs.Free;
   inherited;
+end;
+
+procedure TWin32_WMISetting.SetASPScriptDefaultNamespace(const Value:String);
+begin
+  GetInstanceOf.ASPScriptDefaultNamespace:=Value;
+  GetInstanceOf.Put_();
+  FASPScriptDefaultNamespace := Value;
+end;
+
+procedure TWin32_WMISetting.SetASPScriptEnabled(const Value:Boolean);
+begin
+  GetInstanceOf.ASPScriptEnabled:=Value;
+  GetInstanceOf.Put_();
+  FASPScriptEnabled := Value;
+end;
+
+procedure TWin32_WMISetting.SetAutoStartWin9X(const Value:Cardinal);
+begin
+  GetInstanceOf.AutoStartWin9X:=Value;
+  GetInstanceOf.Put_();
+  FAutoStartWin9X := Value;
+end;
+
+procedure TWin32_WMISetting.SetBackupInterval(const Value:Cardinal);
+begin
+  GetInstanceOf.BackupInterval:=Value;
+  GetInstanceOf.Put_();
+  FBackupInterval := Value;
+end;
+
+procedure TWin32_WMISetting.SetBackupLastTime(const Value:TDateTime);
+begin
+  GetInstanceOf.BackupLastTime:=Value;
+  GetInstanceOf.Put_();
+  FBackupLastTime := Value;
+end;
+
+procedure TWin32_WMISetting.SetEnableAnonWin9xConnections(const Value:Boolean);
+begin
+  GetInstanceOf.EnableAnonWin9xConnections:=Value;
+  GetInstanceOf.Put_();
+  FEnableAnonWin9xConnections := Value;
+end;
+
+procedure TWin32_WMISetting.SetEnableEvents(const Value:Boolean);
+begin
+  GetInstanceOf.EnableEvents:=Value;
+  GetInstanceOf.Put_();
+  FEnableEvents := Value;
+end;
+
+procedure TWin32_WMISetting.SetEnableStartupHeapPreallocation(const Value:Boolean);
+begin
+  GetInstanceOf.EnableStartupHeapPreallocation:=Value;
+  GetInstanceOf.Put_();
+  FEnableStartupHeapPreallocation := Value;
+end;
+
+procedure TWin32_WMISetting.SetHighThresholdOnClientObjects(const Value:Cardinal);
+begin
+  GetInstanceOf.HighThresholdOnClientObjects:=Value;
+  GetInstanceOf.Put_();
+  FHighThresholdOnClientObjects := Value;
+end;
+
+procedure TWin32_WMISetting.SetHighThresholdOnEvents(const Value:Cardinal);
+begin
+  GetInstanceOf.HighThresholdOnEvents:=Value;
+  GetInstanceOf.Put_();
+  FHighThresholdOnEvents := Value;
+end;
+
+procedure TWin32_WMISetting.SetLoggingDirectory(const Value:String);
+begin
+  GetInstanceOf.LoggingDirectory:=Value;
+  GetInstanceOf.Put_();
+  FLoggingDirectory := Value;
+end;
+
+procedure TWin32_WMISetting.SetLoggingLevel(const Value:Cardinal);
+begin
+  GetInstanceOf.LoggingLevel:=Value;
+  GetInstanceOf.Put_();
+  FLoggingLevel := Value;
+end;
+
+procedure TWin32_WMISetting.SetLowThresholdOnClientObjects(const Value:Cardinal);
+begin
+  GetInstanceOf.LowThresholdOnClientObjects:=Value;
+  GetInstanceOf.Put_();
+  FLowThresholdOnClientObjects := Value;
+end;
+
+procedure TWin32_WMISetting.SetLowThresholdOnEvents(const Value:Cardinal);
+begin
+  GetInstanceOf.LowThresholdOnEvents:=Value;
+  GetInstanceOf.Put_();
+  FLowThresholdOnEvents := Value;
+end;
+
+procedure TWin32_WMISetting.SetMaxLogFileSize(const Value:Cardinal);
+begin
+  GetInstanceOf.MaxLogFileSize:=Value;
+  GetInstanceOf.Put_();
+  FMaxLogFileSize := Value;
+end;
+
+procedure TWin32_WMISetting.SetMaxWaitOnClientObjects(const Value:Cardinal);
+begin
+  GetInstanceOf.MaxWaitOnClientObjects:=Value;
+  GetInstanceOf.Put_();
+  FMaxWaitOnClientObjects := Value;
+end;
+
+procedure TWin32_WMISetting.SetMaxWaitOnEvents(const Value:Cardinal);
+begin
+  GetInstanceOf.MaxWaitOnEvents:=Value;
+  GetInstanceOf.Put_();
+  FMaxWaitOnEvents := Value;
 end;
 
 procedure TWin32_WMISetting.SetCollectionIndex(Index : Integer);

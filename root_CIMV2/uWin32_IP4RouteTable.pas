@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:35:40
+/// Creation Date 23-02-2011 23:37:33
 /// Namespace root\CIMV2 Class Win32_IP4RouteTable
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_IP4RouteTable.asp
 /// </summary>
@@ -60,6 +60,16 @@ type
     FProtocol                           : Cardinal;
     FStatus                             : String;
     FType                               : Cardinal;
+    procedure SetDestination(const Value:String);
+    procedure SetInterfaceIndex(const Value:Integer);
+    procedure SetMask(const Value:String);
+    procedure SetMetric1(const Value:Integer);
+    procedure SetMetric2(const Value:Integer);
+    procedure SetMetric3(const Value:Integer);
+    procedure SetMetric4(const Value:Integer);
+    procedure SetMetric5(const Value:Integer);
+    procedure SetNextHop(const Value:String);
+    procedure SetType(const Value:Cardinal);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -90,7 +100,7 @@ type
    /// The Destination property contains the destination IP address for this route.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Destination : String read FDestination;
+   property Destination : String read FDestination write SetDestination;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Information property contains a reference to MIB definitions specific to 
@@ -112,7 +122,7 @@ type
    /// the local interface through which the next hop of this route should be reached.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property InterfaceIndex : Integer read FInterfaceIndex;
+   property InterfaceIndex : Integer read FInterfaceIndex write SetInterfaceIndex;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Mask property contains the mask used in this entry. Masks should be logical-
@@ -120,7 +130,7 @@ type
    /// ipRouteDest field.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Mask : String read FMask;
+   property Mask : String read FMask write SetMask;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric1 property contains the primary routing metric for this route. The 
@@ -128,7 +138,7 @@ type
    /// the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric1 : Integer read FMetric1;
+   property Metric1 : Integer read FMetric1 write SetMetric1;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric2 property contains an alternate routing metric for this route. The 
@@ -136,7 +146,7 @@ type
    /// the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric2 : Integer read FMetric2;
+   property Metric2 : Integer read FMetric2 write SetMetric2;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric3 property contains an alternate routing metric for this route. The 
@@ -144,7 +154,7 @@ type
    /// the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric3 : Integer read FMetric3;
+   property Metric3 : Integer read FMetric3 write SetMetric3;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric4 property contains an alternate routing metric for this route. The 
@@ -152,7 +162,7 @@ type
    /// the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric4 : Integer read FMetric4;
+   property Metric4 : Integer read FMetric4 write SetMetric4;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Metric5 property contains an alternate routing metric for this route. The 
@@ -160,7 +170,7 @@ type
    /// the route's ipRouteProto value. If this metric is not used, its value should be set to -1.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Metric5 : Integer read FMetric5;
+   property Metric5 : Integer read FMetric5 write SetMetric5;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
@@ -175,7 +185,7 @@ type
    /// media, the value of this field is the agent's IP address on that interface.).
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property NextHop : String read FNextHop;
+   property NextHop : String read FNextHop write SetNextHop;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Protocol property reveals the routing mechanism via which this route was 
@@ -212,7 +222,7 @@ type
    /// entries requires examination of the relevant ipRouteType object.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property {$IFDEF OLD_DELPHI}_Type{$ELSE}&Type{$ENDIF} : Cardinal read FType;
+   property {$IFDEF OLD_DELPHI}_Type{$ELSE}&Type{$ENDIF} : Cardinal read FType write SetType;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -276,6 +286,76 @@ end;
 destructor TWin32_IP4RouteTable.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_IP4RouteTable.SetDestination(const Value:String);
+begin
+  GetInstanceOf.Destination:=Value;
+  GetInstanceOf.Put_();
+  FDestination := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetInterfaceIndex(const Value:Integer);
+begin
+  GetInstanceOf.InterfaceIndex:=Value;
+  GetInstanceOf.Put_();
+  FInterfaceIndex := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMask(const Value:String);
+begin
+  GetInstanceOf.Mask:=Value;
+  GetInstanceOf.Put_();
+  FMask := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMetric1(const Value:Integer);
+begin
+  GetInstanceOf.Metric1:=Value;
+  GetInstanceOf.Put_();
+  FMetric1 := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMetric2(const Value:Integer);
+begin
+  GetInstanceOf.Metric2:=Value;
+  GetInstanceOf.Put_();
+  FMetric2 := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMetric3(const Value:Integer);
+begin
+  GetInstanceOf.Metric3:=Value;
+  GetInstanceOf.Put_();
+  FMetric3 := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMetric4(const Value:Integer);
+begin
+  GetInstanceOf.Metric4:=Value;
+  GetInstanceOf.Put_();
+  FMetric4 := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetMetric5(const Value:Integer);
+begin
+  GetInstanceOf.Metric5:=Value;
+  GetInstanceOf.Put_();
+  FMetric5 := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetNextHop(const Value:String);
+begin
+  GetInstanceOf.NextHop:=Value;
+  GetInstanceOf.Put_();
+  FNextHop := Value;
+end;
+
+procedure TWin32_IP4RouteTable.SetType(const Value:Cardinal);
+begin
+  GetInstanceOf.Type:=Value;
+  GetInstanceOf.Put_();
+  FType := Value;
 end;
 
 procedure TWin32_IP4RouteTable.SetCollectionIndex(Index : Integer);

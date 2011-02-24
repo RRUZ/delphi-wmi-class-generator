@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:23
+/// Creation Date 23-02-2011 23:39:31
 /// Namespace root\CIMV2 Class Win32_Volume
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Volume.asp
 /// </summary>
@@ -90,6 +90,9 @@ type
     FSystemCreationClassName            : String;
     FSystemName                         : String;
     FSystemVolume                       : Boolean;
+    procedure SetDriveLetter(const Value:String);
+    procedure SetIndexingEnabled(const Value:Boolean);
+    procedure SetLabel(const Value:String);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -241,7 +244,7 @@ type
    /// This property is NULL for volumes without drive letters.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property DriveLetter : String read FDriveLetter;
+   property DriveLetter : String read FDriveLetter write SetDriveLetter;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DriveType property contains a numeric value corresponding to the type of disk drive this logical disk represents.  Please refer to the Platform SDK documentation for additional values.
@@ -290,7 +293,7 @@ type
    /// If context indexing is enabled this property will be TRUE
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property IndexingEnabled : Boolean read FIndexingEnabled;
+   property IndexingEnabled : Boolean read FIndexingEnabled write SetIndexingEnabled;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
@@ -304,7 +307,7 @@ type
    /// Maximum 32 characters. This property is NULL for a volume without a label.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property {$IFDEF OLD_DELPHI}_Label{$ELSE}&Label{$ENDIF} : String read FLabel;
+   property {$IFDEF OLD_DELPHI}_Label{$ELSE}&Label{$ENDIF} : String read FLabel write SetLabel;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// LastErrorCode captures the last error code reported by the logical device.
@@ -1038,6 +1041,27 @@ destructor TWin32_Volume.Destroy;
 begin
   SetLength(FPowerManagementCapabilities,0);
   inherited;
+end;
+
+procedure TWin32_Volume.SetDriveLetter(const Value:String);
+begin
+  GetInstanceOf.DriveLetter:=Value;
+  GetInstanceOf.Put_();
+  FDriveLetter := Value;
+end;
+
+procedure TWin32_Volume.SetIndexingEnabled(const Value:Boolean);
+begin
+  GetInstanceOf.IndexingEnabled:=Value;
+  GetInstanceOf.Put_();
+  FIndexingEnabled := Value;
+end;
+
+procedure TWin32_Volume.SetLabel(const Value:String);
+begin
+  GetInstanceOf.Label:=Value;
+  GetInstanceOf.Put_();
+  FLabel := Value;
 end;
 
 procedure TWin32_Volume.SetCollectionIndex(Index : Integer);

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:20
+/// Creation Date 23-02-2011 23:39:30
 /// Namespace root\CIMV2 Class Win32_UserProfile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_UserProfile.asp
 /// </summary>
@@ -54,6 +54,7 @@ type
     FSID                                : String;
     FSpecial                            : Boolean;
     FStatus                             : Cardinal;
+    procedure SetRoamingPreference(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -117,7 +118,7 @@ type
    /// User can set this property to false to prevent roaming, then the profile will work like a local profile.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property RoamingPreference : Boolean read FRoamingPreference;
+   property RoamingPreference : Boolean read FRoamingPreference write SetRoamingPreference;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// This property contains the SID of the user who owns this user profile.
@@ -192,6 +193,13 @@ end;
 destructor TWin32_UserProfile.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_UserProfile.SetRoamingPreference(const Value:Boolean);
+begin
+  GetInstanceOf.RoamingPreference:=Value;
+  GetInstanceOf.Put_();
+  FRoamingPreference := Value;
 end;
 
 procedure TWin32_UserProfile.SetCollectionIndex(Index : Integer);

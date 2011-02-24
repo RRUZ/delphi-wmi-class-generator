@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:38:19
+/// Creation Date 23-02-2011 23:39:29
 /// Namespace root\CIMV2 Class Win32_UserAccount
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_UserAccount.asp
 /// </summary>
@@ -58,6 +58,12 @@ type
     FSID                                : String;
     FSIDType                            : Byte;
     FStatus                             : String;
+    procedure SetDisabled(const Value:Boolean);
+    procedure SetFullName(const Value:String);
+    procedure SetLockout(const Value:Boolean);
+    procedure SetPasswordChangeable(const Value:Boolean);
+    procedure SetPasswordExpires(const Value:Boolean);
+    procedure SetPasswordRequired(const Value:Boolean);
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
@@ -91,7 +97,7 @@ type
    /// Values: TRUE or FALSE. If TRUE, the user account is disabled.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Disabled : Boolean read FDisabled;
+   property Disabled : Boolean read FDisabled write SetDisabled;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Domain property indicates the name of the Windows domain to which the user account belongs.
@@ -105,7 +111,7 @@ type
    /// Example: Thomas Williams
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property FullName : String read FFullName;
+   property FullName : String read FFullName write SetFullName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
@@ -127,7 +133,7 @@ type
    /// Values: TRUE or FALSE. If TRUE, the user account is locked out.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property Lockout : Boolean read FLockout;
+   property Lockout : Boolean read FLockout write SetLockout;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property indicates the name of the Win32 user account on the domain specified by the Domain member of this class.
@@ -141,21 +147,21 @@ type
    /// Values: TRUE or FALSE. If TRUE, the password can be changed.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PasswordChangeable : Boolean read FPasswordChangeable;
+   property PasswordChangeable : Boolean read FPasswordChangeable write SetPasswordChangeable;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PasswordExpires property determines whether the password on the Win32 user account will expire.
    /// Values: TRUE or FALSE. If TRUE, the password will expire.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PasswordExpires : Boolean read FPasswordExpires;
+   property PasswordExpires : Boolean read FPasswordExpires write SetPasswordExpires;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PasswordRequired property determines whether a password is required on the Win32 user account.
    /// Values: TRUE or FALSE. If TRUE, a password is required.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property PasswordRequired : Boolean read FPasswordRequired;
+   property PasswordRequired : Boolean read FPasswordRequired write SetPasswordRequired;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SID property contains the security identifier (SID) for this account. a SID 
@@ -274,6 +280,48 @@ end;
 destructor TWin32_UserAccount.Destroy;
 begin
   inherited;
+end;
+
+procedure TWin32_UserAccount.SetDisabled(const Value:Boolean);
+begin
+  GetInstanceOf.Disabled:=Value;
+  GetInstanceOf.Put_();
+  FDisabled := Value;
+end;
+
+procedure TWin32_UserAccount.SetFullName(const Value:String);
+begin
+  GetInstanceOf.FullName:=Value;
+  GetInstanceOf.Put_();
+  FFullName := Value;
+end;
+
+procedure TWin32_UserAccount.SetLockout(const Value:Boolean);
+begin
+  GetInstanceOf.Lockout:=Value;
+  GetInstanceOf.Put_();
+  FLockout := Value;
+end;
+
+procedure TWin32_UserAccount.SetPasswordChangeable(const Value:Boolean);
+begin
+  GetInstanceOf.PasswordChangeable:=Value;
+  GetInstanceOf.Put_();
+  FPasswordChangeable := Value;
+end;
+
+procedure TWin32_UserAccount.SetPasswordExpires(const Value:Boolean);
+begin
+  GetInstanceOf.PasswordExpires:=Value;
+  GetInstanceOf.Put_();
+  FPasswordExpires := Value;
+end;
+
+procedure TWin32_UserAccount.SetPasswordRequired(const Value:Boolean);
+begin
+  GetInstanceOf.PasswordRequired:=Value;
+  GetInstanceOf.Put_();
+  FPasswordRequired := Value;
 end;
 
 procedure TWin32_UserAccount.SetCollectionIndex(Index : Integer);

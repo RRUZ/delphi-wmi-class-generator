@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.120
+/// Application version 0.1.0.122
 /// WMI version 7600.16385
-/// Creation Date 24-12-2010 09:36:09
+/// Creation Date 23-02-2011 23:37:59
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_MSRS2008WindowsService_MSRS2008WindowsService
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_MSRS2008WindowsService_MSRS2008WindowsService.asp
 /// </summary>
@@ -36,7 +36,7 @@ type
 {$ENDIF}
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// MSRS 2008 Windows Service
+  /// Servicio Windows de MSRS 2008
   /// </summary>
   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_MSRS2008WindowsService_MSRS2008WindowsService=class(TWmiClass)
@@ -92,7 +92,7 @@ type
    property ActiveConnections : Cardinal read FActiveConnections;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of active sessions.
+   /// Número de sesiones activas.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ActiveSessions : Cardinal read FActiveSessions;
@@ -110,25 +110,25 @@ type
    property BytesReceivedTotal : Cardinal read FBytesReceivedTotal;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of report server cache hits per second.
+   /// Número por segundo de aciertos de caché del servidor de informes.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CacheHitsPerSec : Cardinal read FCacheHitsPerSec;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of times per second that models can be retrieved from the cache.
+   /// Número de veces por segundo que se recuperan modelos de la memoria caché.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CacheHitsPerSecSemanticModels : Cardinal read FCacheHitsPerSecSemanticModels;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of times per second that reports cannot be retrieved from cache.
+   /// Número de veces por segundo que no se pueden recuperar informes de la caché.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CacheMissesPerSec : Cardinal read FCacheMissesPerSec;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of times per second that models cannot be retrieved from the cache.
+   /// Número de veces por segundo que no se recuperan modelos de la memoria caché.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property CacheMissesPerSecSemanticModels : Cardinal read FCacheMissesPerSecSemanticModels;
@@ -146,7 +146,7 @@ type
    property Description : String read FDescription;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of new user sessions that are started per second.
+   /// Número de sesiones nuevas de usuario que se inician por segundo.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property FirstSessionRequestsPerSec : Cardinal read FFirstSessionRequestsPerSec;
@@ -161,15 +161,14 @@ type
    property LogonSuccessesPersec : Cardinal read FLogonSuccessesPersec;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of times per second that reports can be retrieved from the in memory 
-   /// cache.
+   /// Número de veces por segundo que se recuperan informes de caché en memoria.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MemoryCacheHitsPerSec : Cardinal read FMemoryCacheHitsPerSec;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of times per second that reports cannot be retrieved from the in memory 
-   /// cache.
+   /// Número de veces por segundo que no se pueden recuperar informes de caché en 
+   /// memoria.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property MemoryCacheMissPerSec : Cardinal read FMemoryCacheMissPerSec;
@@ -182,13 +181,14 @@ type
    property Name : String read FName;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of requests per second for reports that are open in an existing session.
+   /// Número de solicitudes por segundo de informes que se abren en una sesión 
+   /// existente.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property NextSessionRequestsPerSec : Cardinal read FNextSessionRequestsPerSec;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of active report requests.
+   /// Número de solicitudes de informe activas.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReportRequests : Cardinal read FReportRequests;
@@ -200,7 +200,7 @@ type
    property ReportServerService : Cardinal read FReportServerService;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of reports executed per second.
+   /// Número de informes ejecutados por segundo.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property ReportsExecutedPerSec : Cardinal read FReportsExecutedPerSec;
@@ -218,7 +218,7 @@ type
    property RequestsNotAuthorized : Cardinal read FRequestsNotAuthorized;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Number of requests per second.
+   /// Número de solicitudes por segundo.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property RequestsPerSec : Cardinal read FRequestsPerSec;
@@ -245,61 +245,61 @@ type
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of report server cache hits.
+   /// Número total de aciertos de caché del servidor de informes.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCacheHits : Cardinal read FTotalCacheHits;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of cache hits made in the model cache.
+   /// Total de aciertos de caché de modelos.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCacheHitsSemanticModels : Cardinal read FTotalCacheHitsSemanticModels;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of cache misses.
+   /// Número total de errores de caché.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCacheMisses : Cardinal read FTotalCacheMisses;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of cache misses made in the model cache.
+   /// Total de errores de la memoria caché de modelos.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalCacheMissesSemanticModels : Cardinal read FTotalCacheMissesSemanticModels;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of cache hits made in the in memory cache.
+   /// Número total de aciertos de caché en memoria.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalMemoryCacheHits : Cardinal read FTotalMemoryCacheHits;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of cache misses made in the in memory cache.
+   /// Número total de errores de caché en memoria.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalMemoryCacheMisses : Cardinal read FTotalMemoryCacheMisses;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of processing failures.
+   /// Número total de errores de procesamiento.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalProcessingFailures : Cardinal read FTotalProcessingFailures;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of rejected threads as a result of thread pressure.
+   /// Número total de subprocesos rechazados debido a un exceso de subprocesos.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalRejectedThreads : Cardinal read FTotalRejectedThreads;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of reports executed.
+   /// Número total de informes ejecutados.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalReportsExecuted : Cardinal read FTotalReportsExecuted;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of requests being processed.
+   /// Número total de solicitudes que se están procesando.
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    property TotalRequests : Cardinal read FTotalRequests;
