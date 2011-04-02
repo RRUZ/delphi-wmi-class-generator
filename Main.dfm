@@ -45,8 +45,8 @@ object FrmMain: TFrmMain
       Color = clBlack
       Font.Charset = ANSI_CHARSET
       Font.Color = clSilver
-      Font.Height = -11
-      Font.Name = 'Courier New'
+      Font.Height = -12
+      Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
       ScrollBars = ssBoth
@@ -252,10 +252,10 @@ object FrmMain: TFrmMain
   object ImageList1: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent
-    Left = 645
+    Left = 661
     Top = 93
     Bitmap = {
-      494C01010C001800A80010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800AC0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

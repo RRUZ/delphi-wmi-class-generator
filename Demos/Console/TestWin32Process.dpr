@@ -16,7 +16,7 @@ Var
  Domain   : string;
  PID      : Cardinal;
 begin
-   ReportMemoryLeaksOnShutdown:=True;
+   ReportMemoryLeaksOnShutdown:=DebugHook<>0;
    Process:=TWin32_Process.Create(True);
    try
 
@@ -36,7 +36,7 @@ begin
      end;
 
 
-     //launch the calc process
+     //launch the calc.exe process
      Writeln('Result '+IntToStr(Process.Create('Calc.exe','C:\Windows',Unassigned,PID)));
      Writeln(Pid);
 

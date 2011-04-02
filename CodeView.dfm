@@ -936,7 +936,6 @@ object FrmViewCode: TFrmViewCode
       'Boolean): Integer;'#13#10'var'#13#10'  ReturnValue : OleVariant;'#13#10'begin'#13#10'  R' +
       'eturnValue := GetInstanceOf.Dismount(Force,Permanent);'#13#10'  Result' +
       '      := VarIntegerNull(ReturnValue);'#13#10'end;'#13#10#13#10'end.'
-    ExplicitTop = 16
   end
   object PopupMenu1: TPopupMenu
     Left = 192

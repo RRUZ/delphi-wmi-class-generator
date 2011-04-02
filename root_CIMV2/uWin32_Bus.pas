@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.122
+/// Application version 0.1.0.124
 /// WMI version 7600.16385
-/// Creation Date 23-02-2011 23:37:24
+/// Creation Date 02-04-2011 16:30:10
 /// Namespace root\CIMV2 Class Win32_Bus
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Bus.asp
 /// </summary>
@@ -375,7 +375,7 @@ function GetBusTypeAsString(const APropValue:Cardinal) : string;
 begin
 Result:='';
   case APropValue of
-    //-1 : Result:='Undefined';
+   // -1 : Result:='Undefined';
     0 : Result:='Internal';
     1 : Result:='ISA';
     2 : Result:='EISA';

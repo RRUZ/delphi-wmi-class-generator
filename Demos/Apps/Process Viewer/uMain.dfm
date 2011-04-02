@@ -45,7 +45,7 @@ object FrmMain: TFrmMain
       Caption = 'Password'
     end
     object BtnRefresh: TButton
-      Left = 410
+      Left = 491
       Top = 19
       Width = 75
       Height = 25
@@ -77,13 +77,22 @@ object FrmMain: TFrmMain
       TabOrder = 3
     end
     object CheckBoxAuto: TCheckBox
-      Left = 491
-      Top = 22
+      Left = 664
+      Top = 19
       Width = 86
       Height = 17
       Caption = 'Auto Refresh'
       TabOrder = 4
       OnClick = CheckBoxAutoClick
+    end
+    object Button1: TButton
+      Left = 410
+      Top = 19
+      Width = 75
+      Height = 25
+      Caption = 'Connect'
+      TabOrder = 5
+      OnClick = Button1Click
     end
   end
   object Panel2: TPanel
@@ -185,10 +194,6 @@ object FrmMain: TFrmMain
       object TabSheet2: TTabSheet
         Caption = 'Services'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 408
         object LvServices: TListView
           Left = 0
           Top = 0
@@ -243,10 +248,6 @@ object FrmMain: TFrmMain
           RowSelect = True
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitLeft = 88
-          ExplicitTop = 72
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
       end
     end

@@ -81,12 +81,11 @@ type
 
   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
-  /// The TWmiClass class represents the base class to access the WMI info.
+  /// The TWmiConection class represents the base class to connect to the WMI Services.
   /// </summary>
   {$IFDEF UNDEF}{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}{$ENDIF}
-  TWmiClass=class//(TObject)
+  TWmiConnection=class//(TObject)
   private
-    FStaticInstance : OleVariant;
     {$IFDEF WbemScripting_TLB}
     FSWbemLocator   : ISWbemLocator;
     FWMIService     : ISWbemServices;
@@ -100,20 +99,14 @@ type
     FWmiUser        : WideString;
     FWmiPass        : WideString;
     FWmiNameSpace   : WideString;
-    FWmiClass       : WideString;
     {$ELSE}
     FWmiServer      : string;
     FWmiUser        : string;
     FWmiPass        : string;
     FWmiNameSpace   : string;
-    FWmiClass       : string;
     {$ENDIF}
-
     FWmiConnected   : Boolean;
-    FWMiDataLoaded  : Boolean;
     FWmiIsLocal     : Boolean;
-    FWmiPropsNames  : TStrings;
-    procedure DisposeCollection;
    {$IFDEF FPC}
     procedure SetWmiServer(const Value: WideString);
     procedure SetWmiUser(const Value: WideString);
@@ -123,27 +116,20 @@ type
     procedure SetWmiUser(const Value: string);
     procedure SetWmiPass(const Value: string);
    {$ENDIF}
-    procedure WmiConnect;
-    function  GetPropValue(const PropName: string): OleVariant;
-  protected
-    FWmiCollection      : TList;
-    FWmiCollectionIndex : Integer;
-    function    _LoadWmiData: boolean;
-    constructor Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string); overload;
   public
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiConnect procedure establish a connection with the WMI service
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+    procedure WmiConnect(ForceConnection:Boolean);
    {$IFDEF FPC}
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiNameSpace property return the current WMI namespace
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property  WmiNameSpace  : WideString read FWmiNameSpace;
-   {$REGION 'Documentation'}
-   /// <summary>
-   /// The WmiClass property return the current WMI class
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property  WmiClass  : WideString read FWmiClass;
+   property  WmiNameSpace  : WideString read FWmiNameSpace write FWmiNameSpace;
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiServer property return or set the current server name or ip where the WMi service is connected
@@ -168,13 +154,7 @@ type
    /// The WmiNameSpace property return the current WMI namespace
    /// </summary>
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property  WmiNameSpace  : string read FWmiNameSpace;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// The WmiClass property return the current WMI class
-   /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
-   property  WmiClass  : string read FWmiClass;
+   property  WmiNameSpace  : string read FWmiNameSpace write FWmiNameSpace;
    {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiServer property return or set the current server name or ip where the WMi service is connected
@@ -203,11 +183,47 @@ type
    {$IFDEF WMI_LateBinding}
    property  SWbemLocator  : OleVariant read FSWbemLocator;
    property  WMIService    : OleVariant read FWMIService;
-   function  GetNullValue  : OleVariant;
    {$ENDIF}
    {$IFDEF WbemScripting_TLB}
    property  SWbemLocator  : ISWbemLocator  read FSWbemLocator;
    property  WMIService    : ISWbemServices read FWMIService;
+   {$ENDIF}
+  protected
+    constructor Create; overload;
+    Destructor Destroy; override;
+  end;
+
+  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
+  /// The TWmiClass class represents the base class to access the WMI info.
+  /// </summary>
+  {$IFDEF UNDEF}{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}{$ENDIF}
+  TWmiClass=class//(TObject)
+  private
+    FOwnedConnection: Boolean;
+    FWmiConnection  : TWmiConnection;
+    {$IFDEF FPC}
+    FWmiClass       : WideString;
+    {$ELSE}
+    FWmiClass       : string;
+    {$ENDIF}
+    FStaticInstance : OleVariant;
+    FWMiDataLoaded  : Boolean;
+    FWmiPropsNames  : TStrings;
+    procedure DisposeCollection;
+    function  GetPropValue(const PropName: string): OleVariant;
+    procedure SetWmiConnection(const Value: TWmiConnection);
+    function GetWMIService: OleVariant;
+  protected
+    FWmiCollection      : TList;
+    FWmiCollectionIndex : Integer;
+    function    _LoadWmiData: boolean;
+    constructor Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string); overload;
+  public
+   {$IFDEF WMI_LateBinding}
+   function  GetNullValue  : OleVariant;
+   {$ENDIF}
+   {$IFDEF WbemScripting_TLB}
    function  GetNullValue  : IDispatch;
    {$ENDIF}
    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
@@ -270,7 +286,30 @@ type
    {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
    procedure LoadWmiData;
    Destructor Destroy; override;
+   property  WmiConnection : TWmiConnection read FWmiConnection write SetWmiConnection;
+   {$IFDEF FPC}
+   {$REGION 'Documentation'}
+   /// <summary>
+   /// The WmiClass property return the current WMI class
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property  WmiClass  : WideString read FWmiClass;
+   {$ELSE}
+   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The WmiClass property return the current WMI class
+   /// </summary>
+   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   property  WmiClass  : string read FWmiClass;
+   {$ENDIF}
+   {$IFDEF WMI_LateBinding}
+   property  WMIService    : OleVariant read GetWMIService;
+   {$ENDIF}
+   {$IFDEF WbemScripting_TLB}
+   property  WMIService    : ISWbemServices read GetWMIService;
+   {$ENDIF}
   end;
+
 {
   TWmiError=class
   private
@@ -839,8 +878,10 @@ begin
     Result:=V;
 end;
 }
-{ TWmiClass }
-constructor TWmiClass.Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string);
+
+{ TWmiConnection }
+
+constructor TWmiConnection.Create;
 begin
   inherited Create;
   FWmiConnected       := False;
@@ -848,23 +889,10 @@ begin
   FWmiServer          := 'localhost';
   FWmiUser            := '';
   FWmiPass            := '';
-  FWMiDataLoaded      := False;
-  FWmiCollectionIndex := -1;
-  FWmiCollection      := TList.Create;
-  FWmiNameSpace       := _WmiNamespace;
-  FWmiClass           := _WmiClass;
-  FWmiPropsNames      := TStringList.Create;
-
-  if LoadData then
-    FWMiDataLoaded:=_LoadWmiData;
 end;
 
-
-destructor TWmiClass.Destroy;
+destructor TWmiConnection.Destroy;
 begin
-  FWmiPropsNames.Free;
-  DisposeCollection;
-  FWmiCollection.Free;
   {$IFDEF WMI_LateBinding}
   FSWbemLocator:=Unassigned;
   FWMIService  :=Unassigned;
@@ -873,23 +901,48 @@ begin
 end;
 
 {$IFDEF FPC}
-function GetWMIObject(const objectName: WideString): IDispatch;
-var
-  chEaten: PULONG;
-  BindCtx: IBindCtx;
-  Moniker: IMoniker;
+procedure TWmiConnection.SetWmiServer(const Value: WideString);
 begin
-  OleCheck(CreateBindCtx(0, bindCtx));
-  OleCheck(MkParseDisplayName(BindCtx, StringToOleStr(objectName), chEaten, Moniker));
-  OleCheck(Moniker.BindToObject(BindCtx, nil, IDispatch, Result));
+  FWmiServer  := Value;
+  FWmiIsLocal := false;
+end;
+
+procedure TWmiConnection.SetWmiUser(const Value: WideString);
+begin
+  FWmiUser    := Value;
+  FWmiIsLocal := false;
+end;
+
+procedure TWmiConnection.SetWmiPass(const Value: WideString);
+begin
+  FWmiPass := Value;
+  FWmiIsLocal := false;
+end;
+{$ELSE}
+procedure TWmiConnection.SetWmiServer(const Value: string);
+begin
+  FWmiServer  := Value;
+  FWmiIsLocal := false;
+end;
+
+procedure TWmiConnection.SetWmiUser(const Value: string);
+begin
+  FWmiUser    := Value;
+  FWmiIsLocal := false;
+end;
+
+procedure TWmiConnection.SetWmiPass(const Value: string);
+begin
+  FWmiPass := Value;
+  FWmiIsLocal := false;
 end;
 {$ENDIF}
 
 //http://www.computerperformance.co.uk/Logon/code/code_80070005.htm#Local_Security_and_Policies_and_DCOM
-procedure TWmiClass.WmiConnect;
+procedure TWmiConnection.WmiConnect(ForceConnection:boolean);
 begin
-   //if not FWmiConnected then
-   //begin
+   if not FWmiConnected or ForceConnection then
+   begin
      {$IFDEF WMI_LateBinding}
      {$IFDEF FPC}
       FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
@@ -909,8 +962,51 @@ begin
         FWMIService.Security_.ImpersonationLevel := wbemImpersonationLevelImpersonate;
      {$ENDIF}
       FWmiConnected   := True;
-   //end;
+   end;
 end;
+
+
+{ TWmiClass }
+constructor TWmiClass.Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string);
+begin
+  inherited Create;
+  FWmiConnection      := TWmiConnection.Create;
+  FOwnedConnection    := True;
+  FWMiDataLoaded      := False;
+  FWmiCollectionIndex := -1;
+  FWmiCollection      := TList.Create;
+  FWmiConnection.FWmiNameSpace       := _WmiNamespace;
+  FWmiClass           := _WmiClass;
+  FWmiPropsNames      := TStringList.Create;
+
+  if LoadData then
+    FWMiDataLoaded:=_LoadWmiData;
+end;
+
+
+destructor TWmiClass.Destroy;
+begin
+  FWmiPropsNames.Free;
+  DisposeCollection;
+  if FOwnedConnection and  (FWmiConnection<>nil) then
+  FreeAndNil(FWmiConnection);
+  FWmiCollection.Free;
+  inherited;
+end;
+
+{$IFDEF FPC}
+function GetWMIObject(const objectName: WideString): IDispatch;
+var
+  chEaten: PULONG;
+  BindCtx: IBindCtx;
+  Moniker: IMoniker;
+begin
+  OleCheck(CreateBindCtx(0, bindCtx));
+  OleCheck(MkParseDisplayName(BindCtx, StringToOleStr(objectName), chEaten, Moniker));
+  OleCheck(Moniker.BindToObject(BindCtx, nil, IDispatch, Result));
+end;
+{$ENDIF}
+
 
 
 function TWmiClass.GetCollectionCount: Integer;
@@ -969,7 +1065,10 @@ var
  i  : integer;
 begin
   i     :=FWmiPropsNames.IndexOf(PropName);
-  Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).PropsValues[i];
+  if i<>-1 then
+    Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).PropsValues[i]
+  else
+    Result:=varNull;
 end;
 
 function TWmiClass.GetPropertyValueByIndex(const PropName: string; Index: Integer): OleVariant;
@@ -977,9 +1076,11 @@ var
  i  : integer;
 begin
   i     :=FWmiPropsNames.IndexOf(PropName);
-  Result:=TDataWmiClass(FWmiCollection[Index]).PropsValues[i];
+  if i<>-1 then
+    Result:=TDataWmiClass(FWmiCollection[Index]).PropsValues[i]
+  else
+    Result:=varNull;
 end;
-
 
 function TWmiClass.GetPropValue(const PropName: string): OleVariant;
 begin
@@ -991,6 +1092,23 @@ function TWmiClass.GetStaticInstance: OleVariant;
 begin
   Result:=FStaticInstance;
 end;
+
+{$IFDEF WMI_LateBinding}
+function TWmiClass.GetWMIService: OleVariant;
+begin
+   Result:=FWmiConnection.WMIService;
+end;
+{$ENDIF}
+
+{$IFDEF WbemScripting_TLB}
+function TWmiClass.GetWMIService: ISWbemServices;
+begin
+   Result:=FWmiConnection.WMIService;
+end;
+{$ENDIF}
+
+
+
 
 //Improving Enumeration Performance  http://msdn.microsoft.com/en-us/library/aa390880%28VS.85%29.aspx
 function TWmiClass._LoadWmiData: boolean;
@@ -1028,7 +1146,7 @@ begin;
  result:=True;
   try
     {$IFDEF _DEBUG} dt:=now; {$ENDIF}
-    WmiConnect;
+    FWmiConnection.WmiConnect(False);
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Connected '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
 
     {$IFDEF _DEBUG} dt:=now; {$ENDIF}
@@ -1039,17 +1157,17 @@ begin;
      objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
      oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ELSE}
-     objWbemObjectSet := FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately);
+     objWbemObjectSet := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately);
      oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$ENDIF}
     {$IFDEF WbemScripting_TLB}
-    objWbemObjectSet  := FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly and wbemFlagReturnImmediately,nil);
+    objWbemObjectSet  := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately,nil);
     oEnum             := (objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Query Executed in '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
 
-    FStaticInstance   := FWMIService.Get(FWmiClass,0,GetNullValue);
+    FStaticInstance   := FWmiConnection.FWMIService.Get(FWmiClass,0,GetNullValue);
 
     {$IFDEF _DEBUG} dg:=now; {$ENDIF}
 
@@ -1126,6 +1244,14 @@ begin
   raise Exception.Create(Format('You must override this method %s',['SetCollectionIndex']));
 end;
 
+procedure TWmiClass.SetWmiConnection(const Value: TWmiConnection);
+begin
+  if FWmiConnection<>nil then
+   FreeAndNil(FWmiConnection);
+  FWmiConnection  :=Value;
+  FOwnedConnection:=False;
+end;
+
 procedure TWmiClass.DisposeCollection;
 var
  i : integer;
@@ -1139,43 +1265,7 @@ begin
   end;
 end;
 
-{$IFDEF FPC}
-procedure TWmiClass.SetWmiServer(const Value: WideString);
-begin
-  FWmiServer  := Value;
-  FWmiIsLocal := false;
-end;
 
-procedure TWmiClass.SetWmiUser(const Value: WideString);
-begin
-  FWmiUser    := Value;
-  FWmiIsLocal := false;
-end;
-
-procedure TWmiClass.SetWmiPass(const Value: WideString);
-begin
-  FWmiPass := Value;
-  FWmiIsLocal := false;
-end;
-{$ELSE}
-procedure TWmiClass.SetWmiServer(const Value: string);
-begin
-  FWmiServer  := Value;
-  FWmiIsLocal := false;
-end;
-
-procedure TWmiClass.SetWmiUser(const Value: string);
-begin
-  FWmiUser    := Value;
-  FWmiIsLocal := false;
-end;
-
-procedure TWmiClass.SetWmiPass(const Value: string);
-begin
-  FWmiPass := Value;
-  FWmiIsLocal := false;
-end;
-{$ENDIF}
 
 procedure TWmiClass.LoadWmiData;
 begin
@@ -1203,13 +1293,14 @@ begin
 end;
 }
 
+
 initialization
 {$IFNDEF FPC}
-CoInitialize(nil);
+  CoInitialize(nil);
 {$ENDIF}
 
 finalization
 {$IFNDEF FPC}
-CoUninitialize;
+  CoUninitialize;
 {$ENDIF}
 end.
