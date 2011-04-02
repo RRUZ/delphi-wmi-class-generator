@@ -13,16 +13,15 @@ var
   i              : integer;
 begin
    try
-     ReportMemoryLeaksOnShutdown:=True;
+     ReportMemoryLeaksOnShutdown:=DebugHook<>0;
      RemoteBiosInfo:=TWin32_BIOS.Create(False);
      try
-
-       RemoteBiosInfo.WmiServer:='192.168.217.128';
-       RemoteBiosInfo.WmiUser  :='Administrator';
-       RemoteBiosInfo.WmiPass  :='password'; 
+       RemoteBiosInfo.WmiConnection.WmiServer:='192.168.52.128';
+       RemoteBiosInfo.WmiConnection.WmiUser  :='Administrator';
+       RemoteBiosInfo.WmiConnection.WmiPass  :='desarrollo';
        RemoteBiosInfo.LoadWmiData;
 
-       if RemoteBiosInfo.WmiConnected then  
+       if RemoteBiosInfo.WmiConnection.WmiConnected then
        begin
          Writeln('Serial Number       '+RemoteBiosInfo.SerialNumber);
          Writeln('BuildNumber         '+RemoteBiosInfo.BuildNumber);

@@ -1,6 +1,6 @@
 {**************************************************************************************************}
 {                                                                                                  }
-{ Unit Wmi_Helper                                                                                  }
+{ Unit uWmi_Metadata                                                                               }
 { Get Meta info about objects of the WMI  (Windows Management Instrumentation)                     }
 {                                                                                                  }
 { The contents of this file are subject to the Mozilla Public License Version 1.1 (the "License"); }
@@ -11,7 +11,7 @@
 { ANY KIND, either express or implied. See the License for the specific language governing rights  }
 { and limitations under the License.                                                               }
 {                                                                                                  }
-{ The Original Code is Wmi_Helper.pas.                                                             }
+{ The Original Code is uWmi_Metadata.pas.                                                          }
 {                                                                                                  }
 { The Initial Developer of the Original Code is Rodrigo Ruz V.                                     }
 { Portions created by Rodrigo Ruz V. are Copyright (C) 2010 Rodrigo Ruz V.                         }

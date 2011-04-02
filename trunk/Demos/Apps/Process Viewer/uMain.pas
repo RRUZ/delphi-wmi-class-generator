@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, uWin32_Process, uWin32_Service, ComCtrls, ExtCtrls, StdCtrls, Menus;
+  Dialogs, uWin32_Process, uWin32_Service, ComCtrls, ExtCtrls, StdCtrls, Menus, uWmiDelphiClass;
 
 type
   TFrmMain = class(TForm)
@@ -28,6 +28,7 @@ type
     TabSheet2: TTabSheet;
     LvServices: TListView;
     Debug1: TMenuItem;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure BtnRefreshClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
@@ -36,8 +37,10 @@ type
     procedure erminateProcess1Click(Sender: TObject);
     procedure StartNewProcess1Click(Sender: TObject);
     procedure Debug1Click(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+     FWmiConnection : TWmiConnection;
      FWin32_Process : TWin32_Process;
      FWin32_Service : TWin32_Service;
     procedure Refresh;
@@ -60,6 +63,15 @@ implementation
 procedure TFrmMain.BtnRefreshClick(Sender: TObject);
 begin
  Refresh;
+end;
+
+procedure TFrmMain.Button1Click(Sender: TObject);
+begin
+   FWmiConnection.WmiServer:=CbComputer.Text;
+   FWmiConnection.WmiUser  :=EditUser.Text;
+   FWmiConnection.WmiPass  :=EditPass.Text;
+   FWmiConnection.WmiConnect(True);
+   Refresh;
 end;
 
 procedure TFrmMain.CheckBoxAutoClick(Sender: TObject);
@@ -172,15 +184,9 @@ end;
 
 procedure TFrmMain.Refresh;
 begin
-   FWin32_Process.WmiServer:=CbComputer.Text;
-   FWin32_Process.WmiUser  :=EditUser.Text;
-   FWin32_Process.WmiPass  :=EditPass.Text;
    FWin32_Process.LoadWmiData;
    FillListProcesses(FWin32_Process);
-
-   FWin32_Service.WmiServer:=CbComputer.Text;
-   FWin32_Service.WmiUser  :=EditUser.Text;
-   FWin32_Service.WmiPass  :=EditPass.Text;
+   
    FWin32_Service.LoadWmiData;
    FillListServices(FWin32_Service);
 end;
@@ -210,6 +216,9 @@ procedure TFrmMain.FormCreate(Sender: TObject);
 begin
   FWin32_Process:=TWin32_Process.Create(False);
   FWin32_Service:=TWin32_Service.Create(False);
+  FWmiConnection:=TWmiConnection.Create;
+  FWin32_Process.WmiConnection:=FWmiConnection;
+  FWin32_Service.WmiConnection:=FWmiConnection;
   Refresh;
 end;
 
@@ -217,6 +226,7 @@ procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
   FWin32_Process.Free;
   FWin32_Service.Free;
+  FWmiConnection.Free;
 end;
 
 end.

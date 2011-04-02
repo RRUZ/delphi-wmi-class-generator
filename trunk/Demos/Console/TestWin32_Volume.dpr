@@ -12,7 +12,7 @@ var
   Volume  : TWin32_Volume;
   i,j     : Integer;
 begin
-  ReportMemoryLeaksOnShutdown:=True;
+  ReportMemoryLeaksOnShutdown:=DebugHook<>0;
   Writeln('Volume Disks info');
   Writeln('-----------------');
   Volume:=TWin32_Volume.Create;
