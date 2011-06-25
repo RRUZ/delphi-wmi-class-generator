@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:31:44
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:43
 /// Namespace root\CIMV2 Class Win32_PerfRawData_PeerDistSvc_BranchCache
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_PeerDistSvc_BranchCache.asp
 /// </summary>
@@ -30,15 +30,15 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Counters for measuring bandwidth and latency for BranchCache.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_PeerDistSvc_BranchCache=class(TWmiClass)
   private
     FBITSBytesfromcache                 : Int64;
@@ -74,158 +74,158 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BITSBytesfromcache : Int64 read FBITSBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BITSBytesfromserver : Int64 read FBITSBytesfromserver;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of attempted peer discoveries.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DiscoveryAttempteddiscoveries : Cardinal read FDiscoveryAttempteddiscoveries;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of successful discoveries.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DiscoverySuccessfuldiscoveries : Cardinal read FDiscoverySuccessfuldiscoveries;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Weighted average of time between when a peer discovery query was sent and when 
    /// the first response arrived.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DiscoveryWeightedaveragediscoverytime : Cardinal read FDiscoveryWeightedaveragediscoverytime;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Count of file segment offers made by peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property HostedCacheClientfilesegmentoffersmade : Cardinal read FHostedCacheClientfilesegmentoffersmade;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of segment offers queued for processing by the Hosted Cache.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property HostedCacheSegmentoffersqueuesize : Cardinal read FHostedCacheSegmentoffersqueuesize;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Count of complete, content validated, file segments.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LocalCacheCachecompletefilesegments : Cardinal read FLocalCacheCachecompletefilesegments;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Count of incomplete file segments that need additional data and/or validation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LocalCacheCachepartialfilesegments : Cardinal read FLocalCacheCachepartialfilesegments;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property OTHERBytesfromcache : Int64 read FOTHERBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property OTHERBytesfromserver : Int64 read FOTHERBytesfromserver;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Average byte rate observed by the current peer while downloading contents from 
    /// other peers in the branch.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RetrievalAveragebranchrate : Int64 read FRetrievalAveragebranchrate;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RetrievalBytesfromcache : Int64 read FRetrievalBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RetrievalBytesfromserver : Int64 read FRetrievalBytesfromserver;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes served by this peer to other peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RetrievalBytesserved : Int64 read FRetrievalBytesserved;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SMBBytesfromcache : Int64 read FSMBBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SMBBytesfromserver : Int64 read FSMBBytesfromserver;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINHTTPBytesfromcache : Int64 read FWINHTTPBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINHTTPBytesfromserver : Int64 read FWINHTTPBytesfromserver;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the local cache or peers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WININETBytesfromcache : Int64 read FWININETBytesfromcache;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of bytes received from the original content source.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WININETBytesfromserver : Int64 read FWININETBytesfromserver;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

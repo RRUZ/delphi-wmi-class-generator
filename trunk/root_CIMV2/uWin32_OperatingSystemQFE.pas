@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:30:30
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:12
 /// Namespace root\CIMV2 Class Win32_OperatingSystemQFE
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OperatingSystemQFE.asp
 /// </summary>
@@ -30,17 +30,17 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Win32_OperatingSystemQFE class represents an association between an 
   /// operating system and product updates applied as represented in 
   /// Win32_QuickFixEngineering.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_OperatingSystemQFE=class(TWmiClass)
   private
     FAntecedent                         : OleVariant;
@@ -48,19 +48,19 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Win32_OperatingSystem antecedent reference represents the 
    /// Win32_OperatingSystem effected by the product update in this association.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Win32_QuickFixEngineering dependent reference represents the 
    /// Win32_QuickFixEngineering applied to the operating system in this association.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

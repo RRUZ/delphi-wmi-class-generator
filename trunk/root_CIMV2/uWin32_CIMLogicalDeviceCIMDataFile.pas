@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:30:11
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:04
 /// Namespace root\CIMV2 Class Win32_CIMLogicalDeviceCIMDataFile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_CIMLogicalDeviceCIMDataFile.asp
 /// </summary>
@@ -30,17 +30,17 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Win32_CIMLogicalDeviceCIMDataFile class represents an association between 
   /// logical devices and data files, indicating the driver files used by the device. 
   /// This class is used to discover which device drivers a device uses.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_CIMLogicalDeviceCIMDataFile=class(TWmiClass)
   private
     FAntecedent                         : OleVariant;
@@ -50,44 +50,44 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Antecedent reference represents the properties of the logical device that 
    /// is being used by the data file.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Antecedent : OleVariant read FAntecedent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Dependent reference represents the properties of the data file assigned to 
    /// the logical device.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Dependent : OleVariant read FDependent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Purpose property indicates the role that the data file plays with regard to 
    /// its associated logical device.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Purpose : Word read FPurpose;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PurposeDescription property provides a description that extends the value of the Purpose property of this class.
    /// Example: Floppy Disk Driver
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PurposeDescription : String read FPurposeDescription;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CIMLogicalDeviceCIMDataFile.Purpose
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetPurposeAsString(const APropValue:Word) : string;
 
 implementation

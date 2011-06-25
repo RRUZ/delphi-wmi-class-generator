@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:32:09
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:55
 /// Namespace root\CIMV2 Class Win32_ShadowCopy
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ShadowCopy.asp
 /// </summary>
@@ -30,16 +30,16 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Win32_ShadowCopy class is a storage extent that represents a duplicate copy 
   /// of the original volume at some previous time.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_ShadowCopy=class(TWmiClass)
   private
     FCaption                            : String;
@@ -73,184 +73,184 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ClientAccessible property is indicates whether the shadow copy was created 
    /// by the Windows Previous Versions component.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ClientAccessible : Boolean read FClientAccessible;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Count property is the number of shadow copies in the shadow copy set to 
    /// which this shadow copy belongs.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Count : Cardinal read FCount;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DeviceObject property is the Windows object manager name of the underlying 
    /// storage device that supports the original volume.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DeviceObject : String read FDeviceObject;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Differential property indicates whether the shadow copy was created by a 
    /// differential shadow copy provider. The provider can be implemented in hardware 
    /// or software.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Differential : Boolean read FDifferential;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExposedLocally property indicates whether the shadow copy is exposed on the 
    /// local machine with a drive letter or mount point. If this flag and the 
    /// ExposedRemotely flag is not set, the shadow copy is hidden.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ExposedLocally : Boolean read FExposedLocally;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExposedName property is the file system name of the shadow copy when it is 
    /// exposed.  This property might contain a drive letter or mount point.   This 
    /// property is NULL when the shadow copy is hidden or otherwise not exposed.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ExposedName : String read FExposedName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExposedPath property is the file system path of the shadow copy when it is 
    /// exposed. This property is NULL when the shadow copy is hidden or otherwise 
    /// unexposed.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ExposedPath : String read FExposedPath;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ExposedRemotely property indicates whether the shadow copy is exposed on a 
    /// remote machine with a network share. If this flag and the ExposedLocally flag 
    /// is not set, the shadow copy is hidden.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ExposedRemotely : Boolean read FExposedRemotely;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The HardwareAssisted property indicates whether the shadow copy was created by 
    /// a hardware shadow copy provider.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property HardwareAssisted : Boolean read FHardwareAssisted;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ID property uniquely identifies the shadow copy on the system.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ID : String read FID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Imported property indicates whether the shadow copy was imported onto this 
    /// machine using the Import method rather than created using the ShadowCopy create 
    /// method.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Imported : Boolean read FImported;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
    /// subclassed, the Name property can be overridden to be a Key property.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The NoAutoRelease property indicates whether the shadow copy is automatically 
    /// deleted when the shadow copy requestor process ends.  If this property is TRUE, 
    /// the shadow copy is retained after the requestor process ends.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property NoAutoRelease : Boolean read FNoAutoRelease;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The shadow copy is not currently in the device namespace of the local machine.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property NotSurfaced : Boolean read FNotSurfaced;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The NoWriters property indicates whether the shadow copy was created with the 
    /// involvement of shadow copy writer components.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property NoWriters : Boolean read FNoWriters;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The OriginatingMachine property identifies the machine hosting the original 
    /// volume.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property OriginatingMachine : String read FOriginatingMachine;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Persistent property indicates whether the shadow copy is persistent across 
    /// reboots.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Persistent : Boolean read FPersistent;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Plex property indicates whether the shadow copy was created by a split 
    /// mirror shadow copy provider.  The provider can be implemented in hardware or 
    /// software.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Plex : Boolean read FPlex;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ProviderID uniquely identifies the shadow provider that created the shadow.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ProviderID : String read FProviderID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ServiceMachine property identifies the machine currently servicing the 
    /// shadow copy.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServiceMachine : String read FServiceMachine;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetID uniquely identifies the shadow copy set to which the shadow belongs.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SetID : String read FSetID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The State property describes the current state of the shadow copy
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property State : Cardinal read FState;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -262,24 +262,24 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Status : String read FStatus;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Transportable property indicates whether the shadow copy can be surfaced on 
    /// another machine. If this property is FALSE and the volumes are surfaced 
    /// locally, it may not be possible to surface them later on a different machine.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Transportable : Boolean read FTransportable;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The VolumeName property identifies the original volume for which the shadow 
    /// copy was taken.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property VolumeName : String read FVolumeName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Creates a shadow copy using the specified context.
    /// </summary>
@@ -292,9 +292,9 @@ type
    /// sometimes referred to as the 'original' volume.  This parameter can be 
    /// specified as a volume drive letter, mount point or volume GUID name.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function Create(const Context : String;const Volume : String ; var ShadowID : String): Integer;overload;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Reverts the original storage volume to this shadow copy. After Revert is done, 
    /// the original volume will be identical to this shadow copy and every newer 
@@ -310,29 +310,29 @@ type
    /// the flag is set to false and some application has an open handle to a file on 
    /// the volume, then revert will fail with 'Volume is in use'.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function Revert(const ForceDismount : Boolean): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function TWin32_ShadowCopy.Create
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultCreateAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function TWin32_ShadowCopy.Revert
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultRevertAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property TWin32_ShadowCopy.State
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetStateAsString(const APropValue:Cardinal) : string;
 
 implementation

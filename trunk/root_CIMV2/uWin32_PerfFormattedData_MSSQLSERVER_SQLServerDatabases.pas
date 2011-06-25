@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:30:49
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:20
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_MSSQLSERVER_SQLServerDatabases
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_MSSQLSERVER_SQLServerDatabases.asp
 /// </summary>
@@ -30,15 +30,15 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// This defines a Database manager object for SQL Server
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_MSSQLSERVER_SQLServerDatabases=class(TWmiClass)
   private
     FActiveTransactions                 : Int64;
@@ -78,180 +78,180 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of active update transactions for the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ActiveTransactions : Int64 read FActiveTransactions;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read/write throughput for backup/restore of a database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BackupPerRestoreThroughputPersec : Int64 read FBackupPerRestoreThroughputPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of rows bulk copied.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BulkCopyRowsPersec : Int64 read FBulkCopyRowsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// KiloBytes bulk copied.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BulkCopyThroughputPersec : Int64 read FBulkCopyThroughputPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The size of the in-memory part of the commit table for the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Committableentries : Int64 read FCommittableentries;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The cumulative size of all the data files in the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DataFilesSizeKB : Int64 read FDataFilesSizeKB;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Logical read scan rate for DBCC commands
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DBCCLogicalScanBytesPersec : Int64 read FDBCCLogicalScanBytesPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of log bytes flushed.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogBytesFlushedPersec : Int64 read FLogBytesFlushedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Percentage of log cache reads that were satisfied from the log cache.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogCacheHitRatio : Int64 read FLogCacheHitRatio;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Reads performed through the log manager cache.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogCacheReadsPersec : Int64 read FLogCacheReadsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The cumulative size of all the log files in the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogFilesSizeKB : Int64 read FLogFilesSizeKB;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The cumulative used size of all the log files in the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogFilesUsedSizeKB : Int64 read FLogFilesUsedSizeKB;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of log flushes.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogFlushesPersec : Int64 read FLogFlushesPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of commits waiting on log flush.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogFlushWaitsPersec : Int64 read FLogFlushWaitsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total wait time (milliseconds).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogFlushWaitTime : Int64 read FLogFlushWaitTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of log growths for this database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogGrowths : Int64 read FLogGrowths;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of log shrinks for this database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogShrinks : Int64 read FLogShrinks;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of log truncations for this database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property LogTruncations : Int64 read FLogTruncations;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The percent of space in the log that is in use.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentLogUsed : Int64 read FPercentLogUsed;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of pending replication transactions in the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReplPendingXacts : Int64 read FReplPendingXacts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Replication transaction rate (replicated transactions/sec.).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReplTransRate : Int64 read FReplTransRate;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The rate data is being moved by Autoshrink, DBCC SHRINKDATABASE or SHRINKFILE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ShrinkDataMovementBytesPersec : Int64 read FShrinkDataMovementBytesPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of committed transactions recorded in the commit table for the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TrackedtransactionsPersec : Int64 read FTrackedtransactionsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of transactions started for the database.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsPersec : Int64 read FTransactionsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of transactions which wrote to the database in the last second.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteTransactionsPersec : Int64 read FWriteTransactionsPersec;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

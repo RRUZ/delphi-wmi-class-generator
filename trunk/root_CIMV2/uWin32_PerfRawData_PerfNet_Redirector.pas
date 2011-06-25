@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:31:46
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:44
 /// Namespace root\CIMV2 Class Win32_PerfRawData_PerfNet_Redirector
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_PerfNet_Redirector.asp
 /// </summary>
@@ -30,16 +30,16 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Redirector performance object consists of counter that monitor network 
   /// connections originating at the local computer.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_PerfNet_Redirector=class(TWmiClass)
   private
     FBytesReceivedPersec                : Int64;
@@ -91,79 +91,79 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Bytes Received/sec is the rate of bytes coming in to the Redirector from the 
    /// network.  It includes all application data as well as network protocol 
    /// information (such as packet headers).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BytesReceivedPersec : Int64 read FBytesReceivedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Bytes Total/sec is the rate the Redirector is processing data bytes.  This 
    /// includes all application and file data in addition to protocol information such 
    /// as packet headers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BytesTotalPersec : Int64 read FBytesTotalPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Bytes Transmitted/sec is the rate at which bytes are leaving the Redirector to 
    /// the network.  It includes all application data as well as network protocol 
    /// information (such as packet headers and the like).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property BytesTransmittedPersec : Int64 read FBytesTransmittedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Connects Core counts the number of connections you have to servers running the 
    /// original MS-Net SMB protocol, including MS-Net itself and Xenix and VAX's.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ConnectsCore : Cardinal read FConnectsCore;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Connects LAN Manager 2.0 counts connections to LAN Manager 2.0 servers, 
    /// including LMX servers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ConnectsLanManager20 : Cardinal read FConnectsLanManager20;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Connects LAN Manager 2.1 counts connections to LAN Manager 2.1 servers, 
    /// including LMX servers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ConnectsLanManager21 : Cardinal read FConnectsLanManager21;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Connects Windows NT counts the connections to Windows 2000 or earlier computers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ConnectsWindowsNT : Cardinal read FConnectsWindowsNT;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Current Commands counter indicates the number of pending commands from the 
    /// local computer to all destination servers.  If the Current Commands counter 
    /// shows a high number and the local computer is idle, this may indicate a network-
    /// related problem or a redirector bottleneck on the local computer.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CurrentCommands : Cardinal read FCurrentCommands;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// File Data Operations/sec is the rate at which the Redirector is processing data 
    /// operations. One operation should include many bytes, since each operation has 
@@ -171,35 +171,35 @@ type
    /// Bytes/sec by this counter to obtain the average number of bytes transferred per 
    /// operation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property FileDataOperationsPersec : Cardinal read FFileDataOperationsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// File Read Operations/sec is the rate at which applications are asking the 
    /// Redirector for data. Each call to a file system or similar Application Program 
    /// Interface (API) call counts as one operation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property FileReadOperationsPersec : Cardinal read FFileReadOperationsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// File Write Operations/sec is the rate at which applications are sending data to 
    /// the Redirector. Each call to a file system or similar Application Program 
    /// Interface (API) call counts as one operation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property FileWriteOperationsPersec : Cardinal read FFileWriteOperationsPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Network Errors/sec is the rate at which serious unexpected errors are 
    /// occurring. Such errors generally indicate that the Redirector and one or more 
@@ -207,9 +207,9 @@ type
    /// (Server Manager Block) protocol error is a Network Error. An entry is written 
    /// to the System Event Log and provide details.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property NetworkErrorsPersec : Cardinal read FNetworkErrorsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Packets/sec is the rate the Redirector is processing data packets.  One packet 
    /// includes (hopefully) many bytes.  We say hopefully here because each packet has 
@@ -219,9 +219,9 @@ type
    /// determine the average number of packets per operation, another measure of 
    /// efficiency.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PacketsPersec : Int64 read FPacketsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Packets Received/sec is the rate at which the Redirector is receiving packets 
    /// (also called SMBs or Server Message Blocks).  Network transmissions are divided 
@@ -230,27 +230,27 @@ type
    /// not contain incoming data (for example an acknowledgment to a write made by the 
    /// Redirector would count as an incoming packet).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PacketsReceivedPersec : Int64 read FPacketsReceivedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Packets Transmitted/sec is the rate at which the Redirector is sending packets 
    /// (also called SMBs or Server Message Blocks).  Network transmissions are divided 
    /// into packets.  The average number of bytes transmitted in a packet can be 
    /// obtained by dividing Bytes Transmitted/sec by this counter.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PacketsTransmittedPersec : Int64 read FPacketsTransmittedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Bytes Cache/sec is the rate at which applications are accessing the file 
    /// system cache by using the Redirector.  Some of these data requests are 
    /// satisfied by retrieving the data from the cache.  Requests that miss the Cache 
    /// cause a page fault (see Read Bytes Paging/sec).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadBytesCachePersec : Int64 read FReadBytesCachePersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Bytes Network/sec is the rate at which applications are reading data 
    /// across the network. This occurs when data sought in the file system cache is 
@@ -258,9 +258,9 @@ type
    /// Bytes Received/sec indicates the proportion of application data traveling 
    /// across the network. (see Bytes Received/sec).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadBytesNetworkPersec : Int64 read FReadBytesNetworkPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Bytes Non-Paging/sec are those bytes read by the Redirector in response to 
    /// normal file requests by an application when they are redirected to come from 
@@ -268,9 +268,9 @@ type
    /// methods of reading across the network such as Named Pipes and Transactions.  
    /// This counter does not count network protocol information, just application data.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadBytesNonPagingPersec : Int64 read FReadBytesNonPagingPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Bytes Paging/sec is the rate at which the Redirector is attempting to read 
    /// bytes in response to page faults.  Page faults are caused by loading of modules 
@@ -278,53 +278,53 @@ type
    /// Cache/sec), or by files directly mapped into the address space of applications 
    /// (a high-performance feature of Windows NT).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadBytesPagingPersec : Int64 read FReadBytesPagingPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Operations Random/sec counts the rate at which, on a file-by-file basis, 
    /// reads are made that are not sequential.  If a read is made using a particular 
    /// file handle, and then is followed by another read that is not immediately the 
    /// contiguous next byte, this counter is incremented by one.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadOperationsRandomPersec : Cardinal read FReadOperationsRandomPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Packets/sec is the rate at which read packets are being placed on the 
    /// network.  Each time a single packet is sent with a request to read data 
    /// remotely, this counter is incremented by one.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadPacketsPersec : Cardinal read FReadPacketsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Read Packets Small/sec is the rate at which reads less than one-fourth of the 
    /// server's negotiated buffer size are made by applications.  Too many of these could indicate a waste of buffers on the server.  This counter is incremented once for each read. It does not count packets.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadPacketsSmallPersec : Cardinal read FReadPacketsSmallPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Reads Denied/sec is the rate at which the server is unable to accommodate 
    /// requests for Raw Reads.  When a read is much larger than the server's negotiated buffer size, the Redirector requests a Raw Read which, if granted, would permit the transfer of the data without lots of protocol overhead on each packet.  To accomplish this the server must lock out other requests, so the request is denied if the server is really busy.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadsDeniedPersec : Cardinal read FReadsDeniedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Reads Large/sec is the rate at which reads over 2 times the server's negotiated buffer size are made by applications.  Too many of these could place a strain on server resources.  This counter is incremented once for each read. It does not count packets.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReadsLargePersec : Cardinal read FReadsLargePersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Server Disconnects counts the number of times a Server has disconnected your 
    /// Redirector.  See also Server Reconnects.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServerDisconnects : Cardinal read FServerDisconnects;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Server Reconnects counts the number of times your Redirector has had to 
    /// reconnect to a server in order to complete a new active request.  You can be 
@@ -333,27 +333,27 @@ type
    /// intact for (nominally) ten minutes.  Such inactive connections are called 
    /// Dormant Connections.  Reconnecting is expensive in time.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServerReconnects : Cardinal read FServerReconnects;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Server Sessions counts the total number of security objects the Redirector has 
    /// managed.  For example, a logon to a server followed by a network access to the 
    /// same server will establish one connection, but two sessions.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServerSessions : Cardinal read FServerSessions;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Server Sessions Hung counts the number of active sessions that are timed out 
    /// and unable to proceed due to a lack of response from the remote server.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServerSessionsHung : Cardinal read FServerSessionsHung;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Bytes Cache/sec is the rate at which applications on your computer are 
    /// writing to the file system cache by using the Redirector.  The data might not 
@@ -361,9 +361,9 @@ type
    /// modification before being written to the network.  This saves network traffic.  
    /// Each write of a byte into the cache is counted here.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteBytesCachePersec : Int64 read FWriteBytesCachePersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Bytes Network/sec is the rate at which applications are writing data 
    /// across the network. This occurs when the file system cache is bypassed, such as 
@@ -372,9 +372,9 @@ type
    /// indicate the proportion of application data being to the network (see 
    /// Transmitted Bytes/sec).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteBytesNetworkPersec : Int64 read FWriteBytesNetworkPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Bytes Non-Paging/sec is the rate at which bytes are written by the 
    /// Redirector in response to normal file outputs by an application when they are 
@@ -383,9 +383,9 @@ type
    /// Transactions.  This counter does not count network protocol information, just 
    /// application data.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteBytesNonPagingPersec : Int64 read FWriteBytesNonPagingPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Bytes Paging/sec is the rate at which the Redirector is attempting to 
    /// write bytes changed in the pages being used by applications.  The program data 
@@ -393,45 +393,45 @@ type
    /// network are 'paged out' when no longer needed.  Other output pages come from 
    /// the file system cache (see Write Bytes Cache/sec).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteBytesPagingPersec : Int64 read FWriteBytesPagingPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Operations Random/sec is the rate at which, on a file-by-file basis, 
    /// writes are made that are not sequential.  If a write is made using a particular 
    /// file handle, and then is followed by another write that is not immediately the 
    /// next contiguous byte, this counter is incremented by one.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WriteOperationsRandomPersec : Cardinal read FWriteOperationsRandomPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Packets/sec is the rate at which writes are being sent to the network.  
    /// Each time a single packet is sent with a request to write remote data, this 
    /// counter is incremented by one.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WritePacketsPersec : Cardinal read FWritePacketsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Write Packets Small/sec is the rate at which writes are made by applications 
    /// that are less than one-fourth of the server's negotiated buffer size.  Too many of these could indicate a waste of buffers on the server.  This counter is incremented once for each write: it counts writes, not packets.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WritePacketsSmallPersec : Cardinal read FWritePacketsSmallPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Writes Denied/sec is the rate at which the server is unable to accommodate 
    /// requests for Raw Writes.  When a write is much larger than the server's negotiated buffer size, the Redirector requests a Raw Write which, if granted, would permit the transfer of the data without lots of protocol overhead on each packet.  To accomplish this the server must lock out other requests, so the request is denied if the server is really busy.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WritesDeniedPersec : Cardinal read FWritesDeniedPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Writes Large/sec is the rate at which writes are made by applications that are 
    /// over 2 times the server's negotiated buffer size.  Too many of these could place a strain on server resources.  This counter is incremented once for each write: it counts writes, not packets.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WritesLargePersec : Cardinal read FWritesLargePersec;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
