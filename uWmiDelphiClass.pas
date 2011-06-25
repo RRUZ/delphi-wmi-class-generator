@@ -29,8 +29,14 @@ interface
 {.$DEFINE WbemScripting_TLB}
 
 {$IFDEF FPC}
-{$MODE DELPHI}{$H+}
-{$UNDEF WbemScripting_TLB}
+ {$MODE DELPHI}{$H+}
+ {$UNDEF WbemScripting_TLB}
+{$ENDIF}
+
+{$IFNDEF FPC}
+  {$IF CompilerVersion < 17}
+    {$DEFINE OLD_DELPHI}
+  {$IFEND}
 {$ENDIF}
 
 
@@ -79,11 +85,11 @@ type
   TOleVariantArray= Array of OleVariant;
   TWideStringArray= Array of WideString;
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The TWmiConection class represents the base class to connect to the WMI Services.
   /// </summary>
-  {$IFDEF UNDEF}{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}{$ENDIF}
+  {$IFDEF UNDEF}{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}{$ENDIF}
   TWmiConnection=class//(TObject)
   private
     {$IFDEF WbemScripting_TLB}
@@ -117,68 +123,68 @@ type
     procedure SetWmiPass(const Value: string);
    {$ENDIF}
   public
-   {$REGION 'Documentation'}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiConnect procedure establish a connection with the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
     procedure WmiConnect(ForceConnection:Boolean);
    {$IFDEF FPC}
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiNameSpace property return the current WMI namespace
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiNameSpace  : WideString read FWmiNameSpace write FWmiNameSpace;
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiServer property return or set the current server name or ip where the WMi service is connected
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiServer : WideString read FWmiServer write SetWmiServer;
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiUser property return or set the user name used to connect to the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiUser : WideString read FWmiUser write SetWmiUser;
    {$REGION 'Documentation'}
    /// <summary>
    /// The WmiPass property return or set the password used to connect to the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiPass: WideString read FWmiPass write SetWmiPass;
    {$ELSE}
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiNameSpace property return the current WMI namespace
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiNameSpace  : string read FWmiNameSpace write FWmiNameSpace;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiServer property return or set the current server name or ip where the WMi service is connected
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiServer : string read FWmiServer write SetWmiServer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiUser property return or set the user name used to connect to the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiUser : string read FWmiUser write SetWmiUser;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiPass property return or set the password used to connect to the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiPass: string read FWmiPass write SetWmiPass;
    {$ENDIF}
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiPass property return True or False if the current instance is connected to the WMI service
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiConnected  : boolean read FWmiConnected;
    {$IFDEF WMI_LateBinding}
    property  SWbemLocator  : OleVariant read FSWbemLocator;
@@ -193,11 +199,11 @@ type
     Destructor Destroy; override;
   end;
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The TWmiClass class represents the base class to access the WMI info.
   /// </summary>
-  {$IFDEF UNDEF}{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}{$ENDIF}
+  {$IFDEF UNDEF}{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}{$ENDIF}
   TWmiClass=class//(TObject)
   private
     FOwnedConnection: Boolean;
@@ -227,63 +233,63 @@ type
    function  GetNullValue  : IDispatch;
    {$ENDIF}
    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiProperties property return the list of the properties of the current class
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiProperties : TStrings read FWmiPropsNames;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiCollectionIndex property return the current index to the collection which store the WMI Data
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiCollectionIndex : integer read FWmiCollectionIndex  write FWmiCollectionIndex;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetCollectionCount function return the number of items of the collection which store the WMI Data
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function  GetCollectionCount:Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetCollectionIndex procedure set the  index of the collection which store the WMI Data
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    procedure SetCollectionIndex(Index: Integer);virtual;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetCollectionIndexByPropertyValue function get the index of the coolection based in the Property name and value
    /// if the value is not found return a -1
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function  GetCollectionIndexByPropertyValue(const PropertyName:string; AValue:OleVariant):integer;virtual;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetPropertyValue function return the value of an property
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function  GetPropertyValue(const PropName: string): OleVariant;
    function  GetPropertyValueByIndex(const PropName: string;Index:Integer): OleVariant;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetInstanceOf function return an instance to the current wmi class returned by the ExecQuery method
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function  GetInstanceOf: OleVariant;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetStaticInstance function return an instance to the current wmi class
    /// is equivalent to call WMIService.Get(WmiClass,0,GetNullValue);
    /// MSDN : Retrieves an object, that is either a class definition or an instance, based on the object path.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function  GetStaticInstance : OleVariant;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The LoadWmiData procedure fill the collection with the data returbes by the ExecQuery method
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    procedure LoadWmiData;
    Destructor Destroy; override;
    property  WmiConnection : TWmiConnection read FWmiConnection write SetWmiConnection;
@@ -292,14 +298,14 @@ type
    /// <summary>
    /// The WmiClass property return the current WMI class
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiClass  : WideString read FWmiClass;
    {$ELSE}
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiClass property return the current WMI class
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiClass  : string read FWmiClass;
    {$ENDIF}
    {$IFDEF WMI_LateBinding}
@@ -325,89 +331,89 @@ type
   end;
 }
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarStrNull function convert a OleVariant value to an string in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarStrNull(const V:OleVariant):string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarWideStringNull function convert a OleVariant value to an WideString in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarWideStringNull(const V:OleVariant):WideString;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarByteNull function convert a OleVariant value to a Byte value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarByteNull(const V:OleVariant):Byte;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarShortIntNull function convert a OleVariant value to a ShortInt value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarShortIntNull(const V:OleVariant):ShortInt;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarWordNull function convert a OleVariant value to a Word value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarWordNull(const V:OleVariant):Word;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarSmallIntNull function convert a OleVariant value to a SmallInt value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarSmallIntNull(const V:OleVariant):SmallInt;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarIntegerNull function convert a OleVariant value to a Integer value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarIntegerNull(const V:OleVariant):Integer;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarInt64Null function convert a OleVariant value to a Int64 value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarInt64Null(const V:OleVariant):Int64;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarLongNull function convert a OleVariant value to a Longint value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarLongNull(const V:OleVariant):Longint;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarCardinalNull function convert a OleVariant value to a Cardinal value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarCardinalNull(const V:OleVariant):Cardinal;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarBoolNull function convert a OleVariant value to a Boolean value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarBoolNull(const V:OleVariant):Boolean;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarDoubleNull function convert a OleVariant value to a Double value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarDoubleNull(const V:OleVariant):Double;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The VarDateTimeNull function convert a OleVariant value in UTC format to a TDateTime value in a safe way to avoid problems with null values
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function VarDateTimeNull(const V : OleVariant): TDateTime; //UTC
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The DateTimeToUTC function convert a TDateTime Value to the UTC format
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function DateTimeToUTC(const DateTimeValue:TDateTime):string;
 
   function ArrayToVarArray(Arr : Array Of string):OleVariant; overload;

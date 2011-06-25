@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:30:27
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:10
 /// Namespace root\CIMV2 Class Win32_NetworkAdapterConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NetworkAdapterConfiguration.asp
 /// </summary>
@@ -30,18 +30,18 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Win32_NetworkAdapterConfiguration class represents the attributes and 
   /// behaviors of a network adapter. This class has been extended to include extra 
   /// properties and methods that support the management of the TCP/IPprotocols (and 
   /// are independent of the network adapter).
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_NetworkAdapterConfiguration=class(TWmiClass)
   private
     FArpAlwaysSourceRoute               : Boolean;
@@ -108,7 +108,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ArpAlwaysSourceRoute property indicates whether the Address Resolution 
    /// Protocol (ARP) must always use source routing. If this property is TRUE, TCP/IP 
@@ -117,9 +117,9 @@ type
    /// routing enabled if no reply was received. Source routing allows the routing of 
    /// network packets across different types of networks. Default: FALSE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ArpAlwaysSourceRoute : Boolean read FArpAlwaysSourceRoute;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ArpUseEtherSNAP property indicates whether Ethernet packets follow the IEEE 
    /// 802.3 Sub-Network Access Protocol (SNAP) encoding. Setting this parameter to 1 
@@ -127,24 +127,24 @@ type
    /// default, the stack transmits packets in DIX Ethernet format. Windows NT/Windows 
    /// 2000 systems are able to receive both formats. Default: FALSE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ArpUseEtherSNAP : Boolean read FArpUseEtherSNAP;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DatabasePath property indicates a valid Windows file path to standard 
    /// Internet database files (HOSTS, LMHOSTS, NETWORKS, PROTOCOLS).  The file path 
    /// is used by the Windows Sockets interface. This property is only available on 
    /// Windows NT/Windows 2000 systems.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DatabasePath : String read FDatabasePath;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DeadGWDetectEnabled property indicates whether dead gateway detection 
    /// occurs. Setting this parameter to TRUE causes TCP to perform Dead Gateway 
@@ -152,24 +152,24 @@ type
    /// gateway if it retransmits a segment several times without receiving a response. 
    /// Default: TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DeadGWDetectEnabled : Boolean read FDeadGWDetectEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DefaultIPGateway property contains a list of IP addresses of default gateways used by the computer system.
    /// Example: 194.161.12.1 194.162.46.1
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DefaultIPGateway : TStrings read FDefaultIPGateway;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DefaultTOS property indicates the default Type Of Service (TOS) value set 
    /// in the header of outgoing IP packets. RFC 791 defines the values. Default: 0, 
    /// Valid Range: 0 - 255.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DefaultTOS : Byte read FDefaultTOS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DefaultTTL property indicates the default Time To Live (TTL) value set in 
    /// the header of outgoing IP packets. The TTL specifies the number of routers an 
@@ -177,88 +177,88 @@ type
    /// Each router decrements the TTL count of a packet by one as it passes through 
    /// and discards the packets if the TTL is 0. Default: 32, Valid Range: 1 - 255.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DefaultTTL : Byte read FDefaultTTL;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DHCPEnabled property indicates whether the dynamic host configuration protocol  (DHCP) server automatically assigns an IP address to the computer system when establishing a network connection.
    /// Values: TRUE or FALSE. If TRUE, DHCP is enabled.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DHCPEnabled : Boolean read FDHCPEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DHCPLeaseExpires property indicates the expiration date and time for a leased IP address that was assigned to the computer by the dynamic host configuration protocol (DHCP) server.
    /// Example: 20521201000230.000000000
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DHCPLeaseExpires : TDateTime read FDHCPLeaseExpires;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DHCPLeaseObtained property indicates the date and time the lease was obtained for the IP address assigned to the computer by the dynamic host configuration protocol (DHCP) server. 
    /// Example: 19521201000230.000000000
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DHCPLeaseObtained : TDateTime read FDHCPLeaseObtained;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DHCPServer property indicates the IP address of the dynamic host configuration protocol (DHCP) server.
    /// Example: 154.55.34
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DHCPServer : String read FDHCPServer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DNSDomain property indicates an organization name followed by a period and an extension that indicates the type of organization, such as microsoft.com. The name can be any combination of the letters A through Z, the numerals 0 through 9, and the hyphen (-), plus the period (.) character used as a separator.
    /// Example: microsoft.com
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DNSDomain : String read FDNSDomain;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DNSDomainSuffixSearchOrder property specifies the DNS domain suffixes to be appended to the end of host names during name resolution. When attempting to resolve a fully qualified domain name (FQDN) from a host only name, the system will first append the local domain name. If this is not successful, the system will use the domain suffix list to create additional FQDNs in the order listed and query DNS servers for each.
    /// Example: samples.microsoft.com example.microsoft.com
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DNSDomainSuffixSearchOrder : TStrings read FDNSDomainSuffixSearchOrder;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DNSEnabledForWINSResolution property indicates whether the Domain Name 
    /// System (DNS) is enabled for name resolution over Windows Internet Naming 
    /// Service (WINS) resolution. If the name cannot be resolved using DNS, the name 
    /// request is forwarded to WINS for resolution.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DNSEnabledForWINSResolution : Boolean read FDNSEnabledForWINSResolution;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DNSHostName property indicates the host name used to identify the local computer for authentication by some utilities. Other TCP/IP-based utilities can use this value to acquire the name of the local computer. Host names are stored on DNS servers in a table that maps names to IP addresses for use by DNS. The name can be any combination of the letters A through Z, the numerals 0 through 9, and the hyphen (-), plus the period (.) character used as a separator. By default, this value is the Microsoft networking computer name, but the network administrator can assign another host name without affecting the computer name.
    /// Example: corpdns
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DNSHostName : String read FDNSHostName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DNSServerSearchOrder property indicates an ordered list of server IP 
    /// addresses to be used in querying for DNS Servers.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DNSServerSearchOrder : TStrings read FDNSServerSearchOrder;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DomainDNSRegistrationEnabled property specifies whether the IP addresses 
    /// for this connection are registered in DNS under the domain name of this 
    /// connection, in addition to registering under the computer's full DNS name. The domain name of this connection is either set via the method SetDNSDomain() or assigned by DHCP. The registered name is the host name of the computer with the domain name appended. Windows 2000 only.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DomainDNSRegistrationEnabled : Boolean read FDomainDNSRegistrationEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ForwardBufferMemory property indicates how much memory IP allocates to 
    /// store packet data in the router packet queue. When this buffer space is filled, 
@@ -270,25 +270,25 @@ type
    /// range from the network MTU to the a value smaller than 0xFFFFFFFF. Default: 
    /// 74240 (fifty 1480-byte packets, rounded to a multiple of 256).
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ForwardBufferMemory : Cardinal read FForwardBufferMemory;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The FullDNSRegistrationEnabled property specifies whether the IP addresses for 
    /// this connection are registered in DNS under the computer's full DNS name. The full DNS name of the computer is displayed on the Network Identification tab of the System Control Panel. Windows 2000 only.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property FullDNSRegistrationEnabled : Boolean read FFullDNSRegistrationEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GatewayCostMetric reflects an integer cost metric (ranging from 1 to 9999) 
    /// to be used in calculating the fastest, most reliable, and/or least expensive 
    /// routes. This argument has a one to one correspondence with the 
    /// DefaultIPGateway. Windows 2000 only.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property GatewayCostMetric : TWordArray read FGatewayCostMetric;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IGMPLevel property indicates the extent to which the system supports IP 
    /// multicast and participates in the Internet Group Management Protocol. At level 
@@ -296,31 +296,31 @@ type
    /// send IP multicast packets. At level 2, the system may send IP multicast packets 
    /// and fully participate in IGMP to receive multicast packets. Default: 2
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IGMPLevel : Byte read FIGMPLevel;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Index property specifies the index number of the Win32 network adapter 
    /// configuration. The index number is used when there is more than one 
    /// configuration available.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Index : Cardinal read FIndex;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The InterfaceIndex property contains the index value that uniquely identifies 
    /// the local interface.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property InterfaceIndex : Cardinal read FInterfaceIndex;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPAddress property contains a list of all of the IP addresses associated with the current network adapter.
    /// Example: 155.34.22.0
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPAddress : TStrings read FIPAddress;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPConnectionMetric indicates the cost of using the configured routes for 
    /// this IP bound adapter and is the weighted value for those routes in the IP 
@@ -328,16 +328,16 @@ type
    /// table, the route with the lowest metric is used. The default value is 1.Windows 
    /// 2000 only.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPConnectionMetric : Cardinal read FIPConnectionMetric;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPEnabled property indicates whether TCP/IP is bound and enabled on this 
    /// network adapt.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPEnabled : Boolean read FIPEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPFilterSecurityEnabled property indicates whether IP port security is 
    /// enabled globally across all IP-bound network adapters. This property is used in 
@@ -348,17 +348,17 @@ type
    /// disabled across all network adapters and allows all port and protocol traffic 
    /// to flow unfiltered.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPFilterSecurityEnabled : Boolean read FIPFilterSecurityEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPPortSecurityEnabled property indicates whether IP port security is 
    /// enabled globally across all IP-bound network adapters. This property has been 
    /// deprecated in favor of IPFilterSecurityEnabled.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPPortSecurityEnabled : Boolean read FIPPortSecurityEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPSecPermitIPProtocols property lists the protocols permitted to run over 
    /// the IP. The list of protocols is defined using the EnableIPSec method. The list 
@@ -367,9 +367,9 @@ type
    /// indicates that no protocols are permitted to run when IPFilterSecurityEnabled 
    /// is TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPSecPermitIPProtocols : TStrings read FIPSecPermitIPProtocols;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPSecPermitTCPPorts property lists the ports that will be granted access 
    /// permission for TCP. The list of protocols is defined using the EnableIPSec 
@@ -378,9 +378,9 @@ type
    /// string indicates that no ports are granted access permission when 
    /// IPFilterSecurityEnabled is TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPSecPermitTCPPorts : TStrings read FIPSecPermitTCPPorts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPSecPermitUDPPorts property lists the ports that will be granted User 
    /// Datagram Protocol (UDP) access permission. The list of protocols is defined 
@@ -389,16 +389,16 @@ type
    /// ports. An empty string indicates that no ports are granted access permission 
    /// when IPFilterSecurityEnabled is TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPSecPermitUDPPorts : TStrings read FIPSecPermitUDPPorts;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPSubnet property contains a list of all the subnet masks associated with the current network adapter.
    /// Example: 255.255.0
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPSubnet : TStrings read FIPSubnet;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPUseZeroBroadcast property indicates whether IP zeros-broadcasts are used. 
    /// If this parameter is set TRUE, then IP uses zeros-broadcasts (0.0.0.0), and the 
@@ -407,39 +407,39 @@ type
    /// broadcasts. Systems that do not use that same broadcasts will not interoperate 
    /// on the same network. Default: FALSE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPUseZeroBroadcast : Boolean read FIPUseZeroBroadcast;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXAddress property indicates the Internetworking Packet Exchange (IPX) 
    /// address of the network adapter. The IPX address identifies a computer system on 
    /// a network using the IPX protocol.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXAddress : String read FIPXAddress;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXEnabled property determines whether the or Internetwork Packet Exchange 
    /// (IPX) protocol is bound and enabled for this adapter.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXEnabled : Boolean read FIPXEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXFrameType property represents an integer array of frame type 
    /// identifiers. The values in this array correspond to the elements in the 
    /// IPXNetworkNumber.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXFrameType : TCardinalArray read FIPXFrameType;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXMediaType property represents an Internetworking Packet Exchange (IPX) 
    /// media type identifier.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXMediaType : Cardinal read FIPXMediaType;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXNetworkNumber property represents an array of characters that uniquely 
    /// identifies a frame/network adapter combination on the computer system. The 
@@ -449,18 +449,18 @@ type
    /// unique for each network segment. The order in this string list will correspond 
    /// item-for-item with the elements in the IPXFrameType property.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXNetworkNumber : TStrings read FIPXNetworkNumber;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The IPXVirtualNetNumber property uniquely identifies the computer system on the 
    /// network. It is represented in the form of an eight-character hexadecimal digit. 
    /// Windows NT/2000 uses the virtual network number (also known as an internal 
    /// network number) for internal routing.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property IPXVirtualNetNumber : String read FIPXVirtualNetNumber;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The KeepAliveInterval property indicates the interval separating Keep Alive 
    /// Retransmissions until a response is received. Once a response is received, the 
@@ -469,9 +469,9 @@ type
    /// retransmissions specified by TcpMaxDataRetransmissions have gone unanswered. 
    /// Default: 1000, Valid Range: 1 - 0xFFFFFFFF.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property KeepAliveInterval : Cardinal read FKeepAliveInterval;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The KeepAliveTime property indicates how often the TCP attempts to verify that 
    /// an idle connection is still intact by sending a Keep Alive Packet. A remote 
@@ -479,16 +479,16 @@ type
    /// Alive packets are not sent by default. This feature may be enabled in a 
    /// connection by an application. Default: 7,200,000 (two hours)
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property KeepAliveTime : Cardinal read FKeepAliveTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MACAddress property indicates the Media Access Control (MAC) address of the network adapter. A MAC address is assigned by the manufacturer to uniquely identify the network adapter.
    /// Example: 00:80:C7:8F:6C:96
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property MACAddress : String read FMACAddress;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The MTU property overrides the default Maximum Transmission Unit (MTU) for a 
    /// network interface. The MTU is the maximum packet size (including the transport 
@@ -496,9 +496,9 @@ type
    /// datagram can span multiple packets. The range of this value spans the minimum 
    /// packet size (68) to the MTU supported by the underlying network.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property MTU : Cardinal read FMTU;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The NumForwardPackets property indicates the number of IP packet headers 
    /// allocated for the router packet queue. When all headers are in use, the router 
@@ -512,9 +512,9 @@ type
    /// not enabled, this parameter is ignored and no headers are allocated. Default: 
    /// 50, Valid Range: 1 - 0xFFFFFFFE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property NumForwardPackets : Cardinal read FNumForwardPackets;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PMTUBHDetectEnabled property indicates whether detection of black hole 
    /// routers occurs. Setting this parameter to TRUE causes TCP to try to detect 
@@ -525,9 +525,9 @@ type
    /// Fragment bit set if several retransmissions of a segment go unacknowledged. If 
    /// the segment is acknowledged as a result, the MSS will be decreased and the Don't Fragment bit will be set in future packets on the connection. Enabling black hole detection increases the maximum number of retransmissions performed for a given segment. The default value of this property is FALSE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PMTUBHDetectEnabled : Boolean read FPMTUBHDetectEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The PMTUDiscoveryEnabled property indicates whether the Maximum Transmission 
    /// Unit (MTU) path is discovered. Setting this parameter to TRUE causes TCP to 
@@ -539,54 +539,54 @@ type
    /// used for all connections that are not to machines on the local subnet. Default: 
    /// TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PMTUDiscoveryEnabled : Boolean read FPMTUDiscoveryEnabled;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ServiceName property indicates the service name of the network adapter. This name is usually shorter than the full product name. 
    /// Example: Elnkii.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ServiceName : String read FServiceName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SettingID : String read FSettingID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpipNetbiosOptions property specifies a bitmap of the possible settings 
    /// related to NetBIOS over TCP/IP. Windows 2000 only.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpipNetbiosOptions : Cardinal read FTcpipNetbiosOptions;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpMaxConnectRetransmissions property indicates the number of times TCP 
    /// will attempt to retransmit a Connect Request before terminating the connection. 
    /// The initial retransmission timeout is 3 seconds. The retransmission timeout 
    /// doubles for each attempt. Default: 3, Valid Range: 0 - 0xFFFFFFFF.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpMaxConnectRetransmissions : Cardinal read FTcpMaxConnectRetransmissions;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpMaxDataRetransmissions property indicates the number of times TCP will 
    /// retransmit an individual data segment (non-connect segment) before terminating 
    /// the connection. The retransmission timeout doubles with each successive 
    /// retransmission on a connection. Default: 5, Valid Range: 0 - 0xFFFFFFFF.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpMaxDataRetransmissions : Cardinal read FTcpMaxDataRetransmissions;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpNumConnections property indicates the maximum number of connections that 
    /// TCP can have open simultaneously. Default: 0xFFFFFE, Valid Range: 0 - 0xFFFFFE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpNumConnections : Cardinal read FTcpNumConnections;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpUseRFC1122UrgentPointer property indicates whether TCP uses the RFC 1122 
    /// specification or the mode used by Berkeley Software Design (BSD) derived 
@@ -595,9 +595,9 @@ type
    /// and higher defaults to BSD mode. If TRUE, urgent data is sent in RFC 1122 mode. 
    /// Default: FALSE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpUseRFC1122UrgentPointer : Boolean read FTcpUseRFC1122UrgentPointer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The TcpWindowSize property contains the maximum TCP Receive  Window size 
    /// offered by the system. The Receive Window specifies the number of bytes a 
@@ -608,18 +608,18 @@ type
    /// size or an even multiple of TCP data size rounded up to the nearest multiple of 
    /// 8192. Ethernet networks default to 8760. Valid Range: 0 - 65535.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TcpWindowSize : Word read FTcpWindowSize;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WINSEnableLMHostsLookup property indicates whether local lookup files are 
    /// used. Lookup files will contain a map of IP addresses to host names. If they 
    /// exist on the local system, they will be found in 
    /// %SystemRoot%\system32\drivers\etc.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINSEnableLMHostsLookup : Boolean read FWINSEnableLMHostsLookup;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WINSHostLookupFile property contains a path to a WINS lookup file on the 
    /// local system. This file will contain a map of IP addresses to host names. If 
@@ -627,16 +627,16 @@ type
    /// %SystemRoot%\system32\drivers\etc folder of the local system. Valid only if the 
    /// WINSEnableLMHostsLookup property is TRUE.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINSHostLookupFile : String read FWINSHostLookupFile;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WINSPrimaryServer property indicates the IP address for the primary WINS 
    /// server. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINSPrimaryServer : String read FWINSPrimaryServer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WINSScopeID property provides a way to isolate a group of computer systems 
    /// that communicate with each other only. The Scope ID is a character string value 
@@ -646,16 +646,16 @@ type
    /// TCP/IP clients with different Scope IDs disregard packets from computers with 
    /// this Scope ID. Valid only when the EnableWINS method executes successfully.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINSScopeID : String read FWINSScopeID;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WINSSecondaryServer property indicates the IP address for the secondary 
    /// WINS server. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property WINSSecondaryServer : String read FWINSSecondaryServer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableDHCP method enables the Dynamic Host Configuration Protocol (DHCP) for service with this network adapter. DHCP allows IP addresses to be dynamic allocated. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -698,9 +698,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableDHCP: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The RenewDHCPLease method renews the IP address on specific DHCP-enabled network adapters. The lease for the IP address assigned via a DHCP server has an expiration date that the client must renew if it intends to continue use of the assigned IP address. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -743,9 +743,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function RenewDHCPLease: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The RenewDHCPLeaseAll method renews the IP addresses on all DHCP-enabled network adapters. The lease for the IP address assigned via a DHCP server has an expiration date that the client must renew if it intends to continue use of the assigned IP address. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -788,9 +788,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function RenewDHCPLeaseAll: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ReleaseDHCPLease method releases the IP address bound to a specific DHCP enabled network adapter. WARNING: If DHCP is enabled on this local computer system, the option disables TCP/IP on this specific network adapter. Unless you have an alternate path to the target system; that is, another TCP/IP bound network adapter, all TCP/IP communications will be lost. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -833,9 +833,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function ReleaseDHCPLease: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The ReleaseDHCPLeaseAll method releases the IP addresses bound to all DHCP enabled network adapters. WARNING: If DHCP is enabled on this local computer system, the option will terminate all DHCP TCP/IP connections.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -878,9 +878,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function ReleaseDHCPLeaseAll: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableStatic method enables static TCP/IP addressing for the target network adapter. As a result, DHCP for this network adapter is disabled. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -933,9 +933,9 @@ type
    /// in the IPAddress parameter.
    /// Example: 255.255.0.0
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableStatic(const IPAddress : Array of String;const SubnetMask : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetGateways method is used to specify a list of gateways for routing packets destined for a different subnet than the one this adapter is connected to.  A more specific route should not exist for this subnet. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -989,9 +989,9 @@ type
    /// correspondence with the values in the DefaultIPGateway[] parameter. The default 
    /// value for a gateway is 1. This parameter is for Windows 2000 only.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetGateways(const DefaultIPGateway : Array of String;const GatewayCostMetric : Array of Word): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableDNS method enables the Domain Name System (DNS) for service on TCP/IP-bound network adapters. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1055,9 +1055,9 @@ type
    /// The DNSServerSearchOrder parameter specifies the list of server IP addresses to 
    /// query for DNS servers.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableDNS(const DNSDomain : String;const DNSDomainSuffixSearchOrder : Array of String;const DNSHostName : String;const DNSServerSearchOrder : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDNSDomain method allows for the setting of the DNS domain. This is an instance dependent method call that applies on a per adapter basis. On Windows 2000 the setting applies to the targeted adapter. On NT4 this setting is global.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1106,9 +1106,9 @@ type
    /// indicates the type of organization.
    /// Example: microsoft.com.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDNSDomain(const DNSDomain : String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDNSServerSearchOrder method allows for the setting of the server search order as a array of elements. This is an instance dependent method call that applies on a per adapter basis. On Windows 2000 the setting applies to the targeted adapter. On NT4 this setting is global.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1156,9 +1156,9 @@ type
    /// query for DNS Servers.
    /// Example:130.215.24.1 157.54.164.1
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDNSServerSearchOrder(const DNSServerSearchOrder : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDNSSuffixSearchOrder method allows for the setting of the suffix search order as a array of elements. This is an instance independent method call that applies across all adapters. Windows NT only. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1206,9 +1206,9 @@ type
    /// suffixes to query for DNS Servers.
    /// Example:130.215.24.1 157.54.164.1
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDNSSuffixSearchOrder(const DNSDomainSuffixSearchOrder : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDynamicDNSRegistration method is used to indicate dynamic DNS registration of IP addresses for this IP bound adapter. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1260,9 +1260,9 @@ type
    /// The FullDNSRegistrationEnabled parameter specifies whether the IP addresses for 
    /// this connection are registered in DNS under the computer's full DNS name. The full DNS name of the computer is displayed on the Network Identification tab of the System Control Panel. Windows 2000 only.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDynamicDNSRegistration(const DomainDNSRegistrationEnabled : Boolean;const FullDNSRegistrationEnabled : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetIPConnectionMetric method is used to set the routing metric associated with this IP bound adapter. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1312,9 +1312,9 @@ type
    /// multiple routes to a destination in the IP routing table, the route with the 
    /// lowest metric is used. The default value is 1. Windows 2000 only.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetIPConnectionMetric(const IPConnectionMetric : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetWINSServer method sets the primary and secondary Windows Internet Naming Service (WINS) servers on this TCP/IP-bound network adapter. This method is applied independently of the network adapter. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1365,9 +1365,9 @@ type
    /// The WINSSecondaryServer parameter specifies the IP address of the secondary 
    /// WINS server.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetWINSServer(const WINSPrimaryServer : String;const WINSSecondaryServer : String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableWINS method enables Windows Internet Naming Service (WINS) settings specific to TCP/IP, but independent of the network adapter. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1427,9 +1427,9 @@ type
    /// The WINSScopeID parameter specifies the Scope ID value that will be appended to 
    /// the end of the computer's NetBIOS name. Systems using the same Scope ID can communicate with this computer.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableWINS(const DNSEnabledForWINSResolution : Boolean;const WINSEnableLMHostsLookup : Boolean;const WINSHostLookupFile : String;const WINSScopeID : String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpipNetbios method is used to set the default operation of NetBIOS over TCP/IP for this network adapter. Windows 2000 only. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1476,9 +1476,9 @@ type
    /// The TcpipNetbiosOptions parameter specifies a bitmap of the possible settings 
    /// related to NetBIOS over TCP/IP.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpipNetbios(const TcpipNetbiosOptions : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableIPSec method is used to enable IP security on this specific TCP/IP-enabled network adapter. Ports are secured only when the IPFilterSecurityEnabled property is TRUE.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1539,9 +1539,9 @@ type
    /// permission is granted for all ports. An empty string indicates that no ports 
    /// should be granted access permission.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableIPSec(const IPSecPermitIPProtocols : Array of String;const IPSecPermitTCPPorts : Array of String;const IPSecPermitUDPPorts : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The DisableIPSec method is used to disable IP security on this TCP/IP-enabled network adapter. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1584,9 +1584,9 @@ type
    /// 100 - DHCP not enabled on adapter
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function DisableIPSec: Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetIPXVirtualNetworkNumber method is used to set the Internetworking Packet Exchange (IPX) virtual network number on the target computer system. Windows 2000 and Windows NT 3.51 or greater uses an internal network number for internal routing. The internal network number is also known as a virtual network number. It uniquely identifies the computer system on the network. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1633,9 +1633,9 @@ type
    /// The IPXVirtualNetNumber parameter specifies the virtual network number for this 
    /// system.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetIPXVirtualNetworkNumber(const IPXVirtualNetNumber : String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetIPXFrameTypeNetworkPairs method is used to set Internetworking Packet Exchange (IPX) network number/frame pairs for this network adapter. Windows 2000 and Windows NT 3.51 and higher use an IPX network number for routing purposes. It is assigned to each configured frame type/network adapter combination on your computer system. This number is sometimes referred to as the "external network number." It must be unique for each network segment. If the frame type is set to AUTO, the network number should to zero. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1692,9 +1692,9 @@ type
    /// in this string list must have a corresponding value in the IPXFrameType 
    /// parameter identifying the packet frame type used for this network.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetIPXFrameTypeNetworkPairs(const IPXFrameType : Array of Cardinal;const IPXNetworkNumber : Array of String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDatabasePath method sets the path to the standard Internet database files (HOSTS, LMHOSTS, NETWORKS, PROTOCOLS). It is used by the Windows Sockets interface. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1742,9 +1742,9 @@ type
    /// or higher file path to standard Internet database files (HOSTS, LMHOSTS, 
    /// NETWORKS, PROTOCOLS) used by the Windows Sockets interface.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDatabasePath(const DatabasePath : String): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetIPUseZeroBroadcast method is used to set IP zero broadcast usage. If this parameter is set to TRUE, then IP will use zeros-broadcasts (0.0.0.0) instead of ones-broadcasts (255.255.255.255). Most systems use ones-broadcasts, but systems derived from BSD implementations use zeros-broadcasts. Systems that use different broadcasts will not interoperate on the same network. Default: FALSE. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1792,9 +1792,9 @@ type
    /// broadcast is used. Setting the parameter to TRUE indicates that IP zero 
    /// broadcast is used.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetIPUseZeroBroadcast(const IPUseZeroBroadcast : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetArpAlwaysSourceRoute method is used to set the transmission of ARP queries by the TCP/IP. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1844,9 +1844,9 @@ type
    /// default, the stack transmits ARP queries without source routing first, then 
    /// retries with source routing enabled if no reply is received.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetArpAlwaysSourceRoute(const ArpAlwaysSourceRoute : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetArpUseEtherSNAP method is used to enable ethernet packets to use 802.3 SNAP encoding. By default, the stack transmits packets in Digital, Intel, Xerox(DIX) Ethernet format. It will always receive both formats. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1893,9 +1893,9 @@ type
    /// The ArpUseEtherSNAP parameter enables (TRUE)TCP/IP to transmit Ethernet packets 
    /// using 802.3 SNAP encoding.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetArpUseEtherSNAP(const ArpUseEtherSNAP : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDefaultTOS method is used to set the default Type of Service (TOS) value in the header of outgoing IP packets. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1942,9 +1942,9 @@ type
    /// The DefaultTOS parameter specifies the Type of Service (TOS) value put in the 
    /// header of outgoing IP packets. See RFC 791 for a definition of the values.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDefaultTOS(const DefaultTOS : Byte): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDefaultTTL method is used to set the default Time to Live (TTL) value in the header of outgoing IP packets. The TTL specifies the number of routers an IP packet may pass through to reach its destination before being discarded. Each router decrements the TTL count of a packet by one and discards the packets with a TTL of 0. Default: 32, Valid Range: 1 - 255The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -1991,9 +1991,9 @@ type
    /// The DefaultTTL parameter specifies the Time to Live value set in the header of 
    /// outgoing IP packets.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDefaultTTL(const DefaultTTL : Byte): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetDeadGWDetect method is used to enable Dead Gateway detection. Setting this parameter to TRUE causes TCP to perform Dead Gateway Detection. With this feature enabled, TCP asks IP to change to a backup gateway if it retransmits a segment several times without receiving a response. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2041,9 +2041,9 @@ type
    /// perform dead gateway detection. If TRUE, the method will enable dead gateway 
    /// detection.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetDeadGWDetect(const DeadGWDetectEnabled : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetPMTUBHDetect method is used to enable detection of Black Hole routers. Setting this parameter to TRUE causes TCP to try to detect Black Hole routers while doing Path MTU Discovery. A Black Hole router does not return the Internet Control Message Protocol (ICMP) Destination Unreachable messages when it needs to fragment an IP datagram with the Don't Fragment bit set. TCP depends on receiving these messages to perform Path MTU Discovery. With this feature enabled, TCP will try to send segments without the Don't Fragment bit set if several retransmissions of a segment go unacknowledged. If the segment is acknowledged as a result, the maximum segment size (MSS) will be decreased and the Don't Fragment bit will be set in future packets on the connection. Enabling black hole detection increases the maximum number of retransmissions performed for a given segment. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2091,9 +2091,9 @@ type
    /// "Black Hole" routers is enabled. If TRUE, the method makes TCP attempt to 
    /// discover "Black Hole" and route packets in different network paths.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetPMTUBHDetect(const PMTUBHDetectEnabled : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetPMTUDiscovery method is used to enable Maximum Transmission Unit (MTU) discovery. Setting this parameter to TRUE causes TCP to attempt to discover the MTU (or largest packet size) over the path to a remote host. By discovering the Path MTU and limiting TCP segments to this size, TCP can eliminate fragmentation at routers along the path that connect networks with different MTUs. Fragmentation adversely affects TCP throughput and network congestion. Setting this parameter to FALSE causes an MTU of 576 bytes to be used for all connections that are not to machines on the local subnet. Default: TRUE. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2141,9 +2141,9 @@ type
    /// Maximum Transmission Unit (MTU) or largest packet size over the path to a 
    /// remote host. If TRUE, the method makes TCP to attempt to discover the MTU.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetPMTUDiscovery(const PMTUDiscoveryEnabled : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetForwardBufferMemory method is used to specify how much memory IP allocates to store packet data in the router packet queue. When this buffer space is filled, the router begins discarding packets at random from its queue. Packet queue data buffers are 256 bytes in length, so the value of this parameter should be a multiple of 256. Multiple buffers are chained together for larger packets. The IP header for a packet is stored separately. This parameter is ignored and no buffers are allocated if the IP router is not enabled. The buffer size can range from the network MTU to the a value smaller than 0xFFFFFFFF. Default: 74240 (fifty 1480-byte packets, rounded to a multiple of 256).The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2190,9 +2190,9 @@ type
    /// The ForwardBufferMemory parameter specifies the size of the router packet queue 
    /// used to store packet data.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetForwardBufferMemory(const ForwardBufferMemory : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetIGMPLevel method is used to set the extent to which the system supports IP multicasting and participates in the Internet Group Management Protocol. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2242,9 +2242,9 @@ type
    /// multicast packets. At level 2, the system may send IP multicast packets and 
    /// fully participate in IGMP to receive multicast packets.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetIGMPLevel(const IGMPLevel : Byte): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetKeepAliveInterval method is used to set the interval separating Keep Alive Retransmissions until a response is received. Once a response is received, the delay until the next Keep Alive Transmission is again controlled by the value of KeepAliveTime. The connection will be terminated after the number of retransmissions specified by TcpMaxDataRetransmissions have gone unanswered. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2291,9 +2291,9 @@ type
    /// The KeepAliveInterval parameter specifies the value for the interval separating 
    /// Keep Alive Retransmissions until a response is received.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetKeepAliveInterval(const KeepAliveInterval : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetKeepAliveTime method is used to set how often TCP attempts to verify that an idle connection is still available by sending a Keep Alive packet. If the remote system is still reachable and functioning, it will acknowledge the Keep Alive transmission. Keep Alive packets are not sent by default. This feature may be enabled in a connection by an application. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2340,9 +2340,9 @@ type
    /// The KeepAliveTime parameter specifies the interval the TCP waits to check that 
    /// an idle connection is still available.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetKeepAliveTime(const KeepAliveTime : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetMTU method is used to set the default Maximum Transmission Unit (MTU) for a network interface. 
    /// The SetMTU method has been deprecated.  There is no replacementand the values returned do not corresepond to the method's intended purpose. 
@@ -2392,9 +2392,9 @@ type
    /// for a network interface The range of this value spans the minimum packet size 
    /// (68) to the MTU supported by the underlying network.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetMTU(const MTU : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetNumForwardPackets method is used to set the number of IP packet headers allocated for the router packet queue. When all headers are in use, the router will begin to discard packets from the queue at random.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2449,9 +2449,9 @@ type
    /// router is disabled, this parameter is ignored and no headers are allocated. 
    /// Valid Range: 1 - 0xFFFFFFFE.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetNumForwardPackets(const NumForwardPackets : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpMaxConnectRetransmissions method is used to set the number of attempts TCP will retransmit a Connect Request before aborting. The initial retransmission timeout is 3 seconds and doubles for each attempt.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2498,9 +2498,9 @@ type
    /// The TcpMaxConnectRetransmissions parameter specifies the number of attempts TCP 
    /// will retransmit a connect request before aborting. Valid Range: 0 - 0xFFFFFFFF.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpMaxConnectRetransmissions(const TcpMaxConnectRetransmissions : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpMaxDataRetransmissions method is used to set the  number of times TCP will retransmit an individual data segment before aborting the connection. The retransmission timeout doubles with each successive retransmission on a connection.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2548,9 +2548,9 @@ type
    /// retransmit an individual data segment before aborting the connection. Valid 
    /// Range: 0 - 0xFFFFFFFF.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpMaxDataRetransmissions(const TcpMaxDataRetransmissions : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpNumConnections method is used to set the maximum number of connections that TCP may have open simultaneously.The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2597,9 +2597,9 @@ type
    /// The TcpNumConnections parameter specifies the maximum number of connections 
    /// that TCP may have open simultaneously. Valid Range: 0 - 0xFFFFFE.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpNumConnections(const TcpNumConnections : Cardinal): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpUseRFC1122UrgentPointer method is used to specify whether TCP uses the RFC 1122 specification for urgent data, or the mode used by Berkeley Software Design (BSD) derived systems. The two mechanisms interpret the urgent pointer in the TCP header and the length of the urgent data differently. They are not interoperable. Windows 2000 and Windows NT version 3.51 or higher defaults to BSD mode. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2647,9 +2647,9 @@ type
    /// 1122 specification or the mode used by BSD-derived systems, for urgent data. If 
    /// TRUE, urgent data is sent in RFC 1122 mode.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpUseRFC1122UrgentPointer(const TcpUseRFC1122UrgentPointer : Boolean): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The SetTcpWindowSize method is used to set the maximum TCP Receive Window size offered by the system. The Receive Window specifies the number of bytes a sender can transmit without receiving an acknowledgment. In general, larger receive windows improve performance over high delay and high bandwidth networks. For efficiency, the receive window should be an even multiple of the TCP Maximum Segment Size (MSS). The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2696,9 +2696,9 @@ type
    /// The TcpWindowSize parameter specifies the maximum TCP receive window size 
    /// offered by the system. Valid Range: 0 - 65535.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function SetTcpWindowSize(const TcpWindowSize : Word): Integer;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The EnableIPFilterSec method is used to enable IP security globally across all IP-bound network adapters. With security enabled, the operational security characteristics for any single network adapter can be controlled using the network adapter specific EnableIPSec method. The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion, no reboot required
@@ -2748,326 +2748,326 @@ type
    /// IPFilterSecurityEnabled is FALSE, all port and protocol traffic are allowed to 
    /// flow unfiltered.
    /// </param>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function EnableIPFilterSec(const IPFilterSecurityEnabled : Boolean): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableDHCP
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableDHCPAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.RenewDHCPLease
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultRenewDHCPLeaseAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.RenewDHCPLeaseAll
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultRenewDHCPLeaseAllAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.ReleaseDHCPLease
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultReleaseDHCPLeaseAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.ReleaseDHCPLeaseAll
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultReleaseDHCPLeaseAllAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableStatic
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableStaticAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetGateways
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetGatewaysAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableDNS
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableDNSAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDNSDomain
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDNSDomainAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDNSServerSearchOrder
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDNSServerSearchOrderAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDNSSuffixSearchOrder
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDNSSuffixSearchOrderAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDynamicDNSRegistration
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDynamicDNSRegistrationAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetIPConnectionMetric
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetIPConnectionMetricAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetWINSServer
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetWINSServerAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableWINS
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableWINSAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpipNetbios
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpipNetbiosAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableIPSec
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableIPSecAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.DisableIPSec
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultDisableIPSecAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetIPXVirtualNetworkNumber
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetIPXVirtualNetworkNumberAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetIPXFrameTypeNetworkPairs
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetIPXFrameTypeNetworkPairsAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDatabasePath
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDatabasePathAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetIPUseZeroBroadcast
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetIPUseZeroBroadcastAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetArpAlwaysSourceRoute
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetArpAlwaysSourceRouteAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetArpUseEtherSNAP
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetArpUseEtherSNAPAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDefaultTOS
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDefaultTOSAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDefaultTTL
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDefaultTTLAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetDeadGWDetect
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetDeadGWDetectAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetPMTUBHDetect
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetPMTUBHDetectAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetPMTUDiscovery
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetPMTUDiscoveryAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetForwardBufferMemory
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetForwardBufferMemoryAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetIGMPLevel
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetIGMPLevelAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetKeepAliveInterval
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetKeepAliveIntervalAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetKeepAliveTime
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetKeepAliveTimeAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetMTU
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetMTUAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetNumForwardPackets
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetNumForwardPacketsAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpMaxConnectRetransmissions
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpMaxConnectRetransmissionsAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpMaxDataRetransmissions
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpMaxDataRetransmissionsAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpNumConnections
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpNumConnectionsAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpUseRFC1122UrgentPointer
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpUseRFC1122UrgentPointerAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.SetTcpWindowSize
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultSetTcpWindowSizeAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_NetworkAdapterConfiguration.EnableIPFilterSec
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetResultEnableIPFilterSecAsString(const ReturnValue:Integer) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_NetworkAdapterConfiguration.IGMPLevel
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetIGMPLevelAsString(const APropValue:Byte) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_NetworkAdapterConfiguration.IPXFrameType
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetIPXFrameTypeAsString(const APropValue:Cardinal) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_NetworkAdapterConfiguration.IPXMediaType
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetIPXMediaTypeAsString(const APropValue:Cardinal) : string;
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_NetworkAdapterConfiguration.TcpipNetbiosOptions
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   function GetTcpipNetbiosOptionsAsString(const APropValue:Cardinal) : string;
 
 implementation

@@ -135,8 +135,8 @@ begin
 
   if HelpInsightList.Count>0 then
   begin
-    HelpInsightList.Insert(0,Format('%s{$IFDEF UNDEF}{$REGION ''Documentation''}{$ENDIF}',[space]));
-    HelpInsightList.Add(Format('%s{$IFDEF UNDEF}{$ENDREGION}{$ENDIF}',[space]));
+    HelpInsightList.Insert(0,Format('%s{$IFNDEF OLD_DELPHI}{$REGION ''Documentation''}{$ENDIF}',[space]));
+    HelpInsightList.Add(Format('%s{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}',[space]));
   end;
 end;
 
@@ -602,7 +602,7 @@ begin
       InterfaceList.Add('{$ENDIF}');
 
       InterfaceList.Add('{$IFNDEF FPC}');
-      InterfaceList.Add('  {$IF CompilerVersion <= 15}');
+      InterfaceList.Add('  {$IF CompilerVersion < 17}');
       InterfaceList.Add('    {$DEFINE OLD_DELPHI}');
       InterfaceList.Add('  {$IFEND}');
       InterfaceList.Add('{$ENDIF}');

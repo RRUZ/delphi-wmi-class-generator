@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.124
-/// WMI version 7600.16385
-/// Creation Date 02-04-2011 16:31:27
+/// Application version 0.1.0.132
+/// WMI version 7601.17514
+/// Creation Date 25-06-2011 06:21:36
 /// Namespace root\CIMV2 Class Win32_PerfRawData_Counters_ProcessorInformation
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_Counters_ProcessorInformation.asp
 /// </summary>
@@ -30,11 +30,11 @@ type
   Word=Longint;
 {$ENDIF}
 {$IFNDEF FPC}
-  {$IF CompilerVersion <= 15}
+  {$IF CompilerVersion < 17}
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The Processor Information performance counter set consists of counters that 
   /// measure aspects of processor activity. The processor is the part of the 
@@ -43,7 +43,7 @@ type
   /// have multiple processors. The Processor Information counter set represents each 
   /// processor as an instance of the counter set.
   /// </summary>
-  {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_Counters_ProcessorInformation=class(TWmiClass)
   private
     FC1TransitionsPersec                : Int64;
@@ -78,7 +78,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// C1 Transitions/sec is the rate that the CPU enters the C1 low-power idle state. 
    /// The CPU enters the C1 state when it is sufficiently idle and exits this state 
@@ -86,9 +86,9 @@ type
    /// observed in the last two samples, divided by the duration of the sample 
    /// interval.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property C1TransitionsPersec : Int64 read FC1TransitionsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// C2 Transitions/sec is the rate that the CPU enters the C2 low-power idle state. 
    /// The CPU enters the C2 state when it is sufficiently idle and exits this state 
@@ -96,9 +96,9 @@ type
    /// observed in the last two samples, divided by the duration of the sample 
    /// interval.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property C2TransitionsPersec : Int64 read FC2TransitionsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// C3 Transitions/sec is the rate that the CPU enters the C3 low-power idle state. 
    /// The CPU enters the C3 state when it is sufficiently idle and exits this state 
@@ -106,21 +106,21 @@ type
    /// observed in the last two samples, divided by the duration of the sample 
    /// interval.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property C3TransitionsPersec : Int64 read FC3TransitionsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Description : String read FDescription;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// DPC Rate is the rate at which deferred procedure calls (DPCs) were added to the 
    /// processors DPC queues between the timer ticks of the processor clock. DPCs are 
@@ -129,19 +129,19 @@ type
    /// added to the queue, not the number of DPCs in the queue. This counter displays 
    /// the last observed value only; it is not an average.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DPCRate : Cardinal read FDPCRate;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// DPCs Queued/sec is the average rate, in incidents per second, at which deferred 
    /// procedure calls (DPCs) were added to the processor's DPC queue. DPCs are interrupts that run at a lower priority than standard interrupts.  Each processor has its own DPC queue. This counter measures the rate that DPCs are added to the queue, not the number of DPCs in the queue.  This counter displays the difference between the values observed in the last two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property DPCsQueuedPersec : Cardinal read FDPCsQueuedPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Interrupts/sec is the average rate, in incidents per second, at which the 
    /// processor received and serviced hardware interrupts. It does not include 
@@ -155,31 +155,31 @@ type
    /// This counter displays the difference between the values observed in the last 
    /// two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property InterruptsPersec : Cardinal read FInterruptsPersec;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Name : String read FName;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Parking Status represents whether a processor is parked or not.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ParkingStatus : Cardinal read FParkingStatus;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % C1 Time is the percentage of time the processor spends in the C1 low-power 
    /// idle state. % C1 Time is a subset of the total processor idle time. C1 low-
    /// power idle state enables the processor to maintain its entire context and 
    /// quickly return to the running state. Not all systems support the % C1 state.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentC1Time : Int64 read FPercentC1Time;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % C2 Time is the percentage of time the processor spends in the C2 low-power 
    /// idle state. % C2 Time is a subset of the total processor idle time. C2 low-
@@ -187,9 +187,9 @@ type
    /// caches. The C2 power state is a lower power and higher exit latency state than 
    /// C1. Not all systems support the C2 state.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentC2Time : Int64 read FPercentC2Time;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % C3 Time is the percentage of time the processor spends in the C3 low-power 
    /// idle state. % C3 Time is a subset of the total processor idle time. When the 
@@ -197,9 +197,9 @@ type
    /// coherency of its caches. The C3 power state is a lower power and higher exit 
    /// latency state than C2. Not all systems support the C3 state.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentC3Time : Int64 read FPercentC3Time;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % DPC Time is the percentage of time that the processor spent receiving and 
    /// servicing deferred procedure calls (DPCs) during the sample interval. DPCs are 
@@ -208,16 +208,16 @@ type
    /// They are counted separately and are not a component of the interrupt counters. 
    /// This counter displays the average busy time as a percentage of the sample time.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentDPCTime : Int64 read FPercentDPCTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % Idle Time is the percentage of time the processor is idle during the sample 
    /// interval
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentIdleTime : Int64 read FPercentIdleTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % Interrupt Time is the time the processor spends receiving and servicing 
    /// hardware interrupts during sample intervals. This value is an indirect 
@@ -230,15 +230,15 @@ type
    /// activity. suspends normal thread execution during interrupts. This counter 
    /// displays the average busy time as a percentage of the sample time.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentInterruptTime : Int64 read FPercentInterruptTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % of Maximum Frequency is the percentage of the current processor's maximum frequency.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentofMaximumFrequency : Cardinal read FPercentofMaximumFrequency;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % Priority Time is the percentage of elapsed time that the processor spends 
    /// executing threads that are not low priority. It is calculated by measuring the 
@@ -255,9 +255,9 @@ type
    /// which are more likely to be measured inaccurately as timers are signaled just 
    /// after the sample is taken.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentPriorityTime : Int64 read FPercentPriorityTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % Privileged Time is the percentage of elapsed time that the process threads 
    /// spent executing code in privileged mode.  When a Windows system service in 
@@ -270,9 +270,9 @@ type
    /// application might appear in other subsystem processes in addition to the 
    /// privileged time in the process.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentPrivilegedTime : Int64 read FPercentPrivilegedTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % Processor Time is the percentage of elapsed time that the processor spends to 
    /// execute a non-Idle thread. It is calculated by measuring the percentage of time 
@@ -289,9 +289,9 @@ type
    /// applications  which are more likely to be measured inaccurately as timers are 
    /// signaled just after the sample is taken.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentProcessorTime : Int64 read FPercentProcessorTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// % User Time is the percentage of elapsed time the processor spends in the user 
    /// mode. User mode is a restricted processing mode designed for applications, 
@@ -301,19 +301,19 @@ type
    /// privileged mode to access operating system services. This counter displays the 
    /// average busy time as a percentage of the sample time.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentUserTime : Int64 read FPercentUserTime;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Processor Frequency is the frequency of the current processor in megahertz.
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ProcessorFrequency : Cardinal read FProcessorFrequency;
-   {$IFDEF UNDEF}{$REGION 'Documentation'}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Processor State Flags
    /// </summary>
-   {$IFDEF UNDEF}{$ENDREGION}{$ENDIF}
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ProcessorStateFlags : Cardinal read FProcessorStateFlags;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
