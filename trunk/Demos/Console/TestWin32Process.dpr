@@ -1,5 +1,5 @@
 program TestWin32Process;
-
+{$WARN SYMBOL_PLATFORM OFF}
 {$APPTYPE CONSOLE}
 
 uses
@@ -28,6 +28,7 @@ begin
        Writeln('Command Line  '+Process.CommandLine);
        Writeln('Creation Date '+DateToStr(Process.CreationDate));
        //get the owner of the process
+
        Process.GetOwner(User,Domain);
        Writeln('User          '+User);
        Writeln('Domain        '+Domain);

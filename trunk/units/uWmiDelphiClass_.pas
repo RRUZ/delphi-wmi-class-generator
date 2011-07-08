@@ -25,14 +25,8 @@ interface
 {$IFNDEF MSWINDOWS}
      Sorry Only Windows
 {$ENDIF}
-
-
 {.$DEFINE _DEBUG}
-
-{.$DEFINE WMI_COM_API}
-{.$DEFINE WbemScripting_TLB}
-{$DEFINE WMI_LateBinding}
-
+{$DEFINE WbemScripting_TLB}
 
 {$IFDEF FPC}
  {$MODE DELPHI}{$H+}
@@ -46,31 +40,36 @@ interface
 {$ENDIF}
 
 
-{$IFDEF WMI_COM_API}
-  {$MESSAGE 'Using WMI_COM_API'}
+{$IFNDEF WbemScripting_TLB}
+  {$DEFINE WMI_LateBinding}
 {$ENDIF}
-
-{$IFDEF WbemScripting_TLB}
-  {$MESSAGE 'Using WbemScripting_TLB'}
-{$ENDIF}
-
-{$IFDEF WMI_LateBinding}
-  {$MESSAGE 'Using WMI_LateBinding'}
-{$ENDIF}
-
 
 uses
-{$IFDEF WMI_COM_API}
-  JwaActiveX,
-  JwaWbemCli,
-{$ENDIF}
 {$IFDEF WbemScripting_TLB}
-  WbemScripting_TLB,
+WbemScripting_TLB,
 {$ENDIF}
-  Windows,
-  Classes;
+Classes;
 
+{$IFDEF WMI_LateBinding}
+const
+SWbemScripting_SWbemLocator {$IFDEF FPC}:WideString{$ENDIF}  = 'WbemScripting.SWbemLocator';
 
+wbemImpersonationLevelAnonymous   = $00000001;  //Anonymous 	Hides the credentials of the caller.
+                                                //Calls to WMI may fail with this impersonation level.
+wbemImpersonationLevelIdentify 	  = $00000002;  //Identify 	Allows objects to query the credentials of the caller.
+                                                //Calls to WMI may fail with this impersonation level.
+wbemImpersonationLevelImpersonate = $00000003;  //Impersonate 	Allows objects to use the credentials of the caller.
+                                                //This is the recommended impersonation level for WMI Scripting API calls.
+wbemImpersonationLevelDelegate 	  = $00000004;  //Delegate 	Allows objects to permit other objects to use the credentials of the caller.
+                                                //This impersonation, which will work with WMI Scripting API calls but may constitute an unnecessary security risk, is supported only under Windows 2000.
+
+wbemFlagForwardOnly               = $00000020; //Causes a forward-only enumerator to be returned. Forward-only enumerators are generally much faster and use less memory than conventional enumerators, but they do not allow calls to SWbemObject.Clone_.
+wbemFlagBidirectional             = $00000000; //Causes WMI to retain pointers to objects of the enumeration until the client releases the enumerator.
+wbemFlagReturnImmediately         = $00000010; //Causes the call to return immediately.
+wbemFlagReturnWhenComplete        = $00000000; //Causes this call to block until the query is complete. This flag calls the method in the synchronous mode.
+wbemQueryFlagPrototype            = $00000002; //Used for prototyping. It stops the query from happening and returns an object that looks like a typical result object.
+wbemFlagUseAmendedQualifiers      = $00020000; //Causes WMI to return class amendment data with the base class definition. For more information, see Localizing WMI Class Information.
+{$ENDIF}
 
 type
   TWordArray      = Array of Word;
@@ -86,28 +85,12 @@ type
   TOleVariantArray= Array of OleVariant;
   TWideStringArray= Array of WideString;
 
-{$IFDEF WMI_COM_API}
-    PCOAUTHIDENTITY    = ^TCOAUTHIDENTITY;
-    _COAUTHIDENTITY    = Record
-                          User           : PChar;
-                          UserLength     : ULONG;
-                          Domain         : PChar;
-                          DomainLength   : ULONG;
-                          Password       : PChar;
-                          PassWordLength : ULONG;
-                          Flags          : ULONG;
-                          End;
-
-   COAUTHIDENTITY      = _COAUTHIDENTITY;
-   TCOAUTHIDENTITY     = _COAUTHIDENTITY;
-{$ENDIF}
-
   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
   /// The TWmiConection class represents the base class to connect to the WMI Services.
   /// </summary>
   {$IFDEF UNDEF}{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}{$ENDIF}
-  TWmiConnection=class
+  TWmiConnection=class//(TObject)
   private
     {$IFDEF WbemScripting_TLB}
     FSWbemLocator   : ISWbemLocator;
@@ -117,13 +100,6 @@ type
     FSWbemLocator   : OleVariant;
     FWMIService     : OleVariant;
     {$ENDIF}
-
-    {$IFDEF WMI_COM_API}
-    FSWbemLocator   : IWbemLocator;
-    FWMIService     : IWbemServices;
-    AuthInfo        : TCOAUTHIDENTITY;
-    {$ENDIF}
-
     {$IFDEF FPC}
     FWmiServer      : WideString;
     FWmiUser        : WideString;
@@ -142,7 +118,6 @@ type
     procedure SetWmiUser(const Value: WideString);
     procedure SetWmiPass(const Value: WideString);
    {$ELSE}
-
     procedure SetWmiServer(const Value: string);
     procedure SetWmiUser(const Value: string);
     procedure SetWmiPass(const Value: string);
@@ -180,9 +155,6 @@ type
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiPass: WideString read FWmiPass write SetWmiPass;
    {$ELSE}
-   //*****************************************************
-   //Delphi mode
-   //*****************************************************
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiNameSpace property return the current WMI namespace
@@ -214,22 +186,14 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiConnected  : boolean read FWmiConnected;
-
    {$IFDEF WMI_LateBinding}
    property  SWbemLocator  : OleVariant read FSWbemLocator;
    property  WMIService    : OleVariant read FWMIService;
    {$ENDIF}
-
    {$IFDEF WbemScripting_TLB}
    property  SWbemLocator  : ISWbemLocator  read FSWbemLocator;
    property  WMIService    : ISWbemServices read FWMIService;
    {$ENDIF}
-
-   {$IFDEF WMI_COM_API}
-   property  SWbemLocator  : IWbemLocator  read FSWbemLocator;
-   property  WMIService    : IWbemServices read FWMIService;
-   {$ENDIF}
-
   protected
     constructor Create; overload;
     Destructor Destroy; override;
@@ -249,15 +213,7 @@ type
     {$ELSE}
     FWmiClass       : string;
     {$ENDIF}
-
-
-    {$IFDEF WMI_COM_API}
-    FStaticInstance : IWbemClassObject;
-    {$ELSE}
     FStaticInstance : OleVariant;
-    {$ENDIF}
-
-
     FWMiDataLoaded  : Boolean;
     FWmiPropsNames  : TStrings;
     procedure DisposeCollection;
@@ -268,9 +224,6 @@ type
    {$ENDIF}
    {$IFDEF WbemScripting_TLB}
     function GetWMIService: ISWbemServices;
-   {$ENDIF}
-   {$IFDEF WMI_COM_API}
-    function GetWMIService: IWbemServices;
    {$ENDIF}
   protected
     FWmiCollection      : TList;
@@ -283,9 +236,6 @@ type
    {$ENDIF}
    {$IFDEF WbemScripting_TLB}
    function  GetNullValue  : IDispatch;
-   {$ENDIF}
-   {$IFDEF WMI_COM_API}
-   function  GetNullValue  : IUnknown;
    {$ENDIF}
    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
@@ -355,6 +305,7 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiClass  : WideString read FWmiClass;
+   {$ELSE}
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiClass property return the current WMI class
@@ -367,9 +318,6 @@ type
    {$ENDIF}
    {$IFDEF WbemScripting_TLB}
    property  WMIService    :  ISWbemServices read GetWMIService;
-   {$ENDIF}
-   {$IFDEF WMI_COM_API}
-   property  WMIService    :  IWbemServices read GetWMIService;
    {$ENDIF}
   end;
 
@@ -502,10 +450,7 @@ type
 implementation
 
 uses
- ComObj,
- Variants,
- Activex,
- SysUtils;
+ ComObj, Windows, Variants, Activex,  SysUtils;
 
 type
   TVariantValueClass=class
@@ -521,60 +466,6 @@ type
 
 
 Const
-{$IFDEF WMI_LateBinding}
-SWbemScripting_SWbemLocator {$IFDEF FPC}:WideString{$ENDIF}  = 'WbemScripting.SWbemLocator';
-
-wbemImpersonationLevelAnonymous   = $00000001;  //Anonymous 	Hides the credentials of the caller.
-                                                //Calls to WMI may fail with this impersonation level.
-wbemImpersonationLevelIdentify 	  = $00000002;  //Identify 	Allows objects to query the credentials of the caller.
-                                                //Calls to WMI may fail with this impersonation level.
-wbemImpersonationLevelImpersonate = $00000003;  //Impersonate 	Allows objects to use the credentials of the caller.
-                                                //This is the recommended impersonation level for WMI Scripting API calls.
-wbemImpersonationLevelDelegate 	  = $00000004;  //Delegate 	Allows objects to permit other objects to use the credentials of the caller.
-                                                //This impersonation, which will work with WMI Scripting API calls but may constitute an unnecessary security risk, is supported only under Windows 2000.
-
-wbemFlagForwardOnly               = $00000020; //Causes a forward-only enumerator to be returned. Forward-only enumerators are generally much faster and use less memory than conventional enumerators, but they do not allow calls to SWbemObject.Clone_.
-wbemFlagBidirectional             = $00000000; //Causes WMI to retain pointers to objects of the enumeration until the client releases the enumerator.
-wbemFlagReturnImmediately         = $00000010; //Causes the call to return immediately.
-wbemFlagReturnWhenComplete        = $00000000; //Causes this call to block until the query is complete. This flag calls the method in the synchronous mode.
-wbemQueryFlagPrototype            = $00000002; //Used for prototyping. It stops the query from happening and returns an object that looks like a typical result object.
-wbemFlagUseAmendedQualifiers      = $00020000; //Causes WMI to return class amendment data with the base class definition. For more information, see Localizing WMI Class Information.
-{$ENDIF}
-
-{$IFDEF WMI_COM_API}
-  //Impersonation Level Constants
-  //http://msdn.microsoft.com/en-us/library/ms693790%28v=vs.85%29.aspx
-  RPC_C_AUTHN_LEVEL_DEFAULT   = 0;
-  RPC_C_IMP_LEVEL_ANONYMOUS   = 1;
-  RPC_C_IMP_LEVEL_IDENTIFY    = 2;
-  RPC_C_IMP_LEVEL_IMPERSONATE = 3;
-  RPC_C_IMP_LEVEL_DELEGATE    = 4;
-
-  //Authentication Service Constants
-  //http://msdn.microsoft.com/en-us/library/ms692656%28v=vs.85%29.aspx
-  RPC_C_AUTHN_WINNT      = 10;
-  RPC_C_AUTHN_LEVEL_CALL = 3;
-  RPC_C_AUTHN_DEFAULT    = Integer($FFFFFFFF);
-  EOAC_NONE              = 0;
-
-  //Authorization Constants
-  //http://msdn.microsoft.com/en-us/library/ms690276%28v=vs.85%29.aspx
-  RPC_C_AUTHZ_NONE       = 0;
-  RPC_C_AUTHZ_NAME       = 1;
-  RPC_C_AUTHZ_DCE        = 2;
-  RPC_C_AUTHZ_DEFAULT    = Integer($FFFFFFFF);
-
-  //Authentication-Level Constants
-  //http://msdn.microsoft.com/en-us/library/aa373553%28v=vs.85%29.aspx
-  RPC_C_AUTHN_LEVEL_PKT_PRIVACY   = 6;
-
-  SEC_WINNT_AUTH_IDENTITY_ANSI    = 1;
-  SEC_WINNT_AUTH_IDENTITY_UNICODE = 2;
-
- //COAUTHIDENTITY Structure
- //http://msdn.microsoft.com/en-us/library/ms693358%28v=vs.85%29.aspx
-{$ENDIF}
-
  MaxNumProps             =256;
  DefaultDoubleNullValue  :Double=0.0;
  //DefaultDateTimeNullValue=0;
@@ -996,8 +887,6 @@ function VarDateTimeNull(const V : OleVariant): TDateTime;
 var
   Dt : TSWbemDateTime;
 begin
-  Result:=0;
-  if VarIsNull(V) then exit;
   Dt:=TSWbemDateTime.Create(nil);
   try
     Dt.Value:=V;
@@ -1006,32 +895,9 @@ begin
     Dt.Free;
   end;
 end;
-
 {$ENDIF}
 
-{$IFDEF WMI_COM_API}
-function VarDateTimeNull(const V : OleVariant): TDateTime;
-var
- Year, Month, Day    : Word;
- Hour, Min, Sec, MSec: Word;
- UtcStr              : string;
-begin
-  Result:=0;
-  UtcStr:=VarStrNull(V);
-  if Length(UtcStr)>=15 then
-  begin
-     Year  :=StrToInt(Copy(UtcStr,1,4));
-     Month :=StrToInt(Copy(UtcStr,5,2));
-     Day   :=StrToInt(Copy(UtcStr,7,2));
 
-     Hour  :=StrToInt(Copy(UtcStr,9,2));
-     Min   :=StrToInt(Copy(UtcStr,11,2));
-     Sec   :=StrToInt(Copy(UtcStr,13,2));
-     MSec  :=0;
-     Result:=EncodeDate(Year, Month, Day)+EncodeTime(Hour, Min, Sec, MSec);
-  end;
-end;
-{$ENDIF}
 
 {
 function VarDateTimeNull(const V:OleVariant):TDateTime;
@@ -1063,12 +929,6 @@ begin
   FSWbemLocator:=Unassigned;
   FWMIService  :=Unassigned;
   {$ENDIF}
-
-  {$IFDEF WMI_COM_API}
-  FSWbemLocator:=nil;
-  FWMIService  :=nil;
-  {$ENDIF}
-
   inherited;
 end;
 
@@ -1112,71 +972,29 @@ end;
 
 //http://www.computerperformance.co.uk/Logon/code/code_80070005.htm#Local_Security_and_Policies_and_DCOM
 procedure TWmiConnection.WmiConnect(ForceConnection:boolean);
-{$IFDEF WMI_COM_API}
-var
-  OpResult  : HRESULT;
-{$ENDIF}
 begin
    if not FWmiConnected or ForceConnection then
    begin
      {$IFDEF WMI_LateBinding}
-       {$IFDEF FPC}
-        FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
-        FWMIService   := FSWbemLocator.ConnectServer(WmiServer, WmiNameSpace, WmiUser, WmiPass);
-       {$ELSE}
-        FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
-        FWMIService   := FSWbemLocator.ConnectServer(WmiServer, WmiNameSpace, WmiUser, WmiPass);
-       {$ENDIF}
-        if not FWmiIsLocal then
-          FWMIService.Security_.ImpersonationLevel := wbemImpersonationLevelImpersonate;
+     {$IFDEF FPC}
+      FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
+      FWMIService   := FSWbemLocator.ConnectServer(WmiServer, WmiNameSpace, WmiUser, WmiPass);
+      //FWMIService      := GetWMIObject(Format('winmgmts:\\localhost\%s',[FWmiNameSpace]));
+     {$ELSE}
+      FSWbemLocator := CreateOleObject(SWbemScripting_SWbemLocator);
+      FWMIService   := FSWbemLocator.ConnectServer(WmiServer, WmiNameSpace, WmiUser, WmiPass);
      {$ENDIF}
-
+      if not FWmiIsLocal then
+        FWMIService.Security_.ImpersonationLevel := wbemImpersonationLevelImpersonate;
+     {$ENDIF}
      {$IFDEF WbemScripting_TLB}
        FSWbemLocator  := CoSWbemLocator.Create;
        FWMIService    := FSWbemLocator.ConnectServer(WmiServer, WmiNameSpace,WmiUser, WmiPass, '', '', 0, nil);
       if not FWmiIsLocal then
         FWMIService.Security_.ImpersonationLevel := wbemImpersonationLevelImpersonate;
      {$ENDIF}
-
-     {$IFDEF WMI_COM_API}
-
-      if FWmiIsLocal then
-       if Failed(CoInitializeSecurity(nil, -1, nil, nil, RPC_C_AUTHN_LEVEL_DEFAULT, RPC_C_IMP_LEVEL_IMPERSONATE, nil, EOAC_NONE, nil)) then Exit
-       else
-      else
-       if Failed(CoInitializeSecurity(nil, -1, nil, nil, RPC_C_AUTHN_LEVEL_DEFAULT, RPC_C_IMP_LEVEL_IDENTIFY, nil, EOAC_NONE, nil)) then Exit;
-
-      OpResult:=CoCreateInstance(CLSID_WbemLocator, nil, CLSCTX_INPROC_SERVER, IID_IWbemLocator, FSWbemLocator);
-
-      if Succeeded(OpResult) then
-      begin
-        if FWmiIsLocal then
-          OpResult:=FSWbemLocator.ConnectServer(Format('\\%s\%s',[WmiServer,WmiNameSpace]), WmiUser, WmiPass, '',  WBEM_FLAG_CONNECT_USE_MAX_WAIT, '', nil, FWMIService)
-        else
-          OpResult:=FSWbemLocator.ConnectServer(Format('\\%s\%s',[WmiServer,WmiNameSpace]), WmiUser, WmiPass, '',  WBEM_FLAG_CONNECT_USE_MAX_WAIT, '', nil, FWMIService);
-
-        if Succeeded(OpResult) then
-        begin
-          // Set security levels on a WMI connection
-          if FWmiIsLocal then
-            if Failed(CoSetProxyBlanket(FWMIService, RPC_C_AUTHN_WINNT, RPC_C_AUTHZ_NONE, nil, RPC_C_AUTHN_LEVEL_CALL, RPC_C_IMP_LEVEL_IMPERSONATE, nil, EOAC_NONE)) then Exit
-             else
-          else
-            if Failed(CoSetProxyBlanket(FWMIService,  RPC_C_AUTHN_DEFAULT, RPC_C_AUTHZ_DEFAULT, PWideChar(Format('\\%s',[WmiServer])), RPC_C_AUTHN_LEVEL_PKT_PRIVACY, RPC_C_IMP_LEVEL_IMPERSONATE, @AuthInfo, EOAC_NONE)) then Exit;
-
-          //avoid using CLSID_UnsecuredApartment for the moment ;)
-          //if Succeeded(CoCreateInstance(CLSID_UnsecuredApartment, nil, CLSCTX_LOCAL_SERVER, IID_IUnsecuredApartment, FUnsecuredApartment)) then
-
-        end;
-
-      end;
-      {$ENDIF}
-   end;
-
-
-
       FWmiConnected   := True;
-
+   end;
 end;
 
 
@@ -1260,13 +1078,6 @@ begin
     raise Exception.Create('WMI Data not loaded');
 end;
 
-{$IFDEF WMI_COM_API}
-function TWmiClass.GetNullValue: IUnknown;
-begin
-  Result:=nil;
-end;
-{$ENDIF}
-
 {$IFDEF WMI_LateBinding}
 function TWmiClass.GetNullValue: OleVariant;
 begin
@@ -1314,15 +1125,6 @@ begin
   Result:=FStaticInstance;
 end;
 
-
-{$IFDEF WMI_COM_API}
-function TWmiClass.GetWMIService: IWbemServices;
-begin
-   Result:=FWmiConnection.WMIService;
-end;
-{$ENDIF}
-
-
 {$IFDEF WMI_LateBinding}
 function TWmiClass.GetWMIService: OleVariant;
 begin
@@ -1347,64 +1149,30 @@ var
   objWbemObjectSet: OLEVariant;
   WmiProperties   : OLEVariant;
   {$ENDIF}
-
   {$IFDEF WbemScripting_TLB}
   objWbemObjectSet: ISWbemObjectSet;
   SWbemObject     : ISWbemObject;
   WmiProperties   : ISWbemPropertySet;
   {$ENDIF}
-
-  {$IFNDEF WMI_COM_API}
   oEnum           : IEnumvariant;
-  {$ENDIF}
-
   {$IFDEF FPC}
   //iValue          : PULONG;
-
-  {$IFNDEF WMI_COM_API}
   oWmiObject      : Variant;
-  {$ELSE}
-  oWmiObject      : IWbemClassObject;
-  {$ENDIF}
-
   PropItem        : Variant;
   WQL             : WideString;
   sValue          : WideString;
   {$ELSE}
-
-  {$IFNDEF WMI_COM_API}
-  oWmiObject      : OLEVariant;
   iValue          : Cardinal;
   PropItem        : OLEVariant;
-  oEnumProps      : IEnumVARIANT;
-  {$ELSE}
-  oWmiObject      : IWbemClassObject;
-  {$ENDIF}
-
+  oWmiObject      : OLEVariant;
   {$ENDIF}
   i               : integer;
+  oEnumProps      : IEnumVARIANT;
   DataWmiClass    : TDataWmiClass;
   {$IFDEF _DEBUG}
   dt              : TDateTime;
   dg              : TDateTime;
   {$ENDIF}
-
-  {$IFDEF WMI_COM_API}
-  ppCallResult   : IWbemCallResult;
-  OpResult       : HRESULT;
-  oEnum          : IEnumWbemClassObject;
-  puReturned     : ULONG;
-  WmiProperties  : JwaActiveX.PSafeArray;
-  lLbound        : Integer;
-  lUbound        : Integer;
-  pv             : WideString;
-  sValue         : string;
-  pVal           : OleVariant;
-  pType          : Integer;
-  plFlavor       : Integer;
-  {$ENDIF}
-
-
 begin;
  DisposeCollection;
  result:=True;
@@ -1416,112 +1184,58 @@ begin;
     {$IFDEF _DEBUG} dt:=now; {$ENDIF}
 
     {$IFDEF WMI_LateBinding}
-      {$IFDEF FPC}
-       WQL              := Format('SELECT * FROM %s',[FWmiClass]);
-       objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
-       oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
-      {$ELSE}
-       objWbemObjectSet := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately);
-       oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
-      {$ENDIF}
+    {$IFDEF FPC}
+     WQL              := Format('SELECT * FROM %s',[FWmiClass]);
+     objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
+     oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
+    {$ELSE}
+     objWbemObjectSet := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately);
+     oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
-
+    {$ENDIF}
     {$IFDEF WbemScripting_TLB}
     objWbemObjectSet  := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately,nil);
     oEnum             := (objWbemObjectSet._NewEnum) as IEnumVariant;
     {$ENDIF}
-
-    {$IFDEF WMI_COM_API}
-    OpResult := FWmiConnection.FWMIService.ExecQuery('WQL', Format('SELECT * FROM %s',[FWmiClass]), WBEM_FLAG_FORWARD_ONLY, nil, oEnum);
-    if Succeeded(OpResult) then
-    begin
-       // Set security for the enumerator proxy
-       if not FWmiConnection.FWmiIsLocal then
-        if Failed(CoSetProxyBlanket(oEnum, RPC_C_AUTHN_DEFAULT, RPC_C_AUTHZ_DEFAULT, PWideChar(Format('\\%s',[FWmiConnection.FWmiServer])), RPC_C_AUTHN_LEVEL_PKT_PRIVACY, RPC_C_IMP_LEVEL_IMPERSONATE, @FWmiConnection.AuthInfo, EOAC_NONE)) then Exit;
-    end;
-    {$ENDIF}
-
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Query Executed in '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
 
-
-
-    {$IFDEF WMI_COM_API}
-    FWmiConnection.FWMIService.GetObject(FWmiClass,0,nil,FStaticInstance,ppCallResult);
-    {$ELSE}
     FStaticInstance   := FWmiConnection.FWMIService.Get(FWmiClass,0,GetNullValue);
-    {$ENDIF}
-
 
     {$IFDEF _DEBUG} dg:=now; {$ENDIF}
 
-   {$IFDEF WMI_COM_API}
-      while (oEnum.Next(WBEM_INFINITE, 1, oWmiObject, puReturned)=0) do
+   {$IFDEF FPC}
+    while oEnum.Next(1, oWmiObject, nil) = S_OK do
    {$ELSE}
-     {$IFDEF FPC}
-      while oEnum.Next(1, oWmiObject, nil) = S_OK do
-     {$ELSE}
-      while oEnum.Next(1, oWmiObject, iValue) = S_OK do
-     {$ENDIF}
+    while oEnum.Next(1, oWmiObject, iValue) = S_OK do
    {$ENDIF}
     begin
-
-
        {$IFDEF WbemScripting_TLB}
        SWbemObject     := IUnknown(oWmiObject) as ISWBemObject;
        WmiProperties   := SWbemObject.Properties_;
        {$ENDIF}
 
        {$IFDEF WMI_LateBinding}
-       WmiProperties   := oWmiObject.Properties_;
+       WmiProperties := oWmiObject.Properties_;
        {$ENDIF}
-
-       {$IFDEF WMI_COM_API}
-       {
-        Bounds[0].lLbound   := 0;
-        Bounds[0].cElements := 255;
-        WmiProperties := JwaActiveX.PSafeArray(SafeArrayCreate(VT_I1, 1, Bounds));
-        //SafeArrayDestroy(Activex.PSafeArray(WmiProperties));
-        }
-
-
-
-
-       {$ENDIF}
-
 
       if FWmiPropsNames.Count=0 then
        begin
-          {$IFDEF WMI_COM_API}
-            oWmiObject.GetNames(nil,WBEM_FLAG_ALWAYS OR WBEM_FLAG_NONSYSTEM_ONLY,nil,WmiProperties);
-            SafeArrayGetLBound(Activex.PSafeArray(WmiProperties), 1, lLbound);
-            SafeArrayGetUBound(Activex.PSafeArray(WmiProperties), 1, lUbound);
-            for i := lLbound to lUbound do
-            begin
-              SafeArrayGetElement(Activex.PSafeArray(WmiProperties), I, pv);
-              FWmiPropsNames.Add(pv);
-            end;
-            SafeArrayDestroy(Activex.PSafeArray(WmiProperties));
-          {$ELSE}
-
-            {$IFDEF WMI_LateBinding}
-            oEnumProps    := IUnknown(WmiProperties._NewEnum) as IEnumVariant;
-            {$ENDIF}
-
-            {$IFDEF WbemScripting_TLB}
-            oEnumProps    := (WmiProperties._NewEnum) as IEnumVariant;
-            {$ENDIF}
-
-            {$IFDEF FPC}
-            while oEnumProps.Next(1, PropItem, nil) = S_OK do
-            {$ELSE}
-            while oEnumProps.Next(1, PropItem, iValue) = S_OK do
-            {$ENDIF}
-            begin
-              FWmiPropsNames.Add(PropItem.Name);
-              PropItem:=Unassigned;
-            end;
-
+          {$IFDEF WMI_LateBinding}
+          oEnumProps    := IUnknown(WmiProperties._NewEnum) as IEnumVariant;
           {$ENDIF}
+
+          {$IFDEF WbemScripting_TLB}
+          oEnumProps    := (WmiProperties._NewEnum) as IEnumVariant;
+          {$ENDIF}
+          {$IFDEF FPC}
+          while oEnumProps.Next(1, PropItem, nil) = S_OK do
+          {$ELSE}
+          while oEnumProps.Next(1, PropItem, iValue) = S_OK do
+          {$ENDIF}
+          begin
+            FWmiPropsNames.Add(PropItem.Name);
+            PropItem:=Unassigned;
+          end;
        end;
 
 
@@ -1533,31 +1247,18 @@ begin;
          for i := 0 to FWmiPropsNames.Count - 1 do
          begin
           {$IFDEF WMI_LateBinding}
-            {$IFDEF FPC}
-            sValue:=FWmiPropsNames[i];
-            DataWmiClass.PropsValues[i]:= WmiProperties.Item(sValue).Value;
-            {$ELSE}
-            DataWmiClass.PropsValues[i]:= WmiProperties.Item(FWmiPropsNames[i]).Value;
-            {$ENDIF}
+          {$IFDEF FPC}
+          sValue:=FWmiPropsNames[i];
+          DataWmiClass.PropsValues[i]:= WmiProperties.Item(sValue).Value;
+          {$ELSE}
+          DataWmiClass.PropsValues[i]:= WmiProperties.Item(FWmiPropsNames[i]).Value;
           {$ENDIF}
-
+          {$ENDIF}
           {$IFDEF WbemScripting_TLB}
           DataWmiClass.PropsValues[i]:= WmiProperties.Item(FWmiPropsNames[i],0).Get_Value;
           {$ENDIF}
-
-          {$IFDEF WMI_COM_API}
-           sValue:=FWmiPropsNames[i];
-           oWmiObject.Get(PChar(sValue), 0, pVal, pType, plFlavor);// String
-           DataWmiClass.PropsValues[i]:=pVal;
-           VarClear(pVal);
-          {$ENDIF}
-
          end;
-
-     {$IFNDEF WMI_COM_API}
      oWmiObject    :=Unassigned; //avoid leak cause by  IEnumVARIANT.Next
-     {$ENDIF}
-
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Pass in '+FormatDateTime('hh:nn:ss.zzz', Now-dt))); {$ENDIF}
     end;
     {$IFDEF _DEBUG} OutputDebugString(PAnsiChar('Assigned in '+FormatDateTime('hh:nn:ss.zzz', Now-dg))); {$ENDIF}

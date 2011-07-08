@@ -89,6 +89,7 @@ var
 implementation
 
 uses
+  uMisc,
   CommCtrl,
   ComObj,
   AsyncCalls,
@@ -140,30 +141,6 @@ procedure TFrmMain.FormDestroy(Sender: TObject);
 begin
   if Assigned(FWMiClassMetaData) then
    FWMiClassMetaData.Free;
-end;
-
-function GetFileVersion(const AExeName : string): string;
-const
-  c_StringInfo = 'StringFileInfo\040904E4\FileVersion';
-var
-  n, Len : cardinal;
-  Buf, Value : PChar;
-begin
-  Result := '';
-  n := GetFileVersionInfoSize(PChar(AExeName),n);
-  if n > 0 then
-  begin
-    Buf := AllocMem(n);
-    try
-      GetFileVersionInfo(PChar(AExeName),0,n,Buf);
-      if VerQueryValue(Buf,PChar(c_StringInfo),Pointer(Value),Len) then
-      begin
-        Result := Trim(Value);
-      end;
-    finally
-      FreeMem(Buf,n);
-    end;
-  end;
 end;
 
 
@@ -233,12 +210,12 @@ begin
 
     FConsoleProj.SaveToFile(FPath+'\TestLib.dpr');
     CopyFile(
-    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'uWmiDelphiClass.pas'),
+    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'units\uWmiDelphiClass.pas'),
     PChar(FPath+'\uWmiDelphiClass.pas'),
     False);
 
     CopyFile(
-    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'WbemScripting_TLB.pas'),
+    PChar(IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+'units\WbemScripting_TLB.pas'),
     PChar(FPath+'\WbemScripting_TLB.pas'),
     False);
 

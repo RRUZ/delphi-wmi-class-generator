@@ -3,13 +3,13 @@ program DelphiWmiClassGen;
 uses
   Forms,
   Main in 'Main.pas' {FrmMain},
-  AsyncCalls in 'AsyncCalls.pas',
-  ListView_Helper in 'ListView_Helper.pas',
-  DelphiSyntax in 'DelphiSyntax.pas',
-  uWmiDelphiCodeCreator in 'uWmiDelphiCodeCreator.pas',
-  uWmi_Metadata in 'uWmi_Metadata.pas',
-  CodeView in 'CodeView.pas' {FrmViewCode},
-  uWmiDelphiClass in 'uWmiDelphiClass.pas';
+  AsyncCalls in 'units\AsyncCalls.pas',
+  uWmi_Metadata in 'units\uWmi_Metadata.pas',
+  DelphiSyntax in 'units\DelphiSyntax.pas',
+  CodeView in 'units\CodeView.pas' {FrmViewCode},
+  ListView_Helper in 'units\ListView_Helper.pas',
+  uMisc in 'units\uMisc.pas',
+  uWmiDelphiCodeCreator in 'units\uWmiDelphiCodeCreator.pas';
 
 {$R *.res}
 
