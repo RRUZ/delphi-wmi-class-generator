@@ -53,15 +53,15 @@
 			<DCCReference Include="Main.pas">
 				<Form>FrmMain</Form>
 			</DCCReference>
-			<DCCReference Include="AsyncCalls.pas"/>
-			<DCCReference Include="ListView_Helper.pas"/>
-			<DCCReference Include="DelphiSyntax.pas"/>
-			<DCCReference Include="uWmiDelphiCodeCreator.pas"/>
-			<DCCReference Include="uWmi_Metadata.pas"/>
-			<DCCReference Include="CodeView.pas">
+			<DCCReference Include="units\AsyncCalls.pas"/>
+			<DCCReference Include="units\uWmi_Metadata.pas"/>
+			<DCCReference Include="units\DelphiSyntax.pas"/>
+			<DCCReference Include="units\CodeView.pas">
 				<Form>FrmViewCode</Form>
 			</DCCReference>
-			<DCCReference Include="uWmiDelphiClass.pas"/>
+			<DCCReference Include="units\ListView_Helper.pas"/>
+			<DCCReference Include="units\uMisc.pas"/>
+			<DCCReference Include="units\uWmiDelphiCodeCreator.pas"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>
@@ -87,7 +87,7 @@
 						<VersionInfo Name="MajorVer">0</VersionInfo>
 						<VersionInfo Name="MinorVer">1</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">134</VersionInfo>
+						<VersionInfo Name="Build">139</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -99,7 +99,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName">theroadtodelphi</VersionInfoKeys>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">0.1.0.134</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">0.1.0.139</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright">Rodrigo Ruz V. 2010</VersionInfoKeys>
 						<VersionInfoKeys Name="LegalTrademarks"/>
