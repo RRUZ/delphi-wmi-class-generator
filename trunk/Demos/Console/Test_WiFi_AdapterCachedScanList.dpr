@@ -1,11 +1,12 @@
+// JCL_DEBUG_EXPERT_INSERTJDBG OFF
 program Test_WiFi_AdapterCachedScanList;
 
 {$APPTYPE CONSOLE}
 
 uses
   SysUtils,
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
-  uWiFi_AdapterCachedScanList in '..\..\root_CIMV2\uWiFi_AdapterCachedScanList.pas';
+  uWiFi_AdapterCachedScanList in '..\..\root_CIMV2\uWiFi_AdapterCachedScanList.pas',
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure TestWiFi_AdapterCachedScanList;
 var

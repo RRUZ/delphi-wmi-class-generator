@@ -33,7 +33,7 @@
     </DelphiCompile>
     <DCCReference Include="..\..\..\root_CIMV2\uWin32_Process.pas" />
     <DCCReference Include="..\..\..\root_CIMV2\uWin32_Service.pas" />
-    <DCCReference Include="..\..\..\uWmiDelphiClass.pas" />
+    <DCCReference Include="..\..\..\units\uWmiDelphiClass.pas" />
     <DCCReference Include="uMain.pas">
       <Form>FrmMain</Form>
     </DCCReference>

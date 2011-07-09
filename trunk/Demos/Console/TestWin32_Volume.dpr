@@ -4,8 +4,8 @@ program TestWin32_Volume;
 
 uses
   SysUtils,
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
-  uWin32_Volume in '..\..\root_CIMV2\uWin32_Volume.pas';
+  uWin32_Volume in '..\..\root_CIMV2\uWin32_Volume.pas',
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure TestVolume;
 var

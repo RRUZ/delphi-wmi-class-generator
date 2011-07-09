@@ -4,8 +4,8 @@ program Test_WiFi_AvailableNetwork;
 
 uses
   SysUtils,
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
-  uWiFi_AvailableNetwork in '..\..\root_CIMV2\uWiFi_AvailableNetwork.pas';
+  uWiFi_AvailableNetwork in '..\..\root_CIMV2\uWiFi_AvailableNetwork.pas',
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure TestWiFi_AvailableNetwork;
 var

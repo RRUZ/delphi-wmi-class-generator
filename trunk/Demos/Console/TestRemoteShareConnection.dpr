@@ -10,10 +10,9 @@ program TestRemoteShareConnection;
 }
 uses
   SysUtils,
-  //WbemScripting_TLB in '..\..\WbemScripting_TLB.pas',
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
   uWin32_BIOS in '..\..\root_CIMV2\uWin32_BIOS.pas',
-  uWin32_OperatingSystem in '..\..\root_CIMV2\uWin32_OperatingSystem.pas';
+  uWin32_OperatingSystem in '..\..\root_CIMV2\uWin32_OperatingSystem.pas',
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 var
   RemoteWmiConn  : TWmiConnection;

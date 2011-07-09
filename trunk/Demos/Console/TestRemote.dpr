@@ -3,10 +3,9 @@ program TestRemote;
 {$APPTYPE CONSOLE}
 
 uses
-  ExceptionLog,
   SysUtils,
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas',
-  uWin32_BIOS in '..\..\root_CIMV2\uWin32_BIOS.pas';
+  uWin32_BIOS in '..\..\root_CIMV2\uWin32_BIOS.pas',
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 var
   RemoteBiosInfo : TWin32_BIOS;

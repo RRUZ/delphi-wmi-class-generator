@@ -6,7 +6,7 @@ uses
   Variants,
   SysUtils,
   uWin32_Process in '..\..\root_CIMV2\uWin32_Process.pas',
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas';
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure Test;
 Var

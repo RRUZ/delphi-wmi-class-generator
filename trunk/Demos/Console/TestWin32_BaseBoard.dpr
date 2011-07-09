@@ -5,7 +5,7 @@ program TestWin32_BaseBoard;
 uses
   SysUtils,
   uWin32_BaseBoard in '..\..\root_CIMV2\uWin32_BaseBoard.pas',
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas';
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure TestBaseBoard;
 var
