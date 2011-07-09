@@ -355,6 +355,7 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiClass  : WideString read FWmiClass;
+   {$ELSE}
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The WmiClass property return the current WMI class
@@ -362,6 +363,7 @@ type
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property  WmiClass  : string read FWmiClass;
    {$ENDIF}
+
    {$IFDEF WMI_LateBinding}
    property  WMIService    : OleVariant read GetWMIService;
    {$ENDIF}

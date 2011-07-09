@@ -5,7 +5,7 @@ program Test_Win32_LogicalDisk;
 uses
   SysUtils,
   uWin32_LogicalDisk in '..\..\root_CIMV2\uWin32_LogicalDisk.pas',
-  uWmiDelphiClass in '..\..\uWmiDelphiClass.pas';
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
 
 procedure TestLogicalDisk;
 var
