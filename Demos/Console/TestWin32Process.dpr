@@ -19,7 +19,6 @@ begin
    ReportMemoryLeaksOnShutdown:=DebugHook<>0;
    Process:=TWin32_Process.Create(True);
    try
-
      for i:= 0 to Process.GetCollectionCount-1 do
      begin
        Process.SetCollectionIndex(i);

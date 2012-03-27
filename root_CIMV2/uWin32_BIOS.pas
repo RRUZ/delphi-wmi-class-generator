@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Application version 0.1.0.139
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:04
+/// Creation Date 26-09-2011 03:22:50
 /// Namespace root\CIMV2 Class Win32_BIOS
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_BIOS.asp
 /// </summary>

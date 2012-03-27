@@ -185,7 +185,7 @@ begin
          FFileName:=Format('%s\u%s.pas',[FPath,FClass]);
          Addlog(Format('Generating unit %s',[ExtractFileName(FFileName)]));
 
-          FConsoleProj.Add(Format('%s in %s,',['u'+FClass,QuotedStr('u'+FClass+'.pas')]));
+          FConsoleProj.Add(Format('  %s in %s,',['u'+FClass,QuotedStr('u'+FClass+'.pas')]));
           FCode.Text:=CreateDelphiClassFromWMI(
           CodeHeader,
           FNameSpace,
@@ -197,7 +197,7 @@ begin
       end;
 
 
-        FConsoleProj.Add('SysUtils;');
+        FConsoleProj.Add('  SysUtils;');
         FConsoleProj.Add('');
         FConsoleProj.Add('begin');
         FConsoleProj.Add(' try');
@@ -401,6 +401,8 @@ begin
       CbWmiNameSpaces.Items.AddStrings(FNameSpaces);
       if FNameSpaces.Count>0 then
       CbWmiNameSpaces.ItemIndex:=0;
+
+      FMetaDataLoaded:=True;
     finally
      ToolBarMain.Enabled:=True;
      FNameSpaces.Free;
@@ -440,7 +442,7 @@ end;
 
 procedure TFrmMain.ToolButtonGenerateClick(Sender: TObject);
 begin
-  if Application.MessageBox('Do you want generate the code for all the WMI classes selected?', 'Confirmation', MB_YESNO + MB_ICONQUESTION) = IDYES then
+  if Application.MessageBox('Do you want generate the Object Pascal classes for all the WMI classes selected?', 'Confirmation', MB_YESNO + MB_ICONQUESTION) = IDYES then
    GenerateWMILibrary;
 end;
 
@@ -465,17 +467,14 @@ begin
     Application.MessageBox('You must select a wmi class to view', 'Warning', MB_OK + MB_ICONWARNING)
   else
   begin
-    Frm:=TFrmViewCode.Create(nil);
-    try
+      Frm:=TFrmViewCode.Create(Self);
+      Frm.WmiClass:=FClass;
       Frm.Caption:=Format('Code view of %s:%s',[FNameSpace,FClass]);
       Frm.SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
       CodeHeader,
       FNameSpace,
       FClass);
-      Frm.ShowModal;
-    finally
-      Frm.Free;
-    end;
+      Frm.Show;
   end;
 end;
 

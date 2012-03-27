@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Application version 0.1.0.139
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:09
+/// Creation Date 26-09-2011 03:23:03
 /// Namespace root\CIMV2 Class Win32_MemoryArray
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_MemoryArray.asp
 /// </summary>
@@ -638,14 +638,12 @@ end;
 function GetErrorGranularityAsString(const APropValue:Word) : string;
 begin
 Result:='';
-{
   case APropValue of
     Other : Result:='1';
     Unknown : Result:='2';
     Device level : Result:='3';
     Memory partition level : Result:='4';
   end;
-}
 end;
 
 function GetErrorInfoAsString(const APropValue:Word) : string;
