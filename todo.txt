@@ -1,0 +1,9 @@
+Add GUI improvements (Syntax highlight colors)
+Add cache for namespaces and classes
+Fix border panel after load metada, (change metada load process)
+
+
+Add class generation improved for Delphi 2009+ (generics, unicode)
+  remove IFDEF for lazarus to fix summary documentation issues
+
+Add option to remove summary (XML Documentation)

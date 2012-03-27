@@ -60,14 +60,11 @@ object FrmMain: TFrmMain
     Height = 359
     Align = alClient
     BevelOuter = bvNone
-    BorderWidth = 5
     TabOrder = 1
-    ExplicitTop = -1
-    ExplicitWidth = 784
     object Panel1: TPanel
-      Left = 5
-      Top = 5
-      Width = 998
+      Left = 0
+      Top = 0
+      Width = 1008
       Height = 29
       Align = alTop
       AutoSize = True
@@ -76,7 +73,7 @@ object FrmMain: TFrmMain
       object ToolBarMain: TToolBar
         Left = 0
         Top = 0
-        Width = 998
+        Width = 1008
         Height = 29
         ButtonWidth = 99
         Caption = 'ToolBarMain'
@@ -85,7 +82,6 @@ object FrmMain: TFrmMain
         List = True
         ShowCaptions = True
         TabOrder = 0
-        ExplicitTop = -6
         object ToolButtonGenerate: TToolButton
           Left = 0
           Top = 0
@@ -120,97 +116,11 @@ object FrmMain: TFrmMain
         end
       end
     end
-    object PageControl1: TPageControl
-      Left = 265
-      Top = 34
-      Width = 738
-      Height = 320
-      ActivePage = TabSheet1
-      Align = alClient
-      TabOrder = 1
-      ExplicitLeft = 271
-      ExplicitTop = 33
-      object TabSheet1: TTabSheet
-        Caption = 'Properties'
-        object LvProperties: TListView
-          Left = 0
-          Top = 0
-          Width = 730
-          Height = 292
-          Align = alClient
-          Columns = <
-            item
-              Caption = 'Property'
-              Width = 100
-            end
-            item
-              Caption = 'Wmi Type'
-              Width = 80
-            end
-            item
-              Caption = 'Delphi type'
-              Width = 80
-            end
-            item
-              Caption = 'Description'
-              Width = 100
-            end>
-          ReadOnly = True
-          RowSelect = True
-          TabOrder = 0
-          ViewStyle = vsReport
-        end
-      end
-      object TabSheet2: TTabSheet
-        Caption = 'Methods'
-        ImageIndex = 1
-        object LvMethods: TListView
-          Left = 0
-          Top = 0
-          Width = 730
-          Height = 292
-          Align = alClient
-          Columns = <
-            item
-              Caption = 'Method'
-              Width = 100
-            end
-            item
-              Caption = 'In Parameters'
-              Width = 100
-            end
-            item
-              Caption = 'Out Parameters'
-              Width = 100
-            end
-            item
-              Caption = 'Description'
-              Width = 100
-            end>
-          ReadOnly = True
-          RowSelect = True
-          TabOrder = 0
-          ViewStyle = vsReport
-        end
-      end
-      object TabSheet3: TTabSheet
-        Caption = 'Class Info'
-        ImageIndex = 2
-        object MemoClassDescr: TMemo
-          Left = 0
-          Top = 0
-          Width = 730
-          Height = 292
-          Align = alClient
-          TabOrder = 0
-        end
-      end
-    end
     object LvClasses: TListView
-      Left = 5
-      Top = 34
+      Left = 0
+      Top = 29
       Width = 260
-      Height = 320
+      Height = 330
       Align = alLeft
       Checkboxes = True
       Columns = <
@@ -220,10 +130,115 @@ object FrmMain: TFrmMain
         end>
       ReadOnly = True
       RowSelect = True
-      TabOrder = 2
+      TabOrder = 1
       ViewStyle = vsReport
       OnChange = LvClassesChange
       OnDblClick = ToolButtonViewCodeClick
+    end
+    object Panel2: TPanel
+      Left = 260
+      Top = 29
+      Width = 748
+      Height = 330
+      Align = alClient
+      BorderWidth = 5
+      TabOrder = 2
+      object PageControl1: TPageControl
+        Left = 6
+        Top = 6
+        Width = 736
+        Height = 318
+        ActivePage = TabSheet1
+        Align = alClient
+        TabOrder = 0
+        object TabSheet1: TTabSheet
+          Caption = 'Properties'
+          object LvProperties: TListView
+            Left = 0
+            Top = 0
+            Width = 728
+            Height = 290
+            Align = alClient
+            Columns = <
+              item
+                Caption = 'Property'
+                Width = 100
+              end
+              item
+                Caption = 'Wmi Type'
+                Width = 80
+              end
+              item
+                Caption = 'Delphi type'
+                Width = 80
+              end
+              item
+                Caption = 'Description'
+                Width = 100
+              end>
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
+          end
+        end
+        object TabSheet2: TTabSheet
+          Caption = 'Methods'
+          ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 718
+          ExplicitHeight = 280
+          object LvMethods: TListView
+            Left = 0
+            Top = 0
+            Width = 728
+            Height = 290
+            Align = alClient
+            Columns = <
+              item
+                Caption = 'Method'
+                Width = 100
+              end
+              item
+                Caption = 'In Parameters'
+                Width = 100
+              end
+              item
+                Caption = 'Out Parameters'
+                Width = 100
+              end
+              item
+                Caption = 'Description'
+                Width = 100
+              end>
+            ReadOnly = True
+            RowSelect = True
+            TabOrder = 0
+            ViewStyle = vsReport
+            ExplicitWidth = 718
+            ExplicitHeight = 280
+          end
+        end
+        object TabSheet3: TTabSheet
+          Caption = 'Class Info'
+          ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 718
+          ExplicitHeight = 280
+          object MemoClassDescr: TMemo
+            Left = 0
+            Top = 0
+            Width = 728
+            Height = 290
+            Align = alClient
+            TabOrder = 0
+            ExplicitWidth = 718
+            ExplicitHeight = 280
+          end
+        end
+      end
     end
   end
   object StatusBar1: TStatusBar
@@ -256,7 +271,7 @@ object FrmMain: TFrmMain
     Left = 661
     Top = 93
     Bitmap = {
-      494C01010C001800C80010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800D00010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

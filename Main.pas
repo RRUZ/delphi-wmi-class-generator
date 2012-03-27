@@ -14,7 +14,7 @@
 { The Original Code is Main.pas.                                                                   }
 {                                                                                                  }
 { The Initial Developer of the Original Code is Rodrigo Ruz V.                                     }
-{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010 Rodrigo Ruz V.                         }
+{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010-2012 Rodrigo Ruz V.                    }
 { All Rights Reserved.                                                                             }
 {                                                                                                  }
 {**************************************************************************************************}
@@ -52,6 +52,7 @@ type
     ToolButtonViewCode: TToolButton;
     ToolButton1: TToolButton;
     ApplicationEvents1: TApplicationEvents;
+    Panel2: TPanel;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
@@ -79,6 +80,7 @@ type
 
     Procedure GenerateWMILibrary;
     procedure ViewCode;
+    procedure RefreshControls;
   public
     { Public declarations }
   end;
@@ -98,6 +100,21 @@ uses
   CodeView;
 
 {$R *.dfm}
+
+procedure TFrmMain.RefreshControls;
+Var
+  LIndex: Integer;
+begin
+  for LIndex := 0 to ComponentCount - 1 do
+    if Components[LIndex] is TWinControl then
+    begin
+      TWinControl(Components[LIndex]).Invalidate;
+      TWinControl(Components[LIndex]).Perform(WM_PAINT, 0, 0);
+    end;
+
+  Self.Invalidate;
+  Self.Perform(WM_PAINT, 0, 0);
+end;
 
 procedure TFrmMain.Addlog(const Msg: String);
 begin
@@ -122,6 +139,7 @@ procedure TFrmMain.FormActivate(Sender: TObject);
 begin
   if not FMetaDataLoaded then
   LoadWmiMetaData;
+  RefreshControls;
 end;
 
 procedure TFrmMain.FormCreate(Sender: TObject);
