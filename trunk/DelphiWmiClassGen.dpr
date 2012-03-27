@@ -15,13 +15,16 @@ uses
   uDelphiIDE in 'units\uDelphiIDE.pas',
   uDelphiVersions in 'units\uDelphiVersions.pas',
   uLazarusIDE in 'units\uLazarusIDE.pas',
-  uWmiDelphiClass in 'units\uWmiDelphiClass.pas';
+  uWmiDelphiClass in 'units\uWmiDelphiClass.pas',
+  Vcl.Themes,
+  Vcl.Styles;
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  TStyleManager.TrySetStyle('Carbon');
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TFrmViewCode, FrmViewCode);
   Application.Run;
