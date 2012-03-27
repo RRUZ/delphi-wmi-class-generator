@@ -14,7 +14,7 @@
 { The Original Code is uWmiDelphiClass.pas.                                                        }
 {                                                                                                  }
 { The Initial Developer of the Original Code is Rodrigo Ruz V.                                     }
-{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010 Rodrigo Ruz V.                         }
+{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010-2012 Rodrigo Ruz V.                    }
 { All Rights Reserved.                                                                             }
 {                                                                                                  }
 {**************************************************************************************************}
@@ -113,6 +113,7 @@ type
     FSWbemLocator   : ISWbemLocator;
     FWMIService     : ISWbemServices;
     {$ENDIF}
+
     {$IFDEF WMI_LateBinding}
     FSWbemLocator   : OleVariant;
     FWMIService     : OleVariant;
@@ -231,6 +232,7 @@ type
    {$ENDIF}
 
   protected
+  public
     constructor Create; overload;
     Destructor Destroy; override;
   end;
@@ -971,6 +973,16 @@ end;
 {$IFDEF WMI_LateBinding}
 function VarDateTimeNull(const V : OleVariant): TDateTime;
 var
+  Dt : OleVariant;
+begin
+  Result:=0;
+  if VarIsNull(V) then exit;
+  Dt:=CreateOleObject('WbemScripting.SWbemDateTime');
+  Dt.Value := V;
+  Result:=Dt.GetVarDate;
+end;
+{
+var
  Year, Month, Day    : Word;
  Hour, Min, Sec, MSec: Word;
  UtcStr              : string;
@@ -990,6 +1002,7 @@ begin
      Result:=EncodeDate(Year, Month, Day)+EncodeTime(Hour, Min, Sec, MSec);
   end;
 end;
+}
 {$ENDIF}
 
 
@@ -1363,24 +1376,26 @@ var
   {$IFDEF FPC}
   //iValue          : PULONG;
 
-  {$IFNDEF WMI_COM_API}
-  oWmiObject      : Variant;
-  {$ELSE}
+  {$IFDEF WMI_COM_API}
   oWmiObject      : IWbemClassObject;
+  {$ELSE}
+  oWmiObject      : Variant;
   {$ENDIF}
 
   PropItem        : Variant;
   WQL             : WideString;
   sValue          : WideString;
+  oEnumProps      : IEnumVARIANT;
+
   {$ELSE}
 
-  {$IFNDEF WMI_COM_API}
+  {$IFDEF WMI_COM_API}
+  oWmiObject      : IWbemClassObject;
+  {$ELSE}
   oWmiObject      : OLEVariant;
   iValue          : Cardinal;
   PropItem        : OLEVariant;
   oEnumProps      : IEnumVARIANT;
-  {$ELSE}
-  oWmiObject      : IWbemClassObject;
   {$ENDIF}
 
   {$ENDIF}
@@ -1420,7 +1435,7 @@ begin;
     {$IFDEF WMI_LateBinding}
       {$IFDEF FPC}
        WQL              := Format('SELECT * FROM %s',[FWmiClass]);
-       objWbemObjectSet := FWMIService.ExecQuery( WQL,'WQL',0);
+       objWbemObjectSet := FWmiConnection.FWMIService.ExecQuery( WQL,'WQL',0);
        oEnum            := IUnknown(objWbemObjectSet._NewEnum) as IEnumVariant;
       {$ELSE}
        objWbemObjectSet := FWmiConnection.FWMIService.ExecQuery(Format('SELECT * FROM %s',[FWmiClass]),'WQL',wbemFlagForwardOnly or wbemFlagReturnImmediately);

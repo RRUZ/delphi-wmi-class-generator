@@ -34,12 +34,13 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
+  {$REGION 'Documentation'}
+  /// <summary cref="www.some.link">
   /// The Win32_Process class represents a sequence of events on a Win32 system. Any sequence consisting of the interaction of one or more processors or interpreters, some executable code, and a set of inputs, is a descendent (or member) of this class.
   /// Example: A client application running on a Win32 system.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  /// <see cref="http://www.devjet.net">DevJET</see>
+  {$ENDREGION}
   TWin32_Process=class(TWmiClass)
   private
     FCaption                            : String;
@@ -92,7 +93,7 @@ type
    destructor Destroy;Override;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Caption property is a short textual description (one-line string) of the 
+   /// The Caption property is a short textual description (one-line string) of the
    /// object.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
@@ -430,7 +431,7 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Create method creates a new process. 
-   /// The method returns an integer value that can be interpretted as follows: 
+   /// The method returns an integer value that can be interpretted as follows:
    /// 0 - Successful completion.
    /// 2 - The user does not have access to the requested information.
    /// 3 - The user does not have sufficient privilge.
@@ -467,7 +468,7 @@ type
    /// <param name="ProcessId">
    /// The ProcessId parameter returns a global process identifier that can be used to 
    /// identify a process. The value is valid from the time the process is created 
-   /// until the time the process is terminated. 
+   /// until the time the process is terminated.
    /// </param>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function Create(const CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var ProcessId : Cardinal): Integer;overload;
@@ -864,3 +865,4 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 end.
+

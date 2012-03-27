@@ -9,7 +9,13 @@ uses
   CodeView in 'units\CodeView.pas' {FrmViewCode},
   ListView_Helper in 'units\ListView_Helper.pas',
   uMisc in 'units\uMisc.pas',
-  uWmiDelphiCodeCreator in 'units\uWmiDelphiCodeCreator.pas';
+  uWmiDelphiCodeCreator in 'units\uWmiDelphiCodeCreator.pas',
+  uSelectCompilerVersion in 'units\uSelectCompilerVersion.pas' {FrmSelCompilerVer},
+  uRegistry in 'units\uRegistry.pas',
+  uDelphiIDE in 'units\uDelphiIDE.pas',
+  uDelphiVersions in 'units\uDelphiVersions.pas',
+  uLazarusIDE in 'units\uLazarusIDE.pas',
+  uWmiDelphiClass in 'units\uWmiDelphiClass.pas';
 
 {$R *.res}
 

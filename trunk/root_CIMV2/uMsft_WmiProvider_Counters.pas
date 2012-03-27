@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Application version 0.1.0.139
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:02
+/// Creation Date 26-09-2011 03:22:45
 /// Namespace root\CIMV2 Class Msft_WmiProvider_Counters
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Msft_WmiProvider_Counters.asp
 /// </summary>
