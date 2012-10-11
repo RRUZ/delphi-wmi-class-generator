@@ -29,9 +29,9 @@ interface
 
 {.$DEFINE _DEBUG}
 
-{.$DEFINE WMI_COM_API}
+{$DEFINE WMI_COM_API}
 {.$DEFINE WbemScripting_TLB}
-{$DEFINE WMI_LateBinding}
+{.$DEFINE WMI_LateBinding}
 
 
 {$IFDEF FPC}
@@ -48,6 +48,11 @@ interface
 
 {$IFDEF WMI_COM_API}
   {$MESSAGE 'Using WMI_COM_API'}
+
+  {$IF CompilerVersion >=24}
+    {$DEFINE Winapi_Wbem}
+  {$IFEND}
+
 {$ENDIF}
 
 {$IFDEF WbemScripting_TLB}
@@ -61,8 +66,12 @@ interface
 
 uses
 {$IFDEF WMI_COM_API}
+ {$IFDEF Winapi_Wbem}
+  Winapi.Wbem,
+ {$ELSE}
   JwaActiveX,
   JwaWbemCli,
+ {$ENDIF}
 {$ENDIF}
 {$IFDEF WbemScripting_TLB}
   WbemScripting_TLB,
@@ -1411,14 +1420,22 @@ var
   OpResult       : HRESULT;
   oEnum          : IEnumWbemClassObject;
   puReturned     : ULONG;
+  {$IFDEF Winapi_Wbem}
+  WmiProperties  : PSafeArray;
+  pQualifierVal  : Variant;
+  plFlavor       : PInteger;
+  pVal           : Variant;
+  pType          : PCIMTYPE;
+  {$ELSE}
   WmiProperties  : JwaActiveX.PSafeArray;
+  plFlavor       : Integer;
+  pVal           : OleVariant;
+  pType          : Integer;
+  {$ENDIF}
   lLbound        : Integer;
   lUbound        : Integer;
   pv             : WideString;
   sValue         : string;
-  pVal           : OleVariant;
-  pType          : Integer;
-  plFlavor       : Integer;
   {$ENDIF}
 
 
@@ -1499,17 +1516,18 @@ begin;
         WmiProperties := JwaActiveX.PSafeArray(SafeArrayCreate(VT_I1, 1, Bounds));
         //SafeArrayDestroy(Activex.PSafeArray(WmiProperties));
         }
-
-
-
-
        {$ENDIF}
 
 
       if FWmiPropsNames.Count=0 then
        begin
           {$IFDEF WMI_COM_API}
-            oWmiObject.GetNames(nil,WBEM_FLAG_ALWAYS OR WBEM_FLAG_NONSYSTEM_ONLY,nil,WmiProperties);
+
+            {$IFDEF Winapi_Wbem}
+            oWmiObject.GetNames(nil,WBEM_FLAG_ALWAYS OR WBEM_FLAG_NONSYSTEM_ONLY, pQualifierVal, WmiProperties);
+            {$ELSE}
+            oWmiObject.GetNames(nil,WBEM_FLAG_ALWAYS OR WBEM_FLAG_NONSYSTEM_ONLY, nil, WmiProperties);
+            {$ENDIF}
             SafeArrayGetLBound(Activex.PSafeArray(WmiProperties), 1, lLbound);
             SafeArrayGetUBound(Activex.PSafeArray(WmiProperties), 1, lUbound);
             for i := lLbound to lUbound do
