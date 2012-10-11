@@ -192,7 +192,7 @@ begin
   try
       Description:=WMiClassMetaData.Description;
       UsesList.Add('/// <summary>');
-      UsesList.Add('/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010');
+      UsesList.Add('/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012');
       UsesList.Add('/// Application version '+CodeHeader.AppVersion);
       UsesList.Add('/// WMI version '+CodeHeader.WmiVersion);
       UsesList.Add('/// Creation Date '+FormatDateTime('dd-mm-yyyy hh:nn:ss',Now));
