@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:46
+/// Creation Date 12-10-2012 22:48:02
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ServiceModel4000_ServiceModelOperation4000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ServiceModel4000_ServiceModelOperation4000.asp
 /// </summary>
@@ -71,22 +71,21 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls with unhandled exceptions in this operation per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFailedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222619
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallFailedPerSecond : Cardinal read FCallFailedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The number of calls to this operation. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.Calls.aspx
+   /// The number of calls to this operation. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222615
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Calls : Cardinal read FCalls;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The average duration of calls to this operation. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallDuration.aspx
+   /// The average duration of calls to this operation. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222622
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsDuration : Cardinal read FCallsDuration;
@@ -94,39 +93,35 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls with unhandled exceptions in this operation. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFailed.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222618
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFailed : Cardinal read FCallsFailed;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that returned faults. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFaulted.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222620
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFaulted : Cardinal read FCallsFaulted;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that returned faults per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFaultedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222621
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFaultedPerSecond : Cardinal read FCallsFaultedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that are in progress. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsOutstanding.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222617
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsOutstanding : Cardinal read FCallsOutstanding;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The number of calls to this operation per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsPerSecond.aspx
+   /// The number of calls to this operation per second. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222616
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsPerSecond : Cardinal read FCallsPerSecond;
@@ -155,32 +150,28 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that failed authorization. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityCallsNotAuthorized.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222631
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorized : Cardinal read FSecurityCallsNotAuthorized;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that failed authorization per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityCallsNotAuthorizedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222633
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorizedPerSecond : Cardinal read FSecurityCallsNotAuthorizedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that failed validation or authentication. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityValidationAuthenticationFailures.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222623
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailures : Cardinal read FSecurityValidationandAuthenticationFailures;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this operation that failed validation or authentication 
-   /// per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityValidationAuthenticationFailuresPerSecond.aspx
+   /// per second. http://go.microsoft.com/fwlink/?LinkId=222624
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailuresPerSecond : Cardinal read FSecurityValidationandAuthenticationFailuresPerSecond;
@@ -191,8 +182,7 @@ type
    /// <summary>
    /// The number of transactions that flowed to this operation. This counter is 
    /// incremented any time a transaction ID is present in the message sent to the 
-   /// operation. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.TxFlowed.aspx
+   /// operation. http://go.microsoft.com/fwlink/?LinkId=222634
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsFlowed : Cardinal read FTransactionsFlowed;
@@ -200,8 +190,7 @@ type
    /// <summary>
    /// The number of transactions that flowed to this operation per second. This 
    /// counter is incremented any time a transaction ID is present in the message sent 
-   /// to the operation. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.TxFlowedPerSecond.aspx
+   /// to the operation. http://go.microsoft.com/fwlink/?LinkId=222637
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsFlowedPerSecond : Cardinal read FTransactionsFlowedPerSecond;

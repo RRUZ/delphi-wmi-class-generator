@@ -379,7 +379,8 @@ begin
                  else
                   MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := %s;',['objInParams.Properties_.Item('+QuotedStr(WMiClassMetaData.MethodMetaData[i].InParams[j])+').Value',EscapeDelphiReservedWord(WMiClassMetaData.MethodMetaData[i].InParams[j])]));
 
-                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
+                 //MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := WMIService.ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
+                 MethodsImpl.Add(Format('  %-'+IntToStr(LengthVar+12)+'s  := ExecMethod(WmiClass, %s, objInParams, 0, GetNullValue);',['objOutParams',QuotedStr(WMiClassMetaData.Methods[i])]));
                  MethodsImpl.Add('  Result := VarIntegerNull(objOutParams.ReturnValue);');
 
                  //clear the helpers array variables ***************

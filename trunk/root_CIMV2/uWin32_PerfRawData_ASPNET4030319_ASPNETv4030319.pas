@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:58
+/// Creation Date 12-10-2012 22:47:46
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ASPNET4030319_ASPNETv4030319
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ASPNET4030319_ASPNETv4030319.asp
 /// </summary>
@@ -41,6 +41,7 @@ type
   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_ASPNET4030319_ASPNETv4030319=class(TWmiClass)
   private
+    FAnonymousRequests                  : Cardinal;
     FApplicationRestarts                : Cardinal;
     FApplicationsRunning                : Cardinal;
     FAuditFailureEventsRaised           : Cardinal;
@@ -72,6 +73,12 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Number of requests utilizing anonymous authentication.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property AnonymousRequests : Cardinal read FAnonymousRequests;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of times the application has been restarted during the web server's lifetime.
@@ -240,6 +247,7 @@ begin
   if (Index>=0) and (Index<=FWmiCollection.Count-1) and (FWmiCollectionIndex<>Index) then
   begin
     FWmiCollectionIndex:=Index;
+    FAnonymousRequests                    := VarCardinalNull(inherited Value['AnonymousRequests']);
     FApplicationRestarts                  := VarCardinalNull(inherited Value['ApplicationRestarts']);
     FApplicationsRunning                  := VarCardinalNull(inherited Value['ApplicationsRunning']);
     FAuditFailureEventsRaised             := VarCardinalNull(inherited Value['AuditFailureEventsRaised']);

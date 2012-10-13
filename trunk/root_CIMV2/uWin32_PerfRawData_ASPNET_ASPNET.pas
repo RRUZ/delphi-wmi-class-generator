@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:57
+/// Creation Date 12-10-2012 22:47:44
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ASPNET_ASPNET
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ASPNET_ASPNET.asp
 /// </summary>
@@ -57,6 +57,7 @@ type
     FRequestExecutionTime               : Cardinal;
     FRequestsCurrent                    : Cardinal;
     FRequestsDisconnected               : Cardinal;
+    FRequestsInNativeQueue              : Cardinal;
     FRequestsQueued                     : Cardinal;
     FRequestsRejected                   : Cardinal;
     FRequestWaitTime                    : Cardinal;
@@ -160,6 +161,12 @@ type
    property RequestsDisconnected : Cardinal read FRequestsDisconnected;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// Requests queued because the concurrency limits have been exceeded.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestsInNativeQueue : Cardinal read FRequestsInNativeQueue;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// The number of requests waiting to be processed.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
@@ -256,6 +263,7 @@ begin
     FRequestExecutionTime                 := VarCardinalNull(inherited Value['RequestExecutionTime']);
     FRequestsCurrent                      := VarCardinalNull(inherited Value['RequestsCurrent']);
     FRequestsDisconnected                 := VarCardinalNull(inherited Value['RequestsDisconnected']);
+    FRequestsInNativeQueue                := VarCardinalNull(inherited Value['RequestsInNativeQueue']);
     FRequestsQueued                       := VarCardinalNull(inherited Value['RequestsQueued']);
     FRequestsRejected                     := VarCardinalNull(inherited Value['RequestsRejected']);
     FRequestWaitTime                      := VarCardinalNull(inherited Value['RequestWaitTime']);

@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:48
+/// Creation Date 12-10-2012 22:47:34
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_ServiceModel4000_ServiceModelService4000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_ServiceModel4000_ServiceModelService4000.asp
 /// </summary>
@@ -90,62 +90,57 @@ type
    destructor Destroy;Override;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The number of calls to this service. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.Calls.aspx
+   /// The number of calls to this service. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222530
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Calls : Cardinal read FCalls;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The average duration of calls to this service. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallDuration.aspx
+   /// The average duration of calls to this service. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222537
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsDuration : Cardinal read FCallsDuration;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls with unhandled exceptions in this service. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFailed.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222533
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFailed : Cardinal read FCallsFailed;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls with unhandled exceptions in this service per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFailedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222534
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFailedPerSecond : Cardinal read FCallsFailedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that returned faults. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFaulted.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222535
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFaulted : Cardinal read FCallsFaulted;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that returned faults per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsFaultedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222536
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsFaultedPerSecond : Cardinal read FCallsFaultedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that are in progress. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsOutstanding.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222532
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsOutstanding : Cardinal read FCallsOutstanding;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The number of calls to this service per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsPerSecond.aspx
+   /// The number of calls to this service per second. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222531
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CallsPerSecond : Cardinal read FCallsPerSecond;
@@ -166,15 +161,15 @@ type
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The total number of instances of the service. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.Instances.aspx
+   /// The total number of instances of the service. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222538
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Instances : Cardinal read FInstances;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The creation rate of service instances per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.InstancesPerSecond.aspx
+   /// The creation rate of service instances per second. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222539
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property InstancesCreatedPerSecond : Cardinal read FInstancesCreatedPerSecond;
@@ -188,136 +183,119 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of calls waiting to be or being processed in the dispatcher as a 
-   /// percentage of max calls throttle. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.CallsPercentOfMaxCalls.aspx
+   /// percentage of max calls throttle. http://go.microsoft.com/fwlink/?LinkId=222540
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentCalls : Cardinal read FPercentOfMaxConcurrentCalls;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of active instances and messages waiting for instances as a percentage 
-   /// of max instances throttle. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.InstancessPercentOfMaxInstances.aspx
+   /// of max instances throttle. http://go.microsoft.com/fwlink/?LinkId=222541
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentInstances : Cardinal read FPercentOfMaxConcurrentInstances;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of active sessions and messages waiting for sessions as a percentage of 
-   /// max sessions throttle. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SessionsPercentOfMaxSessions.aspx
+   /// max sessions throttle. http://go.microsoft.com/fwlink/?LinkId=222542
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentOfMaxConcurrentSessions : Cardinal read FPercentOfMaxConcurrentSessions;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this service that were dropped by the queued 
-   /// transport. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqDroppedMessages.aspx
+   /// transport. http://go.microsoft.com/fwlink/?LinkId=222543
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedMessagesDropped : Cardinal read FQueuedMessagesDropped;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this service that were dropped by the queued 
-   /// transport per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqDroppedMessagesPerSecond.aspx
+   /// transport per second. http://go.microsoft.com/fwlink/?LinkId=222544
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedMessagesDroppedPerSecond : Cardinal read FQueuedMessagesDroppedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this servcie that were rejected by the queued 
-   /// transport. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqRejectedMessages.aspx
+   /// transport. http://go.microsoft.com/fwlink/?LinkId=222548
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedMessagesRejected : Cardinal read FQueuedMessagesRejected;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this service that were rejected by the queued 
-   /// transport per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqRejectedMessagesPerSecond.aspx
+   /// transport per second. http://go.microsoft.com/fwlink/?LinkId=222549
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedMessagesRejectedPerSecond : Cardinal read FQueuedMessagesRejectedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this service that were marked poisoned by the queued 
-   /// transport. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqPoisonMessages.aspx
+   /// transport. http://go.microsoft.com/fwlink/?LinkId=222546
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedPoisonMessages : Cardinal read FQueuedPoisonMessages;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of messages to this service that were marked poisoned by the queued 
-   /// transport per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Endpoint.MsmqPoisonMessagesPerSecond.aspx
+   /// transport per second. http://go.microsoft.com/fwlink/?LinkId=222547
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property QueuedPoisonMessagesPerSecond : Cardinal read FQueuedPoisonMessagesPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of reliable messaging messages that were dropped in this service. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMMessagesDropped.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222550
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReliableMessagingMessagesDropped : Cardinal read FReliableMessagingMessagesDropped;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of reliable messaging messages that were dropped in this service per 
-   /// second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMMessagesDroppedPerSecond.aspx
+   /// second. http://go.microsoft.com/fwlink/?LinkId=222551
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReliableMessagingMessagesDroppedPerSecond : Cardinal read FReliableMessagingMessagesDroppedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of reliable messaging sessions that were faulted in this service. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMSessionsFaulted.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222552
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReliableMessagingSessionsFaulted : Cardinal read FReliableMessagingSessionsFaulted;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of reliable messaging sessions that were faulted in this service per 
-   /// second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.RMSessionsFaultedPerSecond.aspx
+   /// second. http://go.microsoft.com/fwlink/?LinkId=222553
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ReliableMessagingSessionsFaultedPerSecond : Cardinal read FReliableMessagingSessionsFaultedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that failed authorization. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityCallsNotAuthorized.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222555
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorized : Cardinal read FSecurityCallsNotAuthorized;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that failed authorization per second. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityCallsNotAuthorizedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222556
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityCallsNotAuthorizedPerSecond : Cardinal read FSecurityCallsNotAuthorizedPerSecond;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that failed validation or authentication. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityValidationAuthenticationFailures.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222558
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailures : Cardinal read FSecurityValidationandAuthenticationFailures;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of calls to this service that failed validation or authentication 
-   /// per second. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.SecurityValidationAuthenticationFailuresPerSecond.aspx
+   /// per second. http://go.microsoft.com/fwlink/?LinkId=222559
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SecurityValidationandAuthenticationFailuresPerSecond : Cardinal read FSecurityValidationandAuthenticationFailuresPerSecond;
@@ -328,8 +306,7 @@ type
    /// <summary>
    /// The number of transacted operations with the outcome aborted in this service. 
    /// Work done under such operations is rolled back. Resources are reverted to their 
-   /// previous state. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxAborted.aspx
+   /// previous state. http://go.microsoft.com/fwlink/?LinkId=222562
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsAborted : Cardinal read FTransactedOperationsAborted;
@@ -337,8 +314,7 @@ type
    /// <summary>
    /// The number of transacted operations with the outcome aborted in this service 
    /// per second. Work done under such operations is rolled back. Resources are 
-   /// reverted to their previous state. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxAbortedPerSecond.aspx
+   /// reverted to their previous state. http://go.microsoft.com/fwlink/?LinkId=222563
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsAbortedPerSecond : Cardinal read FTransactedOperationsAbortedPerSecond;
@@ -346,8 +322,8 @@ type
    /// <summary>
    /// The number of transacted operations with the outcome committed in this service. 
    /// Work done under such operations is fully committed. Resources are updated in 
-   /// accordance with the work done in the operation. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxCommitted.aspx
+   /// accordance with the work done in the operation. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222564
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsCommitted : Cardinal read FTransactedOperationsCommitted;
@@ -356,8 +332,7 @@ type
    /// The number of transacted operations with the outcome committed in this service 
    /// per second. Work done under such operations is fully committed. Resources are 
    /// updated in accordance with the work done in the operation. 
-   /// http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxCommittedPerSecond.aspx
+   /// http://go.microsoft.com/fwlink/?LinkId=222565
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsCommittedPerSecond : Cardinal read FTransactedOperationsCommittedPerSecond;
@@ -365,8 +340,7 @@ type
    /// <summary>
    /// The number of transacted operations with an outcome in doubt in this service. 
    /// Work done with an outcome in doubt is in an indeterminate state. Resources are 
-   /// held pending outcome. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxInDoubt.aspx
+   /// held pending outcome. http://go.microsoft.com/fwlink/?LinkId=222566
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsInDoubt : Cardinal read FTransactedOperationsInDoubt;
@@ -374,8 +348,8 @@ type
    /// <summary>
    /// The number of transacted operations with an outcome in doubt in this service 
    /// per second. Work done with an outcome in doubt is in an indeterminate state. 
-   /// Resources are held pending outcome. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxInDoubtPerSecond.aspx
+   /// Resources are held pending outcome. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222567
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactedOperationsInDoubtPerSecond : Cardinal read FTransactedOperationsInDoubtPerSecond;
@@ -383,8 +357,7 @@ type
    /// <summary>
    /// The number of transactions that flowed to operations in this service. This 
    /// counter is incremented any time a transaction ID is present in the message that 
-   /// is sent to the service. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxFlowed.aspx
+   /// is sent to the service. http://go.microsoft.com/fwlink/?LinkId=222560
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsFlowed : Cardinal read FTransactionsFlowed;
@@ -392,8 +365,8 @@ type
    /// <summary>
    /// The number of transactions that flowed to operations in this service per 
    /// second. This counter is incremented any time a transaction ID is present in the 
-   /// message that is sent to the service. http://msdn.microsoft.com/en-
-   /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Service.TxFlowedPerSecond.aspx
+   /// message that is sent to the service. 
+   /// http://go.microsoft.com/fwlink/?LinkId=222561
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsFlowedPerSecond : Cardinal read FTransactionsFlowedPerSecond;

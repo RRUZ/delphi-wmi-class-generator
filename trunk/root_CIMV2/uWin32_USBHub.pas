@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:57
+/// Creation Date 12-10-2012 22:48:28
 /// Namespace root\CIMV2 Class Win32_USBHub
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_USBHub.asp
 /// </summary>
@@ -366,7 +366,7 @@ type
    /// In a subclass, the set of possible return codes could be specified, using a ValueMap qualifier on the method. The strings to which the ValueMap contents are 'translated' may also be specified in the subclass as a Values array qualifier.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   function GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var _RequestLength : Word): Integer;
+   function GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var RequestLength : Word): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
@@ -568,7 +568,7 @@ begin
 end;
 
 //not static, OutParams>1, InParams>0
-function TWin32_USBHub.GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var _RequestLength : Word): Integer;
+function TWin32_USBHub.GetDescriptor(const RequestIndex : Word;const RequestLength : Word;const RequestType : Byte;const RequestValue : Word ; var Buffer : Byte;var RequestLength : Word): Integer;
 var
 //output variants  helpers
   vBuffer       : OleVariant;
@@ -576,6 +576,6 @@ var
 begin
   Result         := VarIntegerNull(GetInstanceOf.GetDescriptor(RequestIndex,RequestLength,RequestType,RequestValue,vBuffer,vRequestLength));
   Buffer         := VarByteNull(vBuffer);
-  _RequestLength  := VarWordNull(vRequestLength);
+  RequestLength  := VarWordNull(vRequestLength);
 end;
 end.

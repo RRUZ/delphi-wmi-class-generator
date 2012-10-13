@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:58
+/// Creation Date 12-10-2012 22:47:46
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ASPNET4030319_ASPNETAppsv4030319
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ASPNET4030319_ASPNETAppsv4030319.asp
 /// </summary>
@@ -41,32 +41,31 @@ type
   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfRawData_ASPNET4030319_ASPNETAppsv4030319=class(TWmiClass)
   private
-    FAnonymousRequests                  : Cardinal;
     FAnonymousRequestsPerSec            : Cardinal;
     FApplicationLifetimeEvents          : Cardinal;
     FApplicationLifetimeEventsPerSec    : Cardinal;
     FAuditFailureEventsRaised           : Cardinal;
     FAuditSuccessEventsRaised           : Cardinal;
-    FCacheAPIEntries                    : Cardinal;
     FCacheAPIHitRatio                   : Cardinal;
-    FCacheAPIHitRatio_Base              : Cardinal;
+    FCacheAPIHitRatioBase               : Cardinal;
+    FCacheAPIHitRatioBase_Base          : Cardinal;
     FCacheAPIHits                       : Cardinal;
     FCacheAPIMisses                     : Cardinal;
     FCacheAPITrims                      : Cardinal;
     FCacheAPITurnoverRate               : Cardinal;
     FCachePercentMachineMemoryLimitUsed : Cardinal;
-    FCachePercentMachineMemoryLimitUsed_Base : Cardinal;
-    FCachePercentProcessMemoryLimitUsed : Cardinal;
-    FCachePercentProcessMemoryLimitUsed_Base : Cardinal;
+    FCachePercentMachineMemoryLimitUsedBase : Cardinal;
+    FCachePercentMachineMemoryLimitUsedBase_Base : Cardinal;
+    FCachePercentProcessMemoryLimitUsedBase : Cardinal;
+    FCachePercentProcessMemoryLimitUsedBase_Base : Cardinal;
     FCacheTotalEntries                  : Cardinal;
     FCacheTotalHitRatio                 : Cardinal;
-    FCacheTotalHitRatio_Base            : Cardinal;
+    FCacheTotalHitRatioBase             : Cardinal;
+    FCacheTotalHitRatioBase_Base        : Cardinal;
     FCacheTotalHits                     : Cardinal;
     FCacheTotalMisses                   : Cardinal;
-    FCacheTotalTrims                    : Cardinal;
     FCacheTotalTurnoverRate             : Cardinal;
     FCaption                            : String;
-    FCompilationsTotal                  : Cardinal;
     FDebuggingRequests                  : Cardinal;
     FDescription                        : String;
     FErrorEventsRaised                  : Cardinal;
@@ -87,19 +86,19 @@ type
     FFrequency_Sys100NS                 : Int64;
     FInfrastructureErrorEventsRaised    : Cardinal;
     FInfrastructureErrorEventsRaisedPerSec : Cardinal;
-    FManagedMemoryUsedestimated         : Cardinal;
     FMembershipAuthenticationFailure    : Cardinal;
     FMembershipAuthenticationSuccess    : Cardinal;
     FName                               : String;
-    FOutputCacheEntries                 : Cardinal;
     FOutputCacheHitRatio                : Cardinal;
-    FOutputCacheHitRatio_Base           : Cardinal;
+    FOutputCacheHitRatioBase            : Cardinal;
+    FOutputCacheHitRatioBase_Base       : Cardinal;
     FOutputCacheHits                    : Cardinal;
     FOutputCacheMisses                  : Cardinal;
     FOutputCacheTrims                   : Cardinal;
     FOutputCacheTurnoverRate            : Cardinal;
+    FPercentManagedProcessorTimeBaseestimated : Cardinal;
+    FPercentManagedProcessorTimeBaseestimated_Base : Cardinal;
     FPercentManagedProcessorTimeestimated : Cardinal;
-    FPercentManagedProcessorTimeestimated_Base : Cardinal;
     FPipelineInstanceCount              : Cardinal;
     FRequestBytesInTotal                : Cardinal;
     FRequestBytesOutTotal               : Cardinal;
@@ -134,16 +133,17 @@ type
     FTransactionsPending                : Cardinal;
     FTransactionsPerSec                 : Cardinal;
     FTransactionsTotal                  : Cardinal;
+    FValue18314                         : Cardinal;
+    FValue18316                         : Cardinal;
+    FValue18318                         : Cardinal;
+    FValue18320                         : Cardinal;
+    FValue18322                         : Cardinal;
+    FValue18324                         : Cardinal;
+    FValue18326                         : Cardinal;
     FViewstateMACValidationFailure      : Cardinal;
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of requests utilizing anonymous authentication.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property AnonymousRequests : Cardinal read FAnonymousRequests;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of Authentication Anonymous Requests/Sec
@@ -176,17 +176,17 @@ type
    property AuditSuccessEventsRaised : Cardinal read FAuditSuccessEventsRaised;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of entries within the cache added by the user.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property CacheAPIEntries : Cardinal read FCacheAPIEntries;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
    /// Ratio of hits called from user code.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CacheAPIHitRatio : Cardinal read FCacheAPIHitRatio;
-   property CacheAPIHitRatio_Base : Cardinal read FCacheAPIHitRatio_Base;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Cache API Hit Ratio Base
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property CacheAPIHitRatioBase : Cardinal read FCacheAPIHitRatioBase;
+   property CacheAPIHitRatioBase_Base : Cardinal read FCacheAPIHitRatioBase_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of cache hits from user code.
@@ -222,18 +222,20 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CachePercentMachineMemoryLimitUsed : Cardinal read FCachePercentMachineMemoryLimitUsed;
-   property CachePercentMachineMemoryLimitUsed_Base : Cardinal read FCachePercentMachineMemoryLimitUsed_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The value of private bytes for the worker process divided by the private bytes 
-   /// memory limit for the cache, as a percentage.  When this reaches 100%, half of 
-   /// the cache entries will be forcibly removed.  The __Total__ instance is the 
-   /// average of all instances, and therefore cannot be used to determine when cache 
-   /// entries will be forcibly removed.
+   /// Cache % Machine Memory Limit Used Base
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property CachePercentProcessMemoryLimitUsed : Cardinal read FCachePercentProcessMemoryLimitUsed;
-   property CachePercentProcessMemoryLimitUsed_Base : Cardinal read FCachePercentProcessMemoryLimitUsed_Base;
+   property CachePercentMachineMemoryLimitUsedBase : Cardinal read FCachePercentMachineMemoryLimitUsedBase;
+   property CachePercentMachineMemoryLimitUsedBase_Base : Cardinal read FCachePercentMachineMemoryLimitUsedBase_Base;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Cache % Process Memory Limit Used Base
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property CachePercentProcessMemoryLimitUsedBase : Cardinal read FCachePercentProcessMemoryLimitUsedBase;
+   property CachePercentProcessMemoryLimitUsedBase_Base : Cardinal read FCachePercentProcessMemoryLimitUsedBase_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of entries within the cache (both internal and user added)
@@ -246,7 +248,13 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property CacheTotalHitRatio : Cardinal read FCacheTotalHitRatio;
-   property CacheTotalHitRatio_Base : Cardinal read FCacheTotalHitRatio_Base;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Cache Total Hit Ratio Base
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property CacheTotalHitRatioBase : Cardinal read FCacheTotalHitRatioBase;
+   property CacheTotalHitRatioBase_Base : Cardinal read FCacheTotalHitRatioBase_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of hits from the cache.
@@ -261,12 +269,6 @@ type
    property CacheTotalMisses : Cardinal read FCacheTotalMisses;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Total number of entries forcibly removed from the cache due to memory pressure.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property CacheTotalTrims : Cardinal read FCacheTotalTrims;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
    /// Number of additions and removals to the total cache per second.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
@@ -277,13 +279,6 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Number of .asax, .ascx, .ashx, .asmx, or .aspx source files dynamically 
-   /// compiled.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property CompilationsTotal : Cardinal read FCompilationsTotal;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of debugging requests processed.
@@ -393,15 +388,6 @@ type
    property InfrastructureErrorEventsRaisedPerSec : Cardinal read FInfrastructureErrorEventsRaisedPerSec;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Estimated managed heap memory consumption (in KB) by the application.  The 
-   /// accuracy of this counter varies depending on the duration of elapsed time since 
-   /// the last full managed memory heap collection.  Note that this counter is only 
-   /// updated with new data every five seconds.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property ManagedMemoryUsedestimated : Cardinal read FManagedMemoryUsedestimated;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
    /// Number of failed membership credential validations since the application was 
    /// started.
    /// </summary>
@@ -423,17 +409,17 @@ type
    property Name : String read FName;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// Current number of entries in the output cache.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   property OutputCacheEntries : Cardinal read FOutputCacheEntries;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
    /// Ratio of hits to requests for output cacheable requests.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property OutputCacheHitRatio : Cardinal read FOutputCacheHitRatio;
-   property OutputCacheHitRatio_Base : Cardinal read FOutputCacheHitRatio_Base;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Output Cache Hit Ratio Base
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property OutputCacheHitRatioBase : Cardinal read FOutputCacheHitRatioBase;
+   property OutputCacheHitRatioBase_Base : Cardinal read FOutputCacheHitRatioBase_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Total number of output cacheable requests served from the output cache.
@@ -461,6 +447,13 @@ type
    property OutputCacheTurnoverRate : Cardinal read FOutputCacheTurnoverRate;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// % Managed Processor Time Base (estimated)
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property PercentManagedProcessorTimeBaseestimated : Cardinal read FPercentManagedProcessorTimeBaseestimated;
+   property PercentManagedProcessorTimeBaseestimated_Base : Cardinal read FPercentManagedProcessorTimeBaseestimated_Base;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// Estimated percentage of elapsed time that the processor spends executing 
    /// managed application code.  This counter only tracks processor time of managed 
    /// threads in the application.  It does not include additional processor time 
@@ -469,7 +462,6 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property PercentManagedProcessorTimeestimated : Cardinal read FPercentManagedProcessorTimeestimated;
-   property PercentManagedProcessorTimeestimated_Base : Cardinal read FPercentManagedProcessorTimeestimated_Base;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of active pipeline instances.
@@ -661,6 +653,13 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TransactionsTotal : Cardinal read FTransactionsTotal;
+   property Value18314 : Cardinal read FValue18314;
+   property Value18316 : Cardinal read FValue18316;
+   property Value18318 : Cardinal read FValue18318;
+   property Value18320 : Cardinal read FValue18320;
+   property Value18322 : Cardinal read FValue18322;
+   property Value18324 : Cardinal read FValue18324;
+   property Value18326 : Cardinal read FValue18326;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of viewstate MAC validations that failed since the application was 
@@ -693,100 +692,106 @@ begin
   if (Index>=0) and (Index<=FWmiCollection.Count-1) and (FWmiCollectionIndex<>Index) then
   begin
     FWmiCollectionIndex:=Index;
-    FAnonymousRequests                              := VarCardinalNull(inherited Value['AnonymousRequests']);
-    FAnonymousRequestsPerSec                        := VarCardinalNull(inherited Value['AnonymousRequestsPerSec']);
-    FApplicationLifetimeEvents                      := VarCardinalNull(inherited Value['ApplicationLifetimeEvents']);
-    FApplicationLifetimeEventsPerSec                := VarCardinalNull(inherited Value['ApplicationLifetimeEventsPerSec']);
-    FAuditFailureEventsRaised                       := VarCardinalNull(inherited Value['AuditFailureEventsRaised']);
-    FAuditSuccessEventsRaised                       := VarCardinalNull(inherited Value['AuditSuccessEventsRaised']);
-    FCacheAPIEntries                                := VarCardinalNull(inherited Value['CacheAPIEntries']);
-    FCacheAPIHitRatio                               := VarCardinalNull(inherited Value['CacheAPIHitRatio']);
-    FCacheAPIHitRatio_Base                          := VarCardinalNull(inherited Value['CacheAPIHitRatio_Base']);
-    FCacheAPIHits                                   := VarCardinalNull(inherited Value['CacheAPIHits']);
-    FCacheAPIMisses                                 := VarCardinalNull(inherited Value['CacheAPIMisses']);
-    FCacheAPITrims                                  := VarCardinalNull(inherited Value['CacheAPITrims']);
-    FCacheAPITurnoverRate                           := VarCardinalNull(inherited Value['CacheAPITurnoverRate']);
-    FCachePercentMachineMemoryLimitUsed             := VarCardinalNull(inherited Value['CachePercentMachineMemoryLimitUsed']);
-    FCachePercentMachineMemoryLimitUsed_Base        := VarCardinalNull(inherited Value['CachePercentMachineMemoryLimitUsed_Base']);
-    FCachePercentProcessMemoryLimitUsed             := VarCardinalNull(inherited Value['CachePercentProcessMemoryLimitUsed']);
-    FCachePercentProcessMemoryLimitUsed_Base        := VarCardinalNull(inherited Value['CachePercentProcessMemoryLimitUsed_Base']);
-    FCacheTotalEntries                              := VarCardinalNull(inherited Value['CacheTotalEntries']);
-    FCacheTotalHitRatio                             := VarCardinalNull(inherited Value['CacheTotalHitRatio']);
-    FCacheTotalHitRatio_Base                        := VarCardinalNull(inherited Value['CacheTotalHitRatio_Base']);
-    FCacheTotalHits                                 := VarCardinalNull(inherited Value['CacheTotalHits']);
-    FCacheTotalMisses                               := VarCardinalNull(inherited Value['CacheTotalMisses']);
-    FCacheTotalTrims                                := VarCardinalNull(inherited Value['CacheTotalTrims']);
-    FCacheTotalTurnoverRate                         := VarCardinalNull(inherited Value['CacheTotalTurnoverRate']);
-    FCaption                                        := VarStrNull(inherited Value['Caption']);
-    FCompilationsTotal                              := VarCardinalNull(inherited Value['CompilationsTotal']);
-    FDebuggingRequests                              := VarCardinalNull(inherited Value['DebuggingRequests']);
-    FDescription                                    := VarStrNull(inherited Value['Description']);
-    FErrorEventsRaised                              := VarCardinalNull(inherited Value['ErrorEventsRaised']);
-    FErrorEventsRaisedPerSec                        := VarCardinalNull(inherited Value['ErrorEventsRaisedPerSec']);
-    FErrorsDuringCompilation                        := VarCardinalNull(inherited Value['ErrorsDuringCompilation']);
-    FErrorsDuringExecution                          := VarCardinalNull(inherited Value['ErrorsDuringExecution']);
-    FErrorsDuringPreprocessing                      := VarCardinalNull(inherited Value['ErrorsDuringPreprocessing']);
-    FErrorsTotal                                    := VarCardinalNull(inherited Value['ErrorsTotal']);
-    FErrorsTotalPerSec                              := VarCardinalNull(inherited Value['ErrorsTotalPerSec']);
-    FErrorsUnhandledDuringExecution                 := VarCardinalNull(inherited Value['ErrorsUnhandledDuringExecution']);
-    FErrorsUnhandledDuringExecutionPerSec           := VarCardinalNull(inherited Value['ErrorsUnhandledDuringExecutionPerSec']);
-    FEventsRaised                                   := VarCardinalNull(inherited Value['EventsRaised']);
-    FEventsRaisedPerSec                             := VarCardinalNull(inherited Value['EventsRaisedPerSec']);
-    FFormsAuthenticationFailure                     := VarCardinalNull(inherited Value['FormsAuthenticationFailure']);
-    FFormsAuthenticationSuccess                     := VarCardinalNull(inherited Value['FormsAuthenticationSuccess']);
-    FFrequency_Object                               := VarInt64Null(inherited Value['Frequency_Object']);
-    FFrequency_PerfTime                             := VarInt64Null(inherited Value['Frequency_PerfTime']);
-    FFrequency_Sys100NS                             := VarInt64Null(inherited Value['Frequency_Sys100NS']);
-    FInfrastructureErrorEventsRaised                := VarCardinalNull(inherited Value['InfrastructureErrorEventsRaised']);
-    FInfrastructureErrorEventsRaisedPerSec          := VarCardinalNull(inherited Value['InfrastructureErrorEventsRaisedPerSec']);
-    FManagedMemoryUsedestimated                     := VarCardinalNull(inherited Value['ManagedMemoryUsedestimated']);
-    FMembershipAuthenticationFailure                := VarCardinalNull(inherited Value['MembershipAuthenticationFailure']);
-    FMembershipAuthenticationSuccess                := VarCardinalNull(inherited Value['MembershipAuthenticationSuccess']);
-    FName                                           := VarStrNull(inherited Value['Name']);
-    FOutputCacheEntries                             := VarCardinalNull(inherited Value['OutputCacheEntries']);
-    FOutputCacheHitRatio                            := VarCardinalNull(inherited Value['OutputCacheHitRatio']);
-    FOutputCacheHitRatio_Base                       := VarCardinalNull(inherited Value['OutputCacheHitRatio_Base']);
-    FOutputCacheHits                                := VarCardinalNull(inherited Value['OutputCacheHits']);
-    FOutputCacheMisses                              := VarCardinalNull(inherited Value['OutputCacheMisses']);
-    FOutputCacheTrims                               := VarCardinalNull(inherited Value['OutputCacheTrims']);
-    FOutputCacheTurnoverRate                        := VarCardinalNull(inherited Value['OutputCacheTurnoverRate']);
-    FPercentManagedProcessorTimeestimated           := VarCardinalNull(inherited Value['PercentManagedProcessorTimeestimated']);
-    FPercentManagedProcessorTimeestimated_Base      := VarCardinalNull(inherited Value['PercentManagedProcessorTimeestimated_Base']);
-    FPipelineInstanceCount                          := VarCardinalNull(inherited Value['PipelineInstanceCount']);
-    FRequestBytesInTotal                            := VarCardinalNull(inherited Value['RequestBytesInTotal']);
-    FRequestBytesOutTotal                           := VarCardinalNull(inherited Value['RequestBytesOutTotal']);
-    FRequestErrorEventsRaised                       := VarCardinalNull(inherited Value['RequestErrorEventsRaised']);
-    FRequestErrorEventsRaisedPerSec                 := VarCardinalNull(inherited Value['RequestErrorEventsRaisedPerSec']);
-    FRequestEventsRaised                            := VarCardinalNull(inherited Value['RequestEventsRaised']);
-    FRequestEventsRaisedPerSec                      := VarCardinalNull(inherited Value['RequestEventsRaisedPerSec']);
-    FRequestExecutionTime                           := VarCardinalNull(inherited Value['RequestExecutionTime']);
-    FRequestsDisconnected                           := VarCardinalNull(inherited Value['RequestsDisconnected']);
-    FRequestsExecuting                              := VarCardinalNull(inherited Value['RequestsExecuting']);
-    FRequestsFailed                                 := VarCardinalNull(inherited Value['RequestsFailed']);
-    FRequestsInApplicationQueue                     := VarCardinalNull(inherited Value['RequestsInApplicationQueue']);
-    FRequestsNotAuthorized                          := VarCardinalNull(inherited Value['RequestsNotAuthorized']);
-    FRequestsNotFound                               := VarCardinalNull(inherited Value['RequestsNotFound']);
-    FRequestsPerSec                                 := VarCardinalNull(inherited Value['RequestsPerSec']);
-    FRequestsRejected                               := VarCardinalNull(inherited Value['RequestsRejected']);
-    FRequestsSucceeded                              := VarCardinalNull(inherited Value['RequestsSucceeded']);
-    FRequestsTimedOut                               := VarCardinalNull(inherited Value['RequestsTimedOut']);
-    FRequestsTotal                                  := VarCardinalNull(inherited Value['RequestsTotal']);
-    FRequestWaitTime                                := VarCardinalNull(inherited Value['RequestWaitTime']);
-    FSessionsAbandoned                              := VarCardinalNull(inherited Value['SessionsAbandoned']);
-    FSessionsActive                                 := VarCardinalNull(inherited Value['SessionsActive']);
-    FSessionSQLServerconnectionstotal               := VarCardinalNull(inherited Value['SessionSQLServerconnectionstotal']);
-    FSessionStateServerconnectionstotal             := VarCardinalNull(inherited Value['SessionStateServerconnectionstotal']);
-    FSessionsTimedOut                               := VarCardinalNull(inherited Value['SessionsTimedOut']);
-    FSessionsTotal                                  := VarCardinalNull(inherited Value['SessionsTotal']);
-    FTimestamp_Object                               := VarInt64Null(inherited Value['Timestamp_Object']);
-    FTimestamp_PerfTime                             := VarInt64Null(inherited Value['Timestamp_PerfTime']);
-    FTimestamp_Sys100NS                             := VarInt64Null(inherited Value['Timestamp_Sys100NS']);
-    FTransactionsAborted                            := VarCardinalNull(inherited Value['TransactionsAborted']);
-    FTransactionsCommitted                          := VarCardinalNull(inherited Value['TransactionsCommitted']);
-    FTransactionsPending                            := VarCardinalNull(inherited Value['TransactionsPending']);
-    FTransactionsPerSec                             := VarCardinalNull(inherited Value['TransactionsPerSec']);
-    FTransactionsTotal                              := VarCardinalNull(inherited Value['TransactionsTotal']);
-    FViewstateMACValidationFailure                  := VarCardinalNull(inherited Value['ViewstateMACValidationFailure']);
+    FAnonymousRequestsPerSec                            := VarCardinalNull(inherited Value['AnonymousRequestsPerSec']);
+    FApplicationLifetimeEvents                          := VarCardinalNull(inherited Value['ApplicationLifetimeEvents']);
+    FApplicationLifetimeEventsPerSec                    := VarCardinalNull(inherited Value['ApplicationLifetimeEventsPerSec']);
+    FAuditFailureEventsRaised                           := VarCardinalNull(inherited Value['AuditFailureEventsRaised']);
+    FAuditSuccessEventsRaised                           := VarCardinalNull(inherited Value['AuditSuccessEventsRaised']);
+    FCacheAPIHitRatio                                   := VarCardinalNull(inherited Value['CacheAPIHitRatio']);
+    FCacheAPIHitRatioBase                               := VarCardinalNull(inherited Value['CacheAPIHitRatioBase']);
+    FCacheAPIHitRatioBase_Base                          := VarCardinalNull(inherited Value['CacheAPIHitRatioBase_Base']);
+    FCacheAPIHits                                       := VarCardinalNull(inherited Value['CacheAPIHits']);
+    FCacheAPIMisses                                     := VarCardinalNull(inherited Value['CacheAPIMisses']);
+    FCacheAPITrims                                      := VarCardinalNull(inherited Value['CacheAPITrims']);
+    FCacheAPITurnoverRate                               := VarCardinalNull(inherited Value['CacheAPITurnoverRate']);
+    FCachePercentMachineMemoryLimitUsed                 := VarCardinalNull(inherited Value['CachePercentMachineMemoryLimitUsed']);
+    FCachePercentMachineMemoryLimitUsedBase             := VarCardinalNull(inherited Value['CachePercentMachineMemoryLimitUsedBase']);
+    FCachePercentMachineMemoryLimitUsedBase_Base        := VarCardinalNull(inherited Value['CachePercentMachineMemoryLimitUsedBase_Base']);
+    FCachePercentProcessMemoryLimitUsedBase             := VarCardinalNull(inherited Value['CachePercentProcessMemoryLimitUsedBase']);
+    FCachePercentProcessMemoryLimitUsedBase_Base        := VarCardinalNull(inherited Value['CachePercentProcessMemoryLimitUsedBase_Base']);
+    FCacheTotalEntries                                  := VarCardinalNull(inherited Value['CacheTotalEntries']);
+    FCacheTotalHitRatio                                 := VarCardinalNull(inherited Value['CacheTotalHitRatio']);
+    FCacheTotalHitRatioBase                             := VarCardinalNull(inherited Value['CacheTotalHitRatioBase']);
+    FCacheTotalHitRatioBase_Base                        := VarCardinalNull(inherited Value['CacheTotalHitRatioBase_Base']);
+    FCacheTotalHits                                     := VarCardinalNull(inherited Value['CacheTotalHits']);
+    FCacheTotalMisses                                   := VarCardinalNull(inherited Value['CacheTotalMisses']);
+    FCacheTotalTurnoverRate                             := VarCardinalNull(inherited Value['CacheTotalTurnoverRate']);
+    FCaption                                            := VarStrNull(inherited Value['Caption']);
+    FDebuggingRequests                                  := VarCardinalNull(inherited Value['DebuggingRequests']);
+    FDescription                                        := VarStrNull(inherited Value['Description']);
+    FErrorEventsRaised                                  := VarCardinalNull(inherited Value['ErrorEventsRaised']);
+    FErrorEventsRaisedPerSec                            := VarCardinalNull(inherited Value['ErrorEventsRaisedPerSec']);
+    FErrorsDuringCompilation                            := VarCardinalNull(inherited Value['ErrorsDuringCompilation']);
+    FErrorsDuringExecution                              := VarCardinalNull(inherited Value['ErrorsDuringExecution']);
+    FErrorsDuringPreprocessing                          := VarCardinalNull(inherited Value['ErrorsDuringPreprocessing']);
+    FErrorsTotal                                        := VarCardinalNull(inherited Value['ErrorsTotal']);
+    FErrorsTotalPerSec                                  := VarCardinalNull(inherited Value['ErrorsTotalPerSec']);
+    FErrorsUnhandledDuringExecution                     := VarCardinalNull(inherited Value['ErrorsUnhandledDuringExecution']);
+    FErrorsUnhandledDuringExecutionPerSec               := VarCardinalNull(inherited Value['ErrorsUnhandledDuringExecutionPerSec']);
+    FEventsRaised                                       := VarCardinalNull(inherited Value['EventsRaised']);
+    FEventsRaisedPerSec                                 := VarCardinalNull(inherited Value['EventsRaisedPerSec']);
+    FFormsAuthenticationFailure                         := VarCardinalNull(inherited Value['FormsAuthenticationFailure']);
+    FFormsAuthenticationSuccess                         := VarCardinalNull(inherited Value['FormsAuthenticationSuccess']);
+    FFrequency_Object                                   := VarInt64Null(inherited Value['Frequency_Object']);
+    FFrequency_PerfTime                                 := VarInt64Null(inherited Value['Frequency_PerfTime']);
+    FFrequency_Sys100NS                                 := VarInt64Null(inherited Value['Frequency_Sys100NS']);
+    FInfrastructureErrorEventsRaised                    := VarCardinalNull(inherited Value['InfrastructureErrorEventsRaised']);
+    FInfrastructureErrorEventsRaisedPerSec              := VarCardinalNull(inherited Value['InfrastructureErrorEventsRaisedPerSec']);
+    FMembershipAuthenticationFailure                    := VarCardinalNull(inherited Value['MembershipAuthenticationFailure']);
+    FMembershipAuthenticationSuccess                    := VarCardinalNull(inherited Value['MembershipAuthenticationSuccess']);
+    FName                                               := VarStrNull(inherited Value['Name']);
+    FOutputCacheHitRatio                                := VarCardinalNull(inherited Value['OutputCacheHitRatio']);
+    FOutputCacheHitRatioBase                            := VarCardinalNull(inherited Value['OutputCacheHitRatioBase']);
+    FOutputCacheHitRatioBase_Base                       := VarCardinalNull(inherited Value['OutputCacheHitRatioBase_Base']);
+    FOutputCacheHits                                    := VarCardinalNull(inherited Value['OutputCacheHits']);
+    FOutputCacheMisses                                  := VarCardinalNull(inherited Value['OutputCacheMisses']);
+    FOutputCacheTrims                                   := VarCardinalNull(inherited Value['OutputCacheTrims']);
+    FOutputCacheTurnoverRate                            := VarCardinalNull(inherited Value['OutputCacheTurnoverRate']);
+    FPercentManagedProcessorTimeBaseestimated           := VarCardinalNull(inherited Value['PercentManagedProcessorTimeBaseestimated']);
+    FPercentManagedProcessorTimeBaseestimated_Base      := VarCardinalNull(inherited Value['PercentManagedProcessorTimeBaseestimated_Base']);
+    FPercentManagedProcessorTimeestimated               := VarCardinalNull(inherited Value['PercentManagedProcessorTimeestimated']);
+    FPipelineInstanceCount                              := VarCardinalNull(inherited Value['PipelineInstanceCount']);
+    FRequestBytesInTotal                                := VarCardinalNull(inherited Value['RequestBytesInTotal']);
+    FRequestBytesOutTotal                               := VarCardinalNull(inherited Value['RequestBytesOutTotal']);
+    FRequestErrorEventsRaised                           := VarCardinalNull(inherited Value['RequestErrorEventsRaised']);
+    FRequestErrorEventsRaisedPerSec                     := VarCardinalNull(inherited Value['RequestErrorEventsRaisedPerSec']);
+    FRequestEventsRaised                                := VarCardinalNull(inherited Value['RequestEventsRaised']);
+    FRequestEventsRaisedPerSec                          := VarCardinalNull(inherited Value['RequestEventsRaisedPerSec']);
+    FRequestExecutionTime                               := VarCardinalNull(inherited Value['RequestExecutionTime']);
+    FRequestsDisconnected                               := VarCardinalNull(inherited Value['RequestsDisconnected']);
+    FRequestsExecuting                                  := VarCardinalNull(inherited Value['RequestsExecuting']);
+    FRequestsFailed                                     := VarCardinalNull(inherited Value['RequestsFailed']);
+    FRequestsInApplicationQueue                         := VarCardinalNull(inherited Value['RequestsInApplicationQueue']);
+    FRequestsNotAuthorized                              := VarCardinalNull(inherited Value['RequestsNotAuthorized']);
+    FRequestsNotFound                                   := VarCardinalNull(inherited Value['RequestsNotFound']);
+    FRequestsPerSec                                     := VarCardinalNull(inherited Value['RequestsPerSec']);
+    FRequestsRejected                                   := VarCardinalNull(inherited Value['RequestsRejected']);
+    FRequestsSucceeded                                  := VarCardinalNull(inherited Value['RequestsSucceeded']);
+    FRequestsTimedOut                                   := VarCardinalNull(inherited Value['RequestsTimedOut']);
+    FRequestsTotal                                      := VarCardinalNull(inherited Value['RequestsTotal']);
+    FRequestWaitTime                                    := VarCardinalNull(inherited Value['RequestWaitTime']);
+    FSessionsAbandoned                                  := VarCardinalNull(inherited Value['SessionsAbandoned']);
+    FSessionsActive                                     := VarCardinalNull(inherited Value['SessionsActive']);
+    FSessionSQLServerconnectionstotal                   := VarCardinalNull(inherited Value['SessionSQLServerconnectionstotal']);
+    FSessionStateServerconnectionstotal                 := VarCardinalNull(inherited Value['SessionStateServerconnectionstotal']);
+    FSessionsTimedOut                                   := VarCardinalNull(inherited Value['SessionsTimedOut']);
+    FSessionsTotal                                      := VarCardinalNull(inherited Value['SessionsTotal']);
+    FTimestamp_Object                                   := VarInt64Null(inherited Value['Timestamp_Object']);
+    FTimestamp_PerfTime                                 := VarInt64Null(inherited Value['Timestamp_PerfTime']);
+    FTimestamp_Sys100NS                                 := VarInt64Null(inherited Value['Timestamp_Sys100NS']);
+    FTransactionsAborted                                := VarCardinalNull(inherited Value['TransactionsAborted']);
+    FTransactionsCommitted                              := VarCardinalNull(inherited Value['TransactionsCommitted']);
+    FTransactionsPending                                := VarCardinalNull(inherited Value['TransactionsPending']);
+    FTransactionsPerSec                                 := VarCardinalNull(inherited Value['TransactionsPerSec']);
+    FTransactionsTotal                                  := VarCardinalNull(inherited Value['TransactionsTotal']);
+    FValue18314                                         := VarCardinalNull(inherited Value['Value18314']);
+    FValue18316                                         := VarCardinalNull(inherited Value['Value18316']);
+    FValue18318                                         := VarCardinalNull(inherited Value['Value18318']);
+    FValue18320                                         := VarCardinalNull(inherited Value['Value18320']);
+    FValue18322                                         := VarCardinalNull(inherited Value['Value18322']);
+    FValue18324                                         := VarCardinalNull(inherited Value['Value18324']);
+    FValue18326                                         := VarCardinalNull(inherited Value['Value18326']);
+    FViewstateMACValidationFailure                      := VarCardinalNull(inherited Value['ViewstateMACValidationFailure']);
   end;
 end;
 

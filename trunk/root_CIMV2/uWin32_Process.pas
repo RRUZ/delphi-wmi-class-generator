@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.132
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 25-06-2011 06:21:52
+/// Creation Date 12-10-2012 22:48:13
 /// Namespace root\CIMV2 Class Win32_Process
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Process.asp
 /// </summary>
@@ -34,13 +34,12 @@ type
     {$DEFINE OLD_DELPHI}
   {$IFEND}
 {$ENDIF}
-  {$REGION 'Documentation'}
-  /// <summary cref="www.some.link">
+  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  /// <summary>
   /// The Win32_Process class represents a sequence of events on a Win32 system. Any sequence consisting of the interaction of one or more processors or interpreters, some executable code, and a set of inputs, is a descendent (or member) of this class.
   /// Example: A client application running on a Win32 system.
   /// </summary>
-  /// <see cref="http://www.devjet.net">DevJET</see>
-  {$ENDREGION}
+  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_Process=class(TWmiClass)
   private
     FCaption                            : String;
@@ -93,7 +92,7 @@ type
    destructor Destroy;Override;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The Caption property is a short textual description (one-line string) of the
+   /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
@@ -431,7 +430,7 @@ type
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The Create method creates a new process. 
-   /// The method returns an integer value that can be interpretted as follows:
+   /// The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion.
    /// 2 - The user does not have access to the requested information.
    /// 3 - The user does not have sufficient privilge.
@@ -468,7 +467,7 @@ type
    /// <param name="ProcessId">
    /// The ProcessId parameter returns a global process identifier that can be used to 
    /// identify a process. The value is valid from the time the process is created 
-   /// until the time the process is terminated.
+   /// until the time the process is terminated. 
    /// </param>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    function Create(const CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var ProcessId : Cardinal): Integer;overload;
@@ -865,4 +864,3 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 end.
-

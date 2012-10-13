@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:09
+/// Creation Date 12-10-2012 22:47:09
 /// Namespace root\CIMV2 Class Win32_OfflineFilesCache
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OfflineFilesCache.asp
 /// </summary>
@@ -107,7 +107,7 @@ begin
   objInParams.Properties_.Item('NewPath').Value  := NewPath;
   objInParams.Properties_.Item('OriginalPath').Value  := OriginalPath;
   objInParams.Properties_.Item('ReplaceIfExists').Value  := ReplaceIfExists;
-  objOutParams                 := WMIService.ExecMethod(WmiClass, 'RenameItem', objInParams, 0, GetNullValue);
+  objOutParams                 := ExecMethod(WmiClass, 'RenameItem', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -124,7 +124,7 @@ begin
   objInParams.Properties_.Item('Flags').Value  := Flags;
   vPaths                   := ArrayToVarArray(Paths);
   objInParams.Properties_.Item('Paths').Value  := vPaths;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Synchronize', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'Synchronize', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vPaths);
@@ -145,7 +145,7 @@ begin
   objInParams.Properties_.Item('Flags').Value  := Flags;
   vPaths                   := ArrayToVarArray(Paths);
   objInParams.Properties_.Item('Paths').Value  := vPaths;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Pin', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'Pin', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vPaths);
@@ -166,7 +166,7 @@ begin
   objInParams.Properties_.Item('Flags').Value  := Flags;
   vPaths                   := ArrayToVarArray(Paths);
   objInParams.Properties_.Item('Paths').Value  := vPaths;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Unpin', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'Unpin', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vPaths);
@@ -186,7 +186,7 @@ begin
   objInParams.Properties_.Item('Flags').Value  := Flags;
   vPaths                   := ArrayToVarArray(Paths);
   objInParams.Properties_.Item('Paths').Value  := vPaths;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'DeleteItems', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'DeleteItems', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vPaths);
@@ -203,7 +203,7 @@ begin
   objInParams              := GetInstanceOf.Methods_.Item('Encrypt').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('Encrypt').Value  := Encrypt;
   objInParams.Properties_.Item('Flags').Value  := Flags;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'Encrypt', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'Encrypt', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -217,7 +217,7 @@ begin
   objInParams              := GetInstanceOf.Methods_.Item('SuspendRoot').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('Path').Value  := Path;
   objInParams.Properties_.Item('Suspend').Value  := Suspend;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SuspendRoot', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SuspendRoot', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -241,7 +241,7 @@ begin
   objInParams              := GetInstanceOf.Methods_.Item('TransitionOnline').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('Flags').Value  := Flags;
   objInParams.Properties_.Item('Path').Value  := Path;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'TransitionOnline', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'TransitionOnline', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
