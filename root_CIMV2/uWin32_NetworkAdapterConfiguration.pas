@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:07
+/// Creation Date 12-10-2012 22:47:07
 /// Namespace root\CIMV2 Class Win32_NetworkAdapterConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NetworkAdapterConfiguration.asp
 /// </summary>
@@ -5205,7 +5205,7 @@ begin
   objInParams.Properties_.Item('DNSHostName').Value  := DNSHostName;
   vDNSServerSearchOrder                   := ArrayToVarArray(DNSServerSearchOrder);
   objInParams.Properties_.Item('DNSServerSearchOrder').Value  := vDNSServerSearchOrder;
-  objOutParams                            := WMIService.ExecMethod(WmiClass, 'EnableDNS', objInParams, 0, GetNullValue);
+  objOutParams                            := ExecMethod(WmiClass, 'EnableDNS', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vDNSDomainSuffixSearchOrder);
@@ -5251,7 +5251,7 @@ begin
  try
   vDNSDomainSuffixSearchOrder             := ArrayToVarArray(DNSDomainSuffixSearchOrder);
   objInParams.Properties_.Item('DNSDomainSuffixSearchOrder').Value  := vDNSDomainSuffixSearchOrder;
-  objOutParams                            := WMIService.ExecMethod(WmiClass, 'SetDNSSuffixSearchOrder', objInParams, 0, GetNullValue);
+  objOutParams                            := ExecMethod(WmiClass, 'SetDNSSuffixSearchOrder', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vDNSDomainSuffixSearchOrder);
@@ -5300,7 +5300,7 @@ begin
   objInParams.Properties_.Item('WINSEnableLMHostsLookup').Value  := WINSEnableLMHostsLookup;
   objInParams.Properties_.Item('WINSHostLookupFile').Value  := WINSHostLookupFile;
   objInParams.Properties_.Item('WINSScopeID').Value  := WINSScopeID;
-  objOutParams                             := WMIService.ExecMethod(WmiClass, 'EnableWINS', objInParams, 0, GetNullValue);
+  objOutParams                             := ExecMethod(WmiClass, 'EnableWINS', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5354,7 +5354,7 @@ var
 begin
   objInParams                      := GetInstanceOf.Methods_.Item('SetIPXVirtualNetworkNumber').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('IPXVirtualNetNumber').Value  := IPXVirtualNetNumber;
-  objOutParams                     := WMIService.ExecMethod(WmiClass, 'SetIPXVirtualNetworkNumber', objInParams, 0, GetNullValue);
+  objOutParams                     := ExecMethod(WmiClass, 'SetIPXVirtualNetworkNumber', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5386,7 +5386,7 @@ var
 begin
   objInParams               := GetInstanceOf.Methods_.Item('SetDatabasePath').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('DatabasePath').Value  := DatabasePath;
-  objOutParams              := WMIService.ExecMethod(WmiClass, 'SetDatabasePath', objInParams, 0, GetNullValue);
+  objOutParams              := ExecMethod(WmiClass, 'SetDatabasePath', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5399,7 +5399,7 @@ var
 begin
   objInParams                     := GetInstanceOf.Methods_.Item('SetIPUseZeroBroadcast').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('IPUseZeroBroadcast').Value  := IPUseZeroBroadcast;
-  objOutParams                    := WMIService.ExecMethod(WmiClass, 'SetIPUseZeroBroadcast', objInParams, 0, GetNullValue);
+  objOutParams                    := ExecMethod(WmiClass, 'SetIPUseZeroBroadcast', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5412,7 +5412,7 @@ var
 begin
   objInParams                       := GetInstanceOf.Methods_.Item('SetArpAlwaysSourceRoute').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('ArpAlwaysSourceRoute').Value  := ArpAlwaysSourceRoute;
-  objOutParams                      := WMIService.ExecMethod(WmiClass, 'SetArpAlwaysSourceRoute', objInParams, 0, GetNullValue);
+  objOutParams                      := ExecMethod(WmiClass, 'SetArpAlwaysSourceRoute', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5425,7 +5425,7 @@ var
 begin
   objInParams                  := GetInstanceOf.Methods_.Item('SetArpUseEtherSNAP').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('ArpUseEtherSNAP').Value  := ArpUseEtherSNAP;
-  objOutParams                 := WMIService.ExecMethod(WmiClass, 'SetArpUseEtherSNAP', objInParams, 0, GetNullValue);
+  objOutParams                 := ExecMethod(WmiClass, 'SetArpUseEtherSNAP', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5438,7 +5438,7 @@ var
 begin
   objInParams              := GetInstanceOf.Methods_.Item('SetDefaultTOS').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('DefaultTOS').Value  := DefaultTOS;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetDefaultTOS', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetDefaultTOS', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5451,7 +5451,7 @@ var
 begin
   objInParams              := GetInstanceOf.Methods_.Item('SetDefaultTTL').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('DefaultTTL').Value  := DefaultTTL;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetDefaultTTL', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetDefaultTTL', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5464,7 +5464,7 @@ var
 begin
   objInParams                      := GetInstanceOf.Methods_.Item('SetDeadGWDetect').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('DeadGWDetectEnabled').Value  := DeadGWDetectEnabled;
-  objOutParams                     := WMIService.ExecMethod(WmiClass, 'SetDeadGWDetect', objInParams, 0, GetNullValue);
+  objOutParams                     := ExecMethod(WmiClass, 'SetDeadGWDetect', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5477,7 +5477,7 @@ var
 begin
   objInParams                      := GetInstanceOf.Methods_.Item('SetPMTUBHDetect').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('PMTUBHDetectEnabled').Value  := PMTUBHDetectEnabled;
-  objOutParams                     := WMIService.ExecMethod(WmiClass, 'SetPMTUBHDetect', objInParams, 0, GetNullValue);
+  objOutParams                     := ExecMethod(WmiClass, 'SetPMTUBHDetect', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5490,7 +5490,7 @@ var
 begin
   objInParams                       := GetInstanceOf.Methods_.Item('SetPMTUDiscovery').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('PMTUDiscoveryEnabled').Value  := PMTUDiscoveryEnabled;
-  objOutParams                      := WMIService.ExecMethod(WmiClass, 'SetPMTUDiscovery', objInParams, 0, GetNullValue);
+  objOutParams                      := ExecMethod(WmiClass, 'SetPMTUDiscovery', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5503,7 +5503,7 @@ var
 begin
   objInParams                      := GetInstanceOf.Methods_.Item('SetForwardBufferMemory').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('ForwardBufferMemory').Value  := ForwardBufferMemory;
-  objOutParams                     := WMIService.ExecMethod(WmiClass, 'SetForwardBufferMemory', objInParams, 0, GetNullValue);
+  objOutParams                     := ExecMethod(WmiClass, 'SetForwardBufferMemory', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5516,7 +5516,7 @@ var
 begin
   objInParams              := GetInstanceOf.Methods_.Item('SetIGMPLevel').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('IGMPLevel').Value  := IGMPLevel;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetIGMPLevel', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetIGMPLevel', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5529,7 +5529,7 @@ var
 begin
   objInParams                    := GetInstanceOf.Methods_.Item('SetKeepAliveInterval').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('KeepAliveInterval').Value  := KeepAliveInterval;
-  objOutParams                   := WMIService.ExecMethod(WmiClass, 'SetKeepAliveInterval', objInParams, 0, GetNullValue);
+  objOutParams                   := ExecMethod(WmiClass, 'SetKeepAliveInterval', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5542,7 +5542,7 @@ var
 begin
   objInParams                := GetInstanceOf.Methods_.Item('SetKeepAliveTime').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('KeepAliveTime').Value  := KeepAliveTime;
-  objOutParams               := WMIService.ExecMethod(WmiClass, 'SetKeepAliveTime', objInParams, 0, GetNullValue);
+  objOutParams               := ExecMethod(WmiClass, 'SetKeepAliveTime', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5555,7 +5555,7 @@ var
 begin
   objInParams              := GetInstanceOf.Methods_.Item('SetMTU').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('MTU').Value  := MTU;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetMTU', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetMTU', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5568,7 +5568,7 @@ var
 begin
   objInParams                    := GetInstanceOf.Methods_.Item('SetNumForwardPackets').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('NumForwardPackets').Value  := NumForwardPackets;
-  objOutParams                   := WMIService.ExecMethod(WmiClass, 'SetNumForwardPackets', objInParams, 0, GetNullValue);
+  objOutParams                   := ExecMethod(WmiClass, 'SetNumForwardPackets', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5581,7 +5581,7 @@ var
 begin
   objInParams                               := GetInstanceOf.Methods_.Item('SetTcpMaxConnectRetransmissions').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('TcpMaxConnectRetransmissions').Value  := TcpMaxConnectRetransmissions;
-  objOutParams                              := WMIService.ExecMethod(WmiClass, 'SetTcpMaxConnectRetransmissions', objInParams, 0, GetNullValue);
+  objOutParams                              := ExecMethod(WmiClass, 'SetTcpMaxConnectRetransmissions', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5594,7 +5594,7 @@ var
 begin
   objInParams                            := GetInstanceOf.Methods_.Item('SetTcpMaxDataRetransmissions').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('TcpMaxDataRetransmissions').Value  := TcpMaxDataRetransmissions;
-  objOutParams                           := WMIService.ExecMethod(WmiClass, 'SetTcpMaxDataRetransmissions', objInParams, 0, GetNullValue);
+  objOutParams                           := ExecMethod(WmiClass, 'SetTcpMaxDataRetransmissions', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5607,7 +5607,7 @@ var
 begin
   objInParams                    := GetInstanceOf.Methods_.Item('SetTcpNumConnections').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('TcpNumConnections').Value  := TcpNumConnections;
-  objOutParams                   := WMIService.ExecMethod(WmiClass, 'SetTcpNumConnections', objInParams, 0, GetNullValue);
+  objOutParams                   := ExecMethod(WmiClass, 'SetTcpNumConnections', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5620,7 +5620,7 @@ var
 begin
   objInParams                             := GetInstanceOf.Methods_.Item('SetTcpUseRFC1122UrgentPointer').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('TcpUseRFC1122UrgentPointer').Value  := TcpUseRFC1122UrgentPointer;
-  objOutParams                            := WMIService.ExecMethod(WmiClass, 'SetTcpUseRFC1122UrgentPointer', objInParams, 0, GetNullValue);
+  objOutParams                            := ExecMethod(WmiClass, 'SetTcpUseRFC1122UrgentPointer', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5633,7 +5633,7 @@ var
 begin
   objInParams                := GetInstanceOf.Methods_.Item('SetTcpWindowSize').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('TcpWindowSize').Value  := TcpWindowSize;
-  objOutParams               := WMIService.ExecMethod(WmiClass, 'SetTcpWindowSize', objInParams, 0, GetNullValue);
+  objOutParams               := ExecMethod(WmiClass, 'SetTcpWindowSize', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -5646,7 +5646,7 @@ var
 begin
   objInParams                          := GetInstanceOf.Methods_.Item('EnableIPFilterSec').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('IPFilterSecurityEnabled').Value  := IPFilterSecurityEnabled;
-  objOutParams                         := WMIService.ExecMethod(WmiClass, 'EnableIPFilterSec', objInParams, 0, GetNullValue);
+  objOutParams                         := ExecMethod(WmiClass, 'EnableIPFilterSec', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 

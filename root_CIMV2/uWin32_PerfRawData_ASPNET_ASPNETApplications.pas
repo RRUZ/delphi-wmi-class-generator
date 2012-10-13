@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:23:57
+/// Creation Date 12-10-2012 22:47:45
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ASPNET_ASPNETApplications
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ASPNET_ASPNETApplications.asp
 /// </summary>
@@ -102,7 +102,9 @@ type
     FPercentManagedProcessorTimeestimated_Base : Cardinal;
     FPipelineInstanceCount              : Cardinal;
     FRequestBytesInTotal                : Cardinal;
+    FRequestBytesInTotalWebSockets      : Cardinal;
     FRequestBytesOutTotal               : Cardinal;
+    FRequestBytesOutTotalWebSockets     : Cardinal;
     FRequestErrorEventsRaised           : Cardinal;
     FRequestErrorEventsRaisedPerSec     : Cardinal;
     FRequestEventsRaised                : Cardinal;
@@ -110,15 +112,19 @@ type
     FRequestExecutionTime               : Cardinal;
     FRequestsDisconnected               : Cardinal;
     FRequestsExecuting                  : Cardinal;
+    FRequestsExecutingWebSockets        : Cardinal;
     FRequestsFailed                     : Cardinal;
+    FRequestsFailedWebSockets           : Cardinal;
     FRequestsInApplicationQueue         : Cardinal;
     FRequestsNotAuthorized              : Cardinal;
     FRequestsNotFound                   : Cardinal;
     FRequestsPerSec                     : Cardinal;
     FRequestsRejected                   : Cardinal;
     FRequestsSucceeded                  : Cardinal;
+    FRequestsSucceededWebSockets        : Cardinal;
     FRequestsTimedOut                   : Cardinal;
     FRequestsTotal                      : Cardinal;
+    FRequestsTotalWebSockets            : Cardinal;
     FRequestWaitTime                    : Cardinal;
     FSessionsAbandoned                  : Cardinal;
     FSessionsActive                     : Cardinal;
@@ -484,11 +490,23 @@ type
    property RequestBytesInTotal : Cardinal read FRequestBytesInTotal;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// The total size, in bytes, of data received by ASP.NET on WebSocket connections.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestBytesInTotalWebSockets : Cardinal read FRequestBytesInTotalWebSockets;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// The total size, in bytes, of responses sent to a client.  This does not include 
    /// standard HTTP response headers.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RequestBytesOutTotal : Cardinal read FRequestBytesOutTotal;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total size, in bytes, of data sent to a client on WebSocket connections.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestBytesOutTotalWebSockets : Cardinal read FRequestBytesOutTotalWebSockets;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// Number of runtime error events raised since the application was started.
@@ -534,10 +552,22 @@ type
    property RequestsExecuting : Cardinal read FRequestsExecuting;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// The number of WebSocket requests currently executing.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestsExecutingWebSockets : Cardinal read FRequestsExecutingWebSockets;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// Total number of failed requests.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RequestsFailed : Cardinal read FRequestsFailed;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// Total number of WebSocket requests that ended up in an aborted state.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestsFailedWebSockets : Cardinal read FRequestsFailedWebSockets;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of requests in the application request queue.
@@ -576,6 +606,12 @@ type
    property RequestsSucceeded : Cardinal read FRequestsSucceeded;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
+   /// Total number of WebSocket requests that completed gracefully.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestsSucceededWebSockets : Cardinal read FRequestsSucceededWebSockets;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
    /// The number of requests that timed out.
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
@@ -586,6 +622,12 @@ type
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property RequestsTotal : Cardinal read FRequestsTotal;
+   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   /// <summary>
+   /// The total number of WebSocket requests since the application was started.
+   /// </summary>
+   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   property RequestsTotalWebSockets : Cardinal read FRequestsTotalWebSockets;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The number of milliseconds the most recent request was waiting in the queue.
@@ -754,7 +796,9 @@ begin
     FPercentManagedProcessorTimeestimated_Base      := VarCardinalNull(inherited Value['PercentManagedProcessorTimeestimated_Base']);
     FPipelineInstanceCount                          := VarCardinalNull(inherited Value['PipelineInstanceCount']);
     FRequestBytesInTotal                            := VarCardinalNull(inherited Value['RequestBytesInTotal']);
+    FRequestBytesInTotalWebSockets                  := VarCardinalNull(inherited Value['RequestBytesInTotalWebSockets']);
     FRequestBytesOutTotal                           := VarCardinalNull(inherited Value['RequestBytesOutTotal']);
+    FRequestBytesOutTotalWebSockets                 := VarCardinalNull(inherited Value['RequestBytesOutTotalWebSockets']);
     FRequestErrorEventsRaised                       := VarCardinalNull(inherited Value['RequestErrorEventsRaised']);
     FRequestErrorEventsRaisedPerSec                 := VarCardinalNull(inherited Value['RequestErrorEventsRaisedPerSec']);
     FRequestEventsRaised                            := VarCardinalNull(inherited Value['RequestEventsRaised']);
@@ -762,15 +806,19 @@ begin
     FRequestExecutionTime                           := VarCardinalNull(inherited Value['RequestExecutionTime']);
     FRequestsDisconnected                           := VarCardinalNull(inherited Value['RequestsDisconnected']);
     FRequestsExecuting                              := VarCardinalNull(inherited Value['RequestsExecuting']);
+    FRequestsExecutingWebSockets                    := VarCardinalNull(inherited Value['RequestsExecutingWebSockets']);
     FRequestsFailed                                 := VarCardinalNull(inherited Value['RequestsFailed']);
+    FRequestsFailedWebSockets                       := VarCardinalNull(inherited Value['RequestsFailedWebSockets']);
     FRequestsInApplicationQueue                     := VarCardinalNull(inherited Value['RequestsInApplicationQueue']);
     FRequestsNotAuthorized                          := VarCardinalNull(inherited Value['RequestsNotAuthorized']);
     FRequestsNotFound                               := VarCardinalNull(inherited Value['RequestsNotFound']);
     FRequestsPerSec                                 := VarCardinalNull(inherited Value['RequestsPerSec']);
     FRequestsRejected                               := VarCardinalNull(inherited Value['RequestsRejected']);
     FRequestsSucceeded                              := VarCardinalNull(inherited Value['RequestsSucceeded']);
+    FRequestsSucceededWebSockets                    := VarCardinalNull(inherited Value['RequestsSucceededWebSockets']);
     FRequestsTimedOut                               := VarCardinalNull(inherited Value['RequestsTimedOut']);
     FRequestsTotal                                  := VarCardinalNull(inherited Value['RequestsTotal']);
+    FRequestsTotalWebSockets                        := VarCardinalNull(inherited Value['RequestsTotalWebSockets']);
     FRequestWaitTime                                := VarCardinalNull(inherited Value['RequestWaitTime']);
     FSessionsAbandoned                              := VarCardinalNull(inherited Value['SessionsAbandoned']);
     FSessionsActive                                 := VarCardinalNull(inherited Value['SessionsActive']);

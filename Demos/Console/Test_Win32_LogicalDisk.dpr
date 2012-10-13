@@ -39,6 +39,8 @@ begin
 
      Writeln('Configuration Manager error code : '+GetConfigManagerErrorCodeAsString(LogicalDisk.ConfigManagerErrorCode));
      Writeln('');
+
+     //LogicalDisk.ScheduleAutoChk(['C:']);
    end;
   finally
    LogicalDisk.Free;

@@ -44,8 +44,8 @@ object FrmMain: TFrmMain
       Align = alClient
       Color = clBlack
       Font.Charset = ANSI_CHARSET
-      Font.Color = clSilver
-      Font.Height = -12
+      Font.Color = clGreen
+      Font.Height = -11
       Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
@@ -185,10 +185,6 @@ object FrmMain: TFrmMain
         object TabSheet2: TTabSheet
           Caption = 'Methods'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 718
-          ExplicitHeight = 280
           object LvMethods: TListView
             Left = 0
             Top = 0
@@ -216,17 +212,11 @@ object FrmMain: TFrmMain
             RowSelect = True
             TabOrder = 0
             ViewStyle = vsReport
-            ExplicitWidth = 718
-            ExplicitHeight = 280
           end
         end
         object TabSheet3: TTabSheet
           Caption = 'Class Info'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 718
-          ExplicitHeight = 280
           object MemoClassDescr: TMemo
             Left = 0
             Top = 0
@@ -234,8 +224,6 @@ object FrmMain: TFrmMain
             Height = 290
             Align = alClient
             TabOrder = 0
-            ExplicitWidth = 718
-            ExplicitHeight = 280
           end
         end
       end
@@ -271,7 +259,7 @@ object FrmMain: TFrmMain
     Left = 661
     Top = 93
     Bitmap = {
-      494C01010C001800D00010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800D40010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

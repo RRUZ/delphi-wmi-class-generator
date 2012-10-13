@@ -27,10 +27,19 @@ interface
 {$ENDIF}
 
 
+{todo}
+// remove latebindiugn dependence in methods invoke
+// remove old_delphi conditional
+// add option to create code optimized by version  (enumerators, generics)
+   // add generics support?
+{end todo}
+
+
+
 {.$DEFINE _DEBUG}
 
-{$DEFINE WMI_COM_API}
-{.$DEFINE WbemScripting_TLB}
+{.$DEFINE WMI_COM_API}
+{$DEFINE WbemScripting_TLB}
 {.$DEFINE WMI_LateBinding}
 
 
@@ -110,6 +119,9 @@ type
    COAUTHIDENTITY      = _COAUTHIDENTITY;
    TCOAUTHIDENTITY     = _COAUTHIDENTITY;
 {$ENDIF}
+
+
+
 
   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
   /// <summary>
@@ -289,6 +301,19 @@ type
     function    _LoadWmiData: boolean;
     constructor Create(LoadData:boolean;const _WmiNamespace,_WmiClass:string); overload;
   public
+
+   {$IFDEF WbemScripting_TLB}
+    function ExecMethod(const strObjectPath: WideString; const strMethodName: WideString;
+                        const objWbemInParameters: IDispatch; iFlags: Integer;
+                        const objWbemNamedValueSet: IDispatch): IDispatch;
+   {$ENDIF}
+
+   {$IFDEF WMI_LateBinding}
+    function ExecMethod(const strObjectPath: WideString; const strMethodName: WideString;
+                        const objWbemInParameters: OleVariant; iFlags: Integer;
+                        const objWbemNamedValueSet: OleVariant): OleVariant;
+   {$ENDIF}
+
    {$IFDEF WMI_LateBinding}
    function  GetNullValue  : OleVariant;
    {$ENDIF}
@@ -296,7 +321,7 @@ type
    function  GetNullValue  : IDispatch;
    {$ENDIF}
    {$IFDEF WMI_COM_API}
-   function  GetNullValue  : IUnknown;
+   function  GetNullValue  : IDispatch;
    {$ENDIF}
    property  Value[const PropName : string] : OleVariant read GetPropValue; default;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
@@ -342,7 +367,21 @@ type
    /// The GetInstanceOf function return an instance to the current wmi class returned by the ExecQuery method
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+
+
+   {$IFDEF WMI_LateBinding}
    function  GetInstanceOf: OleVariant;
+   {$ENDIF}
+
+   {$IFDEF WMI_COM_API}
+   function  GetInstanceOf: IWbemClassObject;
+   {$ENDIF}
+
+   {$IFDEF WbemScripting_TLB}
+   function  GetInstanceOf: OleVariant;
+   {$ENDIF}
+
+
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
    /// The GetStaticInstance function return an instance to the current wmi class
@@ -385,6 +424,7 @@ type
    property  WMIService    :  IWbemServices read GetWMIService;
    {$ENDIF}
   end;
+
 
 {
   TWmiError=class
@@ -522,7 +562,17 @@ uses
 
 type
   TVariantValueClass=class
+  {$IFDEF WMI_LateBinding}
    Value      : OleVariant;
+  {$ENDIF}
+
+  {$IFDEF WbemScripting_TLB}
+   Value      : OleVariant;
+  {$ENDIF}
+
+  {$IFDEF WMI_COM_API}
+   Value      : IWbemClassObject;
+  {$ENDIF}
   end;
 
   TDataWmiClass=class
@@ -873,7 +923,19 @@ begin
    DataWmiClass.PropsValues[i]:=Unassigned;
 
   SetLength(DataWmiClass.PropsValues, 0);
+
+  {$IFDEF WMI_LateBinding}
   DataWmiClass.InstanceOf.Value:=Unassigned;
+  {$ENDIF}
+
+  {$IFDEF WMI_COM_API}
+  DataWmiClass.InstanceOf.Value:=nil;
+  {$ENDIF}
+
+  {$IFDEF WbemScripting_TLB}
+  DataWmiClass.InstanceOf.Value:=Unassigned;
+  {$ENDIF}
+
   DataWmiClass.InstanceOf.Free;
   DataWmiClass.Free;
 end;
@@ -1276,6 +1338,8 @@ begin
     end;
 end;
 
+
+{$IFDEF WMI_LateBinding}
 function TWmiClass.GetInstanceOf: OleVariant;
 begin
   if FWMiDataLoaded then
@@ -1283,9 +1347,31 @@ begin
   else
     raise Exception.Create('WMI Data not loaded');
 end;
+{$ENDIF}
+
+{$IFDEF WbemScripting_TLB}
+function TWmiClass.GetInstanceOf: OleVariant;
+begin
+  if FWMiDataLoaded then
+    Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).InstanceOf.Value
+  else
+    raise Exception.Create('WMI Data not loaded');
+end;
+{$ENDIF}
 
 {$IFDEF WMI_COM_API}
-function TWmiClass.GetNullValue: IUnknown;
+function TWmiClass.GetInstanceOf: IWbemClassObject;
+begin
+  if FWMiDataLoaded then
+    Result:=TDataWmiClass(FWmiCollection[FWmiCollectionIndex]).InstanceOf.Value
+  else
+    raise Exception.Create('WMI Data not loaded');
+end;
+
+{$ENDIF}
+
+{$IFDEF WMI_COM_API}
+function TWmiClass.GetNullValue: IDispatch;
 begin
   Result:=nil;
 end;
@@ -1360,7 +1446,6 @@ begin
    Result:=FWmiConnection.WMIService;
 end;
 {$ENDIF}
-
 
 
 
@@ -1632,6 +1717,56 @@ begin
 end;
 
 
+{$IFDEF WMI_LateBinding}
+function TWmiClass.ExecMethod(const strObjectPath: WideString; const strMethodName: WideString;
+                    const objWbemInParameters: OleVariant; iFlags: Integer;
+                    const objWbemNamedValueSet: OleVariant): OleVariant;
+begin
+   Result := WMIService.ExecMethod(WmiClass, strMethodName, objWbemInParameters, iFlags, GetNullValue);
+end;
+{$ENDIF}
+
+
+{$IFDEF WbemScripting_TLB}
+function TWmiClass.ExecMethod(const strObjectPath, strMethodName: WideString;
+  const objWbemInParameters: IDispatch; iFlags: Integer;
+  const objWbemNamedValueSet: IDispatch): IDispatch;
+{$IFDEF WMI_COM_API}
+var
+   ppOutParams: IWbemClassObject;
+   ppCallResult: IWbemCallResult;
+{$ENDIF}
+begin
+   Result := WMIService.ExecMethod(WmiClass, strMethodName, objWbemInParameters, iFlags, GetNullValue);
+
+  {$IFDEF WMI_COM_API}
+
+  {
+    function ExecMethod(strObjectPath: WideString; strMethodName: WideString; lFlags: Integer;
+      const pCtx: IWbemContext; const pInParams: IWbemClassObject; out ppOutParams: IWbemClassObject;
+      out ppCallResult: IWbemCallResult): HRESULT; stdcall;
+
+  }
+  WMIService.ExecMethod(strObjectPath, strMethodName, 0, nil, objWbemInParameters as IWbemClassObject, ppOutParams, ppCallResult);
+  Result:=ppOutParams as IDispatch;
+
+ {
+                        OpResult := FWbemServices.ExecMethod('Win32_LogicalDisk', 'ScheduleAutoChk', 0, nil, pClassInstance, ppOutParams, ppCallResult);
+                       if Succeeded(OpResult) then
+                       begin
+                         ppOutParams.Get('ReturnValue', 0, pVal, pType, plFlavor);
+                         Writeln(Format('ReturnValue  %s',[pVal]));
+                         VarClear(pVal);
+
+                       end
+                       else
+                       if not GetExtendedErrorInfo(OpResult) then
+                       Writeln(Format('Error ExecMethod %x',[OpResult]));
+ }
+
+  {$ENDIF}
+end;
+{$ENDIF}
 
 procedure TWmiClass.LoadWmiData;
 begin

@@ -17,14 +17,14 @@ uses
   uLazarusIDE in 'units\uLazarusIDE.pas',
   uWmiDelphiClass in 'units\uWmiDelphiClass.pas',
   Vcl.Themes,
-  Vcl.Styles;
+  Vcl.Styles,
+  uCustomImageDrawHook in 'units\uCustomImageDrawHook.pas';
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  TStyleManager.TrySetStyle('Carbon');
   Application.CreateForm(TFrmMain, FrmMain);
   Application.CreateForm(TFrmViewCode, FrmViewCode);
   Application.Run;

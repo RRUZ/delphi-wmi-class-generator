@@ -1,8 +1,8 @@
 /// <summary>
-/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010
-/// Application version 0.1.0.139
+/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
+/// Application version 1.0.4668.16438
 /// WMI version 7601.17514
-/// Creation Date 26-09-2011 03:22:46
+/// Creation Date 12-10-2012 22:46:51
 /// Namespace root\CIMV2 Class StdRegProv
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/StdRegProv.asp
 /// </summary>
@@ -727,7 +727,7 @@ begin
   objInParams              := GetInstanceOf.Methods_.Item('CreateKey').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'CreateKey', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'CreateKey', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -741,7 +741,7 @@ begin
   objInParams              := GetInstanceOf.Methods_.Item('DeleteKey').InParameters.SpawnInstance_();
   objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'DeleteKey', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'DeleteKey', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -778,7 +778,7 @@ begin
   objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'DeleteValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'DeleteValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -794,7 +794,7 @@ begin
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
   objInParams.Properties_.Item('uValue').Value  := uValue;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetDWORDValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetDWORDValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -810,7 +810,7 @@ begin
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
   objInParams.Properties_.Item('uValue').Value  := uValue;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetQWORDValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetQWORDValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -846,7 +846,7 @@ begin
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
   objInParams.Properties_.Item('sValue').Value  := sValue;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetStringValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetStringValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -875,7 +875,7 @@ begin
   vsValue                  := ArrayToVarArray(sValue);
   objInParams.Properties_.Item('sValue').Value  := vsValue;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetMultiStringValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetMultiStringValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vsValue);
@@ -904,7 +904,7 @@ begin
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
   objInParams.Properties_.Item('sValue').Value  := sValue;
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetExpandedStringValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetExpandedStringValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
@@ -933,7 +933,7 @@ begin
   objInParams.Properties_.Item('sValueName').Value  := sValueName;
   vuValue                  := ArrayToVarArray(uValue);
   objInParams.Properties_.Item('uValue').Value  := vuValue;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetBinaryValue', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetBinaryValue', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
  finally
   VarClear(vuValue);
@@ -971,7 +971,7 @@ begin
   objInParams.Properties_.Item('Descriptor').Value  := Descriptor;
   objInParams.Properties_.Item('hDefKey').Value  := hDefKey;
   objInParams.Properties_.Item('sSubKeyName').Value  := sSubKeyName;
-  objOutParams             := WMIService.ExecMethod(WmiClass, 'SetSecurityDescriptor', objInParams, 0, GetNullValue);
+  objOutParams             := ExecMethod(WmiClass, 'SetSecurityDescriptor', objInParams, 0, GetNullValue);
   Result := VarIntegerNull(objOutParams.ReturnValue);
 end;
 
