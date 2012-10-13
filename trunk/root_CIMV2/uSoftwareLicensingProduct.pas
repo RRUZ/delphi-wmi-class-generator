@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:46:50
+/// Creation Date 13-10-2012 10:53:43
 /// Namespace root\CIMV2 Class SoftwareLicensingProduct
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/SoftwareLicensingProduct.asp
 /// </summary>
@@ -574,7 +574,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TSoftwareLicensingProduct.GetPolicyInformationDWord(const PolicyName : String ; var PolicyValue : Cardinal): Integer;
 var
 //output variants  helpers
@@ -584,7 +584,7 @@ begin
   PolicyValue  := VarCardinalNull(vPolicyValue);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TSoftwareLicensingProduct.GetPolicyInformationString(const PolicyName : String ; var PolicyValue : String): Integer;
 var
 //output variants  helpers
@@ -632,7 +632,7 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TSoftwareLicensingProduct.GetTokenActivationGrants(var Grants : String): Integer;
 var
 //output variants  helpers
@@ -642,7 +642,7 @@ begin
   Grants       := VarStrNull(vGrants);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TSoftwareLicensingProduct.GenerateTokenActivationChallenge(var Challenge : String): Integer;
 var
 //output variants  helpers

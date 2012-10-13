@@ -37,8 +37,29 @@ function  MsgQuestion(const Msg: string):Boolean;
 function  GetFileVersion(const FileName: string): string;
 function  GetTempDirectory: string;
 procedure CaptureConsoleOutput(const lpCommandLine: string; OutPutList: TStrings);
+function GetSpecialFolder(const CSIDL: integer) : string;
 
 implementation
+
+uses
+  ShlObj;
+
+
+function GetSpecialFolder(const CSIDL: integer) : string;
+var
+  lpszPath : PWideChar;
+begin
+  lpszPath := StrAlloc(MAX_PATH);
+  try
+     ZeroMemory(lpszPath, MAX_PATH);
+    if SHGetSpecialFolderPath(0, lpszPath, CSIDL, False)  then
+      Result := lpszPath
+    else
+      Result := '';
+  finally
+    StrDispose(lpszPath);
+  end;
+end;
 
 function GetTempDirectory: string;
 var

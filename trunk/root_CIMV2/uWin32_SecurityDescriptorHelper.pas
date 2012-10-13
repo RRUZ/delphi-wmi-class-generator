@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:48:17
+/// Creation Date 13-10-2012 10:55:31
 /// Namespace root\CIMV2 Class Win32_SecurityDescriptorHelper
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SecurityDescriptorHelper.asp
 /// </summary>
@@ -117,7 +117,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.Win32SDToSDDL(const Descriptor : OleVariant ; var SDDL : String): Integer;
 var
 //output variants  helpers
@@ -127,7 +127,7 @@ begin
   SDDL         := VarStrNull(vSDDL);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.Win32SDToBinarySD(const Descriptor : OleVariant ; var BinarySD : Byte): Integer;
 var
 //output variants  helpers
@@ -137,7 +137,7 @@ begin
   BinarySD     := VarByteNull(vBinarySD);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.SDDLToWin32SD(const SDDL : String ; var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers
@@ -147,7 +147,7 @@ begin
   Descriptor   := VarStrNull(vDescriptor);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.SDDLToBinarySD(const SDDL : String ; var BinarySD : Byte): Integer;
 var
 //output variants  helpers
@@ -157,7 +157,7 @@ begin
   BinarySD     := VarByteNull(vBinarySD);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.BinarySDToWin32SD(const BinarySD : Array of Byte ; var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers
@@ -173,7 +173,7 @@ begin
  end;
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_SecurityDescriptorHelper.BinarySDToSDDL(const BinarySD : Array of Byte ; var SDDL : String): Integer;
 var
 //output variants  helpers

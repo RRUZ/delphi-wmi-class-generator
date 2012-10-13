@@ -48,29 +48,29 @@ type
     ToolBarMain: TToolBar;
     ToolButtonGenerate: TToolButton;
     ImageList1: TImageList;
-    CbWmiNameSpaces: TComboBox;
     ToolButtonViewCode: TToolButton;
     ToolButton1: TToolButton;
     ApplicationEvents1: TApplicationEvents;
     Panel2: TPanel;
+    TreeViewNamespaces: TTreeView;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
       const Rect: TRect);
-    procedure CbWmiNameSpacesChange(Sender: TObject);
     procedure LvClassesChange(Sender: TObject; Item: TListItem;
       Change: TItemChange);
     procedure ToolButtonGenerateClick(Sender: TObject);
     procedure ToolButtonViewCodeClick(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
+    procedure TreeViewNamespacesChange(Sender: TObject; Node: TTreeNode);
   private
     { Private declarations }
     FMetaDataLoaded     : Boolean;
     FLoading            : Boolean;
     FWMiClassMetaData   : TWMiClassMetaData;
     procedure LoadWmiMetaData;
-    procedure LoadWmiClasses;
+    procedure LoadWmiClasses(const Namespace: string);
     procedure LoadWmiClassInfo;
     procedure LoadWmiClassProperties;
     procedure LoadWmiClassMethods;
@@ -96,8 +96,10 @@ uses
   ComObj,
   AsyncCalls,
   ListView_Helper,
+  StrUtils,
   uWmiDelphiCodeCreator,
-  CodeView;
+  CodeView,
+  uGlobals;
 
 {$R *.dfm}
 
@@ -128,11 +130,6 @@ begin
      Addlog(Format('Access denied  %s %s  Code : %x',['',E.Message,EOleSysError(E).ErrorCode]))
     else
      Addlog(E.Message);
-end;
-
-procedure TFrmMain.CbWmiNameSpacesChange(Sender: TObject);
-begin
-  LoadWmiClasses;
 end;
 
 procedure TFrmMain.FormActivate(Sender: TObject);
@@ -176,7 +173,7 @@ var
 begin
   CodeHeader.WmiVersion:=GetWmiVersion;
   CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
-  FNamespace:=CbWmiNameSpaces.Text;
+  FNamespace:=TreeViewNamespaces.Selected.Text;
   FPath:= IncludeTrailingPathDelimiter(ExtractFilePath(ParamStr(0)))+StringReplace(FNamespace,'\','_',[rfReplaceAll]);
   Addlog(Format('Generating library for namespace %s',[FNamespace]));
   ForceDirectories(FPath);
@@ -253,7 +250,7 @@ begin
       Result:=LvClasses.Selected.Caption;
 end;
 
-procedure TFrmMain.LoadWmiClasses;
+procedure TFrmMain.LoadWmiClasses(const Namespace: string);
 var
  IWmiClasses  : IAsyncCall;
  FWmiClasses  : TStringList;
@@ -269,15 +266,35 @@ begin
     ToolBarMain.Enabled:=False;
     try
        LvClasses.Items.Clear;
-       if CbWmiNameSpaces.Text<>'' then
+       if Namespace<>'' then
        begin
-         Addlog(Format('Loading WMI Classes for namespace %s',[CbWmiNameSpaces.Text]));
+         Addlog(Format('Loading WMI Classes for namespace %s',[Namespace]));
         try
            try
-
-             IWmiClasses := AsyncCall(@GetListWmiDynamicAndStaticClasses, [CbWmiNameSpaces.Text, FWmiClasses]);
+              {
+             IWmiClasses := AsyncCall(@GetListWmiDynamicAndStaticClasses, [Namespace, FWmiClasses]);
              while AsyncMultiSync([IWmiClasses], True, 1) = WAIT_TIMEOUT do
                Application.ProcessMessages;
+              }
+
+             try
+              if not ExistWmiClassesCache(Namespace) then
+              begin
+                GetListWmiClasses(Namespace, FWmiClasses, [], ['abstract'], True);
+                SaveWMIClassesToCache(Namespace, FWmiClasses);
+              end
+              else
+                LoadWMIClassesFromCache(Namespace, FWmiClasses);
+             except
+              on E: EOleSysError do
+                if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
+                begin
+                    Addlog(Format('Access denied  %s %s  Code : %x', ['GetListWmiClasses', E.Message, E.ErrorCode]))
+                end
+                else
+                  raise;
+             end;
+
 
              // GetListWmiDynamicAndStaticClasses(CbWmiNameSpaces.Text, FWmiClasses);
            finally
@@ -319,7 +336,7 @@ var
  FNameSpace : string;
  FClass     : string;
 begin
-  FNameSpace:=CbWmiNameSpaces.Text;
+  FNameSpace:=TreeViewNamespaces.Selected.Text;
   FClass    :=GetCurrentClass;
   if Assigned(FWMiClassMetaData) then
   FWMiClassMetaData.Free;
@@ -340,13 +357,13 @@ begin
     for i := 0 to FWMiClassMetaData.MethodsCount - 1 do
       begin
          item:=LvMethods.Items.Add;
-         item.Caption:=FWMiClassMetaData.Methods[i];
+         item.Caption:=FWMiClassMetaData.Methods[i].Name;
          item.SubItems.Add(''); //In Parameters
          item.SubItems.Add(''); //Out Parameters
          item.SubItems.Add(''); //Description
-         item.SubItems[0]:=FWMiClassMetaData.MethodMetaData[i].MethodInParamsDecl;
-         item.SubItems[1]:=FWMiClassMetaData.MethodMetaData[i].MethodOutParamsDecl;
-         item.SubItems[2]:=FWMiClassMetaData.MethodMetaData[i].Description;
+         item.SubItems[0]:=FWMiClassMetaData.Methods[i].MethodInParamsDecl;
+         item.SubItems[1]:=FWMiClassMetaData.Methods[i].MethodOutParamsDecl;
+         item.SubItems[2]:=FWMiClassMetaData.Methods[i].Description;
          item.Checked:=True;
       end;
    end;
@@ -369,13 +386,13 @@ begin
     for i := 0 to FWMiClassMetaData.PropertiesCount - 1 do
       begin
          item:=LvProperties.Items.Add;
-         item.Caption:=FWMiClassMetaData.Properties[i];
+         item.Caption:=FWMiClassMetaData.Properties[i].Name;
          item.SubItems.Add(''); //Wmi Type
          item.SubItems.Add(''); //Delphi Type
          item.SubItems.Add(''); //Description
-         item.SubItems[0]:=FWMiClassMetaData.PropertiesTypes[i];//Wmi Type
-         item.SubItems[1]:=FWMiClassMetaData.PropertiesPascalTypes[i];//Delphi Type
-         item.SubItems[2]:=FWMiClassMetaData.PropertiesDescr[i];
+         item.SubItems[0]:=FWMiClassMetaData.Properties[i].&Type;//Wmi Type
+         item.SubItems[1]:=FWMiClassMetaData.Properties[i].PascalType;//Delphi Type
+         item.SubItems[2]:=FWMiClassMetaData.Properties[i].Description;
          item.Checked:=True;
       end;
    end;
@@ -391,6 +408,9 @@ procedure TFrmMain.LoadWmiMetaData;
 var
  IWmiNamespaces : IAsyncCall;
  FNameSpaces    : TStringList;
+ i,j  : Integer;
+ root : TTreeNode;
+ found : Boolean;
 begin
     ProgressBarWmi.Visible:=True;
     FNameSpaces :=TStringList.Create;
@@ -400,15 +420,38 @@ begin
           try
            Addlog('Loading WMI namespaces');
            try
+             {
              //IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, ['root', FNameSpaces, False]);
              IWmiNamespaces := AsyncCall(@GetListWMINameSpaces, [FNameSpaces]);
              while AsyncMultiSync([IWmiNamespaces], True, 1) = WAIT_TIMEOUT do
                Application.ProcessMessages;
 
              //GetListWMINameSpaces(FNameSpaces);
+             }
+
+            root:=TreeViewNamespaces.Items.Add(nil,'root');
+            FNameSpaces.AddStrings(CachedWMIClasses.NameSpaces);
+            for i := 0 to FNameSpaces.Count-1 do
+            begin
+               found:=false;
+               for j := 0 to TreeViewNamespaces.Items.Count-1 do
+                if StartsText(ExcludeTrailingBackslash(ExtractFilePath( FNameSpaces[i])), TreeViewNamespaces.Items.Item[j].Text) then
+                begin
+                  TreeViewNamespaces.Items.AddChild(TreeViewNamespaces.Items.Item[j], FNameSpaces[i]);
+                  found:=True;
+                  Break;
+                end;
+
+              if not found then
+                TreeViewNamespaces.Items.AddChild(root, FNameSpaces[i]);
+            end;
+
+            root.Expand(True);
+
            finally
              Addlog(Format('%d WMI namespaces loaded',[FNameSpaces.Count]));
            end;
+
           except
             on E: EOleSysError do
             if E.ErrorCode = HRESULT(wbemErrAccessDenied) then
@@ -416,10 +459,11 @@ begin
             else
             raise;
           end;
+      {
       CbWmiNameSpaces.Items.AddStrings(FNameSpaces);
       if FNameSpaces.Count>0 then
       CbWmiNameSpaces.ItemIndex:=0;
-
+      }
       FMetaDataLoaded:=True;
     finally
      ToolBarMain.Enabled:=True;
@@ -427,7 +471,8 @@ begin
      ProgressBarWmi.Visible:=False;
     end;
 
-    LoadWmiClasses;
+    TreeViewNamespaces.Selected:=TreeViewNamespaces.Items.Item[0];
+    LoadWmiClasses(TreeViewNamespaces.Selected.Text);
 end;
 
 procedure TFrmMain.LvClassesChange(Sender: TObject; Item: TListItem;
@@ -469,16 +514,22 @@ begin
   ViewCode;
 end;
 
+procedure TFrmMain.TreeViewNamespacesChange(Sender: TObject; Node: TTreeNode);
+begin
+  if TreeViewNamespaces.Selected<>nil then
+   LoadWmiClasses(TreeViewNamespaces.Selected.Text);
+end;
+
 procedure TFrmMain.ViewCode;
 var
  FNameSpace : string;
- FClass     : string;
+ FClass, LCode     : string;
  CodeHeader : TCodeHeader;
  Frm        : TFrmViewCode;
 begin
   CodeHeader.WmiVersion:=GetWmiVersion;
   CodeHeader.AppVersion:=GetFileVersion(Application.ExeName);
-  FNameSpace:= CbWmiNameSpaces.Text;
+  FNameSpace:= TreeViewNamespaces.Selected.Text;
   FClass    := GetCurrentClass;
 
   if FClass='' then
@@ -488,10 +539,11 @@ begin
       Frm:=TFrmViewCode.Create(Self);
       Frm.WmiClass:=FClass;
       Frm.Caption:=Format('Code view of %s:%s',[FNameSpace,FClass]);
-      Frm.SynMemoDelphiCode.Lines.Text:=CreateDelphiClassFromWMI(
+      LCode:=CreateDelphiClassFromWMI(
       CodeHeader,
       FNameSpace,
       FClass);
+      Frm.SynMemoDelphiCode.Lines.Text:=LCode;
       Frm.Show;
   end;
 end;

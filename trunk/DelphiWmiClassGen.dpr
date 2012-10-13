@@ -1,6 +1,7 @@
 program DelphiWmiClassGen;
 
 uses
+  ExceptionLog,
   Forms,
   Main in 'Main.pas' {FrmMain},
   AsyncCalls in 'units\AsyncCalls.pas',
@@ -18,7 +19,8 @@ uses
   uWmiDelphiClass in 'units\uWmiDelphiClass.pas',
   Vcl.Themes,
   Vcl.Styles,
-  uCustomImageDrawHook in 'units\uCustomImageDrawHook.pas';
+  uCustomImageDrawHook in 'units\uCustomImageDrawHook.pas',
+  uGlobals in 'units\uGlobals.pas';
 
 {$R *.res}
 

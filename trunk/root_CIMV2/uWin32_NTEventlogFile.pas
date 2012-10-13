@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:47:08
+/// Creation Date 13-10-2012 10:54:07
 /// Namespace root\CIMV2 Class Win32_NTEventlogFile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NTEventlogFile.asp
 /// </summary>
@@ -1211,7 +1211,7 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.TakeOwnerShipEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1221,7 +1221,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.ChangeSecurityPermissionsEx(const Option : Cardinal;const Recursive : Boolean;const SecurityDescriptor : OleVariant;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1231,7 +1231,7 @@ begin
   StopFileName        := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.CopyEx(const FileName : String;const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1241,7 +1241,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.DeleteEx(const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1251,7 +1251,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.CompressEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1261,7 +1261,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_NTEventlogFile.UncompressEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers

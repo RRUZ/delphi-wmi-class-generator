@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:48:13
+/// Creation Date 13-10-2012 10:55:28
 /// Namespace root\CIMV2 Class Win32_Process
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Process.asp
 /// </summary>
@@ -803,7 +803,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TWin32_Process.Create(const CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var ProcessId : Cardinal): Integer;
 var
 //output variants  helpers
@@ -823,7 +823,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_Process.GetOwner(var Domain : String;var User : String): Integer;
 var
 //output variants  helpers
@@ -835,7 +835,7 @@ begin
   User         := VarStrNull(vUser);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_Process.GetOwnerSid(var Sid : String): Integer;
 var
 //output variants  helpers

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:46:51
+/// Creation Date 13-10-2012 10:53:44
 /// Namespace root\CIMV2 Class StdRegProv
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/StdRegProv.asp
 /// </summary>
@@ -746,7 +746,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.EnumKey(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String): Integer;
 var
 //output variants  helpers
@@ -756,7 +756,7 @@ begin
   sNames       := VarStrNull(vsNames);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.EnumValues(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String;var Types : Integer): Integer;
 var
 //output variants  helpers
@@ -815,7 +815,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetDWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Cardinal): Integer;
 var
 //output variants  helpers
@@ -825,7 +825,7 @@ begin
   uValue       := VarCardinalNull(vuValue);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetQWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Int64): Integer;
 var
 //output variants  helpers
@@ -851,7 +851,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
 //output variants  helpers
@@ -883,7 +883,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetMultiStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
 //output variants  helpers
@@ -909,7 +909,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetExpandedStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
 var
 //output variants  helpers
@@ -941,7 +941,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetBinaryValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Byte): Integer;
 var
 //output variants  helpers
@@ -951,7 +951,7 @@ begin
   uValue       := VarByteNull(vuValue);
 end;
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.CheckAccess(const hDefKey : Cardinal;const sSubKeyName : String;const uRequired : Cardinal ; var bGranted : Boolean): Integer;
 var
 //output variants  helpers
@@ -976,7 +976,7 @@ begin
 end;
 
 
-//static, OutParams>1, InParams>0
+//static, OutParams>1, InParameters>0
 function TStdRegProv.GetSecurityDescriptor(const hDefKey : Cardinal;const sSubKeyName : String ; var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers

@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:47:03
+/// Creation Date 13-10-2012 10:54:00
 /// Namespace root\CIMV2 Class Win32_LogicalFileSecuritySetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_LogicalFileSecuritySetting.asp
 /// </summary>
@@ -187,7 +187,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_LogicalFileSecuritySetting.GetSecurityDescriptor(var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers

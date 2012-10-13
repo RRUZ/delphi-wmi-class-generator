@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:46:56
+/// Creation Date 13-10-2012 10:53:52
 /// Namespace root\CIMV2 Class Win32_DCOMApplicationSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_DCOMApplicationSetting.asp
 /// </summary>
@@ -383,7 +383,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_DCOMApplicationSetting.GetLaunchSecurityDescriptor(var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers
@@ -403,7 +403,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_DCOMApplicationSetting.GetAccessSecurityDescriptor(var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers
@@ -423,7 +423,7 @@ begin
 end;
 
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_DCOMApplicationSetting.GetConfigurationSecurityDescriptor(var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers

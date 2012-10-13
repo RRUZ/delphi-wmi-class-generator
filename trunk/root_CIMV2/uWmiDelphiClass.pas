@@ -27,6 +27,15 @@ interface
 {$ENDIF}
 
 
+{todo}
+// remove latebindiugn dependence in methods invoke
+// remove old_delphi conditional
+// add option to create code optimized by version  (enumerators, generics)
+   // add generics support?
+{end todo}
+
+
+
 {.$DEFINE _DEBUG}
 
 {.$DEFINE WMI_COM_API}
