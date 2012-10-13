@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:48:12
+/// Creation Date 13-10-2012 10:55:27
 /// Namespace root\CIMV2 Class Win32_Printer
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Printer.asp
 /// </summary>
@@ -2260,7 +2260,7 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_Printer.GetSecurityDescriptor(var Descriptor : OleVariant): Integer;
 var
 //output variants  helpers

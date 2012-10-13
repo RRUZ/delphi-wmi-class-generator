@@ -1,8 +1,8 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4668.16438
+/// Application version 1.0.4669.38341
 /// WMI version 7601.17514
-/// Creation Date 12-10-2012 22:46:54
+/// Creation Date 13-10-2012 10:53:50
 /// Namespace root\CIMV2 Class Win32_CodecFile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_CodecFile.asp
 /// </summary>
@@ -1071,7 +1071,7 @@ begin
   Result      := VarIntegerNull(ReturnValue);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.TakeOwnerShipEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1081,7 +1081,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.ChangeSecurityPermissionsEx(const Option : Cardinal;const Recursive : Boolean;const SecurityDescriptor : OleVariant;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1091,7 +1091,7 @@ begin
   StopFileName        := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.CopyEx(const FileName : String;const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1101,7 +1101,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.DeleteEx(const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1111,7 +1111,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.CompressEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers
@@ -1121,7 +1121,7 @@ begin
   StopFileName   := VarStrNull(vStopFileName);
 end;
 
-//not static, OutParams>1, InParams>0
+//not static, OutParams>1, InParameters>0
 function TWin32_CodecFile.UncompressEx(const Recursive : Boolean;const StartFileName : String ; var StopFileName : String): Integer;
 var
 //output variants  helpers

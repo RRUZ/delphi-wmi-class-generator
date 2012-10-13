@@ -3,7 +3,7 @@ object FrmMain: TFrmMain
   Top = 213
   Caption = 'Delphi WMI Class Generator'
   ClientHeight = 562
-  ClientWidth = 1008
+  ClientWidth = 950
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object FrmMain: TFrmMain
   object Splitter1: TSplitter
     Left = 0
     Top = 359
-    Width = 1008
+    Width = 950
     Height = 5
     Cursor = crVSplit
     Align = alBottom
@@ -30,7 +30,7 @@ object FrmMain: TFrmMain
   object PanelLog: TPanel
     Left = 0
     Top = 364
-    Width = 1008
+    Width = 950
     Height = 179
     Align = alBottom
     BevelOuter = bvNone
@@ -39,7 +39,7 @@ object FrmMain: TFrmMain
     object MemoLog: TMemo
       Left = 5
       Top = 5
-      Width = 998
+      Width = 940
       Height = 169
       Align = alClient
       Color = clBlack
@@ -56,7 +56,7 @@ object FrmMain: TFrmMain
   object PanelMain: TPanel
     Left = 0
     Top = 0
-    Width = 1008
+    Width = 950
     Height = 359
     Align = alClient
     BevelOuter = bvNone
@@ -64,7 +64,7 @@ object FrmMain: TFrmMain
     object Panel1: TPanel
       Left = 0
       Top = 0
-      Width = 1008
+      Width = 950
       Height = 29
       Align = alTop
       AutoSize = True
@@ -73,7 +73,7 @@ object FrmMain: TFrmMain
       object ToolBarMain: TToolBar
         Left = 0
         Top = 0
-        Width = 1008
+        Width = 950
         Height = 29
         ButtonWidth = 99
         Caption = 'ToolBarMain'
@@ -105,19 +105,10 @@ object FrmMain: TFrmMain
           ImageIndex = 3
           Style = tbsSeparator
         end
-        object CbWmiNameSpaces: TComboBox
-          Left = 193
-          Top = 0
-          Width = 257
-          Height = 21
-          Style = csDropDownList
-          TabOrder = 0
-          OnChange = CbWmiNameSpacesChange
-        end
       end
     end
     object LvClasses: TListView
-      Left = 0
+      Left = 249
       Top = 29
       Width = 260
       Height = 330
@@ -136,9 +127,9 @@ object FrmMain: TFrmMain
       OnDblClick = ToolButtonViewCodeClick
     end
     object Panel2: TPanel
-      Left = 260
+      Left = 509
       Top = 29
-      Width = 748
+      Width = 441
       Height = 330
       Align = alClient
       BorderWidth = 5
@@ -146,7 +137,7 @@ object FrmMain: TFrmMain
       object PageControl1: TPageControl
         Left = 6
         Top = 6
-        Width = 736
+        Width = 429
         Height = 318
         ActivePage = TabSheet1
         Align = alClient
@@ -156,7 +147,7 @@ object FrmMain: TFrmMain
           object LvProperties: TListView
             Left = 0
             Top = 0
-            Width = 728
+            Width = 421
             Height = 290
             Align = alClient
             Columns = <
@@ -188,7 +179,7 @@ object FrmMain: TFrmMain
           object LvMethods: TListView
             Left = 0
             Top = 0
-            Width = 728
+            Width = 421
             Height = 290
             Align = alClient
             Columns = <
@@ -220,7 +211,7 @@ object FrmMain: TFrmMain
           object MemoClassDescr: TMemo
             Left = 0
             Top = 0
-            Width = 728
+            Width = 421
             Height = 290
             Align = alClient
             TabOrder = 0
@@ -228,11 +219,24 @@ object FrmMain: TFrmMain
         end
       end
     end
+    object TreeViewNamespaces: TTreeView
+      Left = 0
+      Top = 29
+      Width = 249
+      Height = 330
+      Align = alLeft
+      HideSelection = False
+      Indent = 19
+      ReadOnly = True
+      RowSelect = True
+      TabOrder = 3
+      OnChange = TreeViewNamespacesChange
+    end
   end
   object StatusBar1: TStatusBar
     Left = 0
     Top = 543
-    Width = 1008
+    Width = 950
     Height = 19
     Panels = <
       item
@@ -256,10 +260,10 @@ object FrmMain: TFrmMain
   object ImageList1: TImageList
     ColorDepth = cd32Bit
     DrawingStyle = dsTransparent
-    Left = 661
-    Top = 93
+    Left = 373
+    Top = 165
     Bitmap = {
-      494C01010C001800D40010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010C001800E00010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -796,7 +800,7 @@ object FrmMain: TFrmMain
   end
   object ApplicationEvents1: TApplicationEvents
     OnException = ApplicationEvents1Exception
-    Left = 600
+    Left = 384
     Top = 96
   end
 end
