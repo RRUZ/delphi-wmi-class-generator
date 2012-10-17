@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:27
+/// Creation Date 17-10-2012 18:19:43
 /// Namespace root\CIMV2 Class Win32_PrinterDriver
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PrinterDriver.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PrinterDriver;
 
@@ -24,24 +20,14 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// A CIM_Service is a Logical Element that contains the information necessary to 
   /// represent and manage the functionality provided by a Device and/or 
   /// SoftwareFeature. A Service is a general-purpose object to configure and manage 
   /// the implementation of functionality.  It is not the functionality itself.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PrinterDriver=class(TWmiClass)
   private
     FCaption                            : String;
@@ -73,127 +59,127 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ConfigFile property contains the configuration file for this printer 
    /// driver, (example: pscrptui.dll).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConfigFile : String read FConfigFile;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CreationClassName indicates the name of the class or the subclass used in the 
    /// creation of an instance. When used with the other key properties of this class, 
    /// this property allows all instances of this class and its subclasses to be 
    /// uniquely identified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CreationClassName : String read FCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DataFile property contains the data file for this printer driver, (example: 
    /// qms810.ppd).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataFile : String read FDataFile;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DefaultDataType property indicates the default data type for this printer 
    /// driver, (example: EMF).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DefaultDataType : String read FDefaultDataType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DependentFiles property contains a list of dependent files for this printer 
    /// driver.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DependentFiles : TStrings read FDependentFiles;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DriverPath property contains the path for this printer driver, (example: 
    /// C:\drivers\pscript.dll).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DriverPath : String read FDriverPath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The FilePath property contains the path to the INF file being used, (Example: 
    /// c:\temp\driver).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FilePath : String read FFilePath write SetFilePath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HelpFile property contains the help file for this printer driver, (example: 
    /// pscrptui.hlp).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HelpFile : String read FHelpFile;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InfName property contains the name of the INF file being used. The default 
    /// is 'ntprint.INF'.  This will only be different if the drivers are provided 
    /// directly by the manufacturer of the printer and not the operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InfName : String read FInfName write SetInfName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MonitorName property contains the name of the of the monitor for this 
    /// printer driver, (example: PJL monitor).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MonitorName : String read FMonitorName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property indicates the driver name for this printer.  This is a 
    /// compound key composed of the Name, Version and SupportedPlatform values.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OEMUrl property provides a world wide web link to the printer manufacturer's web site.  Note that this property is not populated when the Win32.INF file is used and is only applicable for drivers provided directly from the manufacturer.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OEMUrl : String read FOEMUrl;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Started is a boolean indicating whether the service has been started (TRUE), or 
    /// stopped (FALSE).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Started : Boolean read FStarted;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// StartMode is a string value indicating whether the Service is automatically 
    /// started by a System, Operating System, etc. or only started upon request.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StartMode : String read FStartMode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -205,35 +191,35 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SupportedPlatform property indicates the operating environments that the 
    /// driver is intended for.  Examples are 'Windows NT x86' or 'Windows IA64'.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SupportedPlatform : String read FSupportedPlatform write SetSupportedPlatform;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The scoping System's CreationClassName. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCreationClassName : String read FSystemCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The name of the system that hosts this service
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemName : String read FSystemName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Version property indicates the operating system version that the driver is 
    /// intended for.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : Word read FVersion write SetVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The StartService method places the Service in the started state. It returns an 
    /// integer value of 0 if the Service was successfully started, 1 if the request is 
@@ -242,17 +228,17 @@ type
    /// method. The strings to which the ValueMap contents are 'translated' may also be 
    /// specified in the subclass as a Values array qualifier.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function StartService: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The StopService method places the service in the stopped state. It returns an 
    /// integer value of 0 if the service was successfully stopped, 1 if the request is 
    /// not supported and any other number to indicate an error.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function StopService: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AddPrinterDriver method installs a printer driver. The method can return the following values:
    /// 0 - Success.
@@ -264,25 +250,25 @@ type
    /// The DriverInfo parameter specifies the neccessary inforation needed in order to 
    /// create the printer driver.
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function AddPrinterDriver(const DriverInfo : OleVariant): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_PrinterDriver.AddPrinterDriver
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultAddPrinterDriverAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_PrinterDriver.Version
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetVersionAsString(const APropValue:Word) : string;
 
 implementation

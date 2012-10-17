@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:00
+/// Creation Date 17-10-2012 18:18:24
 /// Namespace root\CIMV2 Class Win32_LogicalFileSecuritySetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_LogicalFileSecuritySetting.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_LogicalFileSecuritySetting;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// security settings for a logical file
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_LogicalFileSecuritySetting=class(TWmiClass)
   private
     FCaption                            : String;
@@ -50,43 +36,43 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Inheritance-related flags.  See SECURITY_DESCRIPTOR_CONTROL
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ControlFlags : Cardinal read FControlFlags;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates whether the caller has Owner permissions to the object.  
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OwnerPermissions : Boolean read FOwnerPermissions;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The full pathname of the file or directory
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Path : String read FPath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SettingID : String read FSettingID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Retrieves a structural representation of the object's security descriptor.
    /// The method returns an integer value that can be interpreted as follows: 
@@ -97,9 +83,9 @@ type
    /// 21 - The specified parameter is invalid.
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetSecurityDescriptor(var Descriptor : OleVariant): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sets security descriptor to the specified structure. 
    /// The method returns an integer value that can be interpreted as follows: 
@@ -110,25 +96,25 @@ type
    /// 21 - The specified parameter is invalid.
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetSecurityDescriptor(const Descriptor : OleVariant): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_LogicalFileSecuritySetting.GetSecurityDescriptor
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultGetSecurityDescriptorAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_LogicalFileSecuritySetting.SetSecurityDescriptor
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultSetSecurityDescriptorAsString(const ReturnValue:Integer) : string;
 
 implementation

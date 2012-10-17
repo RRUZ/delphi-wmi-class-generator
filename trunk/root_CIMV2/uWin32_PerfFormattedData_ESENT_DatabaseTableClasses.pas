@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:26
+/// Creation Date 17-10-2012 18:18:51
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_ESENT_DatabaseTableClasses
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_ESENT_DatabaseTableClasses.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_ESENT_DatabaseTableClasses;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Statistics for the ESE high performance embedded database management system by 
   /// Table Class
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_ESENT_DatabaseTableClasses=class(TWmiClass)
   private
     FCaption                            : String;
@@ -58,36 +44,36 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Misses per second is the rate at which database file page 
    /// requests were fulfilled by the database cache by causing a file operation.  If 
    /// this rate is high then the database cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheMissesPersec : Cardinal read FDatabaseCacheMissesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache % Hit is the percentage of database file page requests that were 
    /// fulfilled by the database cache without causing a file operation.  If this 
    /// percentage is too low, the database cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCachePercentHit : Cardinal read FDatabaseCachePercentHit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Requests/sec is the rate that pages are requested from the 
    /// database cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheRequestsPersec : Cardinal read FDatabaseCacheRequestsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Size (MB) is the amount of system memory (in MegaBytes) used by 
    /// the database cache manager to hold commonly used information from the database 
@@ -99,23 +85,23 @@ type
    /// cache size may be capped at an artificially low limit.  Increasing this limit 
    /// may increase performance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheSizeMB : Int64 read FDatabaseCacheSizeMB;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

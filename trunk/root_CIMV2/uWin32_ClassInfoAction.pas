@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:53:49
+/// Creation Date 17-10-2012 18:18:16
 /// Namespace root\CIMV2 Class Win32_ClassInfoAction
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_ClassInfoAction.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_ClassInfoAction;
 
@@ -24,17 +20,7 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The RegisterClassInfo action manages the registration of COM class information 
   /// with the system. In the Advertise mode the action registers all COM classes for 
@@ -42,7 +28,7 @@ type
   /// classes for which the corresponding feature is currently selected to be 
   /// installed.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_ClassInfoAction=class(TWmiClass)
   private
     FActionID                           : String;
@@ -67,43 +53,43 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ActionID property is a unique identifier assigned to a particular  action 
    /// for a software element. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ActionID : String read FActionID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Application ID containing DCOM information for the associated application 
    /// (string GUID).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AppID : String read FAppID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This property is optional only when the Context property is set to the 
    /// LocalServer or LocalServer32 server context. The text is registered as the 
    /// argument against the OLE server and is used by OLE for invoking the server.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Argument : String read FArgument;
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The class identifier of a COM server
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CLSID : String read FCLSID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The server context for this server.  This may be one of the following values: 
    /// LocalServer, LocalServer32, InprocServer, InprocServer32
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Context : String read FContext;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  Default inproc handler.   May be optionally provided only for Context = LocalServer or LocalServer32. A non-numeric value is treated as a system file that serves as the 32-bit InprocHandler (appearing as the InprocHandler32 value). 
    ///  Value 
@@ -118,88 +104,88 @@ type
    /// 3 = default (system) 
    ///  16-bit as well as 32-bit InprocHandlers
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DefInprocHandler : String read FDefInprocHandler;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A description of the object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Direction property indicates whether a particular   CIM_Action object is 
    /// part of a sequence of actions to transition the   current software element to 
    /// its next state, such as "Install" or to  remove the current software element, 
    /// such as "Uninstall".
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Direction : Word read FDirection;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Contains information for the HKCR (this CLSID) key.  If multiple patterns 
    /// exist, they must be delimited by a semicolon, and numeric subkeys are 
    /// generated: 0, 1, 2.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileTypeMask : String read FFileTypeMask;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// An indicator as to whether this object is insertable or not.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Insertable : Word read FInsertable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Name is used to identify this software element
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The default Program ID associated with this Class ID.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProgID : String read FProgID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The name used remotely for the server.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RemoteName : String read FRemoteName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  The SoftwareElementID is an identifier for this software element.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SoftwareElementID : String read FSoftwareElementID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  The SoftwareElementState indicates the state of a software element 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SoftwareElementState : Word read FSoftwareElementState;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The TargetOperatingSystem indicates the target operating system of the owning 
    /// software element.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TargetOperatingSystem : Word read FTargetOperatingSystem;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Version should be in the form <major>.<minor>.<revision> or 
    /// <major>.<minor><letter><revision>.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : String read FVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The VI Program ID associated with this Class ID.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VIProgID : String read FVIProgID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  The invoke method is to take a particular action. The  details of how the 
    /// method performs the action is implementation  specific.  The results of the 
@@ -207,32 +193,32 @@ type
    /// condition is satisfied.   - A 1 (one) is returned if the method is not 
    /// supported.    - Any other value indicates the condition is not satisfied. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Invoke: Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_ClassInfoAction.Direction
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetDirectionAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_ClassInfoAction.SoftwareElementState
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetSoftwareElementStateAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_ClassInfoAction.TargetOperatingSystem
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetTargetOperatingSystemAsString(const APropValue:Word) : string;
 
 implementation

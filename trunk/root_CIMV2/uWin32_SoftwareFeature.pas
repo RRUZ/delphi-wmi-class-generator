@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:34
+/// Creation Date 17-10-2012 18:19:51
 /// Namespace root\CIMV2 Class Win32_SoftwareFeature
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_SoftwareFeature.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_SoftwareFeature;
 
@@ -24,17 +20,7 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// SoftwareFeatures and SoftwareElements: A 'SoftwareFeature' is a distinct subset 
   /// of a Product, consisting of one or more 'SoftwareElements'. Each 
@@ -45,7 +31,7 @@ type
   /// reference the same component, that component will be selected for installation 
   /// if any of these features are selected.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_SoftwareFeature=class(TWmiClass)
   private
     FAccesses                           : Word;
@@ -64,75 +50,75 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of times this SoftwareFeature has been used
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Accesses : Word read FAccesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Remote execution option, one of irsEnum: ifrsFavorLocal   = 0:  Install 
    /// components locally, if possible ifrsFavorSource  = 1:  Install components to 
    /// run from the source CD/Server, if possible ifrsFollowParent = 2:  Follow the 
    /// remote execution option of the parent feature
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Attributes : Word read FAttributes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Product identification such as a serial number on software or a die number on a 
    /// hardware chip
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IdentifyingNumber : String read FIdentifyingNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The installed state of the software feature.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallState : SmallInt read FInstallState;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Last time this SoftwareFeature was used
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastUse : TDateTime read FLastUse;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the object is known to the world 
    /// outside the data processing system. This label is a human-readable name that 
    /// uniquely identifies the element in the context of the element's namespace.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Commonly used product name
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProductName : String read FProductName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -144,22 +130,22 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The name of the product's supplier. Corresponds to the Vendor property in the product object in the DMTF Solution Exchange Standard.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Vendor : String read FVendor;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Product version information.  Corresponds to the Version property in the 
    /// product object in the DMTF Solution Exchange Standard.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : String read FVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This method will reinstall the associated instance of Win32_SoftwareFeature using the specified reinstallation mode. The method can return the following values:
    /// 0 - Success.
@@ -169,41 +155,41 @@ type
    /// <param name="ReinstallMode">
    /// Specifies the reinstall mode
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Reinstall(const ReinstallMode : Word): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This method will configure the associated instance of Win32_SoftwareFeature to the specified install state. The method can return the following values:
    /// 0 - Success.
    /// 2147549445 - RPC Server Fault Error. 
    /// Other - For integer values other than those listed above, refer to the documentation on error codes returned by the Windows Installer API and the Win32 error codes.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Configure(const InstallState : Word): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_SoftwareFeature.Reinstall
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultReinstallAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_SoftwareFeature.Configure
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultConfigureAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_SoftwareFeature.InstallState
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetInstallStateAsString(const APropValue:SmallInt) : string;
 
 implementation

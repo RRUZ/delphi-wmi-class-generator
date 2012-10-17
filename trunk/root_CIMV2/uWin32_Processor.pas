@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:29
+/// Creation Date 17-10-2012 18:19:44
 /// Namespace root\CIMV2 Class Win32_Processor
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_Processor.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_Processor;
 
@@ -24,24 +20,14 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_Processor class represents a device that is capable of interpreting a 
   /// sequence of machine instructions on a Win32 computer system. On a 
   /// multiprocessor machine, there will exist one instance of this class for each 
   /// processor.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_Processor=class(TWmiClass)
   private
     FAddressWidth                       : Word;
@@ -95,13 +81,13 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Processor address width in bits.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AddressWidth : Word read FAddressWidth;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Architecture property specifies the processor architecture used by this platform. It returns one of the following        integer values:
    /// 0 - x86 
@@ -111,9 +97,9 @@ type
    /// 6 - ia64 
    /// 9 - x64 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Architecture : Word read FArchitecture;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The availability and status of the device.  For example, the Availability 
    /// property indicates that the device is running and has full power (value=3), or 
@@ -128,16 +114,16 @@ type
    /// indicates that the device is in a warning state, though also in a power save 
    /// mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Availability : Word read FAvailability;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the Win32 Configuration Manager error code.  The following values may be returned: 
    /// 0      This device is working properly. 
@@ -173,193 +159,193 @@ type
    /// 30     This device is using an Interrupt Request (IRQ) resource that another device is using. 
    /// 31     This device is not working properly because Windows cannot load the drivers required for this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConfigManagerErrorCode : Cardinal read FConfigManagerErrorCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates whether the device is using a user-defined configuration.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConfigManagerUserConfig : Boolean read FConfigManagerUserConfig;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CpuStatus property specifies the current status of the processor. Changes 
    /// in status arise from processor usage, not the physical condition of the 
    /// processor.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CpuStatus : Word read FCpuStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CreationClassName indicates the name of the class or the subclass used in the 
    /// creation of an instance. When used with the other key properties of this class, 
    /// this property allows all instances of this class and its subclasses to be 
    /// uniquely identified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CreationClassName : String read FCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The current speed (in MHz) of this processor.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CurrentClockSpeed : Cardinal read FCurrentClockSpeed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CurrentVoltage specifies the voltage of the processor. bits 0-6 of the field contain the processor's current voltage times 10. This value is only set when SMBIOS designates a voltage value. For specific values, see VoltageCaps.
    /// Example: field value for a processor voltage of 1.8 volts would be 92h = 80h + (1.8 x 10) = 80h + 18 = 80h + 12h.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CurrentVoltage : Word read FCurrentVoltage;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Processor data width in bits.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataWidth : Word read FDataWidth;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DeviceID property contains a string uniquely identifying the processor with 
    /// other devices on the system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DeviceID : String read FDeviceID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ErrorCleared is a boolean property indicating that the error reported in 
    /// LastErrorCode property is now cleared.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ErrorCleared : Boolean read FErrorCleared;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ErrorDescription is a free-form string supplying more information about the 
    /// error recorded in LastErrorCode property, and information on any corrective 
    /// actions that may be taken.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ErrorDescription : String read FErrorDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ExtClock property specifies the external clock frequency. If the frequency 
    /// is unknown this property is set to null.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExtClock : Cardinal read FExtClock;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The processor family type. For example, values include 
    /// "Pentium(R) processor with MMX(TM) technology" (14) and "68040" (96).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Family : Word read FFamily;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The L2CacheSize property specifies the size of the processor's Level 2 cache. A Level 2 cache is an external memory area that has a faster access times than the main RAM memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property L2CacheSize : Cardinal read FL2CacheSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The L2CacheSpeed property specifies the clockspeed of the processor's Level 2 cache. A Level 2 cache is an external memory area that has a faster access times than the main RAM memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property L2CacheSpeed : Cardinal read FL2CacheSpeed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The L3CacheSize property specifies the size of the processor's Level 3 cache. A Level 3 cache is an external memory area that has a faster access times than the main RAM memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property L3CacheSize : Cardinal read FL3CacheSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The L3CacheSpeed property specifies the clockspeed of the processor's Level 3 cache. A Level 3 cache is an external memory area that has a faster access times than the main RAM memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property L3CacheSpeed : Cardinal read FL3CacheSpeed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// LastErrorCode captures the last error code reported by the logical device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastErrorCode : Cardinal read FLastErrorCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Level property further defines the processor type. The value  depends on 
    /// the architecture of the processor.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Level : Word read FLevel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LoadPercentage property specifies each 
    /// processor's load capacity averaged over the last second. The term 'processor 
    /// loading' refers to the total computing burden each processor carries at one time.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LoadPercentage : Word read FLoadPercentage;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Manufacturer property specifies the name of the processor's manufacturer.
    /// Example: GenuineSilicon
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Manufacturer : String read FManufacturer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The maximum speed (in MHz) of this processor.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxClockSpeed : Cardinal read FMaxClockSpeed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
    /// subclassed, the Name property can be overridden to be a Key property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The NumberOfCores property contains a Processor's total number of cores. e.g dual core machine will have NumberOfCores = 2.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfCores : Cardinal read FNumberOfCores;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The NumberOfLogicalProcessors property specifies the total number of logical 
    /// processors.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfLogicalProcessors : Cardinal read FNumberOfLogicalProcessors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A string describing the processor family type - used when the family property 
    /// is set to 1 ("Other"). This string should be set to NULL when the family 
    /// property is any value other than 1.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OtherFamilyDescription : String read FOtherFamilyDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the Win32 Plug and Play device ID of the logical device.  Example: 
    /// *PNP030b
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PNPDeviceID : String read FPNPDeviceID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the specific power-related capabilities of the logical device. The 
    /// array values, 0="Unknown", 1="Not Supported" and 2="Disabled" are self-
@@ -375,9 +361,9 @@ type
    /// ("Power Cycle") and the Time parameter set to a specific date and time, or 
    /// interval, for power-on.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PowerManagementCapabilities : TWordArray read FPowerManagementCapabilities;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating that the Device can be power managed - ie, put into a power 
    /// save state. This boolean does not indicate that power management features are 
@@ -386,43 +372,43 @@ type
    /// false, the integer value 1, for the string, "Not Supported", should be the only 
    /// entry in the PowerManagementCapabilities array.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PowerManagementSupported : Boolean read FPowerManagementSupported;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProcessorId property contains processor-specific information that describes 
    /// the processor's features. For x86 class CPUs, the field's format depends on the 
    /// processor's support of the CPUID instruction. If the instruction is supported, the ProcessorId property contains two DWORD-formatted values. The first (offsets 08h-0Bh) is the EAX value returned by a CPUID instruction with input EAX set to 1. The second (offsets 0Ch-0Fh) is the EDX value returned by that instruction. Only the first two bytes of the ProcessorID property are significant (all others are set to 0) and contain (in WORD-format) the contents of the DX register at CPU reset.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProcessorId : String read FProcessorId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProcessorType property specifies the processor's primary function.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProcessorType : Word read FProcessorType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Revision property specifies the system's architecture-dependent revision level. The meaning of this value depends on the architecture of the processor. It contains the same values as the "Version" member, but in a numerical format.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Revision : Word read FRevision;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A free form string describing the role of the processor - for example, 
    /// "Central Processor"' or "Math Processor"
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Role : String read FRole;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SocketDesignation property contains the type of chip socket used on the circuit.
    /// Example: J202
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SocketDesignation : String read FSocketDesignation;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -434,58 +420,58 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// StatusInfo is a string indicating whether the logical device is in an enabled 
    /// (value = 3), disabled (value = 4) or some other (1) or unknown (2) state. If 
    /// this property does not apply to the logical device, the value, 5 
    /// ("Not Applicable"), should be used.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StatusInfo : Word read FStatusInfo;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Stepping is a free-form string indicating the revision level of the processor 
    /// within the processor family.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Stepping : String read FStepping;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The scoping System's CreationClassName.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCreationClassName : String read FSystemCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The scoping System's Name.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemName : String read FSystemName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A globally unique identifier for the processor.  This identifier may only be 
    /// unique within a processor family.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UniqueId : String read FUniqueId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CPU socket information including data on how this Processor can be upgraded (if 
    /// upgrades are supported). This property is an integer enumeration.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UpgradeMethod : Word read FUpgradeMethod;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Version property specifies an architecture-dependent processor revision number. Note: This member is not used in Windows 95.
    /// Example: Model 2, Stepping 12.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : String read FVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The VoltageCaps property specifies the voltage capabilities of the processor. 
    /// Bits 0-3 of the field represent specific voltages that the processor socket can 
@@ -493,9 +479,9 @@ type
    /// multiple bits are being set. For a range of voltages see CurrentVoltage. If the 
    /// property is NULL, then the voltage capabilities are unknown.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VoltageCaps : Cardinal read FVoltageCaps;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// SetPowerState defines the desired power state for a logical device and when a 
    /// device should be put into that state. The desired power state is specified by 
@@ -513,79 +499,79 @@ type
    /// qualifier on the method. The strings to which the ValueMap contents are 
    /// 'translated' may also be specified in the subclass as a Values array qualifier.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetPowerState(const PowerState : Word;const Time : TDateTime): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Requests a reset of the logical device. The return value should be 0 if the 
    /// request was successfully executed, 1 if the request is not supported and some 
    /// other value if an error occurred.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Reset: Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.Architecture
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetArchitectureAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.Availability
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetAvailabilityAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.ConfigManagerErrorCode
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetConfigManagerErrorCodeAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property TWin32_Processor.CpuStatus
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetCpuStatusAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property TWin32_Processor.Family
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetFamilyAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.PowerManagementCapabilities
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetPowerManagementCapabilitiesAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.ProcessorType
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetProcessorTypeAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property TWin32_Processor.StatusInfo
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetStatusInfoAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_Processor.UpgradeMethod
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetUpgradeMethodAsString(const APropValue:Word) : string;
 
 implementation

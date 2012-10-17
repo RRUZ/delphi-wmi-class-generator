@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:34
+/// Creation Date 17-10-2012 18:18:59
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_PerfOS_System
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_PerfOS_System.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_PerfOS_System;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The System performance object consists of counters that apply to more than one 
   /// instance of a component processors on the computer.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_PerfOS_System=class(TWmiClass)
   private
     FAlignmentFixupsPersec              : Cardinal;
@@ -71,20 +57,20 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Alignment Fixups/sec is the rate, in incidents per seconds, at alignment faults 
    /// were fixed by the system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AlignmentFixupsPersec : Cardinal read FAlignmentFixupsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Context Switches/sec is the combined rate at which all processors on the 
    /// computer are switched from one thread to another.  Context switches occur when 
@@ -97,22 +83,22 @@ type
    /// between the values observed in the last two samples, divided by the duration of 
    /// the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ContextSwitchesPersec : Cardinal read FContextSwitchesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Exception Dispatches/sec is the rate, in incidents per second, at which 
    /// exceptions were dispatched by the system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExceptionDispatchesPersec : Cardinal read FExceptionDispatchesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Control Bytes/sec is the overall rate at which bytes are transferred for 
    /// all file system operations that are neither reads nor writes, including file 
@@ -121,9 +107,9 @@ type
    /// displays the difference between the values observed in the last two samples, 
    /// divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileControlBytesPersec : Int64 read FFileControlBytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Control Operations/sec is the combined rate of file system operations that 
    /// are neither reads nor writes, such as file system control requests and requests 
@@ -132,9 +118,9 @@ type
    /// second.  This counter displays the difference between the values observed in 
    /// the last two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileControlOperationsPersec : Cardinal read FFileControlOperationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Data Operations/ sec is the combined rate of read and write operations on 
    /// all logical disks on the computer.  This is the inverse of System: File Control 
@@ -142,9 +128,9 @@ type
    /// observed in the last two samples, divided by the duration of the sample 
    /// interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileDataOperationsPersec : Cardinal read FFileDataOperationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Read Bytes/sec is the overall rate at which bytes are read to satisfy  
    /// file system read requests to all devices on the computer, including reads from 
@@ -152,9 +138,9 @@ type
    /// counter displays the difference between the values observed in the last two 
    /// samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileReadBytesPersec : Int64 read FFileReadBytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Read Operations/sec is the combined rate of file system read requests to 
    /// all devices on the computer, including requests to read from the file system 
@@ -162,9 +148,9 @@ type
    /// difference between the values observed in the last two samples, divided by the 
    /// duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileReadOperationsPersec : Cardinal read FFileReadOperationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Write Bytes/sec is the overall rate at which bytes are written to satisfy 
    /// file system write requests to all devices on the computer, including writes to 
@@ -172,9 +158,9 @@ type
    /// counter displays the difference between the values observed in the last two 
    /// samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileWriteBytesPersec : Int64 read FFileWriteBytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// File Write Operations/sec is the combined rate of the file system write 
    /// requests to all devices on the computer, including requests to write to data in 
@@ -182,43 +168,43 @@ type
    /// displays the difference between the values observed in the last two samples, 
    /// divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileWriteOperationsPersec : Cardinal read FFileWriteOperationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Floating Emulations/sec is the rate of floating emulations performed by the 
    /// system.  This counter displays the difference between the values observed in 
    /// the last two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FloatingEmulationsPersec : Cardinal read FFloatingEmulationsPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % Registry Quota In Use is the percentage of the Total Registry Quota Allowed 
    /// that is currently being used by the system.  This counter displays the current 
    /// percentage value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentRegistryQuotaInUse : Cardinal read FPercentRegistryQuotaInUse;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Processes is the number of processes in the computer at the time of data 
    /// collection. This is an instantaneous count, not an average over the time 
    /// interval.  Each process represents the running of a program.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Processes : Cardinal read FProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Processor Queue Length is the number of threads in the processor queue.  Unlike 
    /// the disk counters, this counter counters, this counter shows ready threads 
@@ -228,9 +214,9 @@ type
    /// servicing the workload. A sustained processor queue of less than 10 threads per 
    /// processor is normally acceptable, dependent of the workload.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProcessorQueueLength : Cardinal read FProcessorQueueLength;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Calls/sec is the combined rate of calls to operating system service 
    /// routines by all processes running on the computer. These routines perform all 
@@ -239,24 +225,24 @@ type
    /// management. This counter displays the difference between the values observed in 
    /// the last two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCallsPersec : Cardinal read FSystemCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Up Time is the elapsed time (in seconds) that the computer has been 
    /// running since it was last started.  This counter displays the difference 
    /// between the start time and the current time.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemUpTime : Int64 read FSystemUpTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Threads is the number of threads in the computer at the time of data 
    /// collection. This is an instantaneous count, not an average over the time 
    /// interval.  A thread is the basic executable entity that can execute 
    /// instructions in a processor.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Threads : Cardinal read FThreads;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

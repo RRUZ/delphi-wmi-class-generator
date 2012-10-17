@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:53:48
+/// Creation Date 17-10-2012 18:18:15
 /// Namespace root\CIMV2 Class Win32_CDROMDrive
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_CDROMDrive.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_CDROMDrive;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_CDROMDrive class represents a CD-ROM drive on a Win32_ComputerSystem. 
   /// 
   /// Note: The name of the drive does not correspond to the logical drive letter assigned to device.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_CDROMDrive=class(TWmiClass)
   private
     FAvailability                       : Word;
@@ -95,7 +81,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The availability and status of the device.  For example, the Availability 
    /// property indicates that the device is running and has full power (value=3), or 
@@ -110,32 +96,32 @@ type
    /// indicates that the device is in a warning state, though also in a power save 
    /// mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Availability : Word read FAvailability;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Capabilities of the media access device.  For example, the device may support "Random Access", removable media and "Automatic Cleaning".  In this case, the values 3, 7 and 9 would be written to the array. 
    /// Several of the enumerated values require some explanation: 1) Value 11, Supports Dual Sided Media, distinguishes a Device that can access both sides of dual sided Media, from a Device that reads only a single side and requires the Media to be flipped; and, 2) Value 12, Predismount Eject Not Required, indicates that Media does not have to be explicitly ejected from the Device before being accessed by a PickerElement.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Capabilities : TWordArray read FCapabilities;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// An array of free-form strings providing more detailed explanations for any of 
    /// the access device features indicated in the Capabilities array. Note, each 
    /// entry of this array is related to the entry in the Capabilities array that is 
    /// located at the same index.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CapabilityDescriptions : TStrings read FCapabilityDescriptions;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A free form string indicating the algorithm or tool used by the device to 
    /// support compression. If it is not possible or not desired to describe the 
@@ -146,9 +132,9 @@ type
    /// not known or not disclosed, and "Not Compressed" to represent that the devices 
    /// does not support compression capabilities.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CompressionMethod : String read FCompressionMethod;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the Win32 Configuration Manager error code.  The following values may be returned: 
    /// 0      This device is working properly. 
@@ -184,195 +170,195 @@ type
    /// 30     This device is using an Interrupt Request (IRQ) resource that another device is using. 
    /// 31     This device is not working properly because Windows cannot load the drivers required for this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConfigManagerErrorCode : Cardinal read FConfigManagerErrorCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates whether the device is using a user-defined configuration.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConfigManagerUserConfig : Boolean read FConfigManagerUserConfig;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CreationClassName indicates the name of the class or the subclass used in the 
    /// creation of an instance. When used with the other key properties of this class, 
    /// this property allows all instances of this class and its subclasses to be 
    /// uniquely identified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CreationClassName : String read FCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Default block size, in bytes, for this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DefaultBlockSize : Int64 read FDefaultBlockSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DeviceID property contains a string to uniquely identify this CD-ROM drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DeviceID : String read FDeviceID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Drive property indicates the drive letter of the CD ROM drive.
    /// Example: d:\
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Drive : String read FDrive;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DriveIntegrity property indicates whether files can be accurately read from 
    /// the CD device. This is achieved by reading a block of data twice and comparing 
    /// the data against itself.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DriveIntegrity : Boolean read FDriveIntegrity;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ErrorCleared is a boolean property indicating that the error reported in 
    /// LastErrorCode property is now cleared.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ErrorCleared : Boolean read FErrorCleared;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ErrorDescription is a free-form string supplying more information about the 
    /// error recorded in LastErrorCode property, and information on any corrective 
    /// actions that may be taken.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ErrorDescription : String read FErrorDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ErrorMethodology is a free-form string describing the type(s) of error 
    /// detection and correction supported by this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ErrorMethodology : String read FErrorMethodology;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The FileSystemFlags property is deprecated in favor of FileSystemFlagsEx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileSystemFlags : Word read FFileSystemFlags;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The FileSystemFlagsEx property indicates the file system flags associated with the Win32 CD-ROM drive. This parameter can be any combination of flags. FS_FILE_COMPRESSION and FS_VOL_IS_COMPRESSED are mutually exclusive.
    /// Example: 0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FileSystemFlagsEx : Cardinal read FFileSystemFlagsEx;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Id property indicates the driver letter uniquely identifying this CD-ROM drive.
    /// Example: d:\ 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Id : String read FId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// LastErrorCode captures the last error code reported by the logical device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastErrorCode : Cardinal read FLastErrorCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Manufacturer property indicates the manufacturer of the Win32 CD-ROM drive.
    /// Example: PLEXTOR
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Manufacturer : String read FManufacturer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Maximum block size, in bytes, for media accessed by this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxBlockSize : Int64 read FMaxBlockSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MaximumComponentLength property indicates the maximum length of a filename component supported by the Win32 CD-ROM drive. A filename component the portion of a filename between backslashes. The value can be used to indicate that long names are supported by the specified file system. For example, for a FAT file system supporting long names, the function stores the value 255, rather than the previous 8.3 indicator. Long names can also be supported on systems that use the NTFS file system.
    /// Example: 255.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaximumComponentLength : Cardinal read FMaximumComponentLength;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Maximum size, in Kbytes, of media supported by this device. KBytes is 
    /// interpreted as the number of bytes multiplied by 1000 (NOT the number of bytes 
    /// multiplied by 1024).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxMediaSize : Int64 read FMaxMediaSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MediaLoaded property indicates whether a CD-ROM is in the drive.
    /// Values: TRUE or FALSE. If TRUE, the CD is in the drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MediaLoaded : Boolean read FMediaLoaded;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MediaType property indicates the type of media used or accessed by this 
    /// device. In this class, the value will always be "CD-ROM".
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MediaType : String read FMediaType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MfrAssignedRevisionLevel property indicates the manufacturer assigned firmware revision level of the CDROM drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MfrAssignedRevisionLevel : String read FMfrAssignedRevisionLevel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Minimum block size, in bytes, for media accessed by this device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MinBlockSize : Int64 read FMinBlockSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
    /// subclassed, the Name property can be overridden to be a Key property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating that the media access device needs cleaning. Whether manual 
    /// or automatic cleaning is possible is indicated in the Capabilities array 
    /// property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NeedsCleaning : Boolean read FNeedsCleaning;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// When the media access device supports multiple individual media, this property 
    /// defines the maximum number which can be supported or inserted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfMediaSupported : Cardinal read FNumberOfMediaSupported;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the Win32 Plug and Play device ID of the logical device.  Example: 
    /// *PNP030b
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PNPDeviceID : String read FPNPDeviceID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Indicates the specific power-related capabilities of the logical device. The 
    /// array values, 0="Unknown", 1="Not Supported" and 2="Disabled" are self-
@@ -388,9 +374,9 @@ type
    /// ("Power Cycle") and the Time parameter set to a specific date and time, or 
    /// interval, for power-on.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PowerManagementCapabilities : TWordArray read FPowerManagementCapabilities;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating that the Device can be power managed - ie, put into a power 
    /// save state. This boolean does not indicate that power management features are 
@@ -399,57 +385,57 @@ type
    /// false, the integer value 1, for the string, "Not Supported", should be the only 
    /// entry in the PowerManagementCapabilities array.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PowerManagementSupported : Boolean read FPowerManagementSupported;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The RevisionLevel property indicates the firmware revision level of the Win32 
    /// CD-ROM drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RevisionLevel : String read FRevisionLevel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SCSIBus property indicates the SCSI bus number for the disk drive.
    /// Example: 0
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SCSIBus : Cardinal read FSCSIBus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SCSILogicalUnit property indicates the SCSI logical unit number (LUN) of the disk drive.  The LUN is used to designate which SCSI controller is being accessed in a system with more than one controller being used. The SCSI device ID is similar, but is the designation for multiple devices on one controller.
    /// Example: 0
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SCSILogicalUnit : Word read FSCSILogicalUnit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SCSIPort property indicates the SCSI port number of the disk drive.
    /// Example: 1
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SCSIPort : Word read FSCSIPort;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SCSITargetId property indicates the SCSI ID number of the Win32 CD-ROM drive.
    /// Example: 0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SCSITargetId : Word read FSCSITargetId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Serial number property is a manufacturer-allocated number used to identify the physicalmedia.  
    /// Example: WD-WM3493798728 for a disk serial number.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SerialNumber : String read FSerialNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Size property indicates the size of the disk drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Size : Int64 read FSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -461,49 +447,49 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// StatusInfo is a string indicating whether the logical device is in an enabled 
    /// (value = 3), disabled (value = 4) or some other (1) or unknown (2) state. If 
    /// this property does not apply to the logical device, the value, 5 
    /// ("Not Applicable"), should be used.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StatusInfo : Word read FStatusInfo;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The scoping System's CreationClassName.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCreationClassName : String read FSystemCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The scoping System's Name.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemName : String read FSystemName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The TransferRate property indicates the CD-ROM drive's transfer rate. A value of -1 indicates that the rate could not be determined. This could potentially happen, for example, if the CD is not in the drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransferRate : Double read FTransferRate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The VolumeName property indicates the volume name of the Win32 CD-ROM drive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VolumeName : String read FVolumeName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The VolumeSerialNumber property indicates the volume serial number of the media in the CD-ROM drive.
    /// Example: A8C3-D032
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VolumeSerialNumber : String read FVolumeSerialNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// SetPowerState defines the desired power state for a logical device and when a 
    /// device should be put into that state. The desired power state is specified by 
@@ -521,54 +507,54 @@ type
    /// qualifier on the method. The strings to which the ValueMap contents are 
    /// 'translated' may also be specified in the subclass as a Values array qualifier.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetPowerState(const PowerState : Word;const Time : TDateTime): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Requests a reset of the logical device. The return value should be 0 if the 
    /// request was successfully executed, 1 if the request is not supported and some 
    /// other value if an error occurred.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Reset: Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CDROMDrive.Availability
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetAvailabilityAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CDROMDrive.Capabilities
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetCapabilitiesAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CDROMDrive.ConfigManagerErrorCode
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetConfigManagerErrorCodeAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CDROMDrive.PowerManagementCapabilities
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetPowerManagementCapabilitiesAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_CDROMDrive.StatusInfo
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetStatusInfoAsString(const APropValue:Word) : string;
 
 implementation

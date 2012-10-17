@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:24
+/// Creation Date 17-10-2012 18:19:39
 /// Namespace root\CIMV2 Class Win32_PhysicalMedia
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PhysicalMedia.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PhysicalMedia;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_PhysicaMedia class represents any type of documentation or storage 
   /// medium, such as tapes, CD ROMs, etc.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PhysicalMedia=class(TWmiClass)
   private
     FCapacity                           : Int64;
@@ -68,7 +54,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of bytes that can be read from or written to a Media. This property 
    /// is not applicable to "Hard Copy" (documentation) or cleaner Media. Data 
@@ -76,38 +62,38 @@ type
    /// property. For tapes, it should be assumed that no filemarks or blank space 
    /// areas are recorded on the Media.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Capacity : Int64 read FCapacity;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating that the physical media is used for cleaning purposes and 
    /// not data storage.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CleanerMedia : Boolean read FCleanerMedia;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CreationClassName indicates the name of the class or the subclass used in the 
    /// creation of an instance. When used with the other key properties of this class, 
    /// this property allows all instances of this class and its subclasses to be 
    /// uniquely identified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CreationClassName : String read FCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a textual description of the object. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A physical component can be hot swapped if it is possible to replace the 
    /// element with a physically different but equivalent one while the containing 
@@ -115,55 +101,55 @@ type
    /// may be designed to be hot swapped. All components that can be hot swapped are 
    /// inherently removable and replaceable .
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HotSwappable : Boolean read FHotSwappable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The name of the organization responsible for producing the physical element. 
    /// This may be the entity from whom the element is purchased, but this is not 
    /// necessarily true. The latter information is contained in the Vendor property of 
    /// CIM_Product.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Manufacturer : String read FManufacturer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Additional detail related to the MediaType enumeration. For example, if value 3 
    /// ("QIC Cartridge") is specified, this property could indicate whether the tape 
    /// is wide or 1/4 inch, whether it is pre-formatted, whether it is Travan 
    /// compatible, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MediaDescription : String read FMediaDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the type of the physical media, as an enumerated integer. The 
    /// MediaDescription property is used to provide more explicit definition of the 
    /// media type, whether it is pre-formatted, compatibility features, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MediaType : Word read FMediaType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The name by which the physical element is generally known.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Model : String read FModel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the object is known. When 
    /// subclassed, the Name property can be overridden to be a Key property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// OtherIdentifyingInfo captures additional data, beyond asset tag information, 
    /// that could be used to identify a physical element. One example is bar code data 
@@ -172,23 +158,23 @@ type
    /// property would be NULL and the bar code data used as the class key, in the tag 
    /// property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OtherIdentifyingInfo : String read FOtherIdentifyingInfo;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The part number assigned by the organization responsible for producing or 
    /// manufacturing the physical element.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PartNumber : String read FPartNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating that the physical element is powered on (TRUE), or is 
    /// currently off (FALSE).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoweredOn : Boolean read FPoweredOn;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A physical component is removable if it is designed to be taken in and out of 
    /// the physical container in which it is normally found, without impairing the 
@@ -197,9 +183,9 @@ type
    /// component removed, then the element is removable and can be hot swapped. For 
    /// example, an upgradeable processor chip is removable.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Removable : Boolean read FRemovable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A physical component is replaceable  if it is possible to replace (FRU or 
    /// upgrade) the element with a physically different one.  For example, some 
@@ -207,22 +193,22 @@ type
    /// higher clock rating. In this case, the processor is said to be replaceable . 
    /// All removable components are inherently replaceable .
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Replaceable : Boolean read FReplaceable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Serial number property is a manufacturer-allocated number used to identify the physicalmedia.  
    /// Example: WD-WM3493798728 for a disk serial number.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SerialNumber : String read FSerialNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The stock keeping unit number for this physical element.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SKU : String read FSKU;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -234,38 +220,38 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Tag property uniquely identifies the physical media in the system.
    /// Example: \\PHYSICALDRIVE0
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Tag : String read FTag;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A string indicating the version of the physical element.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : String read FVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean specifying whether the media is currently write protected by some kind 
    /// of physical mechanism, such as a protect tab on a floppy diskette.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteProtectOn : Boolean read FWriteProtectOn;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_PhysicalMedia.MediaType
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetMediaTypeAsString(const APropValue:Word) : string;
 
 implementation

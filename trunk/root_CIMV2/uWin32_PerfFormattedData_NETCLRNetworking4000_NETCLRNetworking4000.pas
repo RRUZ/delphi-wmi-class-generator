@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:27
+/// Creation Date 17-10-2012 18:18:52
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_NETCLRNetworking4000_NETCLRNetworking4000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_NETCLRNetworking4000_NETCLRNetworking4000.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_NETCLRNetworking4000_NETCLRNetworking4000;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Counters for classes in the System.Net namespace.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_NETCLRNetworking4000_NETCLRNetworking4000=class(TWmiClass)
   private
     FBytesReceived                      : Int64;
@@ -64,92 +50,92 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The cumulative total number of bytes received over all open socket connections 
    /// since the process was started. This number includes data and any protocol 
    /// information that is not defined by the TCP/IP protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesReceived : Int64 read FBytesReceived;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The cumulative total number of bytes sent over all open socket connections 
    /// since the process was started. This number includes data and any protocol 
    /// information that is not defined by the TCP/IP protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesSent : Int64 read FBytesSent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The cumulative total number of socket connections established for this process 
    /// since the process was started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ConnectionsEstablished : Cardinal read FConnectionsEstablished;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The cumulative total number of datagram packets received since the process was 
    /// started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceived : Cardinal read FDatagramsReceived;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The cumulative total number of datagram packets sent since the process was 
    /// started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsSent : Cardinal read FDatagramsSent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of HttpWebRequest objects aborted during the last sample interval 
    /// (typically 1 sec). Typically requests are aborted either by calling 
    /// HttpWebRequest.Abort() or if the request times out.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsAbortedPerSec : Cardinal read FHttpWebRequestsAbortedPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The average lifetime of all web requests completed during the last sample 
    /// interval. The lifetime is defined as the time between the creation of the 
    /// HttpWebRequest object and the closing of either the HttpWebResponse object or 
    /// the response stream object. Values are shown in milliseconds.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsAverageLifetime : Int64 read FHttpWebRequestsAverageLifetime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The average time HttpWebRequest objects spent in a waiting queue. A request is 
    /// added to a waiting queue if all connections to the server are already in use 
    /// when the request is submitted, and remains there until a connection becomes 
    /// available. Values are shown in milliseconds.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsAverageQueueTime : Int64 read FHttpWebRequestsAverageQueueTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of HttpWebRequest objects created during the last sample interval 
    /// (typically 1 sec).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsCreatedPerSec : Cardinal read FHttpWebRequestsCreatedPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of HttpWebRequest objects failed during the last sample interval 
    /// (typically 1 sec). A request is considered failed, if after starting the 
@@ -157,22 +143,22 @@ type
    /// HttpWebRequest.EndGetRequestStream(), HttpWebRequest.GetRequestStream(), 
    /// HttpWebRequest.EndGetResponse(), HttpWebRequest.GetResponse()
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsFailedPerSec : Cardinal read FHttpWebRequestsFailedPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of HttpWebRequest objects added to a waiting queue during the last 
    /// sample interval (typically 1 sec). A request is added to a waiting queue if all 
    /// connections to the server are already in use when the request is submitted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HttpWebRequestsQueuedPerSec : Cardinal read FHttpWebRequestsQueuedPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

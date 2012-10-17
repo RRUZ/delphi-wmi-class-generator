@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:33
+/// Creation Date 17-10-2012 18:18:57
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_PerfOS_Cache
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_PerfOS_Cache.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_PerfOS_Cache;
 
@@ -24,17 +20,7 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Cache performance object  consists of counters that monitor the file system 
   /// cache, an area of physical memory that stores recently used data as long as 
@@ -44,7 +30,7 @@ type
   /// can grow, but when memory is scarce, the cache can become too small to be 
   /// effective.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_PerfOS_Cache=class(TWmiClass)
   private
     FAsyncCopyReadsPersec               : Cardinal;
@@ -88,23 +74,23 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Async Copy Reads/sec is the frequency of reads from pages of the file system 
    /// cache that involve a memory copy of the data from the cache to the application's buffer.  The application will regain control immediately even if the disk must be accessed to retrieve the page.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AsyncCopyReadsPersec : Cardinal read FAsyncCopyReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Async Data Maps/sec is the frequency that an application using a file system, 
    /// such as NTFS, to map a page of a file into the file system cache to read the 
    /// page, and does not wait for the page to be retrieved if it is not in main 
    /// memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AsyncDataMapsPersec : Cardinal read FAsyncDataMapsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Async Fast Reads/sec is the frequency of reads from the file system cache that 
    /// bypass the installed file system and retrieve the data directly from the cache. 
@@ -116,9 +102,9 @@ type
    /// call) will not wait until the data has been retrieved from disk, but will get 
    /// control immediately.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AsyncFastReadsPersec : Cardinal read FAsyncFastReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Async MDL Reads/sec is the frequency of reads from the file system cache that 
    /// use a Memory Descriptor List (MDL) to access the pages.  The MDL contains the 
@@ -126,9 +112,9 @@ type
    /// Access (DMA) of the pages.  If the accessed page(s) are not in main memory, the 
    /// calling application program will not wait for the pages to fault in from disk.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AsyncMDLReadsPersec : Cardinal read FAsyncMDLReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Async Pin Reads/sec is the frequency of reading data into the file system cache 
    /// preparatory to writing the data back to disk.  Pages read in this fashion are 
@@ -136,105 +122,105 @@ type
    /// control immediately even if the disk must be accessed to retrieve the page.  
    /// While pinned, a page's physical address will not be altered.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AsyncPinReadsPersec : Cardinal read FAsyncPinReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Copy Read Hits is the percentage of cache copy read requests that hit the 
    /// cache, that is, they did not require a disk read in order to provide access to 
    /// the page in the cache.  A copy read is a file read operation that is satisfied 
    /// by a memory copy from a page in the cache to the application's buffer.  The LAN Redirector uses this method for retrieving information from the cache, as does the LAN Server for small transfers.  This is a method used by the disk file systems as well.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CopyReadHitsPercent : Cardinal read FCopyReadHitsPercent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Copy Reads/sec is the frequency of reads from pages of the file system cache 
    /// that involve a memory copy of the data from the cache to the application's buffer.  The LAN Redirector uses this method for retrieving information from the file system cache, as does the LAN Server for small transfers.  This is a method used by the disk file systems as well.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CopyReadsPersec : Cardinal read FCopyReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Data Flushes/sec is the rate at which the file system cache has flushed its 
    /// contents to disk as the result of a request to flush or to satisfy a write-
    /// through file write request.  More than one page can be transferred on each 
    /// flush operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataFlushesPersec : Cardinal read FDataFlushesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Data Flush Pages/sec is the number of pages the file system cache has flushed 
    /// to disk as a result of a request to flush or to satisfy a write-through file 
    /// write request.  More than one page can be transferred on each flush operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataFlushPagesPersec : Cardinal read FDataFlushPagesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Data Map Hits is the percentage of data maps in the file system cache that 
    /// could be resolved without having to retrieve a page from the disk, because the 
    /// page was already in physical memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataMapHitsPercent : Cardinal read FDataMapHitsPercent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Data Map Pins/sec is the frequency of data maps in the file system cache that 
    /// resulted in pinning a page in main memory, an action usually preparatory to 
    /// writing to the file on disk.   While pinned, a page's physical address in main memory and virtual address in the file system cache will not be altered.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataMapPinsPersec : Cardinal read FDataMapPinsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Data Maps/sec is the frequency that a file system such as NTFS, maps a page of 
    /// a file into the file system cache to read the page.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataMapsPersec : Cardinal read FDataMapsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of dirty pages on the system cache
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DirtyPages : Int64 read FDirtyPages;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Threshold for number of dirty pages on system cache
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DirtyPageThreshold : Int64 read FDirtyPageThreshold;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fast Read Not Possibles/sec is the frequency of attempts by an Application 
    /// Program Interface (API) function call to bypass the file system to get to data 
    /// in the file system cache that could not be honored without invoking the file 
    /// system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FastReadNotPossiblesPersec : Cardinal read FFastReadNotPossiblesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fast Read Resource Misses/sec is the frequency of cache misses necessitated by 
    /// the lack of available resources to satisfy the request.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FastReadResourceMissesPersec : Cardinal read FFastReadResourceMissesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fast Reads/sec is the frequency of reads from the file system cache that bypass 
    /// the installed file system and retrieve the data directly from the cache.  
@@ -243,12 +229,12 @@ type
    /// without file system involvement if the data is in the cache.  Even if the data 
    /// is not in the cache, one invocation of the file system is avoided.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FastReadsPersec : Cardinal read FFastReadsPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Lazy Write Flushes/sec is the rate at which the Lazy Writer thread has written 
    /// to disk.  Lazy Writing is the process of updating the disk after the page has 
@@ -256,9 +242,9 @@ type
    /// have to wait for the disk write to be complete before proceeding.  More than 
    /// one page can be transferred by each write operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LazyWriteFlushesPersec : Cardinal read FLazyWriteFlushesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Lazy Write Pages/sec is the rate at which the Lazy Writer thread has written to 
    /// disk.  Lazy Writing is the process of updating the disk after the page has been 
@@ -266,17 +252,17 @@ type
    /// to wait for the disk write to be complete before proceeding.  More than one 
    /// page can be transferred on a single disk write operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LazyWritePagesPersec : Cardinal read FLazyWritePagesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// MDL Read Hits is the percentage of Memory Descriptor List (MDL) Read requests 
    /// to the file system cache that hit the cache, i.e., did not require disk 
    /// accesses in order to provide memory access to the page(s) in the cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MDLReadHitsPercent : Cardinal read FMDLReadHitsPercent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// MDL Reads/sec is the frequency of reads from the file system cache that use a 
    /// Memory Descriptor List (MDL) to access the data.  The MDL contains the physical 
@@ -284,56 +270,56 @@ type
    /// Direct Memory Access (DMA) device to effect the copy.  The LAN Server uses this 
    /// method for large transfers out of the server.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MDLReadsPersec : Cardinal read FMDLReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pin Read Hits is the percentage of pin read requests that hit the file system 
    /// cache, i.e., did not require a disk read in order to provide access to the page 
    /// in the file system cache.  While pinned, a page's physical address in the file system cache will not be altered.  The LAN Redirector uses this method for retrieving data from the cache, as does the LAN Server for small transfers.  This is usually the method used by the disk file systems as well.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PinReadHitsPercent : Cardinal read FPinReadHitsPercent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pin Reads/sec is the frequency of reading data into the file system cache 
    /// preparatory to writing the data back to disk.  Pages read in this fashion are 
    /// pinned in memory at the completion of the read.  While pinned, a page's physical address in the file system cache will not be altered.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PinReadsPersec : Cardinal read FPinReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Read Aheads/sec is the frequency of reads from the file system cache in which 
    /// the Cache detects sequential access to a file.  The read aheads permit the data 
    /// to be transferred in larger blocks than those being requested by the 
    /// application, reducing the overhead per access.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReadAheadsPersec : Cardinal read FReadAheadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sync Copy Reads/sec is the frequency of reads from pages of the file system 
    /// cache that involve a memory copy of the data from the cache to the application's buffer.  The file system will not regain control until the copy operation is complete, even if the disk must be accessed to retrieve the page.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SyncCopyReadsPersec : Cardinal read FSyncCopyReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sync Data Maps/sec counts the frequency that a file system, such as NTFS, maps 
    /// a page of a file into the file system cache to read the page, and wishes to 
    /// wait for the page to be retrieved if it is not in main memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SyncDataMapsPersec : Cardinal read FSyncDataMapsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sync Fast Reads/sec is the frequency of reads from the file system cache that 
    /// bypass the installed file system and retrieve the data directly from the cache. 
@@ -344,9 +330,9 @@ type
    /// is not in the cache, the request (application program call) will wait until the 
    /// data has been retrieved from disk.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SyncFastReadsPersec : Cardinal read FSyncFastReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sync MDL Reads/sec is the frequency of reads from the file system cache that 
    /// use a Memory Descriptor List (MDL) to access the pages.  The MDL contains the 
@@ -354,9 +340,9 @@ type
    /// Access (DMA) of the pages.  If the accessed page(s) are not in main memory, the 
    /// caller will wait for the pages to fault in from the disk.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SyncMDLReadsPersec : Cardinal read FSyncMDLReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sync Pin Reads/sec is the frequency of reading data into the file system cache 
    /// preparatory to writing the data back to disk.  Pages read in this fashion are 
@@ -364,7 +350,7 @@ type
    /// regain control until the page is pinned in the file system cache, in particular 
    /// if the disk must be accessed to retrieve the page.  While pinned, a page's physical address in the file system cache will not be altered.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SyncPinReadsPersec : Cardinal read FSyncPinReadsPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

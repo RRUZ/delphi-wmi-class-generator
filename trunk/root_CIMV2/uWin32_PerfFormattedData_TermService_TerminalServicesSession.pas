@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:44
+/// Creation Date 17-10-2012 18:19:07
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_TermService_TerminalServicesSession
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_TermService_TerminalServicesSession.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_TermService_TerminalServicesSession;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Terminal Services per-session resource monitoring.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_TermService_TerminalServicesSession=class(TWmiClass)
   private
     FCaption                            : String;
@@ -128,99 +114,99 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of handles currently open by this process. This number is 
    /// equal to the sum of the handles currently open by each thread in this process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HandleCount : Cardinal read FHandleCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input async framing errors. These can be caused by a noisy 
    /// transmission line. Using a smaller packet size may help in some cases.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputAsyncFrameError : Cardinal read FInputAsyncFrameError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input async overflow errors. These can be caused by a lack of buffer 
    /// space available on the host.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputAsyncOverflow : Cardinal read FInputAsyncOverflow;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input async overrun errors. These can be caused by the baud rate 
    /// being faster than the computer can handle, or a non-16550 serial line is used. 
    /// Overruns can also occur if too many high speed serial lines are active at one 
    /// time for the processor's power.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputAsyncOverrun : Cardinal read FInputAsyncOverrun;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input async parity errors. These can be caused by a noisy 
    /// transmission line
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputAsyncParityError : Cardinal read FInputAsyncParityError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes input on this session that includes all protocol overhead.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputBytes : Cardinal read FInputBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes input after compression. This number compared with the Total 
    /// Bytes input is the compression ratio.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputCompressedBytes : Cardinal read FInputCompressedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input compression dictionary flushes. When the data can not be 
    /// compressed, the compression dictionary is flushed so that newer data has a 
    /// better chance of being compressed. Some causes of data not compressing includes 
    /// transferring compressed files over Client Drive Mapping.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputCompressFlushes : Cardinal read FInputCompressFlushes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Compression ratio of the server input data stream.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputCompressionRatio : Cardinal read FInputCompressionRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of input errors of all types. Some example input errors are lost ACK's, badly formed packets, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputErrors : Cardinal read FInputErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of frames (packets) input on this Session.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputFrames : Cardinal read FInputFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of timeouts on the communication line as seen from the client 
    /// side of the connection. These are typically the result of a noisy line. On some 
@@ -228,109 +214,109 @@ type
    /// too short. Increasing the protocol timeout on these types of lines will improve 
    /// performance by reducing needless re-transmissions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputTimeouts : Cardinal read FInputTimeouts;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of Terminal Services transport-level errors on input.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputTransportErrors : Cardinal read FInputTransportErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of times that a wait for an available send buffer was done by the 
    /// protocols on the client side of the connection.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputWaitForOutBuf : Cardinal read FInputWaitForOutBuf;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes input on this session after all protocol overhead has been 
    /// removed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputWdBytes : Cardinal read FInputWdBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of frames input after any additional protocol added frames have been 
    /// removed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InputWdFrames : Cardinal read FInputWdFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output async framing errors. This could be caused by a hardware or 
    /// line problem.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputAsyncFrameError : Cardinal read FOutputAsyncFrameError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output async overflow errors.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputAsyncOverflow : Cardinal read FOutputAsyncOverflow;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output async overrun errors.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputAsyncOverrun : Cardinal read FOutputAsyncOverrun;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output async parity errors. These can be caused by a hardware or line 
    /// problem.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputAsyncParityError : Cardinal read FOutputAsyncParityError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes output on this Session that includes all protocol overhead.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputBytes : Cardinal read FOutputBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes output after compression. This number compared with the Total 
    /// Bytes output is the compression ratio.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputCompressedBytes : Cardinal read FOutputCompressedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output compression dictionary flushes. When the data can not be 
    /// compressed, the compression dictionary is flushed so that newer data has a 
    /// better chance of being compressed. Some causes of data not compressing includes 
    /// transfering compressed files over Client Drive Mapping.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputCompressFlushes : Cardinal read FOutputCompressFlushes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Compression ratio of the server output data stream.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputCompressionRatio : Cardinal read FOutputCompressionRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of output errors of all types. Some example output errors are lost ACK's, badly formed packets, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputErrors : Cardinal read FOutputErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of frames (packets) output on this session.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputFrames : Cardinal read FOutputFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of timeouts on the communication line from the host side of 
    /// the connection. These are typically the result of a noisy line. On some high 
@@ -338,36 +324,36 @@ type
    /// short. Increasing the protocol timeout on these types of lines will improve 
    /// performance by reducing needless re-transmissions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputTimeouts : Cardinal read FOutputTimeouts;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of Terminal Services transport-level errors on output.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputTransportErrors : Cardinal read FOutputTransportErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This is the number of times that a wait for an available send buffer was done 
    /// by the protocol on the server side of the connection.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputWaitForOutBuf : Cardinal read FOutputWaitForOutBuf;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of bytes output on this session after all protocol overhead has been 
    /// removed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputWdBytes : Cardinal read FOutputWdBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of frames output before any additional protocol frames have been 
    /// added.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputWdFrames : Cardinal read FOutputWdFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page Faults/sec is the rate at which page faults by the threads executing in 
    /// this process are occurring.  A page fault occurs when a thread refers to a 
@@ -376,9 +362,9 @@ type
    /// already in main memory, or if it is in use by another process with whom the 
    /// page is shared.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageFaultsPersec : Cardinal read FPageFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page File Bytes is the current amount of virtual memory, in bytes, that this 
    /// process has reserved for use in the paging file(s). Paging files are used to 
@@ -388,9 +374,9 @@ type
    /// paging file, this counter reflects the current amount of virtual memory that 
    /// the process has reserved for use in physical memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageFileBytes : Int64 read FPageFileBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page File Bytes Peak is the maximum amount of virtual memory, in bytes, that 
    /// this process has reserved for use in the paging file(s). Paging files are used 
@@ -400,9 +386,9 @@ type
    /// paging file, this counter reflects the maximum amount of virtual memory that 
    /// the process has reserved for use in physical memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageFileBytesPeak : Int64 read FPageFileBytesPeak;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % Privileged Time is the percentage of elapsed time that the process threads 
    /// spent executing code in privileged mode. When a Windows system service is 
@@ -415,9 +401,9 @@ type
    /// application might appear in other subsystem processes in addition to the 
    /// privileged time in the process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentPrivilegedTime : Int64 read FPercentPrivilegedTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % Processor Time is the percentage of elapsed time that all of process threads 
    /// used the processor to execution instructions. An instruction is the basic unit 
@@ -425,9 +411,9 @@ type
    /// and a process is the object created when a program is run. Code executed to 
    /// handle some hardware interrupts and trap conditions are included in this count.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentProcessorTime : Int64 read FPercentProcessorTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % User Time is the percentage of elapsed time that the process threads spent 
    /// executing code in user mode. Applications, environment subsystems, and integral 
@@ -438,9 +424,9 @@ type
    /// modes. Some work done by Windows on behalf of the application might appear in 
    /// other subsystem processes in addition to the privileged time in the process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentUserTime : Int64 read FPercentUserTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Nonpaged Bytes is the size, in bytes, of the nonpaged pool, an area of 
    /// system memory (physical memory used by the operating system) for objects that 
@@ -450,9 +436,9 @@ type
    /// Bytes\\_Total.  This counter displays the last observed value only; it is not 
    /// an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolNonpagedBytes : Cardinal read FPoolNonpagedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Paged Bytes is the size, in bytes, of the paged pool, an area of system 
    /// memory (physical memory used by the operating system) for objects that can be 
@@ -461,202 +447,202 @@ type
    /// Process\\Pool Paged Bytes\\_Total. This counter displays the last observed 
    /// value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolPagedBytes : Cardinal read FPoolPagedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Private Bytes is the current size, in bytes, of memory that this process has 
    /// allocated that cannot be shared with other processes.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PrivateBytes : Int64 read FPrivateBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Hit ratio in the protocol bitmap cache. A higher hit ratio means better 
    /// performance since data transmissions are reduced. Low hit ratios are due to the 
    /// screen updating with new information that is either not re-used, or is flushed 
    /// out of the client cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBitmapCacheHitRatio : Cardinal read FProtocolBitmapCacheHitRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of hits in the protocol bitmap cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBitmapCacheHits : Cardinal read FProtocolBitmapCacheHits;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of references to the protocol bitmap cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBitmapCacheReads : Cardinal read FProtocolBitmapCacheReads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Hit ratio in the protocol brush cache. A higher hit ratio means better 
    /// performance since data transmissions are reduced. Low hit ratios are due to the 
    /// screen updating with new information that is either not re-used, or is flushed 
    /// out of the client cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBrushCacheHitRatio : Cardinal read FProtocolBrushCacheHitRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of hits in the protocol brush cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBrushCacheHits : Cardinal read FProtocolBrushCacheHits;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of references to the protocol brush cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolBrushCacheReads : Cardinal read FProtocolBrushCacheReads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Hit ratio in the protocol glyph cache. A higher hit ratio means better 
    /// performance since data transmissions are reduced. Low hit ratios are due to the 
    /// screen updating with new information that is either not re-used, or is flushed 
    /// out of the client cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolGlyphCacheHitRatio : Cardinal read FProtocolGlyphCacheHitRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of hits in the protocol glyph cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolGlyphCacheHits : Cardinal read FProtocolGlyphCacheHits;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of references to the protocol glyph cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolGlyphCacheReads : Cardinal read FProtocolGlyphCacheReads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Hit ratio in the protocol save screen bitmap cache. A higher hit ratio means 
    /// better performance since data transmissions are reduced. Low hit ratios are due 
    /// to the screen updating with new information that is either not re-used, or is 
    /// flushed out of the client cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolSaveScreenBitmapCacheHitRatio : Cardinal read FProtocolSaveScreenBitmapCacheHitRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of hits in the protocol save screen bitmap cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolSaveScreenBitmapCacheHits : Cardinal read FProtocolSaveScreenBitmapCacheHits;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of references to the protocol save screen bitmap cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProtocolSaveScreenBitmapCacheReads : Cardinal read FProtocolSaveScreenBitmapCacheReads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of threads currently active in this process. An instruction is the 
    /// basic unit of execution in a processor, and a thread is the object that 
    /// executes instructions. Every running process has at least one thread.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ThreadCount : Cardinal read FThreadCount;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of async framing errors. These can be caused by a noisy 
    /// transmission line. Using a smaller packet size may help in some cases.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalAsyncFrameError : Cardinal read FTotalAsyncFrameError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of async overflow errors. These can be caused by a lack of buffer 
    /// space available on the host.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalAsyncOverflow : Cardinal read FTotalAsyncOverflow;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of async overrun errors. These can be caused by the baud rate 
    /// being faster than the computer can handle, or a non-16550 serial line is used. 
    /// Overruns can also occur if too many high speed serial lines are active at one 
    /// time for the processor's power.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalAsyncOverrun : Cardinal read FTotalAsyncOverrun;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of async parity errors. These can be caused by a noisy 
    /// transmission line.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalAsyncParityError : Cardinal read FTotalAsyncParityError;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of bytes on this Session that includes all protocol overhead.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalBytes : Cardinal read FTotalBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of bytes after compression. This number compared with the total 
    /// bytes is the compression ratio.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalCompressedBytes : Cardinal read FTotalCompressedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of compression dictionary flushes. When the data can not be 
    /// compressed, the compression dictionary is flushed so that newer data has a 
    /// better chance of being compressed. Some causes of data not compressing includes 
    /// transfering compressed files over Client Drive Mapping.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalCompressFlushes : Cardinal read FTotalCompressFlushes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total compression ratio of the server data stream.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalCompressionRatio : Cardinal read FTotalCompressionRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of errors of all types. Some example errors are lost ACK's, badly formed packets, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalErrors : Cardinal read FTotalErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of frames (packets) on this Session.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalFrames : Cardinal read FTotalFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Overall hit ratio for all protocol caches.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalProtocolCacheHitRatio : Cardinal read FTotalProtocolCacheHitRatio;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total hits in all protocol caches. The protocol caches Windows objects that are 
    /// likely to be re-used to avoid having to re-send them on the transmission line. 
    /// Example objects are Windows icons and brushes. Hits in the cache represent 
    /// objects that did not need to be re-sent.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalProtocolCacheHits : Cardinal read FTotalProtocolCacheHits;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total references to all protocol caches.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalProtocolCacheReads : Cardinal read FTotalProtocolCacheReads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of timeouts on the communication line from both the host and 
    /// client sides of the connection. These are typically the result of a noisy line. 
@@ -664,45 +650,45 @@ type
    /// being too short. Increasing the protocol timeout on these types of lines will 
    /// improve performance by reducing needless re-transmissions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalTimeouts : Cardinal read FTotalTimeouts;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of Terminal Services transport-level errors.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalTransportErrors : Cardinal read FTotalTransportErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of times that a wait for an available send buffer was done by the 
    /// protocols on both the server and client sides of the connection.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalWaitForOutBuf : Cardinal read FTotalWaitForOutBuf;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of bytes on this Session after all protocol overhead has been 
    /// removed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalWdBytes : Cardinal read FTotalWdBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of frames input and output before any additional protocol 
    /// frames have been added.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalWdFrames : Cardinal read FTotalWdFrames;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Virtual Bytes is the current size, in bytes, of the virtual address space the 
    /// process is using. Use of virtual address space does not necessarily imply 
    /// corresponding use of either disk or main memory pages. Virtual space is finite, 
    /// and the process can limit its ability to load libraries.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VirtualBytes : Int64 read FVirtualBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Virtual Bytes Peak is the maximum size, in bytes, of virtual address space the 
    /// process has used at any one time. Use of virtual address space does not 
@@ -710,9 +696,9 @@ type
    /// However, virtual space is finite, and the process might limit its ability to 
    /// load libraries.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property VirtualBytesPeak : Int64 read FVirtualBytesPeak;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Working Set is the current size, in bytes, of the Working Set of this process. 
    /// The Working Set is the set of memory pages touched recently by the threads in 
@@ -722,9 +708,9 @@ type
    /// are needed they will then be soft-faulted back into the Working Set before 
    /// leaving main memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WorkingSet : Int64 read FWorkingSet;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Working Set Peak is the maximum size, in bytes, of the Working Set of this 
    /// process at any point in time. The Working Set is the set of memory pages 
@@ -734,7 +720,7 @@ type
    /// trimmed from Working Sets. If they are needed they will then be soft-faulted 
    /// back into the Working Set before they leave main memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WorkingSetPeak : Int64 read FWorkingSetPeak;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

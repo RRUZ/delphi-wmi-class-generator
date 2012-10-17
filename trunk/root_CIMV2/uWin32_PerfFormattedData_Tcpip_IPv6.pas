@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:42
+/// Creation Date 17-10-2012 18:19:05
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Tcpip_IPv6
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Tcpip_IPv6.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_Tcpip_IPv6;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The IP performance object consists of counters that measure the rates at which 
   /// IP datagrams are sent and received by using IP protocols.  It also includes 
   /// counters that monitor IP protocol errors.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_Tcpip_IPv6=class(TWmiClass)
   private
     FCaption                            : String;
@@ -72,13 +58,13 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Forwarded/sec is the rate, in incidents per second, at which attemps 
    /// were made to find routes to forward input datagrams their final destination, 
@@ -86,9 +72,9 @@ type
    /// not act as IP Gateways, this rate includes only packets that were source-routed 
    /// via this entity, where the source-route option processing was successful.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsForwardedPersec : Cardinal read FDatagramsForwardedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Outbound Discarded is the number of output IP datagrams that were 
    /// discarded even though no problems were encountered to prevent their 
@@ -96,26 +82,26 @@ type
    /// counter includes datagrams counted in Datagrams Forwarded/sec that meet this 
    /// criterion.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsOutboundDiscarded : Cardinal read FDatagramsOutboundDiscarded;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Outbound No Route is the number of IP datagrams that were discarded 
    /// because no route could be found to transmit them to their destination.  This 
    /// counter includes any packets counted in Datagrams Forwarded/sec that meet this 
    /// `no route' criterion.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsOutboundNoRoute : Cardinal read FDatagramsOutboundNoRoute;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams/sec is the rate, in incidents per second, at which IP datagrams were 
    /// received from or sent to the interfaces, including those in error. Forwarded 
    /// datagrams are not included in this rate.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsPersec : Cardinal read FDatagramsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received Address Errors is the number of input datagrams that were 
    /// discarded because the IP address in their IP header destination field was not 
@@ -125,119 +111,119 @@ type
    /// includes datagrams that were discarded because the destination address was not 
    /// a local address.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedAddressErrors : Cardinal read FDatagramsReceivedAddressErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received Delivered/sec is the rate, in incidents per second, at which 
    /// input datagrams were successfully delivered to IP user-protocols, including 
    /// Internet Control Message Protocol (ICMP).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedDeliveredPersec : Cardinal read FDatagramsReceivedDeliveredPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received Discarded is the number of input IP datagrams that were 
    /// discarded even though problems prevented their continued processing (for 
    /// example, lack of buffer space). This counter does not include any datagrams 
    /// discarded while awaiting re-assembly.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedDiscarded : Cardinal read FDatagramsReceivedDiscarded;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received Header Errors is the number of input datagrams that were 
    /// discarded due to errors in the IP headers, including bad checksums, version 
    /// number mismatch, other format errors, time-to-live exceeded, errors discovered 
    /// in processing their IP options, etc.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedHeaderErrors : Cardinal read FDatagramsReceivedHeaderErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received/sec is the rate, in incidents per second, at which IP 
    /// datagrams are received from the interfaces, including those in error. Datagrams 
    /// Received/sec is a subset of Datagrams/sec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedPersec : Cardinal read FDatagramsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Received Unknown Protocol is the number of locally-addressed 
    /// datagrams that were successfully received but were discarded because of an 
    /// unknown or unsupported protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsReceivedUnknownProtocol : Cardinal read FDatagramsReceivedUnknownProtocol;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Datagrams Sent/sec is the rate, in incidents per second, at which IP datagrams 
    /// were supplied for transmission by local IP user-protocols (including ICMP). 
    /// This counter does not include any datagrams counted in Datagrams Forwarded/sec. 
    /// Datagrams Sent/sec is a subset of Datagrams/sec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatagramsSentPersec : Cardinal read FDatagramsSentPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragmentation Failures is the number of IP datagrams that were discarded 
    /// because they needed to be fragmented at but could not be (for example, because 
    /// the `Don't Fragment' flag was set).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentationFailures : Cardinal read FFragmentationFailures;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragmented Datagrams/sec is the rate, in incidents per second, at which 
    /// datagrams are successfully fragmented.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentedDatagramsPersec : Cardinal read FFragmentedDatagramsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragment Re-assembly Failures is the number of failures detected by the IP 
    /// reassembly algorithm, such as time outs, errors, etc.  This is not necessarily 
    /// a count of discarded IP fragments since some algorithms (notably RFC 815) lose 
    /// track of the number of fragments by combining them as they are received.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentReassemblyFailures : Cardinal read FFragmentReassemblyFailures;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragments Created/sec is the rate, in incidents per second, at which IP 
    /// datagram fragments were generated as a result of fragmentation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentsCreatedPersec : Cardinal read FFragmentsCreatedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragments Re-assembled/sec is the rate, in incidents per second, at which IP 
    /// fragments were successfully reassembled.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentsReassembledPersec : Cardinal read FFragmentsReassembledPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Fragments Received/sec is the rate, in incidents per second, at which IP 
    /// fragments that need to be reassembled at this entity are received.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FragmentsReceivedPersec : Cardinal read FFragmentsReceivedPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

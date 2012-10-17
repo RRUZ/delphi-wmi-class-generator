@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:39
+/// Creation Date 17-10-2012 18:19:03
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_ServiceModelOperation3000_ServiceModelOperation3000
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_ServiceModelOperation3000_ServiceModelOperation3000.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_ServiceModelOperation3000_ServiceModelOperation3000;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// ServiceModelOperation 3.0.0.0 performance counters
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_ServiceModelOperation3000_ServiceModelOperation3000=class(TWmiClass)
   private
     FCallFailedPerSecond                : Cardinal;
@@ -67,141 +53,141 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls with unhandled exceptions in this operation per second. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFailedPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallFailedPerSecond : Cardinal read FCallFailedPerSecond;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.Calls.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Calls : Cardinal read FCalls;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The average duration of calls to this operation. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallDuration.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsDuration : Cardinal read FCallsDuration;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls with unhandled exceptions in this operation. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFailed.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsFailed : Cardinal read FCallsFailed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that returned faults. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFaulted.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsFaulted : Cardinal read FCallsFaulted;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that returned faults per second. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsFaultedPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsFaultedPerSecond : Cardinal read FCallsFaultedPerSecond;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that are in progress. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsOutstanding.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsOutstanding : Cardinal read FCallsOutstanding;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation per second. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.CallsPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CallsPerSecond : Cardinal read FCallsPerSecond;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that failed authorization. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityCallsNotAuthorized.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SecurityCallsNotAuthorized : Cardinal read FSecurityCallsNotAuthorized;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that failed authorization per second. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityCallsNotAuthorizedPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SecurityCallsNotAuthorizedPerSecond : Cardinal read FSecurityCallsNotAuthorizedPerSecond;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that failed validation or authentication. 
    /// http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityValidationAuthenticationFailures.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SecurityValidationandAuthenticationFailures : Cardinal read FSecurityValidationandAuthenticationFailures;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of calls to this operation that failed validation or authentication 
    /// per second. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.SecurityValidationAuthenticationFailuresPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SecurityValidationandAuthenticationFailuresPerSecond : Cardinal read FSecurityValidationandAuthenticationFailuresPerSecond;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of transactions that flowed to this operation. This counter is 
    /// incremented any time a transaction ID is present in the message sent to the 
    /// operation. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.TxFlowed.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransactionsFlowed : Cardinal read FTransactionsFlowed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The number of transactions that flowed to this operation per second. This 
    /// counter is incremented any time a transaction ID is present in the message sent 
    /// to the operation. http://msdn.microsoft.com/en-
    /// US/library/System.ServiceModel.Diagnostics.PerformanceCounters.Operation.TxFlowedPerSecond.aspx
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransactionsFlowedPerSecond : Cardinal read FTransactionsFlowedPerSecond;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

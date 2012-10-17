@@ -46,7 +46,8 @@ Uses
  Generics.Collections,
  StrUtils,
  SysUtils,
- uWmiDelphiClass;
+ uWmiDelphiClass,
+ uSettings;
 
 
 function GetFunctNameVarNull(const CIMTypeStr:string): string;
@@ -94,7 +95,7 @@ begin
 end;
 
 //http://www.devjet.net/announcements/delphi-documentation-guidelines/
-procedure AddHelpInsight(const Summary:string;Params,Descr,HelpInsightList:TStrings;Indent:Integer=3);
+procedure AddHelpInsight(const Summary:string;Params,Descr,HelpInsightList:TStrings;Indent:Integer; FSettings: TSettings);
 var
   j,i   : integer;
   List  : TStringList;
@@ -137,8 +138,16 @@ begin
 
   if HelpInsightList.Count>0 then
   begin
-    HelpInsightList.Insert(0,Format('%s{$IFNDEF OLD_DELPHI}{$REGION ''Documentation''}{$ENDIF}',[space]));
-    HelpInsightList.Add(Format('%s{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}',[space]));
+    if FSettings.UseDelphiOldVersions then
+    begin
+      HelpInsightList.Insert(0,Format('%s{$IFNDEF OLD_DELPHI}{$REGION ''Documentation''}{$ENDIF}',[space]));
+      HelpInsightList.Add(Format('%s{$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}',[space]));
+    end
+    else
+    begin
+      HelpInsightList.Insert(0,Format('%s{$REGION ''Documentation''}',[space]));
+      HelpInsightList.Add(Format('%s{$ENDREGION}',[space]));
+    end;
   end;
 end;
 
@@ -198,11 +207,12 @@ var
   MethodDirectiv  : string;
   MethodType      : string;
   LengthVar       : Integer;
+  FSettings: TSettings;
 
   LInParams, LOutParams : TStrings;
 begin
   Result:='';
-
+  FSettings:=TSettings.Create;
   WMiClassMetaData := TWMiClassMetaData.Create(NameSpace,WmiClass);
   UsesList      :=TStringList.Create;
   InterfaceList :=TStringList.Create;
@@ -213,6 +223,7 @@ begin
   ImplList      :=TStringList.Create;
   MethodsImpl   :=TStringList.Create;
   try
+      ReadSettings(FSettings);
       Description:=WMiClassMetaData.Description;
       UsesList.Add('/// <summary>');
       UsesList.Add('/// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012');
@@ -223,10 +234,14 @@ begin
       UsesList.Add('/// MSDN info about this class '+WMiClassMetaData.URI);
       UsesList.Add('/// </summary>');
       UsesList.Add('');
-      UsesList.Add('{$IFDEF FPC}');
-      UsesList.Add(' {$MODE DELPHI} {$H+}');
-      UsesList.Add(' {$DEFINE OLD_DELPHI}');
-      UsesList.Add('{$ENDIF}');
+
+      if FSettings.UseFPC then
+      begin
+        UsesList.Add('{$IFDEF FPC}');
+        UsesList.Add(' {$MODE DELPHI} {$H+}');
+        UsesList.Add(' {$DEFINE OLD_DELPHI}');
+        UsesList.Add('{$ENDIF}');
+      end;
       UsesList.Add('');
       UsesList.Add(format('unit u%s;',[WmiClass]));
       UsesList.Add('');
@@ -270,7 +285,7 @@ begin
            if sValue<>'' then
            begin
             //Add property description
-            AddHelpInsight(sValue,nil,nil,ListDescr);
+            AddHelpInsight(sValue,nil,nil,ListDescr, 3, FSettings);
             PropertiesList.AddStrings(ListDescr);
            end;
          finally
@@ -355,7 +370,7 @@ begin
                  FreeAndNil(LOutParams);
                end;
 
-               AddHelpInsight(sValue,AllMethodParams,AllMethodDescr,ListDescr);
+               AddHelpInsight(sValue,AllMethodParams,AllMethodDescr,ListDescr, 3 , FSettings);
              finally
                AllMethodParams.Free;
                AllMethodDescr.Free;
@@ -645,24 +660,39 @@ begin
 
       InterfaceList.Add('type');
 
-      InterfaceList.Add('{$IFDEF FPC}');
-      InterfaceList.Add('  Cardinal=Longint;');
-      InterfaceList.Add('  Int64=Integer;');
-      InterfaceList.Add('  Word=Longint;');
-      InterfaceList.Add('{$ENDIF}');
+      if FSettings.UseFPC then
+      begin
+        InterfaceList.Add('{$IFDEF FPC}');
+        InterfaceList.Add('  Cardinal=Longint;');
+        InterfaceList.Add('  Int64=Integer;');
+        InterfaceList.Add('  Word=Longint;');
+        InterfaceList.Add('{$ENDIF}');
+      end;
 
-      InterfaceList.Add('{$IFNDEF FPC}');
-      InterfaceList.Add('  {$IF CompilerVersion < 17}');
-      InterfaceList.Add('    {$DEFINE OLD_DELPHI}');
-      InterfaceList.Add('  {$IFEND}');
-      InterfaceList.Add('{$ENDIF}');
+      if FSettings.UseFPC and FSettings.UseDelphiOldVersions then
+      begin
+        InterfaceList.Add('{$IFNDEF FPC}');
+        InterfaceList.Add('  {$IF CompilerVersion < 17}');
+        InterfaceList.Add('    {$DEFINE OLD_DELPHI}');
+        InterfaceList.Add('  {$IFEND}');
+        InterfaceList.Add('{$ENDIF}');
+      end
+      else
+      if not FSettings.UseFPC and FSettings.UseDelphiOldVersions then
+      begin
+        InterfaceList.Add('{$IF CompilerVersion < 17}');
+        InterfaceList.Add('  {$DEFINE OLD_DELPHI}');
+        InterfaceList.Add('{$IFEND}');
+      end;
+
+
 
       if WMiClassMetaData.Description<>'' then
       begin
         ListDescr:=TStringList.Create;
         try
           //Add class description
-          AddHelpInsight(WMiClassMetaData.Description,nil,nil,ListDescr,2);
+          AddHelpInsight(WMiClassMetaData.Description,nil,nil,ListDescr,2, FSettings);
           InterfaceList.AddStrings(ListDescr);
         finally
          ListDescr.Free;
@@ -703,7 +733,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the result of the function T%s.%s',[WmiClass,WMiClassMetaData.Methods[i].Name]),nil,nil,ListDescr,2);
+              Format('Return the description for the result of the function T%s.%s',[WmiClass,WMiClassMetaData.Methods[i].Name]),nil,nil,ListDescr,2, FSettings);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -730,7 +760,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the result of the function T%s.%s',[WmiClass,WMiClassMetaData.Methods[i].Name]),nil,nil,ListDescr,2);
+              Format('Return the description for the result of the function T%s.%s',[WmiClass,WMiClassMetaData.Methods[i].Name]),nil,nil,ListDescr,2,FSettings);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -770,7 +800,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the value of the property T%s.%s',[WmiClass,WMiClassMetaData.Properties[i].Name]),nil,nil,ListDescr,2);
+              Format('Return the description for the value of the property T%s.%s',[WmiClass,WMiClassMetaData.Properties[i].Name]),nil,nil,ListDescr,2,FSettings);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -796,7 +826,7 @@ begin
            ListDescr:=TStringList.Create;
            try
               AddHelpInsight(
-              Format('Return the description for the value of the property T%s.%s',[WmiClass,WMiClassMetaData.Properties[i].Name]),nil,nil,ListDescr,2);
+              Format('Return the description for the value of the property T%s.%s',[WmiClass,WMiClassMetaData.Properties[i].Name]),nil,nil,ListDescr,2,FSettings);
               InterfaceList.AddStrings(ListDescr);
            finally
              ListDescr.Free;
@@ -947,6 +977,7 @@ begin
               ImplList.Text;
 
   finally
+    FSettings.Free;
     UsesList.Free;
     InterfaceList.Free;
     FieldsList.Free;

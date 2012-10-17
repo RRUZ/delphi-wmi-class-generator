@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:20
+/// Creation Date 17-10-2012 18:18:46
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Counters_IPsecDriver
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Counters_IPsecDriver.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_Counters_IPsecDriver;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// IPsec Driver is the set of Internet Protocol security (IPsec) driver counters 
   /// that apply to traffic over Internet Protocol version 4 and Internet Protocol 
   /// version 6.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_Counters_IPsecDriver=class(TWmiClass)
   private
     FActiveSecurityAssociations         : Cardinal;
@@ -86,130 +72,130 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Active Security Associations is the number of active quick mode security 
    /// associations.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ActiveSecurityAssociations : Cardinal read FActiveSecurityAssociations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Received in Transport Mode per Second is the rate of bytes received using 
    /// transport mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesReceivedinTransportModePersec : Cardinal read FBytesReceivedinTransportModePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Received in Tunnel Mode per Second is the rate of bytes received using 
    /// tunnel mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesReceivedinTunnelModePersec : Cardinal read FBytesReceivedinTunnelModePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Sent in Transport Mode per Second is the rate of bytes sent using 
    /// transport mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesSentinTransportModePersec : Cardinal read FBytesSentinTransportModePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Sent in Tunnel Mode per Second is the rate of bytes sent using tunnel 
    /// mode.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesSentinTunnelModePersec : Cardinal read FBytesSentinTunnelModePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Inbound Packets Dropped per Second is the rate of inbound packets dropped by 
    /// IPsec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InboundPacketsDroppedPersec : Cardinal read FInboundPacketsDroppedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Inbound Packets Received per Second is the rate of inbound packets successfully 
    /// processed by IPsec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InboundPacketsReceivedPersec : Cardinal read FInboundPacketsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Incorrect SPI packets is the number of packets for which the Security Parameter 
    /// Index (SPI) was incorrect since the computer was last started. A large number 
    /// of packets with bad SPIs within a short amount of time might indicate a packet 
    /// spoofing attack.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IncorrectSPIPackets : Cardinal read FIncorrectSPIPackets;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Incorrect SPI packets per Second is the rate of packets for which the Security 
    /// Parameter Index (SPI) was incorrect since the computer was last started. A 
    /// large number of packets with bad SPIs within a short amount of time might 
    /// indicate a packet spoofing attack.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IncorrectSPIPacketsPersec : Cardinal read FIncorrectSPIPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Offloaded Bytes Received per Second is the rate of bytes received using IPsec 
    /// hardware offload. Certain network adapters can accelerate IPsec processing by 
    /// performing hardware offload of IPsec cryptographic functions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OffloadedBytesReceivedPersec : Cardinal read FOffloadedBytesReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Offloaded Bytes Sent per Second is the rate of bytes sent using IPsec hardware 
    /// offload. Certain network adapters can accelerate IPsec processing by performing 
    /// hardware offload of IPsec cryptographic functions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OffloadedBytesSentPersec : Cardinal read FOffloadedBytesSentPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Offloaded Security Associations is the number of active quick mode security 
    /// associations offloaded to hardware. Certain network adapters can accelerate 
    /// IPsec processing by performing hardware offload of IPsec cryptographic 
    /// functions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OffloadedSecurityAssociations : Cardinal read FOffloadedSecurityAssociations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Not Authenticated is the number of packets for which data could not be 
    /// verified (for which the integrity hash verification failed) since the computer 
    /// was last started. Increases in this counter might indicate an IPsec packet 
    /// spoofing or modification attack, or packet corruption by network devices.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsNotAuthenticated : Cardinal read FPacketsNotAuthenticated;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Not Authenticated per Second is the rate of packets for which data 
    /// could not be verified (for which the integrity hash verification failed) since 
@@ -217,135 +203,135 @@ type
    /// IPsec packet spoofing or modification attack, or packet corruption by network 
    /// devices.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsNotAuthenticatedPersec : Cardinal read FPacketsNotAuthenticatedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Not Decrypted is the number of packets that could not be decrypted 
    /// since the computer was last started. A packet might not be decrypted if it 
    /// fails a validation check.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsNotDecrypted : Cardinal read FPacketsNotDecrypted;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Not Decrypted per Second is the rate of packets that could not be 
    /// decrypted since the computer was last started. A packet might not be decrypted 
    /// if it fails a validation check.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsNotDecryptedPersec : Cardinal read FPacketsNotDecryptedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Over Wrong SA is the number of packets received over the wrong 
    /// security association since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedOverWrongSA : Cardinal read FPacketsReceivedOverWrongSA;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Over Wrong SA per Second is the rate of packets received over 
    /// the wrong security association since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedOverWrongSAPersec : Cardinal read FPacketsReceivedOverWrongSAPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed ESP Validation is the number of packets received that 
    /// failed ESP validation since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedESPValidation : Cardinal read FPacketsThatFailedESPValidation;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed ESP Validation per Second is the rate of packets received 
    /// that failed ESP validation since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedESPValidationPersec : Cardinal read FPacketsThatFailedESPValidationPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed Replay Detection is the number of packets that contained an 
    /// invalid sequence number since the computer was last started. Increases in this 
    /// counter might indicate a network problem or replay attack.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedReplayDetection : Cardinal read FPacketsThatFailedReplayDetection;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed Replay Detection per Second is the rate of packets that 
    /// contained an invalid sequence number since the computer was last started. 
    /// Increases in this counter might indicate a network problem or replay attack.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedReplayDetectionPersec : Cardinal read FPacketsThatFailedReplayDetectionPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed UDP-ESP Validation is the number of packets received that 
    /// failed UDP-ESP validation (used for NAT traversal) since the computer was last 
    /// started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedUDPESPValidation : Cardinal read FPacketsThatFailedUDPESPValidation;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets That Failed UDP-ESP Validation per Second is the rate of packets 
    /// received that failed UDP-ESP validation (used for NAT traversal) since the 
    /// computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsThatFailedUDPESPValidationPersec : Cardinal read FPacketsThatFailedUDPESPValidationPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pending Security Associations is the number of pending quick mode security 
    /// associations.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PendingSecurityAssociations : Cardinal read FPendingSecurityAssociations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Plaintext Packets Received is the number of clear text packets received since 
    /// the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PlaintextPacketsReceived : Cardinal read FPlaintextPacketsReceived;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Plaintext Packets Received per Second is the rate of clear text packets 
    /// received since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PlaintextPacketsReceivedPersec : Cardinal read FPlaintextPacketsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// SA Rekeys is the number of successful rekey operations for quick mode security 
    /// associations since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SARekeys : Cardinal read FSARekeys;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Security Associations Added is the number of security associations added since 
    /// the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SecurityAssociationsAdded : Cardinal read FSecurityAssociationsAdded;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total Inbound Packets Dropped is the total number of inbound packets dropped by 
    /// IPsec, since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalInboundPacketsDropped : Cardinal read FTotalInboundPacketsDropped;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total Inbound Packets Received is the total number of inbound packets 
    /// successfully processed by IPsec, since the computer was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalInboundPacketsReceived : Cardinal read FTotalInboundPacketsReceived;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

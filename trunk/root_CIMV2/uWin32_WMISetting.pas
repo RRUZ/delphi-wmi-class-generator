@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:41
+/// Creation Date 17-10-2012 18:19:57
 /// Namespace root\CIMV2 Class Win32_WMISetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_WMISetting.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_WMISetting;
 
@@ -24,24 +20,14 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_WMISetting class is a Singleton class that contains the operational 
   /// parameters for the WMI service. Win32_WMISetting can only have one instance. 
   /// This single instance always exists for each Win32 system, and cannot be 
   /// deleted. Additional instances cannot be created.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_WMISetting=class(TWmiClass)
   private
     FASPScriptDefaultNamespace          : String;
@@ -91,105 +77,105 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ASPScriptDefaultNamespace property contains the namespace used by calls 
    /// from the script API if none is specified by the caller.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ASPScriptDefaultNamespace : String read FASPScriptDefaultNamespace write SetASPScriptDefaultNamespace;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ASPScriptEnabled property indicates whether WMI scripting can be used on 
    /// Active Server Pages (ASP). This property is valid on Windows NT 4.0 systems 
    /// only. For Windows 2000 systems, WMI scripting is always allowed on ASP.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ASPScriptEnabled : Boolean read FASPScriptEnabled write SetASPScriptEnabled;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AutoRecoverMofs property contains a list of fully qualified MOF file names 
    /// used to initialize or recover the WMI repository. The list determines the order 
    /// in which MOFs are compiled.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AutorecoverMofs : TStrings read FAutorecoverMofs;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AutoStartWin9X property indicates the circumstances under which WMI will 
    /// start on Win9X systems.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AutoStartWin9X : Cardinal read FAutoStartWin9X write SetAutoStartWin9X;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BackupInterval property specifies the length of time that will elapse 
    /// between backups of the WMI database.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BackupInterval : Cardinal read FBackupInterval write SetBackupInterval;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BackupLastTime property specifies the date and time the last backup was 
    /// performed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BackupLastTime : TDateTime read FBackupLastTime write SetBackupLastTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BuildVersion property contains version information for the currently 
    /// installed WMI service.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BuildVersion : String read FBuildVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DatabaseDirectory property specifies the directory path containing the WMI 
    /// repository.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseDirectory : String read FDatabaseDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DatabaseMaxSize property specifies the maximum size of the WMI repository.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseMaxSize : Cardinal read FDatabaseMaxSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EnableAnonWin9xConnections indicates whether remote access without security 
    /// checking is permitted. This property only applies to Windows 95 and Windows 98 
    /// systems.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property EnableAnonWin9xConnections : Boolean read FEnableAnonWin9xConnections write SetEnableAnonWin9xConnections;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EnableEvents property indicates whether the WMI event subsystem should be enabled.
    /// Values: TRUE or FALSE, If TRUE,then the event subsystem is enabled.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property EnableEvents : Boolean read FEnableEvents write SetEnableEvents;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EnableStartupHeapPreallocation property indicates whether WMI will start with a pre-allocated heap.
    /// Values: TRUE or FALSE. If TRUE, then a pre-allocated heap with the size of LastStartupHeapPreallocation is created when WMI is initialized.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property EnableStartupHeapPreallocation : Boolean read FEnableStartupHeapPreallocation write SetEnableStartupHeapPreallocation;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HighThresholdOnClientObjects property specifies the maximum rate provider 
    /// created objects can be delivered to clients. To accommodate speed differentials 
@@ -199,9 +185,9 @@ type
    /// (specified by this property) is reached, WMI will accept no more objects from 
    /// providers and return WBEM_E_OUT_OF_MEMORY to the clients.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HighThresholdOnClientObjects : Cardinal read FHighThresholdOnClientObjects write SetHighThresholdOnClientObjects;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HighThresholdOnEvents property specifies the maximum rate at which events 
    /// are to be delivered to clients. To accommodate speed differentials between 
@@ -211,37 +197,37 @@ type
    /// property) is reached, WMI will accept no more events from providers and return 
    /// WBEM_E_OUT_OF_MEMORY to the clients.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HighThresholdOnEvents : Cardinal read FHighThresholdOnEvents write SetHighThresholdOnEvents;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallationDirectory property contains the directory path where the WMI 
    /// software has been installed. The default location is: \system32\wbem.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallationDirectory : String read FInstallationDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LastStartupHeapPreallocation property specifies the size of the pre-
    /// allocated heap created by WMI during initialization.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastStartupHeapPreallocation : Cardinal read FLastStartupHeapPreallocation;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LoggingDirectory property specifies the directory path containing the 
    /// location of the WMI system log files.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LoggingDirectory : String read FLoggingDirectory write SetLoggingDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LoggingLevel property indicates whether event logging is enabled and the 
    /// verbosity level of logging used.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LoggingLevel : Cardinal read FLoggingLevel write SetLoggingLevel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LowThresholdOnClientObjects property specifies the rate at which WMI will 
    /// start to slow the creation of new objects created for clients. To accommodate 
@@ -250,9 +236,9 @@ type
    /// out of control, WMI gradually slows down the creation of new objects to match 
    /// the client's rate of use. This slowdown starts when the rate at which objects are being created exceeds the value of this property. The slowdown continues until equilibrium is achieved, or the high threshold is reached.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LowThresholdOnClientObjects : Cardinal read FLowThresholdOnClientObjects write SetLowThresholdOnClientObjects;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LowThresholdOnEvents property specifies the rate at which  WMI will start 
    /// to slow the delivery of new events. to accommodate speed differentials between 
@@ -260,31 +246,31 @@ type
    /// If the queue grows out of control, WMI slows down the delivery of events 
    /// gradually to get them in line with the client's rate . This slowdown starts when the rate at which events are generated exceeds the value of the this property. The slowdown continues until either the equilibrium is achieved, or the high threshold is reached.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LowThresholdOnEvents : Cardinal read FLowThresholdOnEvents write SetLowThresholdOnEvents;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MaxLogFileSize property indicates the maximum size of the log files 
    /// produced by the WMI service.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxLogFileSize : Cardinal read FMaxLogFileSize write SetMaxLogFileSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MaxWaitOnClientObjects property specifies the amount of time a newly 
    /// created object waits to be used by the client before it is discarded and an 
    /// error value is returned.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxWaitOnClientObjects : Cardinal read FMaxWaitOnClientObjects write SetMaxWaitOnClientObjects;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MaxWaitOnEvents property specifies the amount of time an event sent to a 
    /// client is queued before being discarded.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxWaitOnEvents : Cardinal read FMaxWaitOnEvents write SetMaxWaitOnEvents;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MofSelfInstallDirectory property contains the directory path for 
    /// applications that install MOF files to the CIM repository. WMI automatically 
@@ -294,31 +280,31 @@ type
    /// AutorecoverMofs list used when WMI is initializing or recovering the 
    /// repository. The list determines the order in which MOFs are compiled.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MofSelfInstallDirectory : String read FMofSelfInstallDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SettingID : String read FSettingID;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_WMISetting.AutoStartWin9X
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetAutoStartWin9XAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_WMISetting.LoggingLevel
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetLoggingLevelAsString(const APropValue:Cardinal) : string;
 
 implementation
