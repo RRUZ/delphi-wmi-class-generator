@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:02
+/// Creation Date 17-10-2012 18:19:20
 /// Namespace root\CIMV2 Class Win32_PerfRawData_Counters_Synchronization
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_Counters_Synchronization.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_Counters_Synchronization;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Synchronization performance object consists of counters for kernel 
   /// synchronization. The synchronization object represents each processor as an 
   /// instance of the object.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_Counters_Synchronization=class(TWmiClass)
   private
     FCaption                            : String;
@@ -97,295 +83,295 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of first exclusive acquires from ExAcquireResourceExclusiveLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAcquiresAcqExclLitePersec : Cardinal read FExecResourceAcquiresAcqExclLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of first shared acquires from ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAcquiresAcqShrdLitePersec : Cardinal read FExecResourceAcquiresAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of first shared acquires from ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAcquiresAcqShrdStarveExclPersec : Cardinal read FExecResourceAcquiresAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of first shared acquires from ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAcquiresAcqShrdWaitForExclPersec : Cardinal read FExecResourceAcquiresAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of acquire exclusive attempts on Executive Resources from 
    /// ExAcquireResourceExclusiveLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAttemptsAcqExclLitePersec : Cardinal read FExecResourceAttemptsAcqExclLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of acquire shared attempts on Executive Resources from 
    /// ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAttemptsAcqShrdLitePersec : Cardinal read FExecResourceAttemptsAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of acquire shared attempts on Executive Resources from 
    /// ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAttemptsAcqShrdStarveExclPersec : Cardinal read FExecResourceAttemptsAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of acquire shared attempts on Executive Resources from 
    /// ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceAttemptsAcqShrdWaitForExclPersec : Cardinal read FExecResourceAttemptsAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of boosting exclusive ownwer when waiting for this Executive Resource.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceBoostExclOwnerPersec : Cardinal read FExecResourceBoostExclOwnerPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of boosting shared ownwer(s) when waiting for this Executive Resource.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceBoostSharedOwnersPersec : Cardinal read FExecResourceBoostSharedOwnersPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of waits during exclusive acquire attempts from 
    /// ExAcquireResourceExclusiveLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceContentionAcqExclLitePersec : Cardinal read FExecResourceContentionAcqExclLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of waits during acquire attempts from ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceContentionAcqShrdLitePersec : Cardinal read FExecResourceContentionAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of waits during shared acquire attempts from 
    /// ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceContentionAcqShrdStarveExclPersec : Cardinal read FExecResourceContentionAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of waits during shared acquire attempts from 
    /// ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceContentionAcqShrdWaitForExclPersec : Cardinal read FExecResourceContentionAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of no-waits during exclusive acquire attempts from 
    /// ExAcquireResourceExclusiveLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourcenoWaitsAcqExclLitePersec : Cardinal read FExecResourcenoWaitsAcqExclLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of no-waits during acquire attempts from ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourcenoWaitsAcqShrdLitePersec : Cardinal read FExecResourcenoWaitsAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of no-waits during shared acquire attempts from 
    /// ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourcenoWaitsAcqShrdStarveExclPersec : Cardinal read FExecResourcenoWaitsAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of no-waits during exclusive acquire attempts from 
    /// ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourcenoWaitsAcqShrdWaitForExclPersec : Cardinal read FExecResourcenoWaitsAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive exclusive acquires from ExAcquireResourceExclusiveLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveExclAcquiresAcqExclLitePersec : Cardinal read FExecResourceRecursiveExclAcquiresAcqExclLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive exclusive acquires from ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveExclAcquiresAcqShrdLitePersec : Cardinal read FExecResourceRecursiveExclAcquiresAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive exclusive acquires from ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveExclAcquiresAcqShrdStarveExclPersec : Cardinal read FExecResourceRecursiveExclAcquiresAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive exclusive acquires from ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveExclAcquiresAcqShrdWaitForExclPersec : Cardinal read FExecResourceRecursiveExclAcquiresAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive shared acquires from ExAcquireResourceSharedLite.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveShAcquiresAcqShrdLitePersec : Cardinal read FExecResourceRecursiveShAcquiresAcqShrdLitePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive shared acquires from ExAcquireSharedStarveExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveShAcquiresAcqShrdStarveExclPersec : Cardinal read FExecResourceRecursiveShAcquiresAcqShrdStarveExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of recursive shared acquires from ExAcquireSharedWaitForExclusive.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceRecursiveShAcquiresAcqShrdWaitForExclPersec : Cardinal read FExecResourceRecursiveShAcquiresAcqShrdWaitForExclPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of ExSetResourceOwnerPointer to an exclusive owner.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceSetOwnerPointerExclusivePersec : Cardinal read FExecResourceSetOwnerPointerExclusivePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of ExSetResourceOwnerPointer to an existing shared owner.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceSetOwnerPointerSharedExistingOwnerPersec : Cardinal read FExecResourceSetOwnerPointerSharedExistingOwnerPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of ExSetResourceOwnerPointer to a new shared owner.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceSetOwnerPointerSharedNewOwnerPersec : Cardinal read FExecResourceSetOwnerPointerSharedNewOwnerPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of acquire operations on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalAcquiresPersec : Cardinal read FExecResourceTotalAcquiresPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Contention rate on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalContentionsPersec : Cardinal read FExecResourceTotalContentionsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of convert to shared operations on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalConvExclusiveToSharedPersec : Cardinal read FExecResourceTotalConvExclusiveToSharedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of delete operations on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalDeletePersec : Cardinal read FExecResourceTotalDeletePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of Exclusive releases on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalExclusiveReleasesPersec : Cardinal read FExecResourceTotalExclusiveReleasesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of initialization operations on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalInitializePersec : Cardinal read FExecResourceTotalInitializePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of re-initialization operations on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalReInitializePersec : Cardinal read FExecResourceTotalReInitializePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Frequency of Shared releases on Executive Resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExecResourceTotalSharedReleasesPersec : Cardinal read FExecResourceTotalSharedReleasesPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IPI Send Broadcast Requests/sec is the rate of IPI broadcast requests. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IPISendBroadcastRequestsPersec : Cardinal read FIPISendBroadcastRequestsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IPI Send Routine Requests/sec is the rate of IPI routine requests.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IPISendRoutineRequestsPersec : Cardinal read FIPISendRoutineRequestsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IPI Send Software Interrrupts/sec is the rate of software interrupts.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IPISendSoftwareInterruptsPersec : Cardinal read FIPISendSoftwareInterruptsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Spinlock acquires/sec is the rate of spinlock acquisitions. It includes the 
    /// basic spinlocks, queued spinlocks, in-stack queued spinlocks, and shared 
    /// spinlocks acquisitions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SpinlockAcquiresPersec : Cardinal read FSpinlockAcquiresPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Spinlock contentions/sec is the rate of spinlock contentions. It includes the 
    /// basic spinlocks, queued spinlocks, in-stack queued spinlocks, and shared 
    /// spinlocks contentions.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SpinlockContentionsPersec : Cardinal read FSpinlockContentionsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Spinlock spins/sec is the rate of spinlock spins. It includes the spins to 
    /// acquire basic spinlocks, queued spinlocks, in-stack queued spinlocks, and 
    /// shared spinlocks.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SpinlockSpinsPersec : Cardinal read FSpinlockSpinsPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

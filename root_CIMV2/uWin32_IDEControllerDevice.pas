@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:53:58
+/// Creation Date 17-10-2012 18:18:22
 /// Namespace root\CIMV2 Class Win32_IDEControllerDevice
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_IDEControllerDevice.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_IDEControllerDevice;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_IDEControllerDevice class represents an association between an 
   /// Integrated Drive Electronics (IDE) controller and the logical device, for 
   /// example, a disk drive, connected to it.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_IDEControllerDevice=class(TWmiClass)
   private
     FAccessState                        : Word;
@@ -53,30 +39,30 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AccessState property indicates whether the controller is actively 
    /// commanding or accessing the device (value=1) or not (value=2).  Also, the 
    /// value, "Unknown" (0), can be defined. This information is necessary when a 
    /// logical device can be commanded by, or accessed through, multiple controllers.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AccessState : Word read FAccessState;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Antecedent reference represents the IDE controller associated with this 
    /// device.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Antecedent : OleVariant read FAntecedent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Dependent reference represents the CIM_LogicalDevice connected to the IDE 
    /// controller.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Dependent : OleVariant read FDependent;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// When several bus and/or connection data widths are possible, the 
    /// NegotiatedDataWidth property defines the one in use between the devices.  Data 
@@ -84,9 +70,9 @@ type
    /// information is not available/important to device management, the property 
    /// should be set to 0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NegotiatedDataWidth : Cardinal read FNegotiatedDataWidth;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// When several bus and/or connection speeds are possible, the NegotiatedSpeed 
    /// property defines the one in use between the devices.  Speed is specified in 
@@ -94,35 +80,35 @@ type
    /// information is not available/important to device management, the property 
    /// should be set to 0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NegotiatedSpeed : Int64 read FNegotiatedSpeed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of hard resets issued by the controller. A hard reset returns the device 
    /// to its initialization or 'boot-up' state. All internal device state information 
    /// and data are lost.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfHardResets : Cardinal read FNumberOfHardResets;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of soft resets issued by the controller. A soft reset does not 
    /// completely clear current device state and/or data. Exact semantics are 
    /// dependent on the device, and on the protocols and mechanisms used to 
    /// communicate to it.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfSoftResets : Cardinal read FNumberOfSoftResets;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_IDEControllerDevice.AccessState
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetAccessStateAsString(const APropValue:Word) : string;
 
 implementation

@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:24
+/// Creation Date 17-10-2012 18:18:50
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Counters_WSManQuotaStatistics
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Counters_WSManQuotaStatistics.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_Counters_WSManQuotaStatistics;
 
@@ -24,21 +20,6 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-  /// <summary>
-  /// Displays quota usage and violation information for WS-Management processes.
-  /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
   TWin32_PerfFormattedData_Counters_WSManQuotaStatistics=class(TWmiClass)
   private
     FActiveOperations                   : Cardinal;
@@ -59,67 +40,36 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the current number of active operations for all users.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ActiveOperations : Cardinal read FActiveOperations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the current number of active shells for all users.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ActiveShells : Cardinal read FActiveShells;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the current number of active, authorized users.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property ActiveUsers : Cardinal read FActiveUsers;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the number of requests subject to system throttling.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property SystemQuotaViolationsPerSecond : Cardinal read FSystemQuotaViolationsPerSecond;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the number of approved and rejected requests per second from 
-   /// authorized users.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property TotalRequestsPerSecond : Cardinal read FTotalRequestsPerSecond;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
-   /// <summary>
-   /// Displays the number of user quota violations.
-   /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
    property UserQuotaViolationsPerSecond : Cardinal read FUserQuotaViolationsPerSecond;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

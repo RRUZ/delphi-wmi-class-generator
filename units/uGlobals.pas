@@ -91,8 +91,8 @@ uses
 
 function GetWMICFolderCache : string;
 begin
- Result:=IncludeTrailingPathDelimiter(GetSpecialFolder(CSIDL_APPDATA))+ 'WDCC\Cache\';
- //C:\Users\Dexter\AppData\Roaming\WDCC\Cache
+ Result:=IncludeTrailingPathDelimiter(GetSpecialFolder(CSIDL_APPDATA))+ 'DWCC\Cache\';
+ //C:\Users\Dexter\AppData\Roaming\DWCC\Cache
  SysUtils.ForceDirectories(Result);
 end;
 
@@ -373,17 +373,6 @@ begin
   end;
 
 end;
-
-{
-        if not ExistWmiNameSpaceCache then
-        begin
-          GetListWMINameSpaces('root', FNameSpaces);
-          SaveWMINameSpacesToCache(FNameSpaces);
-        end
-        else
-          LoadWMINameSpacesFromCache(FNameSpaces);
-
-}
 
 initialization
   CachedWMIClasses:=TCachedWMIClasses.Create;

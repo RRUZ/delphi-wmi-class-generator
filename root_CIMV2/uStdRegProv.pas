@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:53:44
+/// Creation Date 17-10-2012 18:18:12
 /// Namespace root\CIMV2 Class StdRegProv
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/StdRegProv.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uStdRegProv;
 
@@ -24,17 +20,7 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The StdRegProv class contains methods that interact with the system registry. You can use these methods to: 
   /// Verify the access permissions for a user 
@@ -42,13 +28,13 @@ type
   /// Create, enumerate, and delete named values 
   /// Read, write, and delete data values 
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TStdRegProv=class(TWmiClass)
   private
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CreateKey method creates a subkey in the specified tree. 
    /// </summary>
@@ -74,9 +60,9 @@ type
    /// 
    /// HKEY_LOCAL_MACHINE\SOFTWARE\MyKey\MySubKey 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function CreateKey(const hDefKey : Cardinal;const sSubKeyName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DeleteKey method deletes a subkey in the specified tree. 
    /// </summary>
@@ -98,9 +84,9 @@ type
    /// <param name="sSubKeyName">
    /// Contains the key to be deleted. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function DeleteKey(const hDefKey : Cardinal;const sSubKeyName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EnumKey method enumerates the subkeys for the given path. 
    /// </summary>
@@ -125,9 +111,9 @@ type
    /// <param name="sNames">
    /// Contains an array of subkey strings. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function EnumKey(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EnumValues method enumerates the named values of the given subkey. 
    /// </summary>
@@ -163,9 +149,9 @@ type
    /// REG_DWORD (4) 
    /// REG_MULTI_SZ (7) 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function EnumValues(const hDefKey : Cardinal;const sSubKeyName : String ; var sNames : String;var Types : Integer): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DeleteValue method deletes a named value in the specified subkey.
    /// </summary>
@@ -192,9 +178,9 @@ type
    /// string to delete the default named value (the default named value is not 
    /// deleted its value is set to "value not set"
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function DeleteValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetDWORDValue method sets the data value for a named value whose data type 
    /// is REG_BINARY. 
@@ -225,9 +211,9 @@ type
    /// <param name="uValue">
    /// Specifies a double word data value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetDWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String;const uValue : Cardinal): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetQWORDValue method sets the data value for a named value whose data type 
    /// is REG_QWORD. 
@@ -258,9 +244,9 @@ type
    /// <param name="uValue">
    /// Specifies a quad word data value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetQWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String;const uValue : Int64): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetDWORDValue method returns the data value for a named value whose data 
    /// type is REG_DWORD. 
@@ -290,9 +276,9 @@ type
    /// <param name="uValue">
    /// Contains the DWORD data value for the named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetDWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Cardinal): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetQWORDValue method returns the data value for a named value whose data 
    /// type is REG_QWORD. 
@@ -322,9 +308,9 @@ type
    /// <param name="uValue">
    /// Contains the DWORD data value for the named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetQWORDValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Int64): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetStringValue method sets the data value for a named value whose data type 
    /// is REG_MULTI_SZ.
@@ -355,9 +341,9 @@ type
    /// existing named value (update) or a new named value (create). Specify an empty 
    /// string to set the data value for the default named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValue : String;const sValueName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetStringValue method returns the data value for a named value whose data 
    /// type is REG_SZ. 
@@ -387,9 +373,9 @@ type
    /// <param name="sValue">
    /// Contains the string data value for the named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetMultiStringValue method sets the data value for a named value whose data 
    /// type is REG_MULTI_SZ. The SetMultiStringValue method returns a uint32 which is 
@@ -421,9 +407,9 @@ type
    /// existing named value (update) or a new named value (create). Specify an empty 
    /// string to set the data value for the default named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetMultiStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValue : Array of String;const sValueName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetMultiStringValue method returns the data value for a named value whose 
    /// data type is REG_MULTI_SZ. The GetMultiStringValue method returns a uint32 
@@ -454,9 +440,9 @@ type
    /// <param name="sValue">
    /// Contains an array of string data values for the named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetMultiStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetExpandedStringValue method sets the data value for a named value whose 
    /// data type is REG_EXPAND_SZ. The SetExpandedStringValue method returns a uint32 
@@ -490,9 +476,9 @@ type
    /// existing named value (update) or a new named value (create). Specify an empty 
    /// string to set the data value for the default named value. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetExpandedStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValue : String;const sValueName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetExpandedStringValue method returns the data value for a named value 
    /// whose data type is REG_EXPAND_SZ. 
@@ -523,9 +509,9 @@ type
    /// Contains the expanded string data value for the named value. The string is only 
    /// expanded if the environment variable (for example, %Path%) is defined. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetExpandedStringValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var sValue : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetBinaryValue method sets the data value for a named value whose data type 
    /// is REG_BINARY. The SetBinaryValue method returns a uint32 which is 0 if 
@@ -557,9 +543,9 @@ type
    /// <param name="uValue">
    /// Specifies an array of binary data values. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetBinaryValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String;const uValue : Array of Byte): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetBinaryValue method returns the data value for a named value whose data 
    /// type is REG_BINARY. The GetBinaryValue method returns a uint32 which is 0 if 
@@ -590,9 +576,9 @@ type
    /// <param name="uValue">
    /// Contains an array of binary bytes. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetBinaryValue(const hDefKey : Cardinal;const sSubKeyName : String;const sValueName : String ; var uValue : Byte): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CheckAccess method verifies that the user possesses the specified 
    /// permissions. The method returns a uint32 which is 0 if successful or some other 
@@ -639,9 +625,9 @@ type
    /// This parameter is True if user possesses the specified access permissions. 
    /// Otherwise, the parameter is False. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function CheckAccess(const hDefKey : Cardinal;const sSubKeyName : String;const uRequired : Cardinal ; var bGranted : Boolean): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetSecurityDescriptor method updates the specified key's security descriptor with the supplied __SecurityDescriptor. The method returns a uint32 which is 0 if successful or some other value if any other error occurred.
    /// </summary>
@@ -663,9 +649,9 @@ type
    /// <param name="sSubKeyName">
    /// Contains the key name to set the security descriptor on. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetSecurityDescriptor(const Descriptor : OleVariant;const hDefKey : Cardinal;const sSubKeyName : String): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The GetSecurityDescriptor method returns the specified key's security descriptor in a __SecurityDescriptor. The method returns a uint32 which is 0 if successful or some other value if any other error occurred.
    /// </summary>
@@ -687,7 +673,7 @@ type
    /// <param name="Descriptor">
    /// Returns the security descriptor from the key name. 
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function GetSecurityDescriptor(const hDefKey : Cardinal;const sSubKeyName : String ; var Descriptor : OleVariant): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

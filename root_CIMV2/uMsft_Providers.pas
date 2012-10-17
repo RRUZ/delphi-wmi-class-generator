@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:53:42
+/// Creation Date 17-10-2012 18:18:10
 /// Namespace root\CIMV2 Class Msft_Providers
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Msft_Providers.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uMsft_Providers;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Msft_Providers class exposes configuration relating to provider instances
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TMsft_Providers=class(TWmiClass)
   private
     FHostingGroup                       : String;
@@ -76,7 +62,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HostingGroup specification defines the second component of the 
    /// __Win32provider :: HostingModel whenthe hosting model is one of 
@@ -85,9 +71,9 @@ type
    /// provider host, providers that share the same hosting modeland hosting group 
    /// share the same surrogate process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HostingGroup : String read FHostingGroup;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HostingSpecification property defines the first component of the 
    /// __Win32provider :: HostingModelproperty. The hosting property is defined to be 
@@ -116,234 +102,234 @@ type
    /// provider in host to a wmi provider host running as LocalService.Note, [:((.)+)] 
    /// refers to a regular expression that defines the hosting group for the provider.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HostingSpecification : Cardinal read FHostingSpecification;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The  HostProcessIdentifier property defines the process identifier hosting the 
    /// particular instance of the provider.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HostProcessIdentifier : Cardinal read FHostProcessIdentifier;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// If provider is configured for Per Local Initialization, then the Locale 
    /// property refers to Locale's particular instantiation of a provider instance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Locale : String read FLocale;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Namespace property indicates the Namespace associated with a particular 
    /// instantiation of a provider instance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Namespace : String read FNamespace;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Provider property holds the Provider Name associated with a particular 
    /// instantiation of a provider instance.The Provider Name is identical to the 
    /// __Win32provider :: Name property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property provider : String read Fprovider;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_AccessCheck property indicates the number of calls to 
    /// IWbemEventProviderSecurity :: AccessCheck.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_AccessCheck : Int64 read FProviderOperation_AccessCheck;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CancelQuery property indicates the number of calls to 
    /// IWbemEventProviderQuerySink :: CancelQuery.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CancelQuery : Int64 read FProviderOperation_CancelQuery;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CreateClassEnumAsync property indicates the number of 
    /// calls to IWbemServices :: CreateClassEnumAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CreateClassEnumAsync : Int64 read FProviderOperation_CreateClassEnumAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CreateInstanceEnumAsync property indicates the number of 
    /// calls to IWbemServices :: CreateInstanceEnumAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CreateInstanceEnumAsync : Int64 read FProviderOperation_CreateInstanceEnumAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CreateRefreshableEnum property indicates the number of 
    /// calls to IWbemHiPerfProvider :: CreateRefreshableEnum.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CreateRefreshableEnum : Int64 read FProviderOperation_CreateRefreshableEnum;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CreateRefreshableObject property indicates the number of 
    /// calls to IWbemHiPerfProvider :: CreateRefreshableObject.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CreateRefreshableObject : Int64 read FProviderOperation_CreateRefreshableObject;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_CreateRefresher property indicates the number of calls to 
    /// IWbemHiPerfProvider :: CreateRefresher.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_CreateRefresher : Int64 read FProviderOperation_CreateRefresher;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_DeleteClassAsync property indicates the number of calls 
    /// to IWbemServices :: DeleteClassAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_DeleteClassAsync : Int64 read FProviderOperation_DeleteClassAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_DeleteInstanceAsync property indicates the number of 
    /// calls to IWbemServices :: DeleteInstanceAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_DeleteInstanceAsync : Int64 read FProviderOperation_DeleteInstanceAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_ExecMethodAsync property indicates the number of calls to 
    /// IWbemServices :: ExecMethodAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_ExecMethodAsync : Int64 read FProviderOperation_ExecMethodAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_ExecQueryAsync property indicates the number of calls to 
    /// IWbemServices :: ExecQueryAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_ExecQueryAsync : Int64 read FProviderOperation_ExecQueryAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_FindConsumer property indicates the number of calls to 
    /// IWbemEventConsumerProvider :: FindConsumer.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_FindConsumer : Int64 read FProviderOperation_FindConsumer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_GetObjectAsync property indicates the number of calls to 
    /// IWbemServices :: GetObjectAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_GetObjectAsync : Int64 read FProviderOperation_GetObjectAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_GetObjects property indicates the number of calls to 
    /// IWbemHiPerfProvider :: GetObjects.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_GetObjects : Int64 read FProviderOperation_GetObjects;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_GetProperty property indicates the number of calls to 
    /// IWbemPropertyProvider :: GetProperty.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_GetProperty : Int64 read FProviderOperation_GetProperty;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_NewQuery property indicates the number of calls to 
    /// IWbemEventProviderQuerySink :: NewQuery.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_NewQuery : Int64 read FProviderOperation_NewQuery;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_ProvideEvents property indicates the number of calls to 
    /// IWbemEventProvider :: ProvideEvents.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_ProvideEvents : Int64 read FProviderOperation_ProvideEvents;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The  property indicates the number of calls to IWbemServices :: PutClassAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_PutClassAsync : Int64 read FProviderOperation_PutClassAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_PutInstanceAsync property indicates the number of calls 
    /// to IWbemServices :: PutInstanceAsync.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_PutInstanceAsync : Int64 read FProviderOperation_PutInstanceAsync;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_PutProperty property indicates the number of calls to 
    /// IWbemPropertyProvider :: PutProperty.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_PutProperty : Int64 read FProviderOperation_PutProperty;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_QueryInstances property indicates the number of calls to 
    /// IWbemHiPerfProvider :: QueryInstances.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_QueryInstances : Int64 read FProviderOperation_QueryInstances;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_SetRegistrationObject property is currently not set.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_SetRegistrationObject : Int64 read FProviderOperation_SetRegistrationObject;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_StopRefreshing property indicates the number of calls to 
    /// IWbemHiPerfProvider :: StopRefreshing.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_StopRefreshing : Int64 read FProviderOperation_StopRefreshing;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProviderOperation_ValidateSubscription property indicates the number of 
    /// calls to IWbemEventConsumerProviderEx :: ValidateSubscription.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProviderOperation_ValidateSubscription : Int64 read FProviderOperation_ValidateSubscription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The TransactionIdentifier property is for internal use, currently always 
    /// {00000000-0000-0000-0000-000000000000}.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransactionIdentifier : String read FTransactionIdentifier;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// If provider is configured for Per User Initialization, then the User property 
    /// refers to User's particular instantiation of a provider instance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property User : String read FUser;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Suspend method suspends execution of providers. All calls passing through a 
    /// particular instance of the provider will be pass through aninterception layer, 
    /// this layer will fail the call. Depending on the particular operation, the 
    /// client may receive the status code WBEM_E_PROVIDER_SUSPENDED 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Suspend: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Resume method resumes execution of providers suspended through the use of 
    /// the Suspend method.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Resume: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The dynamic UnLoad method unloads the COM server associated with the particular 
    /// instance of the provider. Further calls intothe provider with the same CLSID 
@@ -357,13 +343,13 @@ type
    /// through the use of the Msft_Provider :: Load method, changes to the associated 
    /// instance of __Win32Provider or via service restart.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function UnLoad: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Load method loads a specific instance of a provider.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Load(const Locale : String;const Namespace : String;const provider : String;const TransactionIdentifier : String;const User : String): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

@@ -20,7 +20,8 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   uCustomImageDrawHook in 'units\uCustomImageDrawHook.pas',
-  uGlobals in 'units\uGlobals.pas';
+  uGlobals in 'units\uGlobals.pas',
+  uSettings in 'units\uSettings.pas' {FrmSettings};
 
 {$R *.res}
 
@@ -28,6 +29,5 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmMain, FrmMain);
-  Application.CreateForm(TFrmViewCode, FrmViewCode);
   Application.Run;
 end.

@@ -26,7 +26,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, ExtCtrls, ComCtrls, pngimage, ImgList, ToolWin, uWmi_Metadata,
-  AppEvnts;
+  AppEvnts, Vcl.Menus, Vcl.PlatformDefaultStyleActnCtrls, Vcl.ActnPopup;
 
 type
   TFrmMain = class(TForm)
@@ -49,10 +49,14 @@ type
     ToolButtonGenerate: TToolButton;
     ImageList1: TImageList;
     ToolButtonViewCode: TToolButton;
-    ToolButton1: TToolButton;
     ApplicationEvents1: TApplicationEvents;
     Panel2: TPanel;
     TreeViewNamespaces: TTreeView;
+    PopupActionBar1: TPopupActionBar;
+    SelectAll1: TMenuItem;
+    UnselectAll1: TMenuItem;
+    InvertSelection1: TMenuItem;
+    ToolButtonSettings: TToolButton;
     procedure FormCreate(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure StatusBar1DrawPanel(StatusBar: TStatusBar; Panel: TStatusPanel;
@@ -64,6 +68,10 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure ApplicationEvents1Exception(Sender: TObject; E: Exception);
     procedure TreeViewNamespacesChange(Sender: TObject; Node: TTreeNode);
+    procedure SelectAll1Click(Sender: TObject);
+    procedure UnselectAll1Click(Sender: TObject);
+    procedure InvertSelection1Click(Sender: TObject);
+    procedure ToolButtonSettingsClick(Sender: TObject);
   private
     { Private declarations }
     FMetaDataLoaded     : Boolean;
@@ -99,7 +107,7 @@ uses
   StrUtils,
   uWmiDelphiCodeCreator,
   CodeView,
-  uGlobals;
+  uGlobals, uSettings;
 
 {$R *.dfm}
 
@@ -248,6 +256,21 @@ begin
      Result:='';
      if LvClasses.Selected<>nil then
       Result:=LvClasses.Selected.Caption;
+end;
+
+procedure TFrmMain.InvertSelection1Click(Sender: TObject);
+var
+ i : Integer;
+begin
+ FLoading:=True;
+ LvClasses.Items.BeginUpdate;
+ try
+   for i := 0 to LvClasses.Items.Count-1 do
+     LvClasses.Items.Item[i].Checked:=not LvClasses.Items.Item[i].Checked;
+ finally
+   LvClasses.Items.EndUpdate;
+   FLoading:=False;
+ end;
 end;
 
 procedure TFrmMain.LoadWmiClasses(const Namespace: string);
@@ -491,6 +514,22 @@ begin
    StatusBar1.Panels[0].Text:=Msg;
 end;
 }
+procedure TFrmMain.SelectAll1Click(Sender: TObject);
+var
+ i : Integer;
+begin
+ LvClasses.Items.BeginUpdate;
+ FLoading:=True;
+ try
+   for i := 0 to LvClasses.Items.Count-1 do
+    if not LvClasses.Items.Item[i].Checked then
+     LvClasses.Items.Item[i].Checked:=True;
+ finally
+   LvClasses.Items.EndUpdate;
+   FLoading:=False;
+ end;
+end;
+
 procedure TFrmMain.StatusBar1DrawPanel(StatusBar: TStatusBar;
   Panel: TStatusPanel; const Rect: TRect);
 begin
@@ -509,6 +548,19 @@ begin
    GenerateWMILibrary;
 end;
 
+procedure TFrmMain.ToolButtonSettingsClick(Sender: TObject);
+var
+  Frm : TFrmSettings;
+begin
+  Frm:=TFrmSettings.Create(nil);
+  try
+    Frm.LoadSettings;
+    Frm.ShowModal;
+  finally
+    Frm.Free;
+  end;
+end;
+
 procedure TFrmMain.ToolButtonViewCodeClick(Sender: TObject);
 begin
   ViewCode;
@@ -518,6 +570,22 @@ procedure TFrmMain.TreeViewNamespacesChange(Sender: TObject; Node: TTreeNode);
 begin
   if TreeViewNamespaces.Selected<>nil then
    LoadWmiClasses(TreeViewNamespaces.Selected.Text);
+end;
+
+procedure TFrmMain.UnselectAll1Click(Sender: TObject);
+var
+ i : Integer;
+begin
+ FLoading:=True;
+ LvClasses.Items.BeginUpdate;
+ try
+   for i := 0 to LvClasses.Items.Count-1 do
+    if  LvClasses.Items.Item[i].Checked then
+     LvClasses.Items.Item[i].Checked:=False;
+ finally
+   LvClasses.Items.EndUpdate;
+   FLoading:=False;
+ end;
 end;
 
 procedure TFrmMain.ViewCode;

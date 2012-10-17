@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:08
+/// Creation Date 17-10-2012 18:18:32
 /// Namespace root\CIMV2 Class Win32_OperatingSystem
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OperatingSystem.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_OperatingSystem;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_OperatingSystem class represents an operating system installed on a Win32 computer system. Any operating system that can be installed on a Win32 system is a descendent (or member) of this class.
   /// Example: Microsoft Windows 95.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_OperatingSystem=class(TWmiClass)
   private
     FBootDevice                         : String;
@@ -110,91 +96,91 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BootDevice property indicates the name of the disk drive from which the Win32 operating system boots. 
    /// Example: \\Device\Harddisk0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BootDevice : String read FBootDevice;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BuildNumber property indicates the build number of the operating system.  It can be used for more precise versioning information than product release version numbers
    /// Example: 1381
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BuildNumber : String read FBuildNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BuildType property indicates the type of build used for the operating 
    /// system. Examples are retail build and checked build.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BuildType : String read FBuildType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Caption property is a short textual description (one-line string) of the 
    /// object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CodeSet property indicates the code page value used by the operating system. A code page contains a character table used by the operating system to translate strings for different languages. The American National Standards Institute (ANSI) lists values that represent defined code pages. If the operating system does not use an ANSI code page, this member will be set to 0. The CodeSet string can use up to six characters to define the code page value.
    /// Example: 1255.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CodeSet : String read FCodeSet;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CountryCode property indicates the code for the country/regionused by the operating system. Values are based on international phone dialing prefixes (also referred to as IBM country/region codes). The CountryCode string can use up to six characters to define the country/region code value.
    /// Example: 1 for the United States)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CountryCode : String read FCountryCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CreationClassName indicates the name of the class or the subclass used in the 
    /// creation of an instance. When used with the other key properties of this class, 
    /// this property allows all instances of this class and its subclasses to be 
    /// uniquely identified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CreationClassName : String read FCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CSCreationClassName contains the scoping computer system's creation class name.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CSCreationClassName : String read FCSCreationClassName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CSDVersion property contains a null-terminated string, that indicates the latest Service Pack installed on the computer system. If no Service Pack is installed, the string is NULL. For computer systems running Windows 95, this property contains a null-terminated string that provides arbitrary additional information about the operating system.
    /// Example: Service Pack 3.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CSDVersion : String read FCSDVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CSName contains the scoping computer system's name.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CSName : String read FCSName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// CurrentTimeZone indicates the number of minutes the operating system is offset 
    /// from Greenwich Mean Time. Either the number is positive, negative or zero.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CurrentTimeZone : SmallInt read FCurrentTimeZone;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// If true, indicates that 32-bit applications are running with Data Execution 
    /// Prevention (DEP) applied. (false if DataExecutionPrevention_Available = false)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataExecutionPrevention_32BitApplications : Boolean read FDataExecutionPrevention_32BitApplications;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// If true, indicates that the hardware supports Windows Data Execution Prevention 
    /// (DEP) technology. DEP ensures that all memory locations are marked with a non-
@@ -204,16 +190,16 @@ type
    /// protected.  To determine if DEP has been enabled for 32-bit applications and 
    /// drivers, use the DataExecutionPrevention_ properties 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataExecutionPrevention_Available : Boolean read FDataExecutionPrevention_Available;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// If true, indicates that drivers are running with Data Execution Prevention 
    /// (DEP) applied. (false if DataExecutionPrevention_Available = false)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataExecutionPrevention_Drivers : Boolean read FDataExecutionPrevention_Drivers;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DataExecutionPrevention_SupportPolicy indicates which one of four Data 
    /// Execution Prevention (DEP) settings is applied. Each setting varies by the 
@@ -230,38 +216,38 @@ type
    /// (not available in the user interface) indicates DEP is turned off for all 32-
    /// bit applications on the machine. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DataExecutionPrevention_SupportPolicy : Byte read FDataExecutionPrevention_SupportPolicy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Debug property indicates whether the operating system is a checked (debug) build. Checked builds provide error checking, argument verification, and system debugging code. Additional code in a checked binary generates a kernel debugger error message and breaks into the debugger. This helps  immediately determine the cause and location of the error. Performance suffers in the checked build due to the additional code that is executed.
    /// Values: TRUE or FALSE, A value of TRUE indicates the debugging version of User.exe is installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Debug : Boolean read FDebug;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Description property provides a description of the Windows operating 
    /// system. Some user interfaces (those that allow editing of this description) 
    /// limit its length to 48 characters.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription write SetDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Boolean indicating whether the operating system is distributed across several 
    /// computer system nodes. If so, these nodes should be grouped as a cluster.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Distributed : Boolean read FDistributed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The EncryptionLevel property specifies if the encryption level for secure 
    /// transactions is 40-bit, 128-bit, or n-bit encryption.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property EncryptionLevel : Cardinal read FEncryptionLevel;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ForegroundApplicationBoost property indicates the increase in priority 
    /// given to the foreground application. On computer systems running Windows NT 4.0 
@@ -273,56 +259,56 @@ type
    /// scheduling priority is increased by the value of this property. The default 
    /// value is 2.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ForegroundApplicationBoost : Byte read FForegroundApplicationBoost write SetForegroundApplicationBoost;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of kilobytes of physical memory currently unused and available
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FreePhysicalMemory : Int64 read FFreePhysicalMemory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of KBytes that can be mapped into the OperatingSystem's paging files without causing any other pages to be swapped out. 0 indicates that there are no paging files.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FreeSpaceInPagingFiles : Int64 read FFreeSpaceInPagingFiles;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of kilobytes of virtual memory currently unused and available. For 
    /// example, this may be calculated by adding the amount of free RAM to the amount 
    /// of free paging space (i.e., adding the properties, FreePhysicalMemory and 
    /// FreeSpaceInPagingFiles).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FreeVirtualMemory : Int64 read FFreeVirtualMemory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The InstallDate property is datetime value indicating when the object was 
    /// installed. A lack of a value does not indicate that the object is not installed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InstallDate : TDateTime read FInstallDate;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LargeSystemCache property indicates whether to optimize memory for 
    /// applications (value=0) or for system performance (value=1).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LargeSystemCache : Cardinal read FLargeSystemCache;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Time when the operating system was last booted
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastBootUpTime : TDateTime read FLastBootUpTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Operating system's notion of the local date and time of day.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LocalDateTime : TDateTime read FLocalDateTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Locale property indicates the language identifier used by the operating 
    /// system. A language identifier is a standard international numeric abbreviation 
@@ -330,25 +316,25 @@ type
    /// (LANGID), a 16-bit value that consists of a primary language identifier and a 
    /// secondary language identifier.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Locale : String read FLocale;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Manufacturer property indicates the name of the operating system 
    /// manufacturer.  For Win32 systems this value will be Microsoft Corporation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Manufacturer : String read FManufacturer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Maximum number of process contexts the operating system can support. If there 
    /// is no fixed maximum, the value should be 0. On systems that have a fixed 
    /// maximum, this object can help diagnose failures that occur when the maximum is 
    /// reached. If unknown, enter -1.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxNumberOfProcesses : Cardinal read FMaxNumberOfProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Maximum number of kilobytes of memory that can be allocated to a process. For 
    /// operating systems with no virtual memory, this value is typically equal to the 
@@ -356,82 +342,82 @@ type
    /// operating systems, this value may be infinity - in which case, 0 should be 
    /// entered. In other cases, this value could be a constant - for example, 2G or 4G.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaxProcessMemorySize : Int64 read FMaxProcessMemorySize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MUILanguages property indicates the MUI Languages installed in the system. 
    ///  Example: en-us.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MUILanguages : TStrings read FMUILanguages;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Name of the operating system instance within a computer system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of user licenses for the operating system. If unlimited, enter 0. If 
    /// unknown, enter -1.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfLicensedUsers : Cardinal read FNumberOfLicensedUsers;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of process contexts currently loaded or running on the operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfProcesses : Cardinal read FNumberOfProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of user sessions for which the operating system is currently storing 
    /// state information
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfUsers : Cardinal read FNumberOfUsers;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OperatingSystemSKU property identifies the SKU of the operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OperatingSystemSKU : Cardinal read FOperatingSystemSKU;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Organization property indicates the registered user's (of the operating system) company name.
    /// Example: Microsoft Corporation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Organization : String read FOrganization;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OSArchitecture property indicates the Architecture of the operating 
    /// system.Example: 32-bit, 64-bit Intel, 64-bit AMD 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OSArchitecture : String read FOSArchitecture;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OSLanguage property indicates which language version of the operating system is installed.
    /// Example: 0x0807 (German, Switzerland)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OSLanguage : Cardinal read FOSLanguage;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OSProductSuite property identifies installed and licensed system product 
    /// additions to the operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OSProductSuite : Cardinal read FOSProductSuite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A integer indicating the type of operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OSType : Word read FOSType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A string describing the manufacturer and operating system type - used when the 
    /// operating system property, OSType, is set to 1 ("Other"). The format of the 
@@ -439,78 +425,78 @@ type
    /// Values strings defined for OSType.  OtherTypeDescription should be set to NULL 
    /// when OSType is any value other than 1.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OtherTypeDescription : String read FOtherTypeDescription;
    property PAEEnabled : Boolean read FPAEEnabled;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The PlusProductID property contains the product identification number for the 
    /// Windows Plus! operating system enhancement software (if installed).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PlusProductID : String read FPlusProductID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The PlusVersionNumber property contains the version number of the Windows Plus! 
    /// operating system enhancement software (if installed).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PlusVersionNumber : String read FPlusVersionNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Primary property determines whether this is the primary operating system.
    /// Values: TRUE or FALSE. A value of TRUE indicates this is the primary operating system.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Primary : Boolean read FPrimary;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ProductType property indicates additional information about the system. This member can be one of the following values: 
    /// 1 - Work Station 
    /// 2 - Domain Controller 
    /// 3 - Server
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProductType : Cardinal read FProductType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The RegisteredUser property indicates the name of the registered user of the operating system.
    /// Example: Jane Doe
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RegisteredUser : String read FRegisteredUser;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SerialNumber property indicates the operating system product serial identification number.
    /// Example:10497-OEM-0031416-71674.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SerialNumber : String read FSerialNumber;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ServicePackMajorVersion property indicates the major version number of the 
    /// service pack installed on the computer system. If no service pack has been 
    /// installed, the value is zero. ServicePackMajorVersion is valid for computers 
    /// running Windows 2000 and later (NULL otherwise).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ServicePackMajorVersion : Word read FServicePackMajorVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ServicePackMinorVersion property indicates the minor version number of the 
    /// service pack installed on the computer system. If no service pack has been 
    /// installed, the value is zero. ServicePackMinorVersion is valid for computers 
    /// running Windows 2000 and later (NULL otherwise).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ServicePackMinorVersion : Word read FServicePackMinorVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total number of kilobytes that can be stored in the operating system's paging files. Note that this number does not represent the actual physical size of the paging file on disk.  0 indicates that there are no paging files.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SizeStoredInPagingFiles : Int64 read FSizeStoredInPagingFiles;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Status property is a string indicating the current status of the object. 
    /// Various operational and non-operational statuses can be defined. Operational 
@@ -522,9 +508,9 @@ type
    /// user permissions list, or other administrative work. Not all such work is on-
    /// line, yet the managed element is neither "OK" nor in one of the other states.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Status : String read FStatus;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SuiteMask property indicates a set of bit flags that identify the product suites available on the system. This member can be a combination of the following values: 
    /// 0 - Windows Server 2003, Small Business Edition 
@@ -539,30 +525,30 @@ type
    /// 9 - Windows XP Home Edition 
    /// 10 - Windows Server 2003, Web Edition
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SuiteMask : Cardinal read FSuiteMask;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SystemDevice property indicates the physical disk partition the operating 
    /// system is installed on.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemDevice : String read FSystemDevice;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SystemDirectory property indicates the system directory of the operating system.
    /// Example: C:\WINDOWS\SYSTEM32
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemDirectory : String read FSystemDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SystemDrive property contains the letter of the disk drive that the operating system resides on.
    /// Example: C:
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemDrive : String read FSystemDrive;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total swap space in kilobytes. This value may be NULL (unspecified) if swap 
    /// space is not distinguished from page files.  However, some operating systems 
@@ -570,58 +556,58 @@ type
    /// 'swapped out' when the free page list falls and remains below a specified 
    /// amount.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalSwapSpaceSize : Int64 read FTotalSwapSpaceSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Number of kilobytes of virtual memory. For example, this may be calculated by 
    /// adding the amount of total RAM to the amount of paging space (i.e., adding the 
    /// amount of memory in/aggregated by the computer system to the property, 
    /// SizeStoredInPagingFiles.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalVirtualMemorySize : Int64 read FTotalVirtualMemorySize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The total amount of physical memory (in Kbytes) available to the 
    /// OperatingSystem. This value does not necessarily indicate the true amount of 
    /// physical memory, but what is reported to the OperatingSystem as available to it.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalVisibleMemorySize : Int64 read FTotalVisibleMemorySize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Version property indicates the version number of the operating system.
    /// Example: 4.0
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Version : String read FVersion;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The WindowsDirectory property indicates the Windows directory of the operating system.
    /// Example: C:\WINDOWS
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WindowsDirectory : String read FWindowsDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Reboot method shuts down the computer system, then restarts it. On computers running Windows NT/2000, the calling process must have the SE_SHUTDOWN_NAME privilege.
    /// The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion.
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Reboot: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Shutdown method unloads programs and DLLs to the point where it is safe to turn off the computer. All file buffers are flushed to disk, and all running processes are stopped. On computer systems running Windows NT/2000, the calling process must have the SE_SHUTDOWN_NAME privilege.
    /// The method returns an integer value that can be interpretted as follows: 
    /// 0 - Successful completion.
    /// Other - For integer values other than those listed above, refer to Win32 error code documentation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Shutdown: Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Win32Shutdown method provides the full set of shutdown options supported by Win32 operating systems.
    /// The method returns an integer value that can be interpretted as follows: 
@@ -636,9 +622,9 @@ type
    /// The Reserved parameter provides a way to extend Win32Shutdown. Presently, the 
    /// Reserved parameter is ignored.
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Win32Shutdown(const Flags : Integer;const Reserved : Integer): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Win32ShutdownTracker method provides the full set of shutdown options supported by Win32 operating systems.
    ///  Comments, reason for shutdown and timeout can be specifiedwhich is not available in Win32Shutdown method.The method returns an integer value that can be interpretted as follows: 
@@ -660,9 +646,9 @@ type
    /// The Timeout parameter is the time in seconds before shutdown take place. The 
    /// default value is 0.
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function Win32ShutdownTracker(const Comment : String;const Flags : Integer;const ReasonCode : Cardinal;const Timeout : Cardinal): Integer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SetDateTime method sets the current system time on the computer.  On computer systems running Windows NT/2000, the calling process must have the SE_SYSTEMTIME_NAME privilege.
    /// The method returns an integer value that can be interpretted as follows: 
@@ -672,95 +658,95 @@ type
    /// <param name="LocalDateTime">
    /// The LocalDateTime parameter is the time to set.  This property may not be NULL.
    /// </param>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    function SetDateTime(const LocalDateTime : TDateTime): Integer;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_OperatingSystem.Reboot
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultRebootAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_OperatingSystem.Shutdown
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultShutdownAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_OperatingSystem.Win32Shutdown
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultWin32ShutdownAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_OperatingSystem.Win32ShutdownTracker
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultWin32ShutdownTrackerAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the result of the function 
   /// TWin32_OperatingSystem.SetDateTime
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetResultSetDateTimeAsString(const ReturnValue:Integer) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.DataExecutionPrevention_SupportPolicy
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetDataExecutionPrevention_SupportPolicyAsString(const APropValue:Byte) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.EncryptionLevel
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetEncryptionLevelAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.ForegroundApplicationBoost
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetForegroundApplicationBoostAsString(const APropValue:Byte) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.LargeSystemCache
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetLargeSystemCacheAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.OperatingSystemSKU
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetOperatingSystemSKUAsString(const APropValue:Cardinal) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.OSType
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetOSTypeAsString(const APropValue:Word) : string;
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OperatingSystem.ProductType
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetProductTypeAsString(const APropValue:Cardinal) : string;
 
 implementation

@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:22
+/// Creation Date 17-10-2012 18:18:48
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Counters_PerProcessorNetworkInterfaceCardActivity
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Counters_PerProcessorNetworkInterfaceCardActivity.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_Counters_PerProcessorNetworkInterfaceCardActivity;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Per Processor Network Interface Card Activity counter set measure network 
   /// activity of a network interface card per processor.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_Counters_PerProcessorNetworkInterfaceCardActivity=class(TWmiClass)
   private
     FBuildScatterGatherListCallsPersec  : Cardinal;
@@ -72,160 +58,160 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Build Scatter Gather List Calls/sec is the average rate, in incidents per 
    /// second, at which NDIS received a request from an interface to build a scatter 
    /// gather DMA list.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BuildScatterGatherListCallsPersec : Cardinal read FBuildScatterGatherListCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// DPCs Queued/sec is the average rate, in incidents per second, at which NDIS 
    /// queued a Deferred Procedure Call (DPC) for an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DPCsQueuedPersec : Cardinal read FDPCsQueuedPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Interrupts/sec is the average rate, in incidents per second, at which NDIS 
    /// received and serviced hardware interrupts for an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InterruptsPersec : Cardinal read FInterruptsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Low Resource Received Packets/sec is the average rate, in packets per second, 
    /// at which NDIS received packets from an interface with low receive resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LowResourceReceivedPacketsPersec : Cardinal read FLowResourceReceivedPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Low Resource Receive Indications/sec is the average rate, in incidents per 
    /// second, at which NDIS received a receive indicaion call from an interface with 
    /// low receive resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LowResourceReceiveIndicationsPersec : Cardinal read FLowResourceReceiveIndicationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Received Packets/sec is the average rate, in packets per second, at which NDIS 
    /// received packets from an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReceivedPacketsPersec : Cardinal read FReceivedPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Receive Indications/sec is the average rate, in incidents per second, at which 
    /// NDIS received a receive indicaion call from an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReceiveIndicationsPersec : Cardinal read FReceiveIndicationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Returned Packets/sec is the average rate, in packets per second, at which stack 
    /// returned received packets to an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReturnedPacketsPersec : Cardinal read FReturnedPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Return Packet Calls/sec is the average rate, in incidents per second, at which 
    /// stack returned received packets to an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReturnPacketCallsPersec : Cardinal read FReturnPacketCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// RSS Indirection Table Change Calls/sec is the average rate, in incidents per 
    /// second, at which stack submitted a request to change the RSS indirection table 
    /// of an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RSSIndirectionTableChangeCallsPersec : Cardinal read FRSSIndirectionTableChangeCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Send Complete Calls/sec is the average rate, in incidents per second, at which 
    /// NDIS received a transmit-complete notification from an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SendCompleteCallsPersec : Cardinal read FSendCompleteCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Send Request Calls/sec is the average rate, in incidents per second, at which 
    /// stack requested a transmit on an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SendRequestCallsPersec : Cardinal read FSendRequestCallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sent Complete Packets/sec is the average rate, in packets per second, at which 
    /// NDIS received a transmit-complete notification from an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SentCompletePacketsPersec : Cardinal read FSentCompletePacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sent Packets/sec is the average rate, in packets per second, at which stack 
    /// requested a transmit on an interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SentPacketsPersec : Cardinal read FSentPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// TCP Offload Bytes Received/sec is the average rate, in bytes per second, at 
    /// which data was delivered by a network interface using the TCP offload receive 
    /// indication call.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TcpOffloadReceivebytesPersec : Cardinal read FTcpOffloadReceivebytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// TCP Offload Receive Indication Calls/sec is the average rate, in incidents per 
    /// second, at which NDIS received a TCP offload receive indication call from a 
    /// network interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TcpOffloadReceiveIndicationsPersec : Cardinal read FTcpOffloadReceiveIndicationsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// TCP Offload Bytes Sent/sec is the average rate, in bytes per second, at which 
    /// data was delivered to a network interface using the TCP offload send request 
    /// call. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TcpOffloadSendbytesPersec : Cardinal read FTcpOffloadSendbytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// TCP Offload Send Request Calls/sec is the average rate, in incidents per 
    /// second, at which the TCP/IP protocol requested a TCP offload transmission on a 
    /// network interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TcpOffloadSendRequestCallsPersec : Cardinal read FTcpOffloadSendRequestCallsPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

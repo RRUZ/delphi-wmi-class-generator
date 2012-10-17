@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:08
+/// Creation Date 17-10-2012 18:18:32
 /// Namespace root\CIMV2 Class Win32_OSRecoveryConfiguration
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_OSRecoveryConfiguration.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_OSRecoveryConfiguration;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_OSRecoveryConfiguration class represents the types of information 
   /// that will be gathered from memory when the operating system fails. This 
   /// includes boot failures and system crashes.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_OSRecoveryConfiguration=class(TWmiClass)
   private
     FAutoReboot                         : Boolean;
@@ -72,27 +58,27 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AutoReboot property determines whether the system will automatically reboot during a recovery operation.
    /// Values: TRUE or FALSE. If TRUE, the system will automatically rebooted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AutoReboot : Boolean read FAutoReboot write SetAutoReboot;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DebugFilePath property indicates the path to the debug file. A debug file is created with the memory state of the machine after a machine failure.
    /// Example: %systemRoot%\Memory.dmp
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DebugFilePath : String read FDebugFilePath write SetDebugFilePath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The DebugInfoType property indicates what type of debugging information is to be written to the log file.
    /// Values: 0 = None 
@@ -100,95 +86,95 @@ type
    /// 2 = Kernel memory dump 
    /// 3 = Small memory dump (64KB)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DebugInfoType : Cardinal read FDebugInfoType write SetDebugInfoType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ExpandedDebugFilePath property is an expanded version of the DebugFilePath property. 
    /// Example: C:\WinNT\Memory.dmp
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExpandedDebugFilePath : String read FExpandedDebugFilePath write SetExpandedDebugFilePath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ExpandedMiniDumpDirectory property is an expanded version of the MiniDumpDirectory property. 
    /// Example: C:\WinNT\MiniDump
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExpandedMiniDumpDirectory : String read FExpandedMiniDumpDirectory write SetExpandedMiniDumpDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The KernelDumpOnly property has been deprecated in favor of the DebugInfoType property in the same class.  All future work should use this new property.  
    /// The KernelDumpOnly property indicates whether only kernel debug information will be written to the debug log file. 
    /// Values TRUE or FALSE. If TRUE, then only the state of kernel is written to a file in the event of a system failure. If FALSE, the system will try to log the state of the memory and any devices that can provide information about the system when it failed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property KernelDumpOnly : Boolean read FKernelDumpOnly write SetKernelDumpOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MiniDumpDirectory property indicates the directory where small memory dump files will be recorded and accumulated. 
    /// Example: %systemRoot%\MiniDump
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MiniDumpDirectory : String read FMiniDumpDirectory write SetMiniDumpDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property contains an identifying name for this instance of the 
    /// Win32_OSRecoveryConfiguration class.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The OverwriteExistingDebugFile property indicates whether a new log file will overwrite an existing one. 
    /// Values: TRUE or FALSE. If TRUE, the existing debug file will be overwritten. If FALSE, a log file is not written if the filename already exists.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OverwriteExistingDebugFile : Boolean read FOverwriteExistingDebugFile write SetOverwriteExistingDebugFile;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The SendAdminAlert property indicates whether or not an alert message will be sent to the system administrator in the event of an operating system failure.
    /// Values: TRUE or FALSE. If TRUE, the system will send an alert to the system administrator.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SendAdminAlert : Boolean read FSendAdminAlert write SetSendAdminAlert;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SettingID : String read FSettingID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The WriteDebugInfo property has been deprecated in favor of the DebugInfoType property in the same class.  All future work should use this new property.  
    /// The WriteDebugInfo property indicates whether or not debugging information is to be written to a log file.
    /// Values: TRUE or FALSE. If TRUE, debug information is written to a file.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteDebugInfo : Boolean read FWriteDebugInfo write SetWriteDebugInfo;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The WriteToSystemLog property indicates whether or not events will be written to a system log.  
    /// Values: TRUE or FALSE. If TRUE, information will be written to a system log file.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteToSystemLog : Boolean read FWriteToSystemLog write SetWriteToSystemLog;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_OSRecoveryConfiguration.DebugInfoType
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetDebugInfoTypeAsString(const APropValue:Cardinal) : string;
 
 implementation

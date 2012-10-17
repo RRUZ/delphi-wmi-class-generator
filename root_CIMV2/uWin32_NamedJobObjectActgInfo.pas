@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:02
+/// Creation Date 17-10-2012 18:18:26
 /// Namespace root\CIMV2 Class Win32_NamedJobObjectActgInfo
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NamedJobObjectActgInfo.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_NamedJobObjectActgInfo;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// This class represents the IO accounting information for a job object.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_NamedJobObjectActgInfo=class(TWmiClass)
   private
     FActiveProcesses                    : Cardinal;
@@ -63,7 +49,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total number of processes currently associated with the job. When 
    /// a process is associated with a job, but the association fails because of a 
@@ -71,74 +57,74 @@ type
    /// process exits and all references to the process are released, this value is 
    /// decremented. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ActiveProcesses : Cardinal read FActiveProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. When subclassed, the property can be overridden to be a Key property. 
    /// As a Kernel object job object names are case sensitive.  Because WMI keys are case insensitive, the name of the named job object must be decorated as follows: a capital letter should be preceded by a backslash.  As a consequence of this convention, 'A' and 'a' are lower case and '\A' and '\a' are upper case.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of I/O operations performed, other than read and write 
    /// operations, by all processes that have ever been associated with the job, in 
    /// addition to all processes currently associated with the job.  
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OtherOperationCount : Int64 read FOtherOperationCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of bytes transferred during operations, other than read 
    /// and write operations, by all processes that have ever been associated with the 
    /// job, in addition to all processes currently associated with the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OtherTransferCount : Int64 read FOtherTransferCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the peak memory in kilobytes usage of all processes associated with 
    /// the job. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PeakJobMemoryUsed : Cardinal read FPeakJobMemoryUsed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the most process memory in kilobytes used by any process ever 
    /// associated with the job. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PeakProcessMemoryUsed : Cardinal read FPeakProcessMemoryUsed;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of read operations performed by all processes that have 
    /// ever been associated with the job, in addition to all processes currently 
    /// associated with the job.  
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReadOperationCount : Int64 read FReadOperationCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of bytes read by all processes that have ever been 
    /// associated with the job, in addition to all processes currently associated with 
    /// the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReadTransferCount : Int64 read FReadTransferCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total amount of kernel-mode execution time, in 100 nanoseconds, 
    /// for all active processes associated with the job (as well as all terminated 
@@ -146,9 +132,9 @@ type
    /// job kernel-mode time limit.  This property is set to 0 on creation of the job, 
    /// and each time a per-job kernel-mode time limit is established. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ThisPeriodTotalKernelTime : Int64 read FThisPeriodTotalKernelTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total amount of user-mode execution time, in 100 nanoseconds, for 
    /// all active processes associated with the job (as well as all terminated 
@@ -156,62 +142,62 @@ type
    /// job user-mode time limit.   This property is set to 0 on creation of the job, 
    /// and each time a per-job user-mode time limit is established
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ThisPeriodTotalUserTime : Int64 read FThisPeriodTotalUserTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total amount of kernel-mode execution time, in 100 nanoseconds, 
    /// for all active processes associated with the job, as well as all terminated 
    /// processes no longer associated with the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalKernelTime : Int64 read FTotalKernelTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total number of page faults encountered by all active processes 
    /// associated with the job, as well as all terminated processes no longer 
    /// associated with the job. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalPageFaultCount : Cardinal read FTotalPageFaultCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total number of processes associated with the job during its 
    /// lifetime, including those that have terminated. For example, when a process is 
    /// associated with a job, but the association fails because of a limit violation, 
    /// this value is incremented. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalProcesses : Cardinal read FTotalProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total number of processes terminated because of a limit violation. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalTerminatedProcesses : Cardinal read FTotalTerminatedProcesses;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the total amount of user-mode execution time, in 100 nanoseconds, for 
    /// all active processes associated with the job, as well as all terminated 
    /// processes no longer associated with the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalUserTime : Int64 read FTotalUserTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of write operations performed by all processes that have 
    /// ever been associated with the job, in addition to all processes currently 
    /// associated with the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteOperationCount : Int64 read FWriteOperationCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the number of bytes written by all processes that have ever been 
    /// associated with the job, in addition to all processes currently associated with 
    /// the job.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteTransferCount : Int64 read FWriteTransferCount;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:02
+/// Creation Date 17-10-2012 18:18:27
 /// Namespace root\CIMV2 Class Win32_NamedJobObjectLimitSetting
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NamedJobObjectLimitSetting.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_NamedJobObjectLimitSetting;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_NamedJobObjectLimitSetting class represents the limit settings for a 
   /// job object. The limit settings specify the resources available to the job in 
   /// accord with how the limit setting flags are set.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_NamedJobObjectLimitSetting=class(TWmiClass)
   private
     FActiveProcessLimit                 : Cardinal;
@@ -60,16 +46,16 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the active process limit for the job. If you try to associate a 
    /// process with a job, and this causes the active process count to exceed this 
    /// limit, the process is terminated and the association fails. Ignored unless 
    /// LimitFlags specifies Active Process Limit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ActiveProcessLimit : Cardinal read FActiveProcessLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the processor affinity for all processes associated with the job. The 
    /// affinity of each thread is set to this value, but threads are free to 
@@ -77,28 +63,28 @@ type
    /// affinity mask. Processes cannot set their own affinity mask. Ignored unless 
    /// LimitFlags specifies Limit Affinity.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Affinity : Cardinal read FAffinity;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  Specifies the per-job memory limit in kilobytes. It is ignored unless the 
    /// LimitFlags specifies the Limit Job Memory value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property JobMemoryLimit : Cardinal read FJobMemoryLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LimitFlags property indicates the limits that are in effect. One or more of the following limits can be in effect: 
    /// Limit Working Set - Causes all processes associated with the job to use the same minimum and maximum working set sizes.
@@ -115,23 +101,23 @@ type
    /// Limit Breakaway OK - If any process associated with the job creates a child process using the CREATE_BREAKAWAY_FROM_JOB flag while this limit is in effect, the child process is not associated with the job.
    /// Silent Breakaway OK - Allows any process associated with the job to create child processes that are not associated with the job. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LimitFlags : Cardinal read FLimitFlags;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the maximum working set size for all processes associated with the 
    /// job. Ignored unless LimitFlags specifies Limit Working Set
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaximumWorkingSetSize : Cardinal read FMaximumWorkingSetSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the minimum working set size for all processes associated with the 
    /// job. Ignored unless LimitFlags specifies Limit Working Set
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MinimumWorkingSetSize : Cardinal read FMinimumWorkingSetSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the per-job user-mode execution time limit, in 100 nanoseconds. The 
    /// system adds the current time of the processes associated with the job to this 
@@ -139,9 +125,9 @@ type
    /// process that has accumulated 5 minutes of user-mode time, the limit actually 
    /// enforced is 6 minutes.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PerJobUserTimeLimit : Int64 read FPerJobUserTimeLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  Specifies the per-process user-mode execution time limit, in 100 nanoseconds. 
    /// It is ignored unless LimitFlags specifies Limit Process Time.The system 
@@ -149,24 +135,24 @@ type
    /// has accumulated more user-mode time than the set limit. If it has, the process 
    /// is terminated. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PerProcessUserTimeLimit : Int64 read FPerProcessUserTimeLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the priority class for all processes associated with the job. 
    /// Processes and threads cannot modify their priority class. Ignored unless 
    /// LimitFlags specifies Limit Priority.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PriorityClass : Cardinal read FPriorityClass;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    ///  Specifies the per-process memory limit in kilobytes. It is ignored unless the 
    /// LimitFlags specifies the Limit Process Memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProcessMemoryLimit : Cardinal read FProcessMemoryLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Specifies the scheduling class for all processes associated with the job. The 
    /// valid values are 0 to 9. Use 0 for the least favorable scheduling class 
@@ -174,14 +160,14 @@ type
    /// relative to other threads. Ignored unless LimitFlags specifies Limit Scheduling 
    /// Class.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SchedulingClass : Cardinal read FSchedulingClass;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The identifier by which the job object limit setting instance is known. 
    /// As a Kernel object job object names are case sensitive.  Because WMI keys are case insensitive, the name of the named job object must be decorated as follows: a capital letter should be preceded by a backslash.  As a consequence of this convention, 'A' and 'a' are lower case and '\A' and '\a' are upper case.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SettingID : String read FSettingID;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

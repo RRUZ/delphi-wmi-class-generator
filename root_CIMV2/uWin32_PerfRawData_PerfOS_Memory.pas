@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:11
+/// Creation Date 17-10-2012 18:19:28
 /// Namespace root\CIMV2 Class Win32_PerfRawData_PerfOS_Memory
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_PerfOS_Memory.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_PerfOS_Memory;
 
@@ -24,17 +20,7 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Memory performance object  consists of counters that describe the behavior 
   /// of physical and virtual memory on the computer.  Physical memory is the amount 
@@ -44,7 +30,7 @@ type
   /// memory.  Excessive paging, a symptom of a memory shortage, can cause delays 
   /// which interfere with all system processes.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_PerfOS_Memory=class(TWmiClass)
   private
     FAvailableBytes                     : Int64;
@@ -95,7 +81,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Available Bytes is the amount of physical memory, in bytes, immediately 
    /// available for allocation to a process or for system use. It is equal to the sum 
@@ -104,9 +90,9 @@ type
    /// Performance and Troubleshooting Guide chapter in the Windows Server 2003 
    /// Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AvailableBytes : Int64 read FAvailableBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Available KBytes is the amount of physical memory, in Kilobytes, immediately 
    /// available for allocation to a process or for system use. It is equal to the sum 
@@ -115,9 +101,9 @@ type
    /// Performance and Troubleshooting Guide chapter in the Windows Server 2003 
    /// Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AvailableKBytes : Int64 read FAvailableKBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Available MBytes is the amount of physical memory, in Megabytes, immediately 
    /// available for allocation to a process or for system use. It is equal to the sum 
@@ -126,27 +112,27 @@ type
    /// Performance and Troubleshooting Guide chapter in the Windows Server 2003 
    /// Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AvailableMBytes : Int64 read FAvailableMBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Cache Bytes is the sum of the Memory\\System Cache Resident Bytes, 
    /// Memory\\System Driver Resident Bytes, Memory\\System Code Resident Bytes, and 
    /// Memory\\Pool Paged Resident Bytes counters.  This counter displays the last 
    /// observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CacheBytes : Int64 read FCacheBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Cache Bytes Peak is the maximum number of bytes used by the file system cache 
    /// since the system was last restarted. This might be larger than the current size 
    /// of the cache. This counter displays the last observed value only; it is not an 
    /// average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CacheBytesPeak : Int64 read FCacheBytesPeak;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Cache Faults/sec is the rate at which faults occur when a page sought in the 
    /// file system cache is not found and must be retrieved from elsewhere in memory 
@@ -156,15 +142,15 @@ type
    /// counter shows the number of faults, without regard for the number of pages 
    /// faulted in each operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CacheFaultsPersec : Cardinal read FCacheFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Commit Limit is the amount of virtual memory that can be committed without 
    /// having to extend the paging file(s).  It is measured in bytes. Committed memory 
@@ -173,18 +159,18 @@ type
    /// expanded, this limit increases accordingly.  This counter displays the last 
    /// observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CommitLimit : Int64 read FCommitLimit;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Committed Bytes is the amount of committed virtual memory, in bytes. Committed 
    /// memory is the physical memory which has space reserved on the disk paging 
    /// file(s). There can be one or more paging files on each physical drive. This 
    /// counter displays the last observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CommittedBytes : Int64 read FCommittedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Demand Zero Faults/sec is the rate at which a zeroed page is required to 
    /// satisfy the fault.  Zeroed pages, pages emptied of previously stored data and 
@@ -196,15 +182,15 @@ type
    /// the values observed in the last two samples, divided by the duration of the 
    /// sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DemandZeroFaultsPersec : Cardinal read FDemandZeroFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Free & Zero Page List Bytes is the amount of physical memory, in bytes, that is 
    /// assigned to the free and zero page lists. This memory does not contain cached 
@@ -213,20 +199,20 @@ type
    /// System Performance and Troubleshooting Guide chapter in the Windows Server 2003 
    /// Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FreeAndZeroPageListBytes : Int64 read FFreeAndZeroPageListBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Free System Page Table Entries is the number of page table entries not 
    /// currently in used by the system.  This counter displays the last observed value 
    /// only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FreeSystemPageTableEntries : Cardinal read FFreeSystemPageTableEntries;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Modified Page List Bytes is the amount of physical memory, in bytes, that is 
    /// assigned to the modified page list. This memory contains cached data and code 
@@ -236,16 +222,16 @@ type
    /// to MSDN and/or the System Performance and Troubleshooting Guide chapter in the 
    /// Windows Server 2003 Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ModifiedPageListBytes : Int64 read FModifiedPageListBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page Faults/sec is the average number of pages faulted per second. It is 
    /// measured in number of pages faulted per second because only one page is faulted 
@@ -256,9 +242,9 @@ type
    /// significant consequence. However, hard faults, which require disk access, can 
    /// cause significant delays.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageFaultsPersec : Cardinal read FPageFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page Reads/sec is the rate at which the disk was read to resolve hard page 
    /// faults. It shows the number of reads operations, without regard to the number 
@@ -271,9 +257,9 @@ type
    /// Memory\\Pages Reads/sec to the value of Memory\\Pages Input/sec to determine 
    /// the average number of pages read during each operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageReadsPersec : Cardinal read FPageReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pages Input/sec is the rate at which pages are read from disk to resolve hard 
    /// page faults. Hard page faults occur when a process refers to a page in virtual 
@@ -284,9 +270,9 @@ type
    /// Memory\\Page Reads/sec to determine the average number of pages read into 
    /// memory during each read operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PagesInputPersec : Cardinal read FPagesInputPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pages Output/sec is the rate at which pages are written to disk to free up 
    /// space in physical memory. Pages are written back to disk only if they are 
@@ -296,9 +282,9 @@ type
    /// This counter shows the number of pages, and can be compared to other counts of 
    /// pages, without conversion.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PagesOutputPersec : Cardinal read FPagesOutputPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pages/sec is the rate at which pages are read from or written to disk to 
    /// resolve hard page faults. This counter is a primary indicator of the kinds of 
@@ -308,9 +294,9 @@ type
    /// conversion. It includes pages retrieved to satisfy faults in the file system 
    /// cache (usually requested by applications) non-cached mapped memory files.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PagesPersec : Cardinal read FPagesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Page Writes/sec is the rate at which pages are written to disk to free up space 
    /// in physical memory. Pages are written to disk only if they are changed while in 
@@ -319,9 +305,9 @@ type
    /// operation.  This counter displays the difference between the values observed in 
    /// the last two samples, divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PageWritesPersec : Cardinal read FPageWritesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % Committed Bytes In Use is the ratio of Memory\\Committed Bytes to the 
    /// Memory\\Commit Limit. Committed memory is the physical memory in use for which 
@@ -330,10 +316,10 @@ type
    /// paging file is enlarged, the commit limit increases, and the ratio is reduced). 
    /// This counter displays the current percentage value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentCommittedBytesInUse : Cardinal read FPercentCommittedBytesInUse;
    property PercentCommittedBytesInUse_Base : Cardinal read FPercentCommittedBytesInUse_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Nonpaged Allocs is the number of calls to allocate space in the nonpaged 
    /// pool. The nonpaged pool is an area of system memory area for objects that 
@@ -342,9 +328,9 @@ type
    /// regardless of the amount of space allocated in each call.  This counter 
    /// displays the last observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolNonpagedAllocs : Cardinal read FPoolNonpagedAllocs;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Nonpaged Bytes is the size, in bytes, of the nonpaged pool, an area of 
    /// system memory (physical memory used by the operating system) for objects that 
@@ -354,9 +340,9 @@ type
    /// Bytes\\_Total.  This counter displays the last observed value only; it is not 
    /// an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolNonpagedBytes : Int64 read FPoolNonpagedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Paged Allocs is the number of calls to allocate space in the paged pool. 
    /// The paged pool is an area of system memory (physical memory used by the 
@@ -365,9 +351,9 @@ type
    /// the amount of space allocated in each call.  This counter displays the last 
    /// observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolPagedAllocs : Cardinal read FPoolPagedAllocs;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Paged Bytes is the size, in bytes, of the paged pool, an area of system 
    /// memory (physical memory used by the operating system) for objects that can be 
@@ -376,9 +362,9 @@ type
    /// Process\\Pool Paged Bytes\\_Total. This counter displays the last observed 
    /// value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolPagedBytes : Int64 read FPoolPagedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pool Paged Resident Bytes is the current size, in bytes, of the paged pool. The 
    /// paged pool is an area of system memory (physical memory used by the operating 
@@ -387,9 +373,9 @@ type
    /// pool that is too large denies memory space to processes. This counter displays 
    /// the last observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PoolPagedResidentBytes : Int64 read FPoolPagedResidentBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Standby Cache Core Bytes is the amount of physical memory, in bytes, that is 
    /// assigned to the core standby cache page lists. This memory contains cached data 
@@ -401,9 +387,9 @@ type
    /// manager, refer to MSDN and/or the System Performance and Troubleshooting Guide 
    /// chapter in the Windows Server 2003 Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StandbyCacheCoreBytes : Int64 read FStandbyCacheCoreBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Standby Cache Normal Priority Bytes is the amount of physical memory, in bytes, 
    /// that is assigned to the normal priority standby cache page lists. This memory 
@@ -415,9 +401,9 @@ type
    /// explanation of the memory manager, refer to MSDN and/or the System Performance 
    /// and Troubleshooting Guide chapter in the Windows Server 2003 Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StandbyCacheNormalPriorityBytes : Int64 read FStandbyCacheNormalPriorityBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Standby Cache Reserve Bytes is the amount of physical memory, in bytes, that is 
    /// assigned to the reserve standby cache page lists. This memory contains cached 
@@ -429,9 +415,9 @@ type
    /// manager, refer to MSDN and/or the System Performance and Troubleshooting Guide 
    /// chapter in the Windows Server 2003 Resource Kit.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property StandbyCacheReserveBytes : Int64 read FStandbyCacheReserveBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Cache Resident Bytes is the size, in bytes, of the pageable operating 
    /// system code in the file system cache. This value includes only current physical 
@@ -443,9 +429,9 @@ type
    /// physical memory. This counter displays the last observed value only; it is not 
    /// an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCacheResidentBytes : Int64 read FSystemCacheResidentBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Code Resident Bytes is the size, in bytes of the operating system code 
    /// currently in physical memory that can be written to disk when not in use. This 
@@ -455,9 +441,9 @@ type
    /// physical memory and cannot be written to disk. This counter displays the last 
    /// observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCodeResidentBytes : Int64 read FSystemCodeResidentBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Code Total Bytes is the size, in bytes, of the pageable operating system 
    /// code currently in virtual memory. It is a measure of the amount of physical 
@@ -467,9 +453,9 @@ type
    /// not include code that must remain in physical memory and cannot be written to 
    /// disk. This counter displays the last observed value only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemCodeTotalBytes : Int64 read FSystemCodeTotalBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Driver Resident Bytes is the size, in bytes, of the pageable physical 
    /// memory being used by device drivers. It is the working set (physical memory 
@@ -478,9 +464,9 @@ type
    /// Memory\\System Driver Resident Bytes nor Memory\\System Driver Total Bytes 
    /// includes memory that cannot be written to disk.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemDriverResidentBytes : Int64 read FSystemDriverResidentBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// System Driver Total Bytes is the size, in bytes, of the pageable virtual memory 
    /// currently being used by device drivers. Pageable memory can be written to disk 
@@ -489,12 +475,12 @@ type
    /// Memory\\System Code Total Bytes. This counter displays the last observed value 
    /// only; it is not an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SystemDriverTotalBytes : Int64 read FSystemDriverTotalBytes;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Transition Faults/sec is the rate at which page faults are resolved by 
    /// recovering pages that were being used by another process sharing the page, or 
@@ -504,9 +490,9 @@ type
    /// one page is faulted in each operation, it is also equal to the number of pages 
    /// faulted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransitionFaultsPersec : Cardinal read FTransitionFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Transition Pages RePurposed is the rate at which the number of transition cache 
    /// pages were reused for a different purpose.  These pages would have otherwise 
@@ -514,9 +500,9 @@ type
    /// retrieving it from backing store) in the event the page was accessed in the 
    /// future.  Note these pages can contain private or sharable memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TransitionPagesRePurposedPersec : Cardinal read FTransitionPagesRePurposedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Write Copies/sec is the rate at which page faults are caused by attempts to 
    /// write that have been satisfied by coping of the page from elsewhere in physical 
@@ -525,7 +511,7 @@ type
    /// number of copies, without regard for the number of pages copied in each 
    /// operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property WriteCopiesPersec : Cardinal read FWriteCopiesPersec;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

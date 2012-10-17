@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:04
+/// Creation Date 17-10-2012 18:19:22
 /// Namespace root\CIMV2 Class Win32_PerfRawData_ESENT_Database
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_ESENT_Database.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_ESENT_Database;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Database provides performance statistics for each process using the ESE high 
   /// performance embedded database management system.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_ESENT_Database=class(TWmiClass)
   private
     FCaption                            : String;
@@ -95,37 +81,37 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Misses per second is the rate at which database file page 
    /// requests were fulfilled by the database cache by causing a file operation.  If 
    /// this rate is high then the database cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheMissesPersec : Cardinal read FDatabaseCacheMissesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache % Hit is the percentage of database file page requests that were 
    /// fulfilled by the database cache without causing a file operation.  If this 
    /// percentage is too low, the database cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCachePercentHit : Cardinal read FDatabaseCachePercentHit;
    property DatabaseCachePercentHit_Base : Cardinal read FDatabaseCachePercentHit_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Requests/sec is the rate that pages are requested from the 
    /// database cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheRequestsPersec : Cardinal read FDatabaseCacheRequestsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Size is the amount of system memory used by the database cache 
    /// manager to hold commonly used information from the database file(s) to prevent 
@@ -137,9 +123,9 @@ type
    /// size may be capped at an artificially low limit.  Increasing this limit may 
    /// increase performance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheSize : Int64 read FDatabaseCacheSize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Size (MB) is the amount of system memory (in MegaBytes) used by 
    /// the database cache manager to hold commonly used information from the database 
@@ -151,9 +137,9 @@ type
    /// cache size may be capped at an artificially low limit.  Increasing this limit 
    /// may increase performance.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheSizeMB : Int64 read FDatabaseCacheSizeMB;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Size Resident is the amount of system memory used by the 
    /// database cache that is currently part of the working set of the process.  If 
@@ -163,9 +149,9 @@ type
    /// but if this is a common occurrence then it can lead to significant performance 
    /// problems.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheSizeResident : Int64 read FDatabaseCacheSizeResident;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Cache Size Resident (MB) is the amount of system memory (in MegaBytes) 
    /// used by the database cache that is currently part of the working set of the 
@@ -175,9 +161,9 @@ type
    /// will recover from this event but if this is a common occurrence then it can 
    /// lead to significant performance problems.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabaseCacheSizeResidentMB : Int64 read FDatabaseCacheSizeResidentMB;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Page Evictions/sec is the rate that database file page requests that 
    /// require the database cache manager to allocate a new page from the database 
@@ -186,222 +172,222 @@ type
    /// was actually evicted from the cache.  If this rate is too high, the database 
    /// cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabasePageEvictionsPersec : Cardinal read FDatabasePageEvictionsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Page Faults/sec is the rate that database file page requests require 
    /// the database cache manager to allocate a new page from the database cache.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabasePageFaultsPersec : Cardinal read FDatabasePageFaultsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Database Page Fault Stalls/sec is the rate of page faults that cannot be 
    /// serviced because there are no pages available for allocation from the database 
    /// cache.  If this counter is non-zero most of the time, the clean threshold may 
    /// be too low.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DatabasePageFaultStallsPersec : Cardinal read FDatabasePageFaultStallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Defragmentation Tasks is the count of background database defragmentation tasks 
    /// that are currently executing.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DefragmentationTasks : Cardinal read FDefragmentationTasks;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Defragmentation Tasks Pending is the count of background database 
    /// defragmentation tasks that are currently pending.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property DefragmentationTasksPending : Cardinal read FDefragmentationTasksPending;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Database Reads Average Latency is the average length of time,  in 
    /// milliseconds, per database read operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IODatabaseReadsAverageLatency : Int64 read FIODatabaseReadsAverageLatency;
    property IODatabaseReadsAverageLatency_Base : Cardinal read FIODatabaseReadsAverageLatency_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Database Reads/sec is the rate of database read operations completed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IODatabaseReadsPersec : Cardinal read FIODatabaseReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Database Writes Average Latency is the average length of time,  in 
    /// milliseconds, per database write operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IODatabaseWritesAverageLatency : Int64 read FIODatabaseWritesAverageLatency;
    property IODatabaseWritesAverageLatency_Base : Cardinal read FIODatabaseWritesAverageLatency_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Database Writes/sec is the rate of database write operations completed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IODatabaseWritesPersec : Cardinal read FIODatabaseWritesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Log Reads/sec is the rate of logfile read operations completed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IOLogReadsPersec : Cardinal read FIOLogReadsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Log Writes Average Latency is the average length of time, in milliseconds, 
    /// per logfile write operation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IOLogWritesAverageLatency : Int64 read FIOLogWritesAverageLatency;
    property IOLogWritesAverageLatency_Base : Cardinal read FIOLogWritesAverageLatency_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// I/O Log Writes/sec is the rate of logfile write operations completed.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IOLogWritesPersec : Cardinal read FIOLogWritesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Log Bytes Generated per second is the rate at which data is added to the log.  
    /// This is different from Log Bytes Write per second in that each byte is 
    /// generated only once whereas each byte may be written many times.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogBytesGeneratedPersec : Cardinal read FLogBytesGeneratedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Log Bytes Write per second is the rate bytes are written to the log.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogBytesWritePersec : Cardinal read FLogBytesWritePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Log Record Stalls/sec is the number of log records that cannot be added to the 
    /// log buffers per second because they are full.  If this counter is non-zero most 
    /// of the time, the log buffer size may be a bottleneck.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogRecordStallsPersec : Cardinal read FLogRecordStallsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Log Threads Waiting is the number of threads waiting for their data to be 
    /// written to the log in order to complete an update of the database.  If this 
    /// number is too high, the log may be a bottleneck.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogThreadsWaiting : Cardinal read FLogThreadsWaiting;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Log Writes/sec is the number of times the log buffers are written to the log 
    /// file(s) per second.  If this number approaches the maximum write rate for the 
    /// media holding the log file(s), the log may be a bottleneck.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogWritesPersec : Cardinal read FLogWritesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pages Converted is the count of database pages that have been converted from an 
    /// older format
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PagesConverted : Cardinal read FPagesConverted;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Pages Converted/sec is the count of times per second a database page is 
    /// converted from an older database format
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PagesConvertedPersec : Cardinal read FPagesConvertedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Records Converted is the count of database records that have been converted 
    /// from an older format
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RecordsConverted : Cardinal read FRecordsConverted;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Records Converted/sec is the count of times per second a database record is 
    /// converted from an older database format
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property RecordsConvertedPersec : Cardinal read FRecordsConvertedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sessions In Use is the number of database sessions currently open for use by 
    /// client threads.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SessionsInUse : Cardinal read FSessionsInUse;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Sessions % Used is the percentage of database sessions currently open for use 
    /// by client threads.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SessionsPercentUsed : Cardinal read FSessionsPercentUsed;
    property SessionsPercentUsed_Base : Cardinal read FSessionsPercentUsed_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Table Open Cache Hits/sec is the number of database tables opened using cached 
    /// schema information per second.  If this rate is too low, the table cache size 
    /// may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TableOpenCacheHitsPersec : Cardinal read FTableOpenCacheHitsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Table Open Cache Misses/sec is the number of database tables opened without 
    /// using cached schema information per second.  If this rate is too high, the 
    /// table cache size may be too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TableOpenCacheMissesPersec : Cardinal read FTableOpenCacheMissesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Table Open Cache % Hit is the percentage of database tables opened using cached 
    /// schema information.  If this percentage is too low, the table cache size may be 
    /// too small.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TableOpenCachePercentHit : Cardinal read FTableOpenCachePercentHit;
    property TableOpenCachePercentHit_Base : Cardinal read FTableOpenCachePercentHit_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Table Opens/sec is the number of database tables opened per second.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TableOpensPersec : Cardinal read FTableOpensPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Total number of version buckets allocated
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Versionbucketsallocated : Cardinal read FVersionbucketsallocated;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:58
+/// Creation Date 17-10-2012 18:19:17
 /// Namespace root\CIMV2 Class Win32_PerfRawData_Counters_GenericIKEv1AuthIPandIKEv2
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_Counters_GenericIKEv1AuthIPandIKEv2.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_Counters_GenericIKEv1AuthIPandIKEv2;
 
@@ -24,24 +20,14 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Generic IKEv1, AuthIP, and IKEv2 is the set of Internet Protocol security 
   /// (IPsec) Internet Key Exchange Version 1 (IKEv1), Authenticated IP (AuthIP), and 
   /// Internet Key Exchange Version 2 (IKEv2) counters that are generic and do not 
   /// apply to a specific Internet Protocol version.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_Counters_GenericIKEv1AuthIPandIKEv2=class(TWmiClass)
   private
     FAuthIPMainModeNegotiationTime      : Cardinal;
@@ -69,118 +55,118 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// AuthIP Main Mode Negotiation Time is the number of milliseconds taken for the 
    /// last Authenticated IP main mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AuthIPMainModeNegotiationTime : Cardinal read FAuthIPMainModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// AuthIP Quick Mode Negotiation Time is the number of milliseconds taken for the 
    /// last Authenticated IP quick mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AuthIPQuickModeNegotiationTime : Cardinal read FAuthIPQuickModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Extended Mode Negotiation Time is the number of milliseconds taken for the last 
    /// extended mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ExtendedModeNegotiationTime : Cardinal read FExtendedModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Failed Negotiations is the number of failed negotiations for IKEv1, AuthIP, and 
    /// IKEv2 since IPsec was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FailedNegotiations : Cardinal read FFailedNegotiations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Failed Negotiations per Second is the rate of failed negotiations attempted for 
    /// IKEv1, AuthIP, and IKEv2.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FailedNegotiationsPersec : Cardinal read FFailedNegotiationsPersec;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IKEv1 Main Mode Negotiation Time is the number of milliseconds taken for the 
    /// last IKEv1 main mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IKEv1MainModeNegotiationTime : Cardinal read FIKEv1MainModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IKEv1 Quick Mode Negotiation Time is the number of milliseconds taken for the 
    /// last IKEv1 quick mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IKEv1QuickModeNegotiationTime : Cardinal read FIKEv1QuickModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IKEv2 Main Mode Negotiation Time is the number of milliseconds taken for the 
    /// last IKEv2 main mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IKEv2MainModeNegotiationTime : Cardinal read FIKEv2MainModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// IKEv2 Quick Mode Negotiation Time is the number of milliseconds taken for the 
    /// last IKEv2 quick mode security association negotiated.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IKEv2QuickModeNegotiationTime : Cardinal read FIKEv2QuickModeNegotiationTime;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Invalid Packets Received per Second is the rate at which invalid IPsec packets 
    /// are being received.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property InvalidPacketsReceivedPersec : Cardinal read FInvalidPacketsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received per Second is the rate at which validated IPsec packets are 
    /// being received.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedPersec : Cardinal read FPacketsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Successful Negotiations is the number of negotiations completed for IKEv1, 
    /// AuthIP, and IKEv2 since IPsec was last started.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SuccessfulNegotiations : Cardinal read FSuccessfulNegotiations;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Successful Negotiations per Second is the rate of negotiations completed for 
    /// IKEv1, AuthIP, and IKEv2.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SuccessfulNegotiationsPersec : Cardinal read FSuccessfulNegotiationsPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

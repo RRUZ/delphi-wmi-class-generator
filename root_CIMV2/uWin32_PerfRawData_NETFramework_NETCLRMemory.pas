@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:06
+/// Creation Date 17-10-2012 18:19:25
 /// Namespace root\CIMV2 Class Win32_PerfRawData_NETFramework_NETCLRMemory
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_NETFramework_NETCLRMemory.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_NETFramework_NETCLRMemory;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Counters for CLR Garbage Collected heap.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_NETFramework_NETCLRMemory=class(TWmiClass)
   private
     FAllocatedBytesPersec               : Cardinal;
@@ -77,7 +63,7 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the rate of bytes per second allocated on the GC Heap. 
    /// This counter is updated at the end of every GC; not at each allocation. This 
@@ -85,21 +71,21 @@ type
    /// values observed in the last two samples divided by the duration of the sample 
    /// interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AllocatedBytesPersec : Cardinal read FAllocatedBytesPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of garbage collected objects that survive a 
    /// collection because they are waiting to be finalized. If these objects hold 
@@ -111,12 +97,12 @@ type
    /// particular GC only. This counter was designed to indicate the extra overhead 
    /// that the application might incur because of finalization.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FinalizationSurvivors : Cardinal read FFinalizationSurvivors;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the maximum bytes that can be allocated in generation 0 
    /// (Gen 0); its does not indicate the current number of bytes allocated in Gen 0. 
@@ -127,9 +113,9 @@ type
    /// allocations that would trigger the next Gen 0 GC. This counter is updated at 
    /// the end of a GC; its not updated on every allocation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Gen0heapsize : Cardinal read FGen0heapsize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the bytes per second that are promoted from generation 0 
    /// (youngest) to generation 1; objects that are promoted just because they are 
@@ -139,18 +125,18 @@ type
    /// displays the difference between the values observed in the last two samples 
    /// divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Gen0PromotedBytesPerSec : Cardinal read FGen0PromotedBytesPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the current number of bytes in generation 1 (Gen 1); this 
    /// counter does not display the maximum size of Gen 1. Objects are not directly 
    /// allocated in this generation; they are promoted from previous Gen 0 GCs. This 
    /// counter is updated at the end of a GC; its not updated on every allocation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Gen1heapsize : Cardinal read FGen1heapsize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the bytes per second that are promoted from generation 1 
    /// to generation 2 (oldest); objects that are promoted just because they are 
@@ -161,18 +147,18 @@ type
    /// between the values observed in the last two samples divided by the duration of 
    /// the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Gen1PromotedBytesPerSec : Cardinal read FGen1PromotedBytesPerSec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the current number of bytes in generation 2 (Gen 2). 
    /// Objects are not directly allocated in this generation; they are promoted from 
    /// Gen 1 during previous Gen 1 GCs. This counter is updated at the end of a GC; 
    /// its not updated on every allocation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Gen2heapsize : Cardinal read FGen2heapsize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the current size of the Large Object Heap in bytes. 
    /// Objects greater than 20 KBytes are treated as large objects by the Garbage 
@@ -180,33 +166,33 @@ type
    /// through the generations. This counter is updated at the end of a GC; its not 
    /// updated on every allocation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LargeObjectHeapsize : Cardinal read FLargeObjectHeapsize;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter is the sum of four other counters; Gen 0 Heap Size; Gen 1 Heap 
    /// Size; Gen 2 Heap Size and the Large Object Heap Size. This counter indicates 
    /// the current memory allocated in bytes on the GC Heaps.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberBytesinallHeaps : Cardinal read FNumberBytesinallHeaps;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the current number of GC Handles in use. GCHandles are 
    /// handles to resources external to the CLR and the managed environment. Handles 
    /// occupy small amounts of memory in the GCHeap but potentially expensive 
    /// unmanaged resources.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberGCHandles : Cardinal read FNumberGCHandles;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of times the generation 0 objects (youngest; 
    /// most recently allocated) are garbage collected (Gen 0 GC) since the start of 
@@ -217,9 +203,9 @@ type
    /// 2) GC occurs. _Global_ counter value is not accurate and should be ignored. 
    /// This counter displays the last observed value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberGen0Collections : Cardinal read FNumberGen0Collections;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of times the generation 1 objects are garbage 
    /// collected since the start of the application. The counter is incremented at the 
@@ -228,9 +214,9 @@ type
    /// _Global_ counter value is not accurate and should be ignored. This counter 
    /// displays the last observed value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberGen1Collections : Cardinal read FNumberGen1Collections;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of times the generation 2 objects (older) are 
    /// garbage collected since the start of the application. The counter is 
@@ -238,17 +224,17 @@ type
    /// value is not accurate and should be ignored. This counter displays the last 
    /// observed value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberGen2Collections : Cardinal read FNumberGen2Collections;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the peak number of times a garbage collection was 
    /// performed because of an explicit call to GC.Collect. Its a good practice to let 
    /// the GC tune the frequency of its collections.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberInducedGC : Cardinal read FNumberInducedGC;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of pinned objects encountered in the last GC. 
    /// This counter tracks the pinned objects only in the heaps that were garbage 
@@ -256,9 +242,9 @@ type
    /// generation 0 heap only. A pinned object is one that the Garbage Collector 
    /// cannot move in memory.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberofPinnedObjects : Cardinal read FNumberofPinnedObjects;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the current number of sync blocks in use. Sync blocks are 
    /// per-object data structures allocated for storing synchronization information. 
@@ -267,25 +253,25 @@ type
    /// information and can also store COM interop metadata. This counter was designed 
    /// to indicate performance problems with heavy use of synchronization primitives.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberofSinkBlocksinuse : Cardinal read FNumberofSinkBlocksinuse;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the amount of virtual memory (in bytes) currently 
    /// committed by the Garbage Collector. (Committed memory is the physical memory 
    /// for which space has been reserved on the disk paging file).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberTotalcommittedBytes : Cardinal read FNumberTotalcommittedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the amount of virtual memory (in bytes) currently 
    /// reserved by the Garbage Collector. (Reserved memory is the virtual memory space 
    /// reserved for the application but no disk or main memory pages have been used.)
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberTotalreservedBytes : Cardinal read FNumberTotalreservedBytes;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// % Time in GC is the percentage of elapsed time that was spent in performing a 
    /// garbage collection (GC) since the last GC cycle. This counter is usually an 
@@ -294,26 +280,26 @@ type
    /// end of every GC and the counter value reflects the last observed value; its not 
    /// an average.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PercentTimeinGC : Cardinal read FPercentTimeinGC;
    property PercentTimeinGC_Base : Cardinal read FPercentTimeinGC_Base;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the process ID of the CLR process instance being 
    /// monitored.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ProcessID : Cardinal read FProcessID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the bytes of memory that are promoted from generation 0 
    /// to generation 1 just because they are waiting to be finalized. This counter 
    /// displays the value observed at the end of the last GC; its not a cumulative 
    /// counter.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PromotedFinalizationMemoryfromGen0 : Cardinal read FPromotedFinalizationMemoryfromGen0;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the bytes of memory that survive garbage collection (GC) 
    /// and are promoted from generation 0 to generation 1; objects that are promoted 
@@ -321,9 +307,9 @@ type
    /// This counter displays the value observed at the end of the last GC; its not a 
    /// cumulative counter.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PromotedMemoryfromGen0 : Cardinal read FPromotedMemoryfromGen0;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the bytes of memory that survive garbage collection (GC) 
    /// and are promoted from generation 1 to generation 2; objects that are promoted 
@@ -332,7 +318,7 @@ type
    /// cumulative counter. This counter is reset to 0 if the last GC was a Gen 0 GC 
    /// only.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PromotedMemoryfromGen1 : Cardinal read FPromotedMemoryfromGen1;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;

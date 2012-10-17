@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:13
+/// Creation Date 17-10-2012 18:19:30
 /// Namespace root\CIMV2 Class Win32_PerfRawData_PerfProc_ProcessAddressSpace_Costly
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_PerfProc_ProcessAddressSpace_Costly.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_PerfProc_ProcessAddressSpace_Costly;
 
@@ -24,22 +20,12 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Process Address Space performance object consists of counters that monitor 
   /// memory allocation and use  for a selected process.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_PerfProc_ProcessAddressSpace_Costly=class(TWmiClass)
   private
     FBytesFree                          : Int64;
@@ -91,65 +77,65 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Free is the total unused virtual address space of this process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesFree : Int64 read FBytesFree;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Image Free is the amount of virtual address space that is not in use or 
    /// reserved by images within this process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesImageFree : Int64 read FBytesImageFree;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Image Reserved is the sum of all virtual memory reserved by images within 
    /// this process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesImageReserved : Int64 read FBytesImageReserved;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Reserved is the total amount of virtual memory reserved for future use by 
    /// this process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesReserved : Int64 read FBytesReserved;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// ID Process is the unique identifier of this process. ID Process numbers are 
    /// reused, so they only identify a process for the lifetime of that process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property IDProcess : Int64 read FIDProcess;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
    /// allocated by images run by the selected process  Execute/Read-Only memory is 
    /// memory that can be executed as well as read.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceExecReadOnly : Int64 read FImageSpaceExecReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -157,9 +143,9 @@ type
    /// memory that can be executed by programs as well as read and written and 
    /// modified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceExecReadPerWrite : Int64 read FImageSpaceExecReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -167,9 +153,9 @@ type
    /// that can be executed by programs, but cannot be read or written.  This type of 
    /// protection is not supported by all processor types.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceExecutable : Int64 read FImageSpaceExecutable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -180,9 +166,9 @@ type
    ///  If a sharing process desires write access, then a copy of this memory will be 
    /// made for that process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceExecWriteCopy : Int64 read FImageSpaceExecWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -190,9 +176,9 @@ type
    /// a process from writing to or reading from these pages and will generate an 
    /// access violation if either is attempted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceNoAccess : Int64 read FImageSpaceNoAccess;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -200,18 +186,18 @@ type
    /// the contents of these pages from being modified.  Any attempts to write or 
    /// modify these pages will generate an access violation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceReadOnly : Int64 read FImageSpaceReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
    /// allocated by images run by the selected process  Read/Write protection allows a 
    /// process to read, modify and write to these pages.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceReadPerWrite : Int64 read FImageSpaceReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Image Space is the virtual address space in use by the images being executed by 
    /// the process.  This is the sum of all the address space with this protection 
@@ -221,97 +207,97 @@ type
    /// process wants to have read/write access to this shared memory, a copy of that 
    /// memory is made for writing to.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ImageSpaceWriteCopy : Int64 read FImageSpaceWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Execute/Read Only memory is memory that can be executed as well as read.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceExecReadOnly : Int64 read FMappedSpaceExecReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Execute/Read/Write memory is memory that can be executed by programs as well as read and modified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceExecReadPerWrite : Int64 read FMappedSpaceExecReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Executable memory is memory that can be executed by programs, but cannot be read or written.  This type of protection is not supported by all processor types.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceExecutable : Int64 read FMappedSpaceExecutable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Execute Write Copy is memory that can be executed by programs as well as read and written.  This type of protection is used when memory needs to be shared between processes.  If the sharing processes only read the memory, then they will all use the same memory.  If a sharing process desires write access, then a copy of this memory will be made for that process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceExecWriteCopy : Int64 read FMappedSpaceExecWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  No Access protection prevents a process from writing to or reading from these pages and will generate an access violation if either is attempted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceNoAccess : Int64 read FMappedSpaceNoAccess;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Read Only protection prevents the contents of these pages from being modified.  Any attempts to write or modify these pages will generate an access violation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceReadOnly : Int64 read FMappedSpaceReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Read/Write protection allows a process to read, modify and write to these pages.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceReadPerWrite : Int64 read FMappedSpaceReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Mapped Space is virtual memory that has been mapped  to a specific virtual 
    /// address (or range of virtual addresses) in the process' virtual address space.  Write Copy protection is used when memory is shared for reading but not for writing.  When processes are reading this memory, they can share the same memory, however, when a sharing process wants to have write access to this shared memory, a copy of that memory is made.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MappedSpaceWriteCopy : Int64 read FMappedSpaceWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Execute/Read Only memory is 
    /// memory that can be executed as well as read.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceExecReadOnly : Int64 read FReservedSpaceExecReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Execute/Read/Write memory is 
    /// memory that can be executed by programs as well as read and modified.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceExecReadPerWrite : Int64 read FReservedSpaceExecReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Executable memory is memory 
    /// that can be executed by programs, but cannot be read or written.  This type of 
    /// protection is not supported by all processor types.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceExecutable : Int64 read FReservedSpaceExecutable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Execute Write Copy is memory 
@@ -321,35 +307,35 @@ type
    ///  If a sharing process desires write access, then a copy of this memory will be 
    /// made for that process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceExecWriteCopy : Int64 read FReservedSpaceExecWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  No Access protection prevents a 
    /// process from writing to or reading from these pages and will generate an access 
    /// violation if either is attempted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceNoAccess : Int64 read FReservedSpaceNoAccess;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Read Only protection prevents 
    /// the contents of these pages from being modified.  Any attempts to write or 
    /// modify these pages will generate an access violation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceReadOnly : Int64 read FReservedSpaceReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Read/Write protection allows a 
    /// process to read, modify and write to these pages.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceReadPerWrite : Int64 read FReservedSpaceReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Reserved Space is virtual memory that has been reserved for future use by a 
    /// process, but has not been mapped or committed.  Write Copy protection is used 
@@ -358,30 +344,30 @@ type
    /// process wants to have read/write access to this shared memory, a copy of that 
    /// memory is made.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ReservedSpaceWriteCopy : Int64 read FReservedSpaceWriteCopy;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
    /// process.  Execute/Read Only memory is memory that can be executed as well as 
    /// read.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceExecReadOnly : Int64 read FUnassignedSpaceExecReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
    /// process.  Execute/Read/Write memory is memory that can be executed by programs 
    /// as well as read and written.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceExecReadPerWrite : Int64 read FUnassignedSpaceExecReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
@@ -389,9 +375,9 @@ type
    /// cannot be read or written.  This type of protection is not supported by all 
    /// processor types.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceExecutable : Int64 read FUnassignedSpaceExecutable;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
@@ -401,18 +387,18 @@ type
    /// they will all use the same memory.  If a sharing process desires write access, 
    /// then a copy of this memory will be made for that process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceExecWriteCopy : Int64 read FUnassignedSpaceExecWriteCopy;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
    /// process.  No Access protection prevents a process from writing to or reading 
    /// from these pages and will generate an access violation if either is attempted.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceNoAccess : Int64 read FUnassignedSpaceNoAccess;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
@@ -420,18 +406,18 @@ type
    /// modified.  Any attempts to write or modify these pages will generate an access 
    /// violation.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceReadOnly : Int64 read FUnassignedSpaceReadOnly;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
    /// process.  Read/Write protection allows a process to read, modify and write to 
    /// these pages.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceReadPerWrite : Int64 read FUnassignedSpaceReadPerWrite;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Unassigned Space is mapped and committed virtual memory in use by the process 
    /// that is not attributable to any particular image being executed by that 
@@ -440,7 +426,7 @@ type
    /// same memory, however, when a sharing process wants to have read/write access to 
    /// this shared memory, a copy of that memory is made for writing to.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnassignedSpaceWriteCopy : Int64 read FUnassignedSpaceWriteCopy;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

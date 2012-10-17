@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:55:06
+/// Creation Date 17-10-2012 18:19:24
 /// Namespace root\CIMV2 Class Win32_PerfRawData_NETFramework_NETCLRLocksAndThreads
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfRawData_NETFramework_NETCLRLocksAndThreads.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfRawData_NETFramework_NETCLRLocksAndThreads;
 
@@ -24,21 +20,11 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Stats for CLR Locks and Threads.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfRawData_NETFramework_NETCLRLocksAndThreads=class(TWmiClass)
   private
     FCaption                            : String;
@@ -63,46 +49,46 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Rate at which threads in the runtime attempt to acquire a managed lock 
    /// unsuccessfully. Managed locks can be acquired in many ways; by the "lock" 
    /// statement in C# or by calling System.Monitor.Enter or by using 
    /// MethodImplOptions.Synchronized custom attribute.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ContentionRatePersec : Cardinal read FContentionRatePersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the total number of threads currently waiting to acquire 
    /// some managed lock in the application. This counter is not an average over time; 
    /// it displays the last observed value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CurrentQueueLength : Cardinal read FCurrentQueueLength;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of current .NET thread objects in the 
    /// application. A .NET thread object is created either by new 
@@ -111,18 +97,18 @@ type
    /// threads. This counter is not an average over time; it just displays the last 
    /// observed value.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberofcurrentlogicalThreads : Cardinal read FNumberofcurrentlogicalThreads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of native OS threads created and owned by the 
    /// CLR to act as underlying threads for .NET thread objects. This counters value 
    /// does not include the threads used by the CLR in its internal operations; it is 
    /// a subset of the threads in the OS process.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberofcurrentphysicalThreads : Cardinal read FNumberofcurrentphysicalThreads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of threads that are currently recognized by 
    /// the CLR; they have a corresponding .NET thread object associated with them. 
@@ -131,9 +117,9 @@ type
    /// threads with same thread ID re-entering the CLR or recreated after thread exit 
    /// are not counted twice.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Numberofcurrentrecognizedthreads : Cardinal read FNumberofcurrentrecognizedthreads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the total number of threads that have been recognized by 
    /// the CLR since the start of this application; these threads have a corresponding 
@@ -142,25 +128,25 @@ type
    /// least once. Only unique threads are tracked; threads with same thread ID re-
    /// entering the CLR or recreated after thread exit are not counted twice.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Numberoftotalrecognizedthreads : Cardinal read FNumberoftotalrecognizedthreads;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the total number of threads that waited to acquire some 
    /// managed lock since the start of the application.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property QueueLengthPeak : Cardinal read FQueueLengthPeak;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of threads per second waiting to acquire some 
    /// lock in the application. This counter is not an average over time; it displays 
    /// the difference between the values observed in the last two samples divided by 
    /// the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property QueueLengthPersec : Cardinal read FQueueLengthPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the number of threads per second that have been 
    /// recognized by the CLR; these threads have a corresponding .NET thread object 
@@ -171,12 +157,12 @@ type
    /// average over time; it displays the difference between the values observed in 
    /// the last two samples divided by the duration of the sample interval.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property rateofrecognizedthreadsPersec : Cardinal read FrateofrecognizedthreadsPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
    property Timestamp_Sys100NS : Int64 read FTimestamp_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// This counter displays the total number of times threads in the CLR have 
    /// attempted to acquire a managed lock unsuccessfully. Managed locks can be 
@@ -184,7 +170,7 @@ type
    /// System.Monitor.Enter or by using MethodImplOptions.Synchronized custom 
    /// attribute.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property TotalNumberofContentions : Cardinal read FTotalNumberofContentions;
    procedure SetCollectionIndex(Index : Integer); override;
   end;

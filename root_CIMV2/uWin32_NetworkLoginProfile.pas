@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:06
+/// Creation Date 17-10-2012 18:18:30
 /// Namespace root\CIMV2 Class Win32_NetworkLoginProfile
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_NetworkLoginProfile.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_NetworkLoginProfile;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Win32_NetworkLoginProfile class represents the network login information of 
   /// a particular user on a Win32 system. This includes, but is not limited to, 
   /// password status, access privileges, disk quotas, and login directory paths.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_NetworkLoginProfile=class(TWmiClass)
   private
     FAccountExpires                     : TDateTime;
@@ -78,58 +64,58 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AccountExpires property specifies when the account will expire. This value is calculated from the number of seconds elapsed since 00:00:00, January 1, 1970, and is set in this format: yyyymmddhhmmss.mmmmmm sutc.
    /// Example: 20521201000230.000000 000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AccountExpires : TDateTime read FAccountExpires;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The AuthorizationFlags property contains a set of flags that specify the 
    /// resources a user is authorized to use or modify.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property AuthorizationFlags : Cardinal read FAuthorizationFlags;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The BadPasswordCount property indicates the number of times the user enters a bad password when logging on to a Win32 system.
    /// Example: 0
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BadPasswordCount : Cardinal read FBadPasswordCount;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CodePage property specifies the code page for the user's language of choice.  A code page is the character set used.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CodePage : Cardinal read FCodePage;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Comment property contains a comment or description for this login profile.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Comment : String read FComment;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The CountryCode property specifies the country/region code for the user's language of choice.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CountryCode : Cardinal read FCountryCode;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the CIM_Setting object.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Flags property indicates the properties available to this network profile.  Properties that can be set include:
    /// 0 - Script -  A logon script executed. This value must be set for LAN Manager 2.0 and Windows NT/Windows 2000.
@@ -153,45 +139,45 @@ type
    /// 22 - Don't Require Preauthorization - Windows 2000: This account does not require Kerberos preauthentication for logon. 
    /// 23 - Password Expired - Indicates that password has expired.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Flags : Cardinal read FFlags;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The FullName property indicates the full name of the user belonging to the 
    /// network login profile. This string can beempty if the user chooses not to 
    /// associate a full name with a user name.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property FullName : String read FFullName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HomeDirectory property specifies the path to the home directory of the user.  This string may be empty if the user chooses not to specify a home directory.
    /// Example: \HOMEDIR
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HomeDirectory : String read FHomeDirectory;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The HomeDirectoryDrive property specifies the drive letter assigned to the user's home directory for logon purposes. 
    /// Example: C:
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property HomeDirectoryDrive : String read FHomeDirectoryDrive;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LastLogoff property specifies the date and time the user last logged off the system. This value is calculated from the number of seconds elapsed since 00:00:00, January 1, 1970.  A value of zero means that the last logoff time is unknown. The format of this value is yyyymmddhhmmss.mmmmmm sutc.
    /// Example: 19521201000230.000000 000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastLogoff : TDateTime read FLastLogoff;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LastLogon property indicates the date and time the user last logged on to the system. This value is calculated from the number of seconds elapsed since 00:00:00, January 1, 1970.  The format of this value is yyyymmddhhmmss.mmmmmm sutc.
    /// Example: 19521201000230.000000 000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LastLogon : TDateTime read FLastLogon;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LogonHours property specifies the times during the week when the user can 
    /// log on. Each bit represents a unit of time specified by the UnitsPerWeek 
@@ -201,37 +187,37 @@ type
    /// restriction.  The time is set to GMT and must be adjusted for other time zones 
    /// (for example, GMT minus 8 hours for PST).
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogonHours : String read FLogonHours;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The LogonServer property contains the name of the server to which logon requests are sent.  Server names should be preceded by two backslashes (\\). A server name with an asterisk (\\*) indicates that the logon request can be handled by any logon server. A null string indicates that requests are sent to the domain controller. 
    /// Example: \\MyServer
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property LogonServer : String read FLogonServer;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The MaximumStorage property specifies the maximum amount of disk space available to the user.  If MaximumStorage is set to USER_MAXSTORAGE_UNLIMITED the user is allowed to use all available disk space.
    /// Example: 10000000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property MaximumStorage : Int64 read FMaximumStorage;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property specifies the name of the user account on a particular domain or machine. The number of characters in the name cannot exceed the value of UNLEN.
    /// Example: somedomain\johndoe
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The NumberOfLogons property indicates the number of successful times the user tried to log on to this account.  A value of 0xFFFFFFFF indicates that the value is unknown. This property is maintained separately on each backup domain controller (BDC) in the domain. To get an accurate value only the largest value from all BDCs should be used.
    /// Example: 4
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property NumberOfLogons : Cardinal read FNumberOfLogons;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Parameters property contains space set aside for use by applications. This 
    /// string can be null, or it can have any number of characters before the 
@@ -239,85 +225,85 @@ type
    /// configuration information. Do not modify this information because this value is 
    /// specific to an application.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Parameters : String read FParameters;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The PasswordAge property indicates the length of time a password has been in effect.  This value is measured from the number of seconds elapsed since the password was last changed.
    /// Example: 00001201000230.000000 000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PasswordAge : TDateTime read FPasswordAge;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The PasswordExpires property indicates the date and time when the password will expire. The value is set in this format: yyyymmddhhmmss.mmmmmm sutc
    /// Example: 19521201000230.000000 000
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PasswordExpires : TDateTime read FPasswordExpires;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The PrimaryGroupId property specifies the relative ID (RID) of the Primary 
    /// Global Group for this user.  The identifier verifies the primary group to which 
    /// the user's profile belongs.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PrimaryGroupId : Cardinal read FPrimaryGroupId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The privileges property specifies the level of privilege assigned to the 
    /// usri3_name property.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Privileges : Cardinal read FPrivileges;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Profile property specifies a directory path to the user's profile. This value can be a null string, a local absolute path, or a UNC path. A user profile contains settings that are customizable for each user such as the desktop colors.
    /// Example: C:\Winnt
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Profile : String read FProfile;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The ScriptPath property indicates the directory path to the user's logon script.  A logon script automatically executes a set of commands each time a user logs on to a system.
    /// Example: C:\win\profiles\ThomasSteven
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property ScriptPath : String read FScriptPath;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The identifier by which the CIM_Setting object is known.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property SettingID : String read FSettingID;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The UnitsPerWeek property indicates the number of time units the week is divided into.  It is used with the LogonHours property to limit user access to the computer.
    /// Example: 168 (hours per week
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UnitsPerWeek : Cardinal read FUnitsPerWeek;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The UserComment property contains a user defined comment or description for 
    /// this profile.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UserComment : String read FUserComment;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The UserId property specifies the relative ID (RID) of the user.  The 
    /// identifier verifies that the user exists and is unique to this domain.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UserId : Cardinal read FUserId;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The UserType property indicates the type of account  the user has privileges to.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property UserType : String read FUserType;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Workstations property contains the names of workstations from which the 
    /// user can log on. Up to eight workstations can be specified; the names must be 
@@ -325,18 +311,18 @@ type
    /// logons from all workstations to this account, set the UF_ACCOUNTDISABLE in the 
    /// Flags property of this class.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Workstations : String read FWorkstations;
    procedure SetCollectionIndex(Index : Integer); override;
   end;
 
 
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// Return the description for the value of the property 
   /// TWin32_NetworkLoginProfile.Privileges
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   function GetPrivilegesAsString(const APropValue:Cardinal) : string;
 
 implementation

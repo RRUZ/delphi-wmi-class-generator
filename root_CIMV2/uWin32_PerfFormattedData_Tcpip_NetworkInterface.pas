@@ -1,16 +1,12 @@
 /// <summary>
 /// Unit generated using the Delphi Wmi class generator tool, Copyright Rodrigo Ruz V. 2010-2012
-/// Application version 1.0.4669.38341
+/// Application version 1.0.4674.62299
 /// WMI version 7601.17514
-/// Creation Date 13-10-2012 10:54:42
+/// Creation Date 17-10-2012 18:19:05
 /// Namespace root\CIMV2 Class Win32_PerfFormattedData_Tcpip_NetworkInterface
 /// MSDN info about this class http://msdn2.microsoft.com/library/default.asp?url=/library/en-us/wmisdk/wmi/Win32_PerfFormattedData_Tcpip_NetworkInterface.asp
 /// </summary>
 
-{$IFDEF FPC}
- {$MODE DELPHI} {$H+}
- {$DEFINE OLD_DELPHI}
-{$ENDIF}
 
 unit uWin32_PerfFormattedData_Tcpip_NetworkInterface;
 
@@ -24,23 +20,13 @@ uses
  uWmiDelphiClass;
 
 type
-{$IFDEF FPC}
-  Cardinal=Longint;
-  Int64=Integer;
-  Word=Longint;
-{$ENDIF}
-{$IFNDEF FPC}
-  {$IF CompilerVersion < 17}
-    {$DEFINE OLD_DELPHI}
-  {$IFEND}
-{$ENDIF}
-  {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+  {$REGION 'Documentation'}
   /// <summary>
   /// The Network Interface performance object consists of counters that measure the 
   /// rates at which bytes and packets are sent and received over a TCP/IP network 
   /// connection.  It includes counters that monitor connection errors.
   /// </summary>
-  {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+  {$ENDREGION}
   TWin32_PerfFormattedData_Tcpip_NetworkInterface=class(TWmiClass)
   private
     FBytesReceivedPersec                : Int64;
@@ -73,71 +59,71 @@ type
   public
    constructor Create(LoadWmiData : boolean=True); overload;
    destructor Destroy;Override;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Received/sec is the rate at which bytes are received over each network 
    /// adapter, including framing characters. Network Interface\Bytes Received/sec is 
    /// a subset of Network Interface\Bytes Total/sec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesReceivedPersec : Int64 read FBytesReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Sent/sec is the rate at which bytes are sent over each network adapter, 
    /// including framing characters. Network Interface\Bytes Sent/sec is a subset of 
    /// Network Interface\Bytes Total/sec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesSentPersec : Int64 read FBytesSentPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Bytes Total/sec is the rate at which bytes are sent and received over each 
    /// network adapter, including framing characters. Network Interface\Bytes 
    /// Total/sec is a sum of Network Interface\Bytes Received/sec and Network 
    /// Interface\Bytes Sent/sec.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property BytesTotalPersec : Int64 read FBytesTotalPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A short textual description (one-line string) for the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Caption : String read FCaption;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Current Bandwidth is an estimate of the current bandwidth of the network 
    /// interface in bits per second (BPS).  For interfaces that do not vary in 
    /// bandwidth or for those where no accurate estimation can be made, this value is 
    /// the nominal bandwidth.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property CurrentBandwidth : Int64 read FCurrentBandwidth;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// A textual description of the statistic or metric.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Description : String read FDescription;
    property Frequency_Object : Int64 read FFrequency_Object;
    property Frequency_PerfTime : Int64 read FFrequency_PerfTime;
    property Frequency_Sys100NS : Int64 read FFrequency_Sys100NS;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// The Name property defines the label by which the statistic or metric is known. 
    /// When subclassed, the property can be overridden to be a Key property. 
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property Name : String read FName;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Offloaded Connections is the number of TCP connections (over both IPv4 and 
    /// IPv6) that are currently handled by the TCP chimney offload capable network 
    /// adapter.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OffloadedConnections : Int64 read FOffloadedConnections;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Output Queue Length is the length of the output packet queue (in packets). If 
    /// this is longer than two, there are delays and the bottleneck should be found 
@@ -145,97 +131,97 @@ type
    /// Driver Interface Specification (NDIS) in this implementation, this will always 
    /// be 0.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property OutputQueueLength : Int64 read FOutputQueueLength;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Outbound Discarded is the number of outbound packets that were chosen 
    /// to be discarded even though no errors had been detected to prevent 
    /// transmission. One possible reason for discarding packets could be to free up 
    /// buffer space.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsOutboundDiscarded : Int64 read FPacketsOutboundDiscarded;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Outbound Errors is the number of outbound packets that could not be 
    /// transmitted because of errors.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsOutboundErrors : Int64 read FPacketsOutboundErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets/sec is the rate at which packets are sent and received on the network 
    /// interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsPersec : Int64 read FPacketsPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Discarded is the number of inbound packets that were chosen to 
    /// be discarded even though no errors had been detected to prevent their delivery 
    /// to a higher-layer protocol.  One possible reason for discarding packets could 
    /// be to free up buffer space.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedDiscarded : Int64 read FPacketsReceivedDiscarded;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Errors is the number of inbound packets that contained errors 
    /// preventing them from being deliverable to a higher-layer protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedErrors : Int64 read FPacketsReceivedErrors;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Non-Unicast/sec is the rate at which non-unicast (subnet 
    /// broadcast or subnet multicast) packets are delivered to a higher-layer protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedNonUnicastPersec : Int64 read FPacketsReceivedNonUnicastPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received/sec is the rate at which packets are received on the network 
    /// interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedPersec : Int64 read FPacketsReceivedPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Unicast/sec is the rate at which (subnet) unicast packets are 
    /// delivered to a higher-layer protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedUnicastPersec : Int64 read FPacketsReceivedUnicastPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Received Unknown is the number of packets received through the 
    /// interface that were discarded because of an unknown or unsupported protocol.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsReceivedUnknown : Int64 read FPacketsReceivedUnknown;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Sent Non-Unicast/sec is the rate at which packets are requested to be 
    /// transmitted to non-unicast (subnet broadcast or subnet multicast) addresses by 
    /// higher-level protocols.  The rate includes the packets that were discarded or 
    /// not sent.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsSentNonUnicastPersec : Int64 read FPacketsSentNonUnicastPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Sent/sec is the rate at which packets are sent on the network interface.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsSentPersec : Int64 read FPacketsSentPersec;
-   {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
+   {$REGION 'Documentation'}
    /// <summary>
    /// Packets Sent Unicast/sec is the rate at which packets are requested to be 
    /// transmitted to subnet-unicast addresses by higher-level protocols.  The rate 
    /// includes the packets that were discarded or not sent.
    /// </summary>
-   {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
+   {$ENDREGION}
    property PacketsSentUnicastPersec : Int64 read FPacketsSentUnicastPersec;
    property Timestamp_Object : Int64 read FTimestamp_Object;
    property Timestamp_PerfTime : Int64 read FTimestamp_PerfTime;
