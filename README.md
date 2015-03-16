@@ -358,8 +358,6 @@ end;
 end.
 ```
 
-### Screenshots ###
+# Download #
 
-![http://lh4.ggpht.com/_7cfMJGu-y5Y/TRRVpHZzcWI/AAAAAAAAAA4/AP6AL6Ql_pA/Delphi%20wmi%20class%20generator.png](http://lh4.ggpht.com/_7cfMJGu-y5Y/TRRVpHZzcWI/AAAAAAAAAA4/AP6AL6Ql_pA/Delphi%20wmi%20class%20generator.png)
-
-![http://lh3.ggpht.com/_7cfMJGu-y5Y/TRRWiYWZmiI/AAAAAAAAABE/JCRDqVGyqZc/s800/Codeview.png](http://lh3.ggpht.com/_7cfMJGu-y5Y/TRRWiYWZmiI/AAAAAAAAABE/JCRDqVGyqZc/s800/Codeview.png)
+ Download the delphi wmi class generator from <a href='https://dl.dropboxusercontent.com/u/12733424/github/delphi-wmi-class-generator/delphi-wmi-class-generator_0.1.0.134.rar'>here</a>
