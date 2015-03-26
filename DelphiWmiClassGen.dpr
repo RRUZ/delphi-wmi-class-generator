@@ -1,7 +1,6 @@
 program DelphiWmiClassGen;
 
 uses
-  ExceptionLog,
   Forms,
   Main in 'Main.pas' {FrmMain},
   AsyncCalls in 'units\AsyncCalls.pas',
@@ -17,6 +16,9 @@ uses
   uDelphiVersions in 'units\uDelphiVersions.pas',
   uLazarusIDE in 'units\uLazarusIDE.pas',
   uWmiDelphiClass in 'units\uWmiDelphiClass.pas',
+  uDelphiSyntax  in 'units\uDelphiSyntax.pas',
+  uOleVariantEnum  in 'units\uOleVariantEnum.pas',
+  WbemScripting_TLB  in 'units\WbemScripting_TLB.pas',
   Vcl.Themes,
   Vcl.Styles,
   uCustomImageDrawHook in 'units\uCustomImageDrawHook.pas',

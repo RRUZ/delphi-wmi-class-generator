@@ -1,7 +1,7 @@
 {**************************************************************************************************}
 {                                                                                                  }
 { Unit uDelphiIDE                                                                                  }
-{ Unit for the WMI Delphi Code Creator                                                             }
+{ https://github.com/RRUZ/delphi-wmi-class-generator                                               }
 {                                                                                                  }
 { The contents of this file are subject to the Mozilla Public License Version 1.1 (the "License"); }
 { you may not use this file except in compliance with the License. You may obtain a copy of the    }
@@ -14,7 +14,7 @@
 { The Original Code is uDelphiIDE.pas.                                                             }
 {                                                                                                  }
 { The Initial Developer of the Original Code is Rodrigo Ruz V.                                     }
-{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010-2012 Rodrigo Ruz V.                    }
+{ Portions created by Rodrigo Ruz V. are Copyright (C) 2010-2015 Rodrigo Ruz V.                    }
 { All Rights Reserved.                                                                             }
 {                                                                                                  }
 {**************************************************************************************************}

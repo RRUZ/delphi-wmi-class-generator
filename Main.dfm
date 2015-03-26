@@ -51,6 +51,8 @@ object FrmMain: TFrmMain
       ParentFont = False
       ScrollBars = ssBoth
       TabOrder = 0
+      ExplicitLeft = 4
+      ExplicitTop = 6
     end
   end
   object PanelMain: TPanel
@@ -120,7 +122,6 @@ object FrmMain: TFrmMain
           Caption = 'WMI Class (Dynamic or Static)'
           Width = 250
         end>
-      Items.ItemData = {}
       ReadOnly = True
       RowSelect = True
       PopupMenu = PopupActionBar1
@@ -170,7 +171,6 @@ object FrmMain: TFrmMain
                 Caption = 'Description'
                 Width = 100
               end>
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -203,7 +203,6 @@ object FrmMain: TFrmMain
                 Caption = 'Description'
                 Width = 100
               end>
-            Items.ItemData = {}
             ReadOnly = True
             RowSelect = True
             TabOrder = 0
@@ -268,7 +267,7 @@ object FrmMain: TFrmMain
     Left = 373
     Top = 165
     Bitmap = {
-      494C01010D001800EC0010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C01010D001100040010001000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       00000000000000000000000000000000000000000000B27047D5D5824FFFD17B
       49FF8E512EAF0000000000000000000000000000000000000000000000000000
