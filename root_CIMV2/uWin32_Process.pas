@@ -456,7 +456,7 @@ type
    /// until the time the process is terminated. 
    /// </param>
    {$ENDREGION}
-   function Create(const CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var ProcessId : Cardinal): Integer;overload;
+   function Create(const _CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var _ProcessId : Cardinal): Integer;overload;
    {$REGION 'Documentation'}
    /// <summary>
    /// The Terminate method terminates a process and all of its threads. The method returns an integer value that can be interpretted as follows: 
@@ -555,7 +555,7 @@ type
    /// can cause disk caches not to flush or cause the mouse to be unresponsive.
    /// </param>
    {$ENDREGION}
-   function SetPriority(const Priority : Integer): Integer;
+   function SetPriority(const _Priority : Integer): Integer;
    {$REGION 'Documentation'}
    /// <summary>
    /// The AttachDebugger method launches the currently registered debugger for this process.  Dr. Watson, however, is not supported. 
@@ -790,13 +790,13 @@ end;
 
 
 //static, OutParams>1, InParameters>0
-function TWin32_Process.Create(const CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var ProcessId : Cardinal): Integer;
+function TWin32_Process.Create(const _CommandLine : String;const CurrentDirectory : String;const ProcessStartupInformation : OleVariant ; var _ProcessId : Cardinal): Integer;
 var
 //output variants  helpers
   vProcessId                : OleVariant;
 begin
-  Result                     := VarIntegerNull(GetStaticInstance.Create(CommandLine,CurrentDirectory,ProcessStartupInformation,vProcessId));
-  ProcessId                  := VarCardinalNull(vProcessId);
+  Result                     := VarIntegerNull(GetStaticInstance.Create(_CommandLine, CurrentDirectory, ProcessStartupInformation, vProcessId));
+  _ProcessId                  := VarCardinalNull(vProcessId);
 end;
 
 //not static, OutParams=1, InParams>0
@@ -816,7 +816,7 @@ var
   vDomain     : OleVariant;
   vUser       : OleVariant;
 begin
-  Result       := VarIntegerNull(GetInstanceOf.GetOwner(vDomain,vUser));
+  Result       := VarIntegerNull(GetInstanceOf.GetOwner(vDomain, vUser));
   Domain       := VarStrNull(vDomain);
   User         := VarStrNull(vUser);
 end;
@@ -832,11 +832,11 @@ begin
 end;
 
 //not static, OutParams=1, InParams>0
-function TWin32_Process.SetPriority(const Priority : Integer): Integer;
+function TWin32_Process.SetPriority(const _Priority : Integer): Integer;
 var
   ReturnValue : OleVariant;
 begin
-  ReturnValue := GetInstanceOf.SetPriority(Priority);
+  ReturnValue := GetInstanceOf.SetPriority(_Priority);
   Result      := VarIntegerNull(ReturnValue);
 end;
 

@@ -29,7 +29,7 @@ interface
 
 
 {todo}
-// remove latebindiugn dependence in methods invoke
+// remove latebinding dependence in methods invoke
 // remove old_delphi conditional
 // add option to create code optimized by version  (enumerators, generics)
    // add generics support?
@@ -393,10 +393,10 @@ type
    function  GetStaticInstance : OleVariant;
    {$IFNDEF OLD_DELPHI}{$REGION 'Documentation'}{$ENDIF}
    /// <summary>
-   /// The LoadWmiData procedure fill the collection with the data returbes by the ExecQuery method
+   /// The GetWmiData procedure fill the collection with the data returbes by the ExecQuery method
    /// </summary>
    {$IFNDEF OLD_DELPHI}{$ENDREGION}{$ENDIF}
-   procedure LoadWmiData;
+   procedure GetWmiData;
    Destructor Destroy; override;
    property  WmiConnection : TWmiConnection read FWmiConnection write SetWmiConnection;
    {$IFDEF FPC}
@@ -1693,7 +1693,7 @@ end;
 
 procedure TWmiClass.SetCollectionIndex(Index: Integer);
 begin
-  raise Exception.Create(Format('You must override this method %s',['SetCollectionIndex']));
+  raise Exception.Create(Format('You must override this method %s', ['SetCollectionIndex']));
 end;
 
 procedure TWmiClass.SetWmiConnection(const Value: TWmiConnection);
@@ -1769,7 +1769,7 @@ begin
 end;
 {$ENDIF}
 
-procedure TWmiClass.LoadWmiData;
+procedure TWmiClass.GetWmiData;
 begin
  FWMiDataLoaded:=_LoadWmiData;
 end;

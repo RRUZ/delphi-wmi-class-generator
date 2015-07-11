@@ -5,8 +5,8 @@ program TestWin32Process;
 uses
   Variants,
   SysUtils,
-  uWin32_Process in '..\..\root_CIMV2\uWin32_Process.pas',
-  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas';
+  uWmiDelphiClass in '..\..\units\uWmiDelphiClass.pas',
+  uWin32_Process in '..\..\root_CIMV2\uWin32_Process.pas';
 
 procedure Test;
 Var
