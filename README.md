@@ -9,7 +9,7 @@
 
   * Create full documented classes compatible with the help insight feature, available since Delphi 2005.
 
-![http://theroadtodelphi.files.wordpress.com/2010/12/main.png](http://theroadtodelphi.files.wordpress.com/2010/12/main.png)
+![](https://github.com/RRUZ/delphi-wmi-class-generator/blob/master/Images/Main.png)
 
 **Note :** the language of the description of the methods, parameters and properties depends on of the language of the windows where you generate the units.
 
