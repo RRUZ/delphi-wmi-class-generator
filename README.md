@@ -360,4 +360,4 @@ end.
 
 # Download #
 
- Download the delphi wmi class generator from <a href='https://dl.dropboxusercontent.com/u/12733424/github/delphi-wmi-class-generator/delphi-wmi-class-generator_0.1.0.134.rar'>here</a>
+ Download the delphi wmi class generator from <a href='https://github.com/RRUZ/delphi-wmi-class-generator/releases/latest'>here</a>
