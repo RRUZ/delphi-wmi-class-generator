@@ -358,6 +358,6 @@ end;
 end.
 ```
 
-# Download #
+---
 
- Download the delphi wmi class generator from <a href='https://github.com/RRUZ/delphi-wmi-class-generator/releases/latest'>here</a>
+Looking for the installer? Check the [Release Area](https://github.com/RRUZ/delphi-wmi-class-generator/releases/latest) 
