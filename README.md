@@ -1,3 +1,13 @@
+# Archived — superseded by WMI Delphi Code Creator
+
+This repository is archived and is no longer maintained. For new development, use **[WMI Delphi Code Creator (RRUZ/wmi-delphi-code-creator)](https://github.com/RRUZ/wmi-delphi-code-creator)**.
+
+**WMI itself is still supported by Microsoft.** Archiving this project does not mean that WMI is deprecated. See Microsoft's [Windows Management Instrumentation documentation](https://learn.microsoft.com/en-us/windows/win32/wmisdk/wmi-start-page).
+
+The existing code and documentation remain available for users maintaining older Delphi applications.
+
+## Delphi WMI Class Generator
+
 ![](https://dl.dropboxusercontent.com/u/12733424/github/delphi-wmi-class-generator/logo.png) The **Delphi Wmi Class Generator** is a application which creates full documented Object Pascal classes to access the [WMI (Windows Management Instrumentation)](http://msdn.microsoft.com/en-us/library/aa394582%28v=vs.85%29.aspx).
 
 [![](https://dl.dropboxusercontent.com/u/12733424/Images/followrruz.png)](https://twitter.com/RRUZ)
